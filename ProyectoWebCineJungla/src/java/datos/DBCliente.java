@@ -72,49 +72,40 @@ public class DBCliente {
         return res;
     }
     public void insertarCliente(Cliente c){
-        /*try{
-            PreparedStatement pstm = cn.getConexion().prepareStatement("insert into cliente(nombre, "
-                + "apellido, "
-                + "correo, "
-                + "direccion, "
-                + "celular, "
-                + "cedula, "
-                + "id_ciudad,"
-                + "password) "
-                + "values(?,?,?,?,?,?,?,?)");
+        try{
+            PreparedStatement pstm = cn.getConexion().prepareStatement("insert into cliente(Nombre, "
+                + "PuntosJungla, "
+                + "Correo, "
+                + "HashPsw, "
+                + "MedioPago_idMedioPago) "
+                + "values(?,?,?,?,?)");
             pstm.setString(1, c.getNombre());
-            pstm.setString(2, c.getApellido());
+            pstm.setDouble(2, c.getPuntosJungla());
             pstm.setString(3, c.getCorreo());
-            pstm.setString(4, c.getDireccion());
-            pstm.setString(5, String.valueOf(c.getCelular()));
-            pstm.setString(6, c.getCedula());
-            pstm.setString(7, String.valueOf(c.getId_ciudad()));
-            pstm.setString(8, c.getPassword());
+            pstm.setString(4, c.getHashPsw());
+            pstm.setInt(5, c.getMedioPago_idMedioPago());
 
             pstm.executeUpdate();
         }catch (SQLException e){
             System.out.println(e);
-        }*/
+        }
     }
     public void eliminarCliente(int i) throws SQLException{
-        PreparedStatement pstm = cn.getConexion().prepareStatement("delete from cliente where id_cliente = "+i);
+        PreparedStatement pstm = cn.getConexion().prepareStatement("delete from cliente where idCliente = "+i);
             pstm.executeUpdate();
     }
-    /*public void modifyCliente(Cliente c) throws SQLException{
+    public void modifyCliente(Cliente c) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update cliente "
-                + "set  nombre = ? , apellido = ? ,"
-                + "correo = ? , direccion= ? , celular = ? "
-                + ", cedula = ? , id_ciudad = ?  where id_cliente = ?");
+                + "set  Nombre = ? , PuntosJungla = ? ,"
+                + "Correo = ? , HashPsw = ? , MedioPago_idMedioPago = ?  where idCliente = ?");
         pstm.setString(1, c.getNombre());
-        pstm.setString(2, c.getApellido());
+        pstm.setDouble(2, c.getPuntosJungla());
         pstm.setString(3, c.getCorreo());
-        pstm.setString(4, c.getDireccion());
-        pstm.setDouble(5, c.getCelular());
-        pstm.setString(6, c.getCedula());
-        pstm.setInt(7, c.getId_ciudad());
-        pstm.setInt(8, c.getId_cliente());
+        pstm.setString(4, c.getHashPsw());
+        pstm.setInt(5, c.getMedioPago_idMedioPago());
+        pstm.setInt(6, c.getIdCliente());
         pstm.executeUpdate();
-    }*/
+    }
     public String getMensaje() {
         return cn.getMensaje();
     }
