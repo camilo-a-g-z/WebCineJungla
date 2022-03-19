@@ -69,7 +69,7 @@ public class DBCalificacionPelicula {
     }
     public void modifyCalificacionPelicula(CalificacionPelicula c) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update calificacionpelicula "
-                + "set  calificacion = ? , Cliente_idCliente = ? ,"
+                + "set  Calificacion = ? , Cliente_idCliente = ? ,"
                 + "Pelicula_idPelicula = ?  where idCalificacionPelicula = ?");
         pstm.setDouble(1, c.getCalificacion());
         pstm.setInt(2, c.getCliente_idCliente());
