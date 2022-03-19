@@ -33,7 +33,7 @@ public class DBCliente {
                 + "Correo, "
                 + "MedioPago_idMedioPago "
                 + "FROM cliente "
-                + "WHERE correo = ?");
+                + "WHERE Correo = ?");
         pstm.setString(1, correo);
         ResultSet res = pstm.executeQuery();
         return res;
@@ -43,7 +43,7 @@ public class DBCliente {
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idCliente, "
                 + "HashPws "
                 + "FROM cliente "
-                + "WHERE correo = ?");
+                + "WHERE Correo = ?");
         pstm.setString(1, correo);
         ResultSet res = pstm.executeQuery();
         return res;
@@ -56,7 +56,7 @@ public class DBCliente {
                 + "Correo, "
                 + "MedioPago_idMedioPago "
                 + "FROM cliente "
-                + "WHERE nombre = "+"\""+nombre+"\"");
+                + "WHERE Nombre = "+"\""+nombre+"\"");
         ResultSet res = pstm.executeQuery();
         return res;
     }
@@ -67,7 +67,7 @@ public class DBCliente {
                 + "Correo, "
                 + "MedioPago_idMedioPago "
                 + "FROM cliente "
-                + "ORDER BY nombre ");
+                + "ORDER BY Nombre ");
         ResultSet res = pstm.executeQuery();
         return res;
     }
