@@ -29,7 +29,7 @@ public class DBMultiplex {
                 + "Nombre, "
                 + "Direccion "
                 + "FROM multiplex "
-                + "WHERE Nombre = "+nombre);
+                + "WHERE Nombre = "+"\""+nombre+"\"");
         ResultSet res = pstm.executeQuery();
         return res;
     }

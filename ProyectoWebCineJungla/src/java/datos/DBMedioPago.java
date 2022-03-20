@@ -27,7 +27,7 @@ public class DBMedioPago {
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idMedioPago, "
                 + "Nombre "
                 + "FROM mediopago "
-                + "WHERE Nombre = "+nombre);
+                + "WHERE Nombre = "+"\""+nombre+"\"");
         ResultSet res = pstm.executeQuery();
         return res;
     }

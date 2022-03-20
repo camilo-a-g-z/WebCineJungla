@@ -34,7 +34,7 @@ public class DBComida {
                 + "Stock, "
                 + "Multiplex_idMultiplex "
                 + "FROM comida "
-                + "WHERE Nombre = "+nombre);
+                + "WHERE Nombre = "+"\""+nombre+"\"");
         ResultSet res = pstm.executeQuery();
         return res;
     }

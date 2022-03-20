@@ -66,7 +66,7 @@ public class DBFuncion {
                 + "Empleado_idEmpleado, "
                 + "Pelicula_idPelicula "
                 + "FROM funcion "
-                + "WHERE Horario = "+horario);
+                + "WHERE Horario = "+"\""+horario+"\"");
         ResultSet res = pstm.executeQuery();
         return res;
     }
