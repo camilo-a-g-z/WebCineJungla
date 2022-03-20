@@ -1,4 +1,4 @@
-Dpackage logica;
+package logica;
 
 /**
  *
