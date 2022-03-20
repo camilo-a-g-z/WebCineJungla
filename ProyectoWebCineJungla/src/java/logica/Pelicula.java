@@ -7,7 +7,7 @@ package logica;
 public class Pelicula {
     private int idPelicula = 0;
     private String Nombre = "";
-    private String CalificacionEdad = "";
+    private String ClasificacionEdad = "";
     private String Duracion = "";
     private String Director = "";
     private String Sinopsis = "";
@@ -29,13 +29,15 @@ public class Pelicula {
         this.Nombre = Nombre;
     }
 
-    public String getCalificacionEdad() {
-        return CalificacionEdad;
+    public String getClasificacionEdad() {
+        return ClasificacionEdad;
     }
 
-    public void setCalificacionEdad(String CalificacionEdad) {
-        this.CalificacionEdad = CalificacionEdad;
+    public void setClasificacionEdad(String ClasificacionEdad) {
+        this.ClasificacionEdad = ClasificacionEdad;
     }
+
+    
 
     public String getDuracion() {
         return Duracion;
