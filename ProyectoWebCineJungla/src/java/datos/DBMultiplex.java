@@ -62,9 +62,9 @@ public class DBMultiplex {
                 + "multiplex where idMultiplex = "+i);
             pstm.executeUpdate();
     }
-    public void modifyCliente(Multiplex m) throws SQLException{
-        PreparedStatement pstm = cn.getConexion().prepareStatement("update mediopago "
-                + "set  Nombre = ? , Direccion = ? where idMedioPago = ?");
+    public void modifyMultiplex(Multiplex m) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("update multiplex "
+                + "set  Nombre = ? , Direccion = ? where idMultiplex = ?");
         pstm.setString(1, m.getNombre());
         pstm.setString(2, m.getDireccion());
         pstm.setInt(3, m.getIdMultiplex());
