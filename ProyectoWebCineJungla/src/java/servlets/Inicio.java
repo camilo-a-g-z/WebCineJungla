@@ -1,8 +1,11 @@
 package servlets;
 
+import datos.DBPelicula;
 import datos.DBRegistroBoleta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,21 +29,23 @@ public class Inicio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DBRegistroBoleta d = new DBRegistroBoleta();
-        try ( PrintWriter out = response.getWriter()) {
-            d.eliminarRegistroBoleta(0);
-            /* TODO output your page here. You may use following sample code. */
+        PrintWriter out = response.getWriter();
+        DBPelicula pelis = new DBPelicula();
+        try{
+            ResultSet res = pelis.getPeliculas();
+            request.getSession().setAttribute("peliculas", res);
+            //response.sendRedirect("index.jsp");
+        }catch(Exception e){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Inicio</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Inicio at " + request.getContextPath() + "</h1>");
+            out.println("<h1> Error: "+e.getMessage()+"</h1>");
             out.println("</body>");
             out.println("</html>");
-        }catch(Exception e){
-            System.out.println("Error: "+e.getMessage());
+            System.out.println();
         }
     }
 
