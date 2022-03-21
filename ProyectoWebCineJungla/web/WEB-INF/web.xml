@@ -1,49 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
+    <servlet>
+        <servlet-name>Inicio</servlet-name>
+        <servlet-class>servlets.Inicio</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>inicio</servlet-name>
-        <url-pattern>/inicio</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Empleado</servlet-name>
-        <url-pattern>/Empleado</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Cliente</servlet-name>
-        <url-pattern>/Cliente</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoadDatesNU</servlet-name>
-        <url-pattern>/LoadDatesNU</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CreateNU</servlet-name>
-        <url-pattern>/CreateNU</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NFServlet</servlet-name>
-        <url-pattern>/NFServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RedirectUser</servlet-name>
-        <url-pattern>/RedirectUser</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowFactura</servlet-name>
-        <url-pattern>/ShowFactura</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowUserBasicDates</servlet-name>
-        <url-pattern>/ShowUserBasicDates</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditUserDates</servlet-name>
-        <url-pattern>/EditUserDates</url-pattern>
+        <servlet-name>Inicio</servlet-name>
+        <url-pattern>/Inicio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>Inicio</welcome-file>
+    </welcome-file-list>
 </web-app>
