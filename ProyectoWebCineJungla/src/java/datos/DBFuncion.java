@@ -110,7 +110,7 @@ public class DBFuncion {
         pstm.setInt(2, f.getSala_idSala());
         pstm.setInt(3, f.getEmpleado_idEmpleado());
         pstm.setInt(4, f.getPelicula_idPelicula());
-        pstm.setInt(5, f.getIdFucnion());
+        pstm.setInt(5, f.getIdFuncion());
         pstm.executeUpdate();
     }
     public String getMensaje() {

@@ -5,19 +5,19 @@ package logica;
  * @author Camilo Garcia
  */
 public class Funcion {
-    private int idFucnion = 0;
+    private int idFuncion = 0;
     private String Horario = "";
     private int Sala_idSala = 0;
     private int Empleado_idEmpleado = 0;
     private int Pelicula_idPelicula = 0;
     //metodos setters y getters
 
-    public int getIdFucnion() {
-        return idFucnion;
+    public int getIdFuncion() {
+        return idFuncion;
     }
 
-    public void setIdFucnion(int idFucnion) {
-        this.idFucnion = idFucnion;
+    public void setIdFuncion(int idFucnion) {
+        this.idFuncion = idFucnion;
     }
 
     public String getHorario() {
