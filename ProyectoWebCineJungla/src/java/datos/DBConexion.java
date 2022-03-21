@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * @author Camilo Garcia
  */
 public class DBConexion {
-    static String bd = "facturacion";
+    static String bd = "mydb";
     static String login = "root";
     static String password = "u_admin";
     static String url = "jdbc:mysql://localhost:3306/"+bd;
