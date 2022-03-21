@@ -45,6 +45,15 @@ public class DBSilla {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    public ResultSet getSillas() throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idSilla, "
+                + "Tipo, "
+                + "Ubicacion, "
+                + "Sala_idSala "
+                + "FROM silla ");
+        ResultSet res = pstm.executeQuery();
+        return res;
+    }
     
     public void insertarSilla(Silla s){
         try{
