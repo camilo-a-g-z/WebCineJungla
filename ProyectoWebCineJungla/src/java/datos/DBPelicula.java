@@ -21,7 +21,8 @@ public class DBPelicula {
                 + "ClasificacionEdad, "
                 + "Duracion, "
                 + "Director, "
-                + "Sinopsis "
+                + "Sinopsis, "
+                + "UrlPelicula "
                 + "FROM pelicula "
                 + "WHERE idPelicula = "+id);
         ResultSet res = pstm.executeQuery();
@@ -34,7 +35,8 @@ public class DBPelicula {
                 + "ClasificacionEdad, "
                 + "Duracion, "
                 + "Director, "
-                + "Sinopsis "
+                + "Sinopsis, "
+                + "UrlPelicula "
                 + "FROM pelicula "
                 + "WHERE Nombre = "+"\""+nombre+"\"");
         ResultSet res = pstm.executeQuery();
@@ -47,7 +49,8 @@ public class DBPelicula {
                 + "ClasificacionEdad, "
                 + "Duracion, "
                 + "Director, "
-                + "Sinopsis "
+                + "Sinopsis, "
+                + "UrlPelicula "
                 + "FROM pelicula "
                 + "ORDER BY Nombre ");
         ResultSet res = pstm.executeQuery();
@@ -59,13 +62,14 @@ public class DBPelicula {
                 + "ClasificacionEdad, "
                 + "Duracion, "
                 + "Director, "
-                + "Sinopsis) "
-                + "values(?,?,?,?,?)");
+                + "Sinopsis, UrlPelicula) "
+                + "values(?,?,?,?,?,?)");
             pstm.setString(1, p.getNombre());
             pstm.setString(2, p.getClasificacionEdad());
             pstm.setString(3, p.getDuracion());
             pstm.setString(4, p.getDirector());
-            pstm.setString(5, p.getSinopsis());           
+            pstm.setString(5, p.getSinopsis()); 
+            pstm.setString(6, p.getUrlPelicula());
 
             pstm.executeUpdate();
         }catch (SQLException e){
@@ -83,13 +87,15 @@ public class DBPelicula {
                 + " ClasificacionEdad = ? ,"
                 + " Duracion = ? ,"
                 + " Director = ? ,"
-                + " Sinopsis = ?  where idPelicula = ?");
+                + " Sinopsis = ? ,"
+                + " UrlPelicula = ? where idPelicula = ?");
         pstm.setString(1, p.getNombre());
         pstm.setString(2, p.getClasificacionEdad());
         pstm.setString(3, p.getDuracion());
         pstm.setString(4, p.getDirector());
         pstm.setString(5, p.getSinopsis());
-        pstm.setInt(6, p.getIdPelicula());
+        pstm.setString(6, p.getUrlPelicula());
+        pstm.setInt(7, p.getIdPelicula());
         pstm.executeUpdate();
     }
     public String getMensaje() {

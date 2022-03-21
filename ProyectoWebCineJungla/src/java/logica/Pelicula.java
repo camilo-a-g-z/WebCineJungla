@@ -11,8 +11,17 @@ public class Pelicula {
     private String Duracion = "";
     private String Director = "";
     private String Sinopsis = "";
+    private String UrlPelicula = "";
     //metodos setters y getters
 
+    public String getUrlPelicula() {
+        return UrlPelicula;
+    }
+
+    public void setUrlPelicula(String UrlPelicula) {
+        this.UrlPelicula = UrlPelicula;
+    }
+    
     public int getIdPelicula() {
         return idPelicula;
     }
