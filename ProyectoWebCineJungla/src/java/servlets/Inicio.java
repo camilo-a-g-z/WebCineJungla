@@ -2,10 +2,8 @@ package servlets;
 
 import datos.DBMultiplex;
 import datos.DBPelicula;
-import datos.DBRegistroBoleta;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

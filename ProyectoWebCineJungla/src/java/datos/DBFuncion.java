@@ -1,5 +1,6 @@
 package datos;
 
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -80,6 +81,25 @@ public class DBFuncion {
                 + "ORDER BY Horario ");
         ResultSet res = pstm.executeQuery();
         return res;
+    }
+    
+    public ResultSet getFuncionByFechaPosterior(Date f) {
+        try{
+            PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFuncion, "
+                    + "Horario, "
+                    + "Sala_idSala, "
+                    + "Empleado_idEmpleado, "
+                    + "Pelicula_idPelicula "
+                    + "FROM funcion "
+                    + "WHERE Horario >= '"+f.getYear()
+                    +"-"+f.getMonth()+"-"+f.getDay()
+                    +" "+f.getHours()+":"+f.getMinutes()+":00'");
+            ResultSet res = pstm.executeQuery();
+            return res;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     public void insertarFuncion(Funcion f){
         try{
