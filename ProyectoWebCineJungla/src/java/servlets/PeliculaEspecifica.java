@@ -6,6 +6,7 @@ import datos.DBPelicula;
 import datos.DBSala;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +47,8 @@ public class PeliculaEspecifica extends HttpServlet {
 //            response.sendRedirect("Inicio");
         try{
             
+            ResultSet res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
+            ResultSet res2 = DBf.getFuncionByPelicula(Integer.parseInt(request.getParameter("idPelicula")));
         }catch(Exception e){
             
         }

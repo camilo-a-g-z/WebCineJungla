@@ -1,5 +1,6 @@
 package servlets;
 
+import datos.DBMultiplex;
 import datos.DBPelicula;
 import datos.DBRegistroBoleta;
 import java.io.IOException;
@@ -31,9 +32,12 @@ public class Inicio extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         DBPelicula pelis = new DBPelicula();
+        DBMultiplex DBm = new DBMultiplex();
         try{
-            ResultSet res = pelis.getPeliculas();
-            request.getSession().setAttribute("peliculas", res);
+            ResultSet res1 = pelis.getPeliculaByEstado("Cartelera");
+            ResultSet res2 = DBm.getMultiplexs();
+            request.getSession().setAttribute("peliculas", res1);
+            request.getSession().setAttribute("multiplex", res2);
             //response.sendRedirect("index.jsp");
         }catch(Exception e){
             out.println("<!DOCTYPE html>");
