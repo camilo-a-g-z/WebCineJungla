@@ -1,12 +1,14 @@
 package logica;
 
+import java.sql.Date;
+
 /**
  *
  * @author Camilo Garcia
  */
 public class Funcion {
     private int idFuncion = 0;
-    private String Horario = "";
+    private Date Horario;
     private int Sala_idSala = 0;
     private int Empleado_idEmpleado = 0;
     private int Pelicula_idPelicula = 0;
@@ -20,11 +22,11 @@ public class Funcion {
         this.idFuncion = idFucnion;
     }
 
-    public String getHorario() {
+    public Date getHorario() {
         return Horario;
     }
 
-    public void setHorario(String Horario) {
+    public void setHorario(Date Horario) {
         this.Horario = Horario;
     }
 
