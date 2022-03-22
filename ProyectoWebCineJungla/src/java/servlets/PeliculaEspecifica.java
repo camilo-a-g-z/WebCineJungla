@@ -46,9 +46,9 @@ public class PeliculaEspecifica extends HttpServlet {
 //            conDb.insertarContacto(c);
 //            response.sendRedirect("Inicio");
         try{
-            
+            ResultSet res0 = DBm.getMultiplexById(Integer.parseInt(request.getParameter("idMultiplex")));
             ResultSet res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-            ResultSet res2 = DBf.getFuncionByPelicula(Integer.parseInt(request.getParameter("idPelicula")));
+            ResultSet res2 = DBs.getSalaByidMultiplex(Integer.parseInt(request.getParameter("idMultiplex")));
         }catch(Exception e){
             
         }
