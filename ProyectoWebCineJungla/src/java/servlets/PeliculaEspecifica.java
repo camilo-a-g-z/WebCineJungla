@@ -32,24 +32,8 @@ public class PeliculaEspecifica extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DBPelicula DBp = new DBPelicula();
-        DBFuncion DBf = new DBFuncion();
-        DBSala DBs = new DBSala();
-        DBMultiplex DBm = new DBMultiplex();
-//        DBContactos conDb = new DBContactos();
-//            c.setNombre(request.getParameter("txtNombre"));
-//            c.setApellido(request.getParameter("txtApellido"));
-//            c.setCorreo(request.getParameter("txtCorreo"));
-//            c.setCelular(request.getParameter("txtCelular"));
-//            c.setTelefonoDomicilio(request.getParameter("txtTelefonoDomicilio"));
-//            c.setTelefonoOficina(request.getParameter("txtTelefonoOficina"));
-//            c.setDireccionResidencia(request.getParameter("txtDireccionDomicilio"));
-//            c.setDireccionTrabajo(request.getParameter("txtDireccionOficina"));
-//            conDb.insertarContacto(c);
-//            response.sendRedirect("Inicio");
         try{
-            ResultSet res0 = DBm.getMultiplexById(Integer.parseInt(request.getParameter("idMultiplex")));
             ResultSet res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-            ResultSet res2 = DBs.getSalaByidMultiplex(Integer.parseInt(request.getParameter("idMultiplex")));
             FuncionesByMultiplex test = new FuncionesByMultiplex(
                     Integer.parseInt(request.getParameter("idPelicula")), 
                     Integer.parseInt(request.getParameter("idMultiplex")), 
@@ -57,6 +41,7 @@ public class PeliculaEspecifica extends HttpServlet {
                     Integer.parseInt(request.getParameter("mes")),
                     Integer.parseInt(request.getParameter("mes")));
             request.getSession().setAttribute("array", test.getFunciones());
+            request.getSession().setAttribute("pelicula", res1);
         }catch(Exception e){
             
         }

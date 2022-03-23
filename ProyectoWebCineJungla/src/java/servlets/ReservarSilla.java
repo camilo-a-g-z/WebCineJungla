@@ -1,23 +1,17 @@
 package servlets;
 
-import datos.DBMultiplex;
-import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.time.ZonedDateTime;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Automatizacion.FuncionesByMultiplex;
 
 /**
  *
- * @author User
+ * @author Camilo Garcia
  */
-public class Inicio extends HttpServlet {
+public class ReservarSilla extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,25 +26,19 @@ public class Inicio extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        DBPelicula pelis = new DBPelicula();
-        DBMultiplex DBm = new DBMultiplex();
-        try{
-            ResultSet res1 = pelis.getPeliculaByEstado("Cartelera");
-            ResultSet res2 = DBm.getMultiplexs();
-            request.getSession().setAttribute("peliculas", res1);
-            request.getSession().setAttribute("multiplex", res2);
-            //response.sendRedirect("index.jsp");
+        try {
+            //Recibo cantidad de sillas el id de una funcion y el id de usuario o el del empleado
         }catch(Exception e){
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Inicio</title>");            
+            out.println("<title>Servlet ReservarSilla</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1> Error: "+e.getMessage()+"</h1>");
+            out.println("<h1>Error at " + e.getMessage() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            System.out.println();
         }
     }
 
