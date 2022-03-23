@@ -21,7 +21,8 @@ public class DBFuncion {
                 + "Horario, "
                 + "Sala_idSala, "
                 + "Empleado_idEmpleado, "
-                + "Pelicula_idPelicula "
+                + "Pelicula_idPelicula, "
+                + "Duracion "
                 + "FROM funcion "
                 + "WHERE idFuncion = "+id);
         ResultSet res = pstm.executeQuery();
@@ -32,7 +33,8 @@ public class DBFuncion {
                 + "Horario, "
                 + "Sala_idSala, "
                 + "Empleado_idEmpleado, "
-                + "Pelicula_idPelicula "
+                + "Pelicula_idPelicula, "
+                + "Duracion "
                 + "FROM funcion "
                 + "WHERE Empleado_idEmpleado = "+id);
         ResultSet res = pstm.executeQuery();
@@ -43,7 +45,8 @@ public class DBFuncion {
                 + "Horario, "
                 + "Sala_idSala, "
                 + "Empleado_idEmpleado, "
-                + "Pelicula_idPelicula "
+                + "Pelicula_idPelicula, "
+                + "Duracion "
                 + "FROM funcion "
                 + "WHERE Pelicula_idPelicula = "+id);
         ResultSet res = pstm.executeQuery();
@@ -54,20 +57,23 @@ public class DBFuncion {
                 + "Horario, "
                 + "Sala_idSala, "
                 + "Empleado_idEmpleado, "
-                + "Pelicula_idPelicula "
+                + "Pelicula_idPelicula, "
+                + "Duracion "
                 + "FROM funcion "
                 + "WHERE Sala_idSala = "+id);
         ResultSet res = pstm.executeQuery();
         return res;
     }
-    public ResultSet getFuncionByHorario(String horario) throws SQLException{
+    public ResultSet getFuncionByHorario(Date f) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFuncion, "
                 + "Horario, "
                 + "Sala_idSala, "
                 + "Empleado_idEmpleado, "
-                + "Pelicula_idPelicula "
+                + "Pelicula_idPelicula, "
+                + "Duracion "
                 + "FROM funcion "
-                + "WHERE Horario = "+"\""+horario+"\"");
+                + "WHERE Horario = ?");
+        pstm.setDate(1, (java.sql.Date) f);
         ResultSet res = pstm.executeQuery();
         return res;
     }
@@ -76,7 +82,8 @@ public class DBFuncion {
                 + "Horario, "
                 + "Sala_idSala, "
                 + "Empleado_idEmpleado, "
-                + "Pelicula_idPelicula "
+                + "Pelicula_idPelicula, "
+                + "Duracion "
                 + "FROM funcion "
                 + "ORDER BY Horario ");
         ResultSet res = pstm.executeQuery();
@@ -89,7 +96,8 @@ public class DBFuncion {
                     + "Horario, "
                     + "Sala_idSala, "
                     + "Empleado_idEmpleado, "
-                    + "Pelicula_idPelicula "
+                    + "Pelicula_idPelicula, "
+                    + "Duracion "
                     + "FROM funcion "
                     + "WHERE Horario >= '"+f.getYear()
                     +"-"+f.getMonth()+"-"+f.getDay()
@@ -106,12 +114,14 @@ public class DBFuncion {
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into funcion(Horario, "
                 + "Sala_idSala, "
                 + "Empleado_idEmpleado, "
-                + "Pelicula_idPelicula) "
-                + "values(?,?,?,?)");
-            pstm.setDate(1, f.getHorario());
+                + "Pelicula_idPelicula, "
+                + "Duracion) "
+                + "values(?,?,?,?,?)");
+            pstm.setDate(1, (java.sql.Date) f.getHorario());
             pstm.setInt(2, f.getSala_idSala());
             pstm.setInt(3, f.getEmpleado_idEmpleado());
             pstm.setInt(4, f.getPelicula_idPelicula());
+            pstm.setInt(5, f.getDuracion());
 
             pstm.executeUpdate();
         }catch (SQLException e){
@@ -125,12 +135,14 @@ public class DBFuncion {
     public void modifyFuncion(Funcion f) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update funcion "
                 + "set  Horario = ? , Sala_idSala = ? ,"
-                + "Empleado_idEmpleado = ? , Pelicula_idPelicula = ? where idFuncion = ?");
-        pstm.setDate(1, f.getHorario());
+                + "Empleado_idEmpleado = ? , Pelicula_idPelicula = ? "
+                + "Duracion = ? where idFuncion = ?");
+        pstm.setDate(1, (java.sql.Date) f.getHorario());
         pstm.setInt(2, f.getSala_idSala());
         pstm.setInt(3, f.getEmpleado_idEmpleado());
         pstm.setInt(4, f.getPelicula_idPelicula());
-        pstm.setInt(5, f.getIdFuncion());
+        pstm.setInt(5, f.getDuracion());
+        pstm.setInt(6, f.getIdFuncion());
         pstm.executeUpdate();
     }
     public String getMensaje() {
