@@ -48,14 +48,15 @@ public class FuncionesByMultiplex {
         funciones = modificado;
     }
     private void separarByHorario() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = sdf.parse("2019-10-01");
-        Date date2 = sdf.parse("2019-10-17");
-
-        if (date1.after(date2)) {
-            System.out.println("sip");
-        } else{
-            System.out.println("Ño");
+        Date dt = new Date();
+        Date comp = new Date();
+        comp.setMonth(dt.getMonth() - 1);
+        ArrayList<Funcion> modificado = new ArrayList<Funcion>();
+        for(int i=0;i<funciones.size();i++){
+            if(comp.before(modificado.get(i).getHorario())){
+                modificado.add(funciones.get(i));
+            }
         }
+        funciones = modificado;
     }
 }
