@@ -12,8 +12,17 @@ public class Funcion {
     private int Sala_idSala = 0;
     private int Empleado_idEmpleado = 0;
     private int Pelicula_idPelicula = 0;
+    private int Duracion = 0;
     //metodos setters y getters
 
+    public int getDuracion() {
+        return Duracion;
+    }
+
+    public void setDuracion(int Duracion) {
+        this.Duracion = Duracion;
+    }
+    
     public int getIdFuncion() {
         return idFuncion;
     }
