@@ -35,7 +35,7 @@ public class Inicio extends HttpServlet {
         DBPelicula pelis = new DBPelicula();
         DBMultiplex DBm = new DBMultiplex();
         try{
-            FuncionesByMultiplex test = new FuncionesByMultiplex(1,1,2022,3,23);
+            
             //System.out.println(test.getFunciones().size());
             //ResultSet res1 = pelis.getPeliculaByEstado("Cartelera");
             //ResultSet res2 = DBm.getMultiplexs();
