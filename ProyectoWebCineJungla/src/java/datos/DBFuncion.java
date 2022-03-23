@@ -108,7 +108,7 @@ public class DBFuncion {
                 + "Empleado_idEmpleado, "
                 + "Pelicula_idPelicula) "
                 + "values(?,?,?,?)");
-            pstm.setDate(1, f.getHorario());
+            pstm.setDate(1, (java.sql.Date) f.getHorario());
             pstm.setInt(2, f.getSala_idSala());
             pstm.setInt(3, f.getEmpleado_idEmpleado());
             pstm.setInt(4, f.getPelicula_idPelicula());
@@ -126,7 +126,7 @@ public class DBFuncion {
         PreparedStatement pstm = cn.getConexion().prepareStatement("update funcion "
                 + "set  Horario = ? , Sala_idSala = ? ,"
                 + "Empleado_idEmpleado = ? , Pelicula_idPelicula = ? where idFuncion = ?");
-        pstm.setDate(1, f.getHorario());
+        pstm.setDate(1, (java.sql.Date) f.getHorario());
         pstm.setInt(2, f.getSala_idSala());
         pstm.setInt(3, f.getEmpleado_idEmpleado());
         pstm.setInt(4, f.getPelicula_idPelicula());

@@ -2,8 +2,11 @@ package logica.Automatizacion;
 
 import datos.DBFuncion;
 import datos.DBSala;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import logica.Funcion;
 
@@ -22,6 +25,7 @@ public class FuncionesByMultiplex {
     private void generarFunciones(int idPelicula, int idMultiplex) throws SQLException{
         obtenerFunciones(idMultiplex);
         separarByPelicula(idPelicula);
+        
     }
     private void obtenerFunciones(int idMultiplex) throws SQLException{
         DBSala sala = new DBSala();
@@ -37,7 +41,21 @@ public class FuncionesByMultiplex {
     private void separarByPelicula(int idPelicula){
         ArrayList<Funcion> modificado = new ArrayList<Funcion>();  
         for(int i=0;i<funciones.size();i++){
-            
+            if(funciones.get(i).getPelicula_idPelicula() == idPelicula){
+                modificado.add(funciones.get(i));
+            }
+        }
+        funciones = modificado;
+    }
+    private void separarByHorario() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = sdf.parse("2019-10-01");
+        Date date2 = sdf.parse("2019-10-17");
+
+        if (date1.after(date2)) {
+            System.out.println("sip");
+        } else{
+            System.out.println("Ño");
         }
     }
 }
