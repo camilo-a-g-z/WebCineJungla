@@ -19,13 +19,13 @@ public class FuncionesByMultiplex {
     private ArrayList<Funcion> funciones = new ArrayList<Funcion>();  
     //private ArrayList<Funcion> con = new ArrayList<Funcion>();  
 
-    public FuncionesByMultiplex(int idPelicula, int idMultiplex) throws SQLException {
+    public FuncionesByMultiplex(int idPelicula, int idMultiplex) throws SQLException, ParseException {
         generarFunciones(idPelicula, idMultiplex);
     }
-    private void generarFunciones(int idPelicula, int idMultiplex) throws SQLException{
+    private void generarFunciones(int idPelicula, int idMultiplex) throws SQLException, ParseException{
         obtenerFunciones(idMultiplex);
         separarByPelicula(idPelicula);
-        
+        separarByHorario();
     }
     private void obtenerFunciones(int idMultiplex) throws SQLException{
         DBSala sala = new DBSala();
