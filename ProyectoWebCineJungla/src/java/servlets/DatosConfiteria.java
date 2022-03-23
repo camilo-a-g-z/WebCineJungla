@@ -1,9 +1,5 @@
 package servlets;
 
-import datos.DBCliente;
-import datos.DBEmpleado;
-import datos.DBFuncion;
-import datos.DBSilla;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Camilo Garcia
  */
-public class ReservarSilla extends HttpServlet {
+public class DatosConfiteria extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,20 +26,20 @@ public class ReservarSilla extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        DBSilla DBs = new DBSilla();
-        DBFuncion DBf = new DBFuncion();
-        DBEmpleado DBe = new DBEmpleado();
-        DBCliente DBc = new DBCliente();
         try {
-            //Recibo cantidad de sillas el id de una funcion y el id de usuario o el del empleado
+            //Se obtiene cantidad de sillas elegidas el id de cada una,
+            //el id de una funcion y el id de usuario o el del empleado
             
-            //Devuelvo las sillas, la funcion y el id de usuario o el del empleado
-        }catch(Exception e){
+            
+            //Se devulelve confiteria segun multiplex ademas,sillas 
+            //elegidas el id de cada una el id de una funcion y el id 
+            //de usuario o el del empleado
+        }catch (Exception e){
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ReservarSilla</title>");            
+            out.println("<title>Servlet DatosConfiteria</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Error at " + e.getMessage() + "</h1>");
