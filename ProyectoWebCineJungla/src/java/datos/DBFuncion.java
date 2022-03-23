@@ -60,14 +60,15 @@ public class DBFuncion {
         ResultSet res = pstm.executeQuery();
         return res;
     }
-    public ResultSet getFuncionByHorario(String horario) throws SQLException{
+    public ResultSet getFuncionByHorario(Date f) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFuncion, "
                 + "Horario, "
                 + "Sala_idSala, "
                 + "Empleado_idEmpleado, "
                 + "Pelicula_idPelicula "
                 + "FROM funcion "
-                + "WHERE Horario = "+"\""+horario+"\"");
+                + "WHERE Horario = ?");
+        pstm.setDate(1, (java.sql.Date) f);
         ResultSet res = pstm.executeQuery();
         return res;
     }
