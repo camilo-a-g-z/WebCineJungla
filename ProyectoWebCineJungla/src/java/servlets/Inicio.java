@@ -5,10 +5,13 @@ import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.time.ZonedDateTime;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.FuncionesByMultiplex;
 
 /**
  *
@@ -32,10 +35,12 @@ public class Inicio extends HttpServlet {
         DBPelicula pelis = new DBPelicula();
         DBMultiplex DBm = new DBMultiplex();
         try{
-            ResultSet res1 = pelis.getPeliculaByEstado("Cartelera");
-            ResultSet res2 = DBm.getMultiplexs();
-            request.getSession().setAttribute("peliculas", res1);
-            request.getSession().setAttribute("multiplex", res2);
+            FuncionesByMultiplex test = new FuncionesByMultiplex(1,1,2022,3,23);
+            //System.out.println(test.getFunciones().size());
+            //ResultSet res1 = pelis.getPeliculaByEstado("Cartelera");
+            //ResultSet res2 = DBm.getMultiplexs();
+            //request.getSession().setAttribute("peliculas", res1);
+            //request.getSession().setAttribute("multiplex", res2);
             //response.sendRedirect("index.jsp");
         }catch(Exception e){
             out.println("<!DOCTYPE html>");

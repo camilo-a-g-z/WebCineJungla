@@ -6,7 +6,6 @@ import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import logica.Funcion;
 
@@ -17,10 +16,34 @@ import logica.Funcion;
  */
 public class FuncionesByMultiplex {
     private ArrayList<Funcion> funciones = new ArrayList<Funcion>();  
+    private int anio;
+    private int mes;
+    private int dia;
     //private ArrayList<Funcion> con = new ArrayList<Funcion>();  
 
-    public FuncionesByMultiplex(int idPelicula, int idMultiplex) throws SQLException, ParseException {
-        generarFunciones(idPelicula, idMultiplex);
+    public FuncionesByMultiplex(int idPelicula, int idMultiplex, int anio, int mes, int dia){
+        this.anio = anio;
+        this.mes = mes;
+        this.dia = dia;
+        try{
+//            for(int i=0;i<10;i++){
+//                Date dt = new Date();
+//                dt.setYear(anio);
+//                dt.setMonth(mes);
+//                dt.setDate(dia);
+//                Funcion f = new Funcion();
+//                f.setIdFuncion(i);
+//                //dt.setMonth(i+1);
+//                f.setHorario(dt);
+//                f.setSala_idSala(1);
+//                f.setEmpleado_idEmpleado(1);
+//                f.setPelicula_idPelicula(0);
+//                funciones.add(f);
+//            }
+            generarFunciones(idPelicula, idMultiplex);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     private void generarFunciones(int idPelicula, int idMultiplex) throws SQLException, ParseException{
         obtenerFunciones(idMultiplex);
@@ -45,18 +68,31 @@ public class FuncionesByMultiplex {
                 modificado.add(funciones.get(i));
             }
         }
-        funciones = modificado;
+        funciones = new ArrayList<Funcion>();
+        funciones.addAll(modificado);
     }
     private void separarByHorario() throws ParseException {
         Date dt = new Date();
-        Date comp = new Date();
+        dt.setYear(anio);
+        dt.setMonth(mes);
+        dt.setDate(dia);
+        Date comp = dt;
         comp.setMonth(dt.getMonth() - 1);
+        comp.setDate(dt.getDate()-1);
         ArrayList<Funcion> modificado = new ArrayList<Funcion>();
         for(int i=0;i<funciones.size();i++){
-            if(comp.before(modificado.get(i).getHorario())){
+            if(comp.before(funciones.get(i).getHorario())){
                 modificado.add(funciones.get(i));
             }
         }
-        funciones = modificado;
+        funciones = new ArrayList<Funcion>();
+        funciones.addAll(modificado);
+        System.out.println(funciones.size());
     }
+
+    public ArrayList<Funcion> getFunciones() {
+        return funciones;
+    }
+    
+    
 }
