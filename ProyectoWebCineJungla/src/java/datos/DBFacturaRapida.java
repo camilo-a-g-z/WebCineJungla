@@ -15,6 +15,17 @@ public class DBFacturaRapida {
     public DBFacturaRapida(){
         cn = new DBConexion();
     }
+    public String getLastId(){
+        try{
+            PreparedStatement pstm_2 = cn.getConexion().prepareStatement("SELECT LAST_INSERT_ID()");
+            ResultSet res = pstm_2.executeQuery();
+            res.next();
+            return res.getString("LAST_INSERT_ID()");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return "";
+    }
     public ResultSet getFacturaRapidaById(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFacturaRapida, "
                 + "Total, "

@@ -2,15 +2,18 @@ package servlets;
 
 import datos.DBCliente;
 import datos.DBEmpleado;
+import datos.DBFacturaCliente;
 import datos.DBFuncion;
 import datos.DBSilla;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.FacturaCliente;
 
 /**
  *
@@ -43,6 +46,11 @@ public class ReservarSilla extends HttpServlet {
             request.getSession().setAttribute("funcion", res1);
             request.getSession().setAttribute("sillas", res2);
             request.getSession().setAttribute("peliculas", request.getParameter("idUsuario"));
+            request.getSession().setAttribute("idFactura", generarFacturaAndReturnId(
+                    Integer.parseInt(request.getParameter("idUsuario")), 
+                    Integer.parseInt(request.getParameter("dia")), 
+                    Integer.parseInt(request.getParameter("mes")), 
+                    Integer.parseInt(request.getParameter("anio")) ));
             //Aqui va la redireccion
             //Devuelvo las sillas, la funcion y el id de usuario o el del empleado
         }catch(Exception e){
@@ -58,7 +66,23 @@ public class ReservarSilla extends HttpServlet {
             out.println("</html>");
         }
     }
-
+    int generarFacturaAndReturnId(int id, int dia, int mes, int anio){
+        Date fecha = new Date(anio,mes,dia);
+        int idFactura = 0;
+        FacturaCliente f = new FacturaCliente();
+        f.setCliente_idCliente(id);
+        f.setFecha(fecha);
+        f.setTotal(0.0);
+        
+        DBFacturaCliente DBf = new DBFacturaCliente();
+        try{
+            DBf.insertarFacturaCliente(f);
+            idFactura = Integer.parseInt(DBf.getLastId());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return idFactura;
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
