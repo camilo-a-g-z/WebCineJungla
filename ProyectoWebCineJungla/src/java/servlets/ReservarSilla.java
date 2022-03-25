@@ -6,6 +6,7 @@ import datos.DBFuncion;
 import datos.DBSilla;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +37,13 @@ public class ReservarSilla extends HttpServlet {
         DBCliente DBc = new DBCliente();
         try {
             //Recibo cantidad de sillas el id de una funcion y el id de usuario o el del empleado
-            
+            ResultSet res1 = DBf.getFuncionById(Integer.parseInt(request.getParameter("idFuncion")));
+            res1.next();
+            ResultSet res2 = DBs.getSillaByidSala(res1.getInt("Sala_idSala"));
+            request.getSession().setAttribute("funcion", res1);
+            request.getSession().setAttribute("sillas", res2);
+            request.getSession().setAttribute("peliculas", request.getParameter("idUsuario"));
+            //Aqui va la redireccion
             //Devuelvo las sillas, la funcion y el id de usuario o el del empleado
         }catch(Exception e){
             /* TODO output your page here. You may use following sample code. */
