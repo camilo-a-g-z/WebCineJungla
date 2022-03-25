@@ -39,7 +39,7 @@ public class PeliculaEspecifica extends HttpServlet {
                     Integer.parseInt(request.getParameter("idMultiplex")), 
                     Integer.parseInt(request.getParameter("anio")), 
                     Integer.parseInt(request.getParameter("mes")),
-                    Integer.parseInt(request.getParameter("mes")));
+                    Integer.parseInt(request.getParameter("dia")));
             request.getSession().setAttribute("array", test.getFunciones());
             request.getSession().setAttribute("pelicula", res1);
         }catch(Exception e){
