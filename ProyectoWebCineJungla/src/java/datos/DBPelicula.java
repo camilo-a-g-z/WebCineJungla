@@ -72,9 +72,9 @@ public class DBPelicula {
         ResultSet res = pstm.executeQuery();
         return res;
     }
-    public void insertarComida(Pelicula p){
+    public void insertarPelicula(Pelicula p){
         try{
-            PreparedStatement pstm = cn.getConexion().prepareStatement("insert into cliente(Nombre, "
+            PreparedStatement pstm = cn.getConexion().prepareStatement("insert into pelicula(Nombre, "
                 + "ClasificacionEdad, "
                 + "Duracion, "
                 + "Director, "
@@ -84,7 +84,7 @@ public class DBPelicula {
                 + "values(?,?,?,?,?,?,?)");
             pstm.setString(1, p.getNombre());
             pstm.setString(2, p.getClasificacionEdad());
-            pstm.setString(3, p.getDuracion());
+            pstm.setDouble(3, p.getDuracion());
             pstm.setString(4, p.getDirector());
             pstm.setString(5, p.getSinopsis()); 
             pstm.setString(6, p.getUrlPelicula());
@@ -111,7 +111,7 @@ public class DBPelicula {
                 + " Estado where idPelicula = ?");
         pstm.setString(1, p.getNombre());
         pstm.setString(2, p.getClasificacionEdad());
-        pstm.setString(3, p.getDuracion());
+        pstm.setDouble(3, p.getDuracion());
         pstm.setString(4, p.getDirector());
         pstm.setString(5, p.getSinopsis());
         pstm.setString(6, p.getUrlPelicula());

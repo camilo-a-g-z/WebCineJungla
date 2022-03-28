@@ -63,7 +63,7 @@ public class DBComida {
     }
     public void insertarComida(Comida c){
         try{
-            PreparedStatement pstm = cn.getConexion().prepareStatement("insert into cliente(Nombre, "
+            PreparedStatement pstm = cn.getConexion().prepareStatement("insert into comida(Nombre, "
                 + "Precio, "
                 + "Stock, "
                 + "Multiplex_idMultiplex) "
