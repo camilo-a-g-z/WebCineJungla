@@ -23,6 +23,8 @@ public class rellenoSalas {
     Date fechaActual;
     Date fechaFinal;
     Date fechaDinamica;
+    Date horaInicial;
+
     int auxHr;
     int auxMin;
     int auxDurPel;
@@ -31,8 +33,9 @@ public class rellenoSalas {
 
         fechaActual.setYear(anio);
         fechaActual.setMonth(mes);
-
         fechaActual.setDate(dia);
+        horaInicial = fechaActual;
+        horaInicial.setHours(12);
         fechaFinal = fechaActual;
         fechaFinal.setMonth(fechaFinal.getMonth() + 1);
         rellenarFuncion(sala, pelicula);
@@ -71,26 +74,44 @@ public class rellenoSalas {
                     if (coincidePelicula == false) {
                         Collections.sort(funcionDiaActual, new ordenarFuncionPorHorario());
 
-                        for (int i = 0; i < funcionDiaActual.size() - 1; i++) {
-
-                            //Al horario de la funcion se le suma la duracion de la pelicula
-                            auxMin = funcionDiaActual.get(i).getDuracion() % 60;
-                            auxHr = (int) (funcionDiaActual.get(i).getDuracion() / 60);
-                            fechaDinamica = funcionDiaActual.get(i).getHorario();
-                            fechaDinamica.setMinutes(fechaDinamica.getMinutes() + auxMin);
-                            fechaDinamica.setHours(fechaDinamica.getHours() + auxHr);
-                            //Al horario y la duracion se le suma ademas la duracion de
-                            //la pelicula que queremos agregar
-
+                        //Si hay hueco antes de la primera funcion
+                        if (funcionDiaActual.get(0).getHorario().after(horaInicial)) {
                             auxMin = auxDurPel % 60;
                             auxHr = (int) auxDurPel / 60;
-                            fechaDinamica.setMinutes(fechaDinamica.getMinutes() + auxMin);
-                            fechaDinamica.setHours(fechaDinamica.getHours() + auxHr);
-                            if(fechaDinamica.before(funcionDiaActual.get(i+1).getHorario())){
-                                //Ingresar funcion
+                            Date fechaAux;
+                            fechaAux = horaInicial;
+                            fechaAux.setMinutes(fechaAux.getMinutes() + auxMin);
+                            fechaAux.setHours(fechaAux.getHours() + auxHr);
+                            if (fechaAux == (funcionDiaActual.get(0).getHorario()) || (fechaAux.before(funcionDiaActual.get(0).getHorario()))) {
+                                //Insertar Funcion
                             }
 
+                        } else {
+
+                            //Verificar huecos entre funciones
+                            for (int i = 0; i < funcionDiaActual.size() - 1; i++) {
+
+                                //Al horario de la funcion se le suma la duracion de la pelicula
+                                auxMin = funcionDiaActual.get(i).getDuracion() % 60;
+                                auxHr = (int) (funcionDiaActual.get(i).getDuracion() / 60);
+                                fechaDinamica = funcionDiaActual.get(i).getHorario();
+                                fechaDinamica.setMinutes(fechaDinamica.getMinutes() + auxMin);
+                                fechaDinamica.setHours(fechaDinamica.getHours() + auxHr);
+                                //Al horario y la duracion se le suma ademas la duracion de
+                                //la pelicula que queremos agregar
+
+                                auxMin = auxDurPel % 60;
+                                auxHr = (int) auxDurPel / 60;
+                                fechaDinamica.setMinutes(fechaDinamica.getMinutes() + auxMin);
+                                fechaDinamica.setHours(fechaDinamica.getHours() + auxHr);
+                                if (fechaDinamica.before(funcionDiaActual.get(i + 1).getHorario()) || (fechaDinamica == (funcionDiaActual.get(i + 1).getHorario()))) {
+                                    //Ingresar funcion
+                                }
+
+                            }
                         }
+                        //Si hay hueco despues de la ultima funcion
+
                     }
                 }
 
