@@ -28,6 +28,7 @@ public class TransformFuncion {
             f.setSala_idSala(res.getInt("Sala_idSala"));
             f.setEmpleado_idEmpleado(res.getInt("Empleado_idEmpleado"));
             f.setPelicula_idPelicula(res.getInt("Pelicula_idPelicula"));
+            f.setDuracion(res.getInt("Duracion"));
             con.add(f);
         }
     }
