@@ -3,11 +3,11 @@ package logica.Automatizacion;
 import datos.DBFuncion;
 import datos.DBPelicula;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import logica.Funcion;
+import logica.Pelicula;
 
 /**
  *
@@ -19,6 +19,7 @@ public class rellenoSalas {
     DBPelicula pel = new DBPelicula();
     ArrayList<Funcion> conf = new ArrayList<Funcion>();
     ArrayList<Funcion> funcionDiaActual = new ArrayList<Funcion>();
+    Pelicula objPel;
     Date fechaActual;
     Date fechaFinal;
     Date fechaDinamica;
@@ -27,23 +28,28 @@ public class rellenoSalas {
     int auxDurPel;
 
     public rellenoSalas(int sala, int pelicula, int anio, int mes, int dia, int hora, int min) {
-        rellenarFuncion(sala, pelicula);
+
         fechaActual.setYear(anio);
         fechaActual.setMonth(mes);
 
         fechaActual.setDate(dia);
         fechaFinal = fechaActual;
         fechaFinal.setMonth(fechaFinal.getMonth() + 1);
+        rellenarFuncion(sala, pelicula);
     }
 
     public void rellenarFuncion(int sala, int pelicula) {
 
         try {
-            SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            ResultSet DBp = pel.getPeliculaById(pelicula);
+
             ResultSet DBf = funcionDB.getFuncionBySala(sala);
             obtenerFuncionPorDia transf = new obtenerFuncionPorDia(DBf);
             conf = transf.getArrayListFunciones();
+
+            ResultSet DBp = pel.getPeliculaById(pelicula);
+            TransformPelicula pelTrans = new TransformPelicula(DBp);
+            objPel = pelTrans.getPeli();
+            auxDurPel = objPel.getDuracion();
 
             boolean coincidePelicula = false;
 
@@ -75,6 +81,14 @@ public class rellenoSalas {
                             fechaDinamica.setHours(fechaDinamica.getHours() + auxHr);
                             //Al horario y la duracion se le suma ademas la duracion de
                             //la pelicula que queremos agregar
+
+                            auxMin = auxDurPel % 60;
+                            auxHr = (int) auxDurPel / 60;
+                            fechaDinamica.setMinutes(fechaDinamica.getMinutes() + auxMin);
+                            fechaDinamica.setHours(fechaDinamica.getHours() + auxHr);
+                            if(fechaDinamica.before(funcionDiaActual.get(i+1).getHorario())){
+                                //Ingresar funcion
+                            }
 
                         }
                     }
