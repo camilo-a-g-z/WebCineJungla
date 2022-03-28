@@ -84,7 +84,7 @@ public class DBPelicula {
                 + "values(?,?,?,?,?,?,?)");
             pstm.setString(1, p.getNombre());
             pstm.setString(2, p.getClasificacionEdad());
-            pstm.setDouble(3, p.getDuracion());
+            pstm.setInt(3, p.getDuracion());
             pstm.setString(4, p.getDirector());
             pstm.setString(5, p.getSinopsis()); 
             pstm.setString(6, p.getUrlPelicula());
@@ -111,7 +111,7 @@ public class DBPelicula {
                 + " Estado where idPelicula = ?");
         pstm.setString(1, p.getNombre());
         pstm.setString(2, p.getClasificacionEdad());
-        pstm.setDouble(3, p.getDuracion());
+        pstm.setInt(3, p.getDuracion());
         pstm.setString(4, p.getDirector());
         pstm.setString(5, p.getSinopsis());
         pstm.setString(6, p.getUrlPelicula());

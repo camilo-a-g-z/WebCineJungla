@@ -8,7 +8,7 @@ public class Pelicula {
     private int idPelicula = 0;
     private String Nombre = "";
     private String ClasificacionEdad = "";
-    private Double Duracion = 0.0;
+    private int Duracion = 0;
     private String Director = "";
     private String Sinopsis = "";
     private String UrlPelicula = "";
@@ -57,11 +57,11 @@ public class Pelicula {
 
     
 
-    public Double getDuracion() {
+    public int getDuracion() {
         return Duracion;
     }
 
-    public void setDuracion(Double Duracion) {
+    public void setDuracion(int Duracion) {
         this.Duracion = Duracion;
     }
 
