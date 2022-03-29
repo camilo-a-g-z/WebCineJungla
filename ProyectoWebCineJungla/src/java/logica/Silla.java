@@ -9,16 +9,7 @@ public class Silla {
     String Tipo = "";
     String Ubicacion = "";
     int Sala_idSala = 0;
-    String UrlImagen = "";
     //metodos getters y setters
-
-    public String getUrlImagen() {
-        return UrlImagen;
-    }
-
-    public void setUrlImagen(String UrlImagen) {
-        this.UrlImagen = UrlImagen;
-    }
     
     public int getIdSilla() {
         return idSilla;

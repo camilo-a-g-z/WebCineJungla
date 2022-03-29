@@ -10,8 +10,17 @@ public class Comida {
     private Double Precio = 0.0;
     private Double Stock = 0.0;
     private int Multiplex_idMultiplex = 0;
+    private String UrlImagen = "";
     //metodos getters y setters
 
+    public String getUrlImagen() {
+        return UrlImagen;
+    }
+
+    public void setUrlImagen(String UrlImagen) {
+        this.UrlImagen = UrlImagen;
+    }
+    
     public int getIdComida() {
         return idComida;
     }

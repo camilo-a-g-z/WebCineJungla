@@ -20,7 +20,8 @@ public class DBComida {
                 + "Nombre, "
                 + "Precio, "
                 + "Stock, "
-                + "Multiplex_idMultiplex "
+                + "Multiplex_idMultiplex, "
+                + "UrlImagen "
                 + "FROM comida "
                 + "WHERE idComida = "+id);
         ResultSet res = pstm.executeQuery();
@@ -32,7 +33,8 @@ public class DBComida {
                 + "Nombre, "
                 + "Precio, "
                 + "Stock, "
-                + "Multiplex_idMultiplex "
+                + "Multiplex_idMultiplex, "
+                + "UrlImagen "
                 + "FROM comida "
                 + "WHERE Nombre = "+"\""+nombre+"\"");
         ResultSet res = pstm.executeQuery();
@@ -44,7 +46,8 @@ public class DBComida {
                 + "Nombre, "
                 + "Precio, "
                 + "Stock, "
-                + "Multiplex_idMultiplex "
+                + "Multiplex_idMultiplex, "
+                + "UrlImagen "
                 + "FROM comida "
                 + "WHERE Multiplex_idMultiplex = "+id);
         ResultSet res = pstm.executeQuery();
@@ -55,7 +58,8 @@ public class DBComida {
                 + "Nombre, "
                 + "Precio, "
                 + "Stock, "
-                + "Multiplex_idMultiplex "
+                + "Multiplex_idMultiplex, "
+                + "UrlImagen "
                 + "FROM comida "
                 + "ORDER BY Nombre ");
         ResultSet res = pstm.executeQuery();
@@ -66,12 +70,14 @@ public class DBComida {
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into comida(Nombre, "
                 + "Precio, "
                 + "Stock, "
-                + "Multiplex_idMultiplex) "
-                + "values(?,?,?,?)");
+                + "Multiplex_idMultiplex, "
+                + "UrlImagen) "
+                + "values(?,?,?,?,?)");
             pstm.setString(1, c.getNombre());
             pstm.setDouble(2, c.getPrecio());
             pstm.setDouble(3, c.getStock());
             pstm.setInt(4, c.getMultiplex_idMultiplex());
+            pstm.setString(5, c.getUrlImagen());
 
             pstm.executeUpdate();
         }catch (SQLException e){
@@ -85,12 +91,14 @@ public class DBComida {
     public void modifyComida(Comida c) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update comida "
                 + "set  Nombre = ? , Precio = ? ,"
-                + "Stock = ? , Multiplex_idMultiplex = ? where idComida = ?");
+                + "Stock = ? , Multiplex_idMultiplex = ? , "
+                + "UrlImagen = ? where idComida = ?");
         pstm.setString(1, c.getNombre());
         pstm.setDouble(2, c.getPrecio());
         pstm.setDouble(3, c.getStock());
         pstm.setInt(4, c.getMultiplex_idMultiplex());
-        pstm.setInt(5, c.getIdComida());
+        pstm.setString(5, c.getUrlImagen());
+        pstm.setInt(6, c.getIdComida());
         pstm.executeUpdate();
     }
     public String getMensaje() {
