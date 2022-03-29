@@ -34,14 +34,13 @@
                 <div class="heading">
                     <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">Pago</h2>
                 </div>
-                <form style="width: 635px;height: 500px;padding: 34px;">
+                <form style="padding-top: 30px;padding-bottom: 30px;">
                     <div class="mb-3"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Nombre de usuario</label>
-                        <p style="font-size: 22px;font-family: Lato, sans-serif;">Usuario</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Productos</label>
+                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Productos</label>
                         <p style="font-size: 22px;">Lista de productos</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total a pagar</label>
                         <p style="font-size: 22px;">Valor total</p>
                     </div>
-                    <div class="col"><a href="index1.html"><button class="btn btn-primary border rounded-pill" type="button" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 230px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 27px;">Realizar pago</button></a></div>
+                    <div class="col"><a href="index1.html"><button class="btn btn-primary border rounded-pill" type="button" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 260px;height: 65px;margin-right: 0px;margin-left: 148px;padding: 0px 0px;margin-top: 20px;">Imprimir factura</button></a></div>
                 </form>
             </div>
         </section>

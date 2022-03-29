@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Table - Brand</title>
-    <link rel="stylesheet" href="assetsAdmin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich&amp;display=swap">
-    <link rel="stylesheet" href="assetsAdmin/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
 </head>
 
 <body id="page-top">
@@ -21,7 +21,7 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" href="adminPeliculas.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a><a class="nav-link" href="adminConfitería.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a><a class="nav-link" href="adminPersonal.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="adminPeliculas.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a><a class="nav-link" href="adminConfiteria.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a><a class="nav-link" href="adminPersonal.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
@@ -39,63 +39,26 @@
                             <div class="card-header py-3">
                                 <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de las funciones</p>
                             </div>
-                            <div class="card-body"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 150px;height: 38px;">Añadir película</button>
+                            <div class="card-body"><a class="card-link" href="adminPeliculasAdd.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 150px;height: 38px;">Añadir película</button></a>
                                 <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                                    <form>
                                     <table class="table my-0" id="dataTable">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Nombre</th>
-                                                <th>Descripción</th>
+                                                <th>Duración</th>
+                                                <th>Clasificación de edad</th>
+                                                <th>Director</th>
+                                                <th>Sinopsis</th>
+                                                <th>Imagen</th>
+                                                <th>Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td> text imput </td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                            </tr>
-                                            <tr>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td><br></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -106,7 +69,6 @@
                                             <tr></tr>
                                         </tfoot>
                                     </table>
-                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Profile - Brand</title>
-    <link rel="stylesheet" href="assetsAdmin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich&amp;display=swap">
-    <link rel="stylesheet" href="assetsAdmin/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
 </head>
 
 <body id="page-top">
@@ -21,7 +21,7 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="adminPeliculas.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a><a class="nav-link" href="adminConfitería.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a><a class="nav-link active" href="adminPersonal.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="adminPeliculas.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a><a class="nav-link active" href="adminConfiteriaAdd.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a><a class="nav-link" href="adminPersonal.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
@@ -38,29 +38,28 @@
                 <div id="content-3">
                     <div id="content-4">
                         <div class="container-fluid">
-                            <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Registro de empleados</h3>
+                            <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Productos de confitería</h3>
                             <div class="card shadow">
                                 <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Agregar empleado nuevo</p>
+                                    <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de los productos</p>
                                 </div>
                                 <div class="card-body">
                                     <div class="p-5" style="height: 400px;width: 888px;">
                                         <div class="text-center">
-                                            <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del empleado</h4>
+                                            <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del producto</h4>
                                         </div>
                                         <form class="d-inline user">
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-1" placeholder="Nombre" name="first_name"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-2" placeholder="Apellido" name="last_name"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-1" placeholder="Nombre" name="nombre"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-2" placeholder="Precio" name="precio"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput-1" placeholder="Cédula" name="password"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput-1" placeholder="Teléfono" name="password_repeat"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-4" placeholder="Stock" name="stock"></div>
+                                                <div class="col-xl-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-3" placeholder="Imagen" name="imagen"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Correo electrónico" name="password"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Contraseña" name="password_repeat"></div>
-                                            </div><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir empleado</button>
+                                                <div class="col-sm-6 col-xl-12 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-5" placeholder="Multiplex" name="multiplex"></div><a href="adminConfiteria.html"></a>
+                                            </div><a href="adminConfiteria.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;margin-top: 14px;">Añadir producto</button></a>
                                             <hr>
                                         </form>
                                         <div class="text-center"></div>

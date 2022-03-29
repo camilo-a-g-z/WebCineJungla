@@ -34,7 +34,7 @@
                 <div class="heading">
                     <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">Registro</h2>
                 </div>
-                <form style="width: 650px;height: 670px;padding: 38px;">
+                <form style="padding-top: 30px;padding-bottom: 30px;">
                     <div class="mb-3">
                         <div class="row">
                             <div class="col"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre</label><input class="form-control" type="email" id="email-2" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
@@ -50,7 +50,7 @@
                     <div class="mb-3">
                         <div class="row">
                             <div class="col"><a href="index1.html"></a><button class="btn btn-primary border rounded-0" type="button" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 77px;padding: 0px 0px;margin-top: 20px;">Efectivo</button><button class="btn btn-primary border rounded-0" type="button" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 65px;padding: 0px 0px;margin-top: 20px;">Tarjeta</button></div>
-                            <div class="col"><a href="index1.html"><button class="btn btn-primary border rounded-pill" type="button" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 27px;">Registrarse</button></a></div>
+                            <div class="col"><a href="index1.html"><button class="btn btn-primary border rounded-pill" type="button" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 15px;">Registrarse</button></a></div>
                         </div>
                     </div>
                 </form>

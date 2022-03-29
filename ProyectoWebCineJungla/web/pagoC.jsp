@@ -18,12 +18,12 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="--bs-primary: #000000;--bs-primary-rgb: 0,0,0;--bs-info: #ffffff;--bs-info-rgb: 255,255,255;--bs-danger: #000000;--bs-danger-rgb: 0,0,0;--bs-warning: #ffffff;--bs-warning-rgb: 255,255,255;--bs-success: #000000;--bs-success-rgb: 0,0,0;background: linear-gradient(94deg, black 27%, rgb(223,223,223) 206%, rgb(176,176,176) 251%, white 251%);">
-        <div class="container"><a class="navbar-brand logo" href="index.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="confiteria.html">Confitería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="usuario.html">*usuario*</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -32,17 +32,17 @@
         <section class="portfolio-block hire-me" style="padding-top: 40px;padding-bottom: 60px;">
             <div class="container">
                 <div class="heading">
-                    <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">INICIAR SESIÓN</h2>
+                    <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">Pago</h2>
                 </div>
-                <form id="ingresoE" action="adminPeliculas" style="width: 630px;height: 400px;padding: 40px;">
+                <form style="padding: 50px;padding-top: 30px;padding-bottom: 30px;">
                     <div class="mb-3"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Correo electrónico</label><input class="form-control" type="email" id="email" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 24px;">Contraseña</label><input class="form-control" type="password" style="height: 45px;"></div>
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col"><a><button class="btn btn-primary border rounded-0" type="submit" id="ingresoE" style="font-size: 23px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 50px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 20px;">Ingresar</button></a></div>
-                        </div>
-                    </div><a href="registro.html"></a>
+                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Nombre de usuario</label>
+                        <p style="font-size: 22px;font-family: Lato, sans-serif;">Usuario</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Productos</label>
+                        <p style="font-size: 22px;">Lista de productos</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total a pagar</label>
+                        <p style="font-size: 22px;">Valor total</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total de puntos adquiridos</label>
+                        <p style="font-size: 22px;">Puntos</p>
+                    </div>
+                    <div class="col"><a href="index1.html"><button class="btn btn-primary border rounded-pill" type="button" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 230px;height: 65px;margin-right: 0px;margin-left: 169px;padding: 0px 0px;margin-top: 20px;">Realizar pago</button></a></div>
                 </form>
             </div>
         </section>
