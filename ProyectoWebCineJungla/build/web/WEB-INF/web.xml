@@ -16,6 +16,10 @@
         <servlet-name>DatosConfiteria</servlet-name>
         <servlet-class>servlets.DatosConfiteria</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Test</servlet-name>
+        <servlet-class>servlets.AdminComunication.Test</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>DatosConfiteria</servlet-name>
         <url-pattern>/DatosConfiteria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Test</servlet-name>
+        <url-pattern>/Test</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
