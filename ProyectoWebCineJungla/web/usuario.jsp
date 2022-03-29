@@ -35,11 +35,11 @@
                 <div class="row mb-3">
                     <div class="col-lg-4">
                         <div class="card shadow mb-4">
-                            <div class="card-body"><img style="width: 350px;height: 350px;" src="assets/img/nature/usuario.png"></div>
+                            <div class="card-body" style="background: url(&quot;assets/img/nature/usuario.png&quot;) center / contain no-repeat;height: 408px;"></div>
                         </div>
                         <div class="card shadow mb-4">
-                            <div class="card-body" style="width: 400px;height: 115px;">
-                                <h4 class="small fw-bold">Puntos obtenidos<span class="float-end"></span></h4>
+                            <div class="card-body">
+                                <h4 class="small fw-bold">Puntos obtenidos</h4>
                                 <h1>1451541</h1>
                             </div>
                         </div>
