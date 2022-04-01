@@ -1,14 +1,17 @@
 package servlets;
 
+import datos.DBEmpleado;
 import datos.DBMultiplex;
 import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Empleado;
 
 /**
  *
@@ -31,11 +34,33 @@ public class Inicio extends HttpServlet {
         PrintWriter out = response.getWriter();
         DBPelicula pelis = new DBPelicula();
         DBMultiplex DBm = new DBMultiplex();
+        DBEmpleado DBe = new DBEmpleado();
+        Empleado em = new Empleado();
+        Date da = new Date(System.currentTimeMillis());
+        String fecha = da.toString();
+        da.setYear(2022);
+        da.setMonth(4);
+        da.setDate(1);
+        em.setCedula("12345");
+        em.setCedula("12345");
+        em.setFechaIngreso(da);
+        em.setHashPsw("1234");
+        em.setMultiplex_idMultiplex(1);
+        em.setNombre("Camilo");
+        em.setNumTelefono("12345");
+        em.setRol_idRol(1);
+        em.setSalario(1000.0);
+        
         try{
             ResultSet res1 = pelis.getPeliculaByEstado("Cartelera");
             ResultSet res2 = DBm.getMultiplexs();
             request.getSession().setAttribute("peliculas", res1);
             request.getSession().setAttribute("multiplex", res2);
+            
+            //DBe.insertarEmpleado(em);
+            System.out.println("Auxilio");
+            System.out.println(fecha);
+            System.out.println(da.getMinutes());
             response.sendRedirect("ingresoE.jsp");
         }catch(Exception e){
             out.println("<!DOCTYPE html>");
