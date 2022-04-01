@@ -5,8 +5,9 @@ import datos.DBMultiplex;
 import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,14 +37,22 @@ public class Inicio extends HttpServlet {
         DBMultiplex DBm = new DBMultiplex();
         DBEmpleado DBe = new DBEmpleado();
         Empleado em = new Empleado();
-        Date da = new Date(System.currentTimeMillis());
-        String fecha = da.toString();
+        
+        Date da = new Date(System.currentTimeMillis());  
+        
         da.setYear(2022);
         da.setMonth(4);
         da.setDate(1);
+        da.setMinutes(0);
+        long timeInMilliSeconds = da.getTime();
+        java.sql.Date date1 = new java.sql.Date(timeInMilliSeconds);
+        date1.setYear(da.getYear());
+        date1.setMonth(da.getMonth());
+        date1.setDate(da.getDate());
+        //date1.setMinutes(da.getMinutes());
         em.setCedula("12345");
         em.setCedula("12345");
-        em.setFechaIngreso(da);
+        em.setFechaIngreso(date1);
         em.setHashPsw("1234");
         em.setMultiplex_idMultiplex(1);
         em.setNombre("Camilo");
@@ -58,9 +67,7 @@ public class Inicio extends HttpServlet {
             request.getSession().setAttribute("multiplex", res2);
             
             //DBe.insertarEmpleado(em);
-            System.out.println("Auxilio");
-            System.out.println(fecha);
-            System.out.println(da.getMinutes());
+            System.out.println(date1);
             response.sendRedirect("ingresoE.jsp");
         }catch(Exception e){
             out.println("<!DOCTYPE html>");
