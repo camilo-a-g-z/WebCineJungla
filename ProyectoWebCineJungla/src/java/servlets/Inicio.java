@@ -36,7 +36,7 @@ public class Inicio extends HttpServlet {
             ResultSet res2 = DBm.getMultiplexs();
             request.getSession().setAttribute("peliculas", res1);
             request.getSession().setAttribute("multiplex", res2);
-            //response.sendRedirect("index.jsp");
+            response.sendRedirect("ingresoE.jsp");
         }catch(Exception e){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
