@@ -32,12 +32,12 @@
         <section class="portfolio-block hire-me" style="padding-top: 40px;padding-bottom: 60px;">
             <div class="container">
                 <div class="heading">
-                    <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">INICIAR SESIÃ“N</h2>
+                    <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">INICIAR SESIÓN</h2>
                 </div>
                 <form method="post" action="Test" style="padding-top: 30px;padding-bottom: 30px;">
                     <div class="mb-3"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Correo electrÃ³nico</label><input class="form-control" type="email" id="email" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 24px;">ContraseÃ±a</label><input class="form-control" type="password" style="height: 45px;"></div>
+                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Correo electrónico</label><input class="form-control" type="email" id="email" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
+                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 24px;">Contraseña</label><input class="form-control" type="password" style="height: 45px;"></div>
                     <div class="mb-3">
                         <div class="row">
                             <div class="col"><a href="inicio.html"><button class="btn btn-primary border rounded-0" type="button" style="font-size: 23px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 50px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 20px;">Ingresar</button></a></div>
@@ -49,7 +49,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

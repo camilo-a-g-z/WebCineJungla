@@ -31,14 +31,14 @@
     <main class="page cv-page">
         <section class="portfolio-block block-intro border-bottom" style="padding-top: 40px;padding-bottom: 60px;">
             <div class="container">
-                <h1 style="font-family: Aclonica, sans-serif;font-size: 45px;">Inicio de sesiÃ³n</h1><img style="width: 190px;height: 190px;margin-bottom: 70px;margin-top: 5px;" src="assets/img/nature/usuario.png">
+                <h1 style="font-family: Aclonica, sans-serif;font-size: 45px;">Inicio de sesión</h1><img style="width: 190px;height: 190px;margin-bottom: 70px;margin-top: 5px;" src="assets/img/nature/usuario.png">
                 <div class="about-me"><a href="ingresoE.html" style="width: 0px;height: 0px;"><button class="btn btn-primary border rounded-0" type="button" style="background: rgb(194,23,0);font-size: 26px;font-family: Aldrich, sans-serif;text-align: center;width: 190px;height: 56px;margin-left: 120px;padding: 0px 0px;margin-right: 70px;margin-top: 0px;">Empleado</button></a><a href="ingresoC.html" style="width: 0px;height: 0px;"><button class="btn btn-primary border rounded-0" type="button" style="background: rgb(194,23,0);font-size: 26px;font-family: Aldrich, sans-serif;text-align: center;width: 190px;height: 56px;margin-left: 60px;padding: 0px 0px;margin-right: 120px;">Cliente</button></a></div>
             </div>
         </section>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

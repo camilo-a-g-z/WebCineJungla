@@ -21,12 +21,12 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="adminPeliculas.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">PelÃ­culas</span></a><a class="nav-link active" href="adminConfiteria.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">ConfiterÃ­a</span></a><a class="nav-link" href="adminPersonal.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="adminPeliculas.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a><a class="nav-link active" href="adminConfiteria.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a><a class="nav-link" href="adminPersonal.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><a href="index.html"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesiÃ³n</button></a>
+                </ul><a href="index.html"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
         </nav>
@@ -38,12 +38,12 @@
                 <div id="content-3">
                     <div id="content-4">
                         <div class="container-fluid">
-                            <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Productos de confiterÃ­a</h3>
+                            <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Productos de confitería</h3>
                             <div class="card shadow">
                                 <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">ModificaciÃ³n de los productos</p>
+                                    <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de los productos</p>
                                 </div>
-                                <div class="card-body"><a class="card-link" href="adminConfiteriaAdd.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">AÃ±adir producto</button></a>
+                                <div class="card-body"><a class="card-link" href="adminConfiteriaAdd.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir producto</button></a>
                                     <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
                                         <table class="table my-0" id="dataTable">
                                             <thead>
@@ -52,15 +52,28 @@
                                                     <th>Precio</th>
                                                     <th>Stock</th>
                                                     <th>Multiplex</th>
+                                                    <th>Editar</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
+                                                <%while(res.next()){%>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <form action="...">
+                                                                <div id="info" style="display:none">
+                                                                    <input id="id_cliente" name="id_cliente" type="text" value="<%out.println(user);%>">
+                                                                    <input id="id_factura" name="id_factura" type="text" value="<%out.println(res.getString("id_factura"));%>">
+                                                                    <input id="btm_submit" type="submit">
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Editar</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <%}%>
                                                 <tr></tr>
                                             </tbody>
                                             <tfoot>

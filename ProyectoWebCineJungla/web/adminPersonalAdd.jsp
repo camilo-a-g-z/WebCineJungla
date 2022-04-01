@@ -21,12 +21,12 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="adminPeliculas.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">PelÃ­culas</span></a><a class="nav-link" href="adminConfiteria.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">ConfiterÃ­a</span></a><a class="nav-link active" href="adminPersonalAdd.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="adminPeliculas.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a><a class="nav-link" href="adminConfiteria.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a><a class="nav-link active" href="adminPersonalAdd.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><a href="index.html"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesiÃ³n</button></a>
+                </ul><a href="index.html"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
         </nav>
@@ -54,13 +54,13 @@
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-2" placeholder="Apellido" name="apellido"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-3" placeholder="CÃ©dula" name="cedula"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-4" placeholder="TelÃ©fono" name="telefono"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-3" placeholder="Cédula" name="cedula"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-4" placeholder="Teléfono" name="telefono"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" placeholder="Correo electrÃ³nico" name="correo" id="email"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="ContraseÃ±a" name="contraseÃ±a"></div>
-                                            </div><a href="adminPersonal.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">AÃ±adir empleado</button></a>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" placeholder="Correo electrónico" name="correo" id="email"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Contraseña" name="contraseña"></div>
+                                            </div><a href="adminPersonal.html"><button class="btn btn-primary border rounded-pill" type="sumbit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir empleado</button></a>
                                             <hr>
                                         </form>
                                         <div class="text-center"></div>

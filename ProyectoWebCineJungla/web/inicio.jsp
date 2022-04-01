@@ -21,9 +21,9 @@
         <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="confiteria.html">ConfiterÃ­a</a></li>
+                    <li class="nav-item"><a class="nav-link" href="confiteria.html">Confitería</a></li>
                     <li class="nav-item"><a class="nav-link" href="usuario.html">*usuario*</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesiÃ³n</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -32,7 +32,7 @@
         <section class="portfolio-block projects-cards" style="padding-top: 40px;padding-bottom: 60px;">
             <div class="container">
                 <div class="heading">
-                    <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Ãšltimos estrenos</h2>
+                    <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Últimos estrenos</h2>
                 </div>
                 <div class="row" style="margin-top: -45px;">
                     <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
@@ -64,12 +64,12 @@
                         </div>
                     </div>
                 </div>
-            </div><a class="d-flex justify-content-center align-items-center align-content-center" href="cartelera.html"><button class="btn btn-primary border rounded-pill shadow" type="button" style="background: rgb(0,0,0);width: 690px;margin-right: 0px;margin-left: 0px;margin-top: 20px;font-family: Aldrich, sans-serif;font-size: 30px;text-align: center;height: 64px;">Ver todas las pelÃ­culas&nbsp;</button></a>
+            </div><a class="d-flex justify-content-center align-items-center align-content-center" href="cartelera.html"><button class="btn btn-primary border rounded-pill shadow" type="button" style="background: rgb(0,0,0);width: 690px;margin-right: 0px;margin-left: 0px;margin-top: 20px;font-family: Aldrich, sans-serif;font-size: 30px;text-align: center;height: 64px;">Ver todas las películas&nbsp;</button></a>
         </section>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

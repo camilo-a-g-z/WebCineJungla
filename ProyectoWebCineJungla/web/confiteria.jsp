@@ -21,9 +21,9 @@
         <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="confiteria.html">Confiter√≠a</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="confiteria.html">ConfiterÌa</a></li>
                     <li class="nav-item"><a class="nav-link" href="usuario.html">*usuario*</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesi√≥n</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesiÛn</a></li>
                 </ul>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <div class="heading" style="margin-bottom: 28px;">
                     <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">Confiter√≠a</h2>
                     <div class="dropdown"><button class="btn btn-primary dropdown-toggle border rounded-pill" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="width: 235px;height: 45px;margin: 19px 0px 0px 168px;margin-top: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Centro Comercial</button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Tit√°n Plaza</a><a class="dropdown-item" href="#">Plaza Central</a><a class="dropdown-item" href="#">Unicentro</a><a class="dropdown-item" href="#">Gran Estaci√≥n</a><a class="dropdown-item" href="#">Embajador</a><a class="dropdown-item" href="#">Plaza de las √Åmericas</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Tit·n Plaza</a><a class="dropdown-item" href="#">Plaza Central</a><a class="dropdown-item" href="#">Unicentro</a><a class="dropdown-item" href="#">Gran EstaciÛn</a><a class="dropdown-item" href="#">Embajador</a><a class="dropdown-item" href="#">Plaza de las ¡mericas</a></div>
                     </div>
                 </div>
                 <div class="row">
@@ -84,7 +84,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">T√©rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÈrminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>
