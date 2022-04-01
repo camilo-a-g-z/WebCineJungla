@@ -45,18 +45,19 @@
                                         <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos de la película</h4>
                                     </div>
                                     <form class="d-inline user">
+                                        <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
                                         <div class="row mb-3">
-                                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-1" placeholder="Nombre" name="nombre"></div>
-                                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-2" placeholder="Director" name="director"></div>
+                                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Nombre" name="nombre"></div>
+                                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="director" placeholder="Director" name="director"></div>
                                         </div>
                                         <div class="row mb-3">
-                                            <div class="col-sm-6 col-xl-4 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-3" placeholder="Duración (horas)" name="duración"></div>
-                                            <div class="col-sm-6 col-xl-4"><input class="form-control form-control-user" type="text" id="exampleFirstName-4" placeholder="Clasificación de edad" name="clasificacionEdad"></div>
-                                            <div class="col-xl-4"><input class="form-control form-control-user" type="text" id="exampleFirstName-6" placeholder="Estado" name="estado"></div>
+                                            <div class="col-sm-6 col-xl-4 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="duracion" placeholder="Duración (horas)" name="duracion"></div>
+                                            <div class="col-sm-6 col-xl-4"><input class="form-control form-control-user" type="text" id="clasificacionEdad" placeholder="Clasificación de edad" name="clasificacionEdad"></div>
+                                            <div class="col-xl-4"><input class="form-control form-control-user" type="text" id="estado" placeholder="Estado" name="estado"></div>
                                         </div>
                                         <div class="row mb-3">
-                                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-5" placeholder="Sinopsis" name="sinopsis"></div>
-                                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-7" placeholder="Imagen" name="imagen"></div>
+                                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="sinopsis" placeholder="Sinopsis" name="sinopsis"></div>
+                                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="imagen" placeholder="Imagen" name="imagen"></div>
                                         </div><a href="adminPeliculas.html"><button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir película</button></a>
                                         <hr>
                                     </form>

@@ -21,7 +21,6 @@
         <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="confiteria.html">Confitería</a></li>
                     <li class="nav-item"><a class="nav-link" href="usuario.html">*usuario*</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
                 </ul>
@@ -41,6 +40,7 @@
                         <p style="font-size: 22px;">Valor total</p>
                     </div>
                     <div class="col"><a href="index1.html"><button class="btn btn-primary border rounded-pill" type="button" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 260px;height: 65px;margin-right: 0px;margin-left: 148px;padding: 0px 0px;margin-top: 20px;">Imprimir factura</button></a></div>
+                    <div class="col"><button class="btn btn-primary border rounded-0" type="button" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 202px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 180px;padding: 0px 0px;margin-top: 20px;">Cancelar compra</button></div>
                 </form>
             </div>
         </section>

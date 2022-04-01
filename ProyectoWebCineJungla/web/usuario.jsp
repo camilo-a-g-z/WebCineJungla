@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Cine Jungla</title>
+    <title>CV - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap">
@@ -21,9 +21,9 @@
         <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="confiteria.html">Confitería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="confiteria.html">ConfiterÃ­a</a></li>
                     <li class="nav-item"><a class="nav-link active" href="usuario.html">*usuario*</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesiÃ³n</a></li>
                 </ul>
             </div>
         </div>
@@ -85,22 +85,48 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col" style="height: 100px;">
-                                                    <div class="mb-3"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre de usuario</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="usuario"></div>
+                                                    <div class="mb-3"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre de usuario</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Correo electrónico</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="correo"></div>
+                                                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Correo elÃ©ctronico</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col" style="height: 100px;">
-                                                    <div class="mb-3"><label class="form-label" for="first_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="name" name="nombre"></div>
+                                                    <div class="mb-3"><label class="form-label" for="first_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="name" name="first_name"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="mb-3"><label class="form-label" for="last_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Apellido</strong></label><input class="form-control" type="text" id="last_name" placeholder="lastname" name="apellido"></div>
+                                                    <div class="mb-3"><label class="form-label" for="last_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Apellido</strong></label><input class="form-control" type="text" id="last_name" placeholder="lastname" name="last_name"></div>
                                                 </div>
                                             </div>
                                             <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;font-size: 20px;width: 225px;height: 42px;">Guardar cambios</button></div>
                                         </form>
+                                    </div>
+                                    <div class="card-body"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Historial de facturas</strong><br></label>
+                                        <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
+                                            <table class="table my-0" id="dataTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Precio</th>
+                                                        <th>Stock</th>
+                                                        <th>Multiplex</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr></tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr></tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card shadow"></div>
@@ -114,7 +140,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

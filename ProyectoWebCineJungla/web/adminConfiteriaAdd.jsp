@@ -49,6 +49,7 @@
                                             <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del producto</h4>
                                         </div>
                                         <form class="d-inline user">
+                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Nombre" name="nombre"></div>
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="precio" placeholder="Precio" name="precio"></div>
