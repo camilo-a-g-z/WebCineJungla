@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -17,8 +18,26 @@ public class Funcion {
     private int Empleado_idEmpleado = 0;
     private int Pelicula_idPelicula = 0;
     private int Duracion = 0;
+    private Date Horario;
+    private Calendar HorarioC;
     //metodos setters y getters
 
+    public Calendar getHorarioC() {
+        return HorarioC;
+    }
+
+    public void setHorarioC(Calendar HorarioC) {
+        this.HorarioC = HorarioC;
+    }
+    
+    public Date getHorario() {
+        return Horario;
+    }
+
+    public void setHorario(Date Horario) {
+        this.Horario = Horario;
+    }
+    
     public int getDuracion() {
         return Duracion;
     }
