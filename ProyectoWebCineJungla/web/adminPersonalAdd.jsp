@@ -49,17 +49,18 @@
                                             <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del empleado</h4>
                                         </div>
                                         <form class="d-inline user">
+                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-1" placeholder="Nombre" name="nombre"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-2" placeholder="Apellido" name="apellido"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Nombre" name="nombre"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="apellido" placeholder="Apellido" name="apellido"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName-3" placeholder="Cédula" name="cedula"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName-4" placeholder="Teléfono" name="telefono"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="cedula" placeholder="Cédula" name="cedula"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="telefono" placeholder="Teléfono" name="telefono"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" placeholder="Correo electrónico" name="correo" id="email"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Contraseña" name="contraseña"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" placeholder="Correo electrónico" name="correo" id="correo"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="contraseña" placeholder="Contraseña" name="contraseña"></div>
                                             </div><a href="adminPersonal.html"><button class="btn btn-primary border rounded-pill" type="sumbit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir empleado</button></a>
                                             <hr>
                                         </form>

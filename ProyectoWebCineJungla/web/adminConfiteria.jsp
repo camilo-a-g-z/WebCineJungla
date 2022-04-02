@@ -58,18 +58,14 @@
                                             <tbody>
                                                 <%while(res.next()){%>
                                                     <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td><%out.println(res.getString(""));%></td>
+                                                        <td><%out.println(res.getString(""));%></td>
+                                                        <td><%out.println(res.getString(""));%></td>
+                                                        <td><%out.println(res.getString(""));%></td>
                                                         <td>
-                                                            <form action="...">
-                                                                <div id="info" style="display:none">
-                                                                    <input id="id_cliente" name="id_cliente" type="text" value="<%out.println(user);%>">
-                                                                    <input id="id_factura" name="id_factura" type="text" value="<%out.println(res.getString("id_factura"));%>">
-                                                                    <input id="btm_submit" type="submit">
-                                                                </div>
-                                                                <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Editar</button>
+                                                            <form action="servlet">
+                                                                <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
+                                                                <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Eliminar</button>
                                                             </form>
                                                         </td>
                                                     </tr>
