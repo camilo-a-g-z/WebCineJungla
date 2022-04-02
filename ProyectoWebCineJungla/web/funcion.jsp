@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<%@page import="java.sql.ResultSet"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%String user = (String) session.getAttribute("idCliente"); 
+    ResultSet res1 = (ResultSet) session.getAttribute("pelicula");
+    ResultSet res2 = (ResultSet) session.getAttribute("multiplex");
+    res1.next();
+%>
 <html>
 
 <head>
@@ -21,27 +27,39 @@
         <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="usuario.html"><%out.println(res.Nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="usuario.html"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesiÃ³n</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <main class="d-inline-flex page cv-page">
-        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 440px;"><img style="width: 360px;height: 500px;margin: 25px;"></div>
+        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 440px;"><img style="width: 360px;height: 500px;margin: 25px;" src="<%out.println(res1.getString("UrlPelicula"));%>"></div>
         <div class="d-table-cell group" style="padding: 0px;padding-top: 30px;">
-            <h1>Nombre pelicula</h1>
-            <p>Descripción</p>
+            <h1><%out.println(res1.getString("Nombre"));%></h1>
+            <p>Clasificacion edad: <%out.println(res1.getString("ClasificacionEdad"));%></p>
             <div></div>
-            <p>Descripción</p>
-            <p>Descripción</p>
-            <p>Descripción</p>
-            <p>Descripción</p><button class="btn btn-primary border rounded-pill" type="button" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Comprar</button>
+            <p>Duracion: <%out.println(res1.getString("Duracion"));%></p>
+            <p>Director: <%out.println(res1.getString("Director"));%></p>
+            <p>Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
+            <form method="post" action="aqui va un servlet :v">
+                <select name="idMultiplex">
+                    <%while(res2.next()){%>
+                        <option value="<%out.println(res2.getString("idMultiplex"));%>"><%out.println(res2.getString("Nombre"));%></option>
+                    <%}%>
+                  </select>
+                  <select name="cantidad">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+            </form>
         </div>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

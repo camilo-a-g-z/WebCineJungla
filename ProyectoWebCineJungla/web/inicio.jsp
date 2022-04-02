@@ -1,6 +1,8 @@
-<!DOCTYPE html>
+<%@page import="java.sql.ResultSet"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%String user = (String) session.getAttribute("idCliente"); 
+  ResultSet res = (ResultSet) session.getAttribute("peliculas");%>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -21,9 +23,9 @@
         <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="confiteria.html">Confitería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="confiteria.html">ConfiterÃ­a</a></li>
                     <li class="nav-item"><a class="nav-link" href="usuario.html">*usuario*</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesiÃ³n</a></li>
                 </ul>
             </div>
         </div>
@@ -32,44 +34,32 @@
         <section class="portfolio-block projects-cards" style="padding-top: 40px;padding-bottom: 60px;">
             <div class="container">
                 <div class="heading">
-                    <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Últimos estrenos</h2>
+                    <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Ãšltimos estrenos</h2>
                 </div>
                 <div class="row" style="margin-top: -45px;">
-                    <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
-                        <div class="card border-0">
-                            <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;">
-                                <h6 style="margin-top: 20px;">fdgdfgdf</h6><a class="card-link" href="funcion.html"><button class="btn btn-primary border rounded-0" type="button" style="width: 280px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Ver funciones</button></a>
+                    <%while(res.next()){%>
+                    <form method="post" action="PeliculaMultiplex">
+                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
+                            <div class="card border-0">
+                                <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>">
+                                    <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6><a class="card-link" href="funcion.html"></a>
+                                    <div id="info" style="display:none">
+                                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("idPelicula"));%>">
+                                    </div>
+                                    <button type="submit" class="btn btn-round btn-primary">Ver funciones</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
-                        <div class="card border-0">
-                            <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;">
-                                <h6 style="margin-top: 20px;">fdgdfgdf</h6><a class="card-link" href="funcion.html"><button class="btn btn-primary border rounded-0" type="button" style="width: 280px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Ver funciones</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;margin-left: 10px;">
-                        <div class="card border-0">
-                            <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;">
-                                <h6 style="margin-top: 20px;">fdgdfgdf</h6><a class="card-link" href="funcion.html"><button class="btn btn-primary border rounded-0" type="button" style="width: 280px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Ver funciones</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;margin-left: 10px;">
-                        <div class="card border-0">
-                            <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;">
-                                <h6 style="margin-top: 20px;">fdgdfgdf</h6><a class="card-link" href="funcion.html"><button class="btn btn-primary border rounded-0" type="button" style="width: 280px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Ver funciones</button></a>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
+                    <%}%>
                 </div>
-            </div><a class="d-flex justify-content-center align-items-center align-content-center" href="cartelera.html"><button class="btn btn-primary border rounded-pill shadow" type="button" style="background: rgb(0,0,0);width: 690px;margin-right: 0px;margin-left: 0px;margin-top: 20px;font-family: Aldrich, sans-serif;font-size: 30px;text-align: center;height: 64px;">Ver todas las películas&nbsp;</button></a>
+            </div><a class="d-flex justify-content-center align-items-center align-content-center" href="cartelera.html"><button class="btn btn-primary border rounded-pill shadow" type="button" style="background: rgb(0,0,0);width: 690px;margin-right: 0px;margin-left: 0px;margin-top: 20px;font-family: Aldrich, sans-serif;font-size: 30px;text-align: center;height: 64px;">Ver todas las pelÃ­culas&nbsp;</button></a>
         </section>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

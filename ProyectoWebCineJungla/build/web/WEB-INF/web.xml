@@ -24,6 +24,10 @@
         <servlet-name>LoginUser</servlet-name>
         <servlet-class>servlets.LoginUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PeliculaMultiplex</servlet-name>
+        <servlet-class>servlets.ticketService.PeliculaMultiplex</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -48,12 +52,13 @@
         <servlet-name>LoginUser</servlet-name>
         <url-pattern>/LoginUser</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PeliculaMultiplex</servlet-name>
+        <url-pattern>/PeliculaMultiplex</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-        <welcome-file-list>
-        <welcome-file>Inicio</welcome-file>
-    </welcome-file-list>
 </web-app>

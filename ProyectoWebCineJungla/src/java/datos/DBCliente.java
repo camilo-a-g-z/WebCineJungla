@@ -41,7 +41,8 @@ public class DBCliente {
     
     public ResultSet getClienteLogin(String correo) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idCliente, "
-                + "HashPws "
+                + "HashPsw, "
+                + "Nombre "
                 + "FROM cliente "
                 + "WHERE Correo = ?");
         pstm.setString(1, correo);
