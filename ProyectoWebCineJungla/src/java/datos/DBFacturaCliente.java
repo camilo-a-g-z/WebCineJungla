@@ -29,7 +29,9 @@ public class DBFacturaCliente {
     public ResultSet getFacturaClienteById(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFacturaCliente, "
                 + "Total, "
-                + "Fecha, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "Cliente_idCliente "
                 + "FROM facturacliente "
                 + "WHERE idFacturaCliente = "+id);
@@ -39,7 +41,9 @@ public class DBFacturaCliente {
     public ResultSet getFacturaClienteByCliente(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFacturaCliente, "
                 + "Total, "
-                + "Fecha, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "Cliente_idCliente "
                 + "FROM facturacliente "
                 + "WHERE Cliente_idCliente = "+id);
@@ -50,12 +54,16 @@ public class DBFacturaCliente {
     public void insertarFacturaCliente(FacturaCliente f){
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into facturacliente(Total, "
-                + "Fecha, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "Cliente_idCliente) "
-                + "values(?,?,?)");
+                + "values(?,?,?,?,?)");
             pstm.setDouble(1, f.getTotal());
-            pstm.setDate(2, f.getFecha());
-            pstm.setInt(3, f.getCliente_idCliente());
+            pstm.setInt(2, f.getAño());
+            pstm.setInt(3, f.getMes());
+            pstm.setInt(4, f.getDia());
+            pstm.setInt(5, f.getCliente_idCliente());
 
             pstm.executeUpdate();
         }catch (SQLException e){
@@ -69,12 +77,14 @@ public class DBFacturaCliente {
     }
     public void modifyCliente(FacturaCliente f) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update facturacliente "
-                + "set  Total = ? , Fecha = ? ,"
+                + "set  Total = ? , Año = ? , Mes = ? , Dia = ? ,"
                 + "Cliente_idCliente = ? where idFacturaCliente = ?");
         pstm.setDouble(1, f.getTotal());
-        pstm.setDate(2, f.getFecha());
-        pstm.setInt(3, f.getCliente_idCliente());
-        pstm.setInt(4, f.getIdFacturaCliente());
+        pstm.setInt(2, f.getAño());
+        pstm.setInt(3, f.getMes());
+        pstm.setInt(4, f.getDia());
+        pstm.setInt(5, f.getCliente_idCliente());
+        pstm.setInt(6, f.getIdFacturaCliente());
         pstm.executeUpdate();
     }
     public String getMensaje() {

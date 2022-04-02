@@ -19,7 +19,6 @@ public class Empleado {
     private int Multiplex_idMultiplex = 0;
     private int Rol_idRol = 0;
     
-    
     //metodos getters y setters
     public int getAño() {    
         return Año;

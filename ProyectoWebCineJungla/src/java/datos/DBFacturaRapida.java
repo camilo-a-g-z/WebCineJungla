@@ -29,7 +29,9 @@ public class DBFacturaRapida {
     public ResultSet getFacturaRapidaById(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFacturaRapida, "
                 + "Total, "
-                + "Fecha, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "Empleado_idEmpleado "
                 + "FROM facturarapida "
                 + "WHERE idFacturaRapida = "+id);
@@ -39,7 +41,9 @@ public class DBFacturaRapida {
     public ResultSet getFacturaRapidaByEmpleado(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFacturaRapida, "
                 + "Total, "
-                + "Fecha, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "Empleado_idEmpleado "
                 + "FROM facturarapida "
                 + "WHERE Empleado_idEmpleado = "+id);
@@ -50,12 +54,16 @@ public class DBFacturaRapida {
     public void insertarFacturaRapida(FacturaRapida f){
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into facturarapida(Total, "
-                + "Fecha, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "Empleado_idEmpleado) "
-                + "values(?,?,?)");
+                + "values(?,?,?,?,?)");
             pstm.setDouble(1, f.getTotal());
-            pstm.setDate(2, f.getFecha());
-            pstm.setInt(3, f.getEmpleado_idEmpleado());
+            pstm.setInt(2, f.getAño());
+            pstm.setInt(3, f.getMes());
+            pstm.setInt(4, f.getDia());
+            pstm.setInt(5, f.getEmpleado_idEmpleado());
 
             pstm.executeUpdate();
         }catch (SQLException e){
@@ -69,12 +77,14 @@ public class DBFacturaRapida {
     }
     public void modifyCliente(FacturaRapida f) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update facturarapida "
-                + "set  Total = ? , Fecha = ? ,"
+                + "set  Total = ? , Año = ? , Mes = ? , Dia = ? ,"
                 + "Empleado_idEmpleado = ? where idFacturaRapida = ?");
         pstm.setDouble(1, f.getTotal());
-        pstm.setDate(2, f.getFecha());
-        pstm.setInt(3, f.getEmpleado_idEmpleado());
-        pstm.setInt(4, f.getIdFacturaRapida());
+        pstm.setInt(2, f.getAño());
+        pstm.setInt(3, f.getMes());
+        pstm.setInt(4, f.getDia());
+        pstm.setInt(5, f.getEmpleado_idEmpleado());
+        pstm.setInt(6, f.getIdFacturaRapida());
         pstm.executeUpdate();
     }
     public String getMensaje() {

@@ -71,7 +71,7 @@ public class ReservarSilla extends HttpServlet {
         int idFactura = 0;
         FacturaCliente f = new FacturaCliente();
         f.setCliente_idCliente(id);
-        f.setFecha(fecha);
+        //f.setFecha(fecha);
         f.setTotal(0.0);
         
         DBFacturaCliente DBf = new DBFacturaCliente();
