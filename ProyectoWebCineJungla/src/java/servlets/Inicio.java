@@ -52,7 +52,7 @@ public class Inicio extends HttpServlet {
         //date1.setMinutes(da.getMinutes());
         em.setCedula("12345");
         em.setCedula("12345");
-        em.setFechaIngreso(date1);
+        //em.setFechaIngreso(date1);
         em.setHashPsw("1234");
         em.setMultiplex_idMultiplex(1);
         em.setNombre("Camilo");

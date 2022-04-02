@@ -21,7 +21,9 @@ public class DBEmpleado {
                 + "Cedula, "
                 + "NumTelefono, "
                 + "Salario, "
-                + "FechaIngreso, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "HashPws, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
@@ -36,7 +38,9 @@ public class DBEmpleado {
                 + "Cedula, "
                 + "NumTelefono, "
                 + "Salario, "
-                + "FechaIngreso, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "HashPws, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
@@ -63,7 +67,9 @@ public class DBEmpleado {
                 + "Cedula, "
                 + "NumTelefono, "
                 + "Salario, "
-                + "FechaIngreso, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "HashPws, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
@@ -79,19 +85,23 @@ public class DBEmpleado {
                 + "Cedula, "
                 + "NumTelefono, "
                 + "Salario, "
-                + "FechaIngreso, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
                 + "HashPsw, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol) "
-                + "values(?,?,?,?,?,?,?,?)");
+                + "values(?,?,?,?,?,?,?,?,?,?)");
             pstm.setString(1, e.getNombre());
             pstm.setString(2, e.getCedula());
             pstm.setString(3, e.getNumTelefono());
             pstm.setDouble(4, e.getSalario());
-            pstm.setDate(5, e.getFechaIngreso());
-            pstm.setString(6, e.getHashPsw());
-            pstm.setInt(7, e.getMultiplex_idMultiplex());
-            pstm.setInt(8, e.getRol_idRol());
+            pstm.setInt(5, e.getAño());
+            pstm.setInt(6, e.getMes());
+            pstm.setInt(7, e.getDia());
+            pstm.setString(8, e.getHashPsw());
+            pstm.setInt(9, e.getMultiplex_idMultiplex());
+            pstm.setInt(10, e.getRol_idRol());
 
             pstm.executeUpdate();
         }catch (SQLException error){
@@ -108,7 +118,9 @@ public class DBEmpleado {
                 + "Cedula = ? ,"
                 + "NumTelefono = ? , "
                 + "Salario = ? , "
-                + "FechaIngreso = ?, "
+                + "Año = ? , "
+                + "Mes = ? , "
+                + "Dia = ? , "
                 + "HashPsw = ?, "
                 + "Multiplex_idMultiplex = ?, "
                 + "Rol_idRol = ? "
@@ -117,11 +129,13 @@ public class DBEmpleado {
         pstm.setString(2, e.getCedula());
         pstm.setString(3, e.getNumTelefono());
         pstm.setDouble(4, e.getSalario());
-        pstm.setDate(5, e.getFechaIngreso());
-        pstm.setString(6, e.getHashPsw());
-        pstm.setInt(7, e.getMultiplex_idMultiplex());
-        pstm.setInt(8, e.getRol_idRol());
-        pstm.setInt(9, e.getIdEmpleado());
+        pstm.setInt(5, e.getAño());
+        pstm.setInt(6, e.getMes());
+        pstm.setInt(7, e.getDia());
+        pstm.setString(8, e.getHashPsw());
+        pstm.setInt(9, e.getMultiplex_idMultiplex());
+        pstm.setInt(10, e.getRol_idRol());
+        pstm.setInt(11, e.getIdEmpleado());
         pstm.executeUpdate();
     }
     public String getMensaje() {

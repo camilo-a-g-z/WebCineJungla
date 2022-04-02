@@ -8,7 +8,11 @@ import java.util.Date;
  */
 public class Funcion {
     private int idFuncion = 0;
-    private Date Horario;
+    private int Año = 0;
+    private int Mes = 0;
+    private int Dia = 0;
+    private int Minuto = 0;
+    private int Hora = 0;
     private int Sala_idSala = 0;
     private int Empleado_idEmpleado = 0;
     private int Pelicula_idPelicula = 0;
@@ -31,13 +35,47 @@ public class Funcion {
         this.idFuncion = idFucnion;
     }
 
-    public Date getHorario() {
-        return Horario;
+    public int getAño() {
+        return Año;
     }
 
-    public void setHorario(Date Horario) {
-        this.Horario = Horario;
+    public void setAño(int Año) {
+        this.Año = Año;
     }
+
+    public int getMes() {
+        return Mes;
+    }
+
+    public void setMes(int Mes) {
+        this.Mes = Mes;
+    }
+
+    public int getDia() {
+        return Dia;
+    }
+
+    public void setDia(int Dia) {
+        this.Dia = Dia;
+    }
+
+    public int getMinuto() {
+        return Minuto;
+    }
+
+    public void setMinuto(int Minuto) {
+        this.Minuto = Minuto;
+    }
+
+    public int getHora() {
+        return Hora;
+    }
+
+    public void setHora(int Hora) {
+        this.Hora = Hora;
+    }
+
+    
 
     public int getSala_idSala() {
         return Sala_idSala;

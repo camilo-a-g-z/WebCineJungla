@@ -12,13 +12,38 @@ public class Empleado {
     private String Cedula= "";
     private String NumTelefono = "";
     private Double Salario = 0.0;
-    private Date FechaIngreso;
+    private int Año = 0;
+    private int Mes = 0;
+    private int dia = 0;
     private String HashPsw = "";
     private int Multiplex_idMultiplex = 0;
     private int Rol_idRol = 0;
     
     
     //metodos getters y setters
+    public int getAño() {    
+        return Año;
+    }
+
+    public int getMes() {
+        return Mes;
+    }
+
+    public void setMes(int Mes) {
+        this.Mes = Mes;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+    
+    public void setAño(int Año) {    
+        this.Año = Año;
+    }
 
     public int getIdEmpleado() {
         return idEmpleado;
@@ -58,14 +83,6 @@ public class Empleado {
 
     public void setSalario(Double Salario) {
         this.Salario = Salario;
-    }
-
-    public Date getFechaIngreso() {
-        return FechaIngreso;
-    }
-
-    public void setFechaIngreso(Date FechaIngreso) {
-        this.FechaIngreso = FechaIngreso;
     }
 
     public String getHashPsw() {
