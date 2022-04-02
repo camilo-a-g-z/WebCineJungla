@@ -20,6 +20,10 @@
         <servlet-name>Test</servlet-name>
         <servlet-class>servlets.AdminComunication.Test</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginUser</servlet-name>
+        <servlet-class>servlets.LoginUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -40,9 +44,16 @@
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginUser</servlet-name>
+        <url-pattern>/LoginUser</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+        <welcome-file-list>
+        <welcome-file>Inicio</welcome-file>
+    </welcome-file-list>
 </web-app>
