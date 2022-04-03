@@ -4,6 +4,7 @@ import datos.DBFuncion;
 import datos.DBPelicula;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import logica.Funcion;
@@ -20,7 +21,7 @@ public class rellenoSalas {
     ArrayList<Funcion> conf = new ArrayList<Funcion>();
     ArrayList<Funcion> funcionDiaActual = new ArrayList<Funcion>();
     Pelicula objPel;
-    Date fechaActual;
+    Calendar fechaActual = Calendar.getInstance();
     Date fechaFinal;
     Date fechaDinamica;
     Date horaInicial;
@@ -30,24 +31,44 @@ public class rellenoSalas {
     int auxDurPel;
 
     public rellenoSalas(int sala, int pelicula, int anio, int mes, int dia, int hora, int min) {
+        System.out.println("ENTRO A RELLENO SALAS");
+       
+        fechaActual = generarCalendar(anio, mes, dia, hora, min);
+        System.out.println(fechaActual.get(Calendar.YEAR));
+        System.out.println(fechaActual.get(Calendar.MONTH));
+        System.out.println(fechaActual.get(Calendar.DATE));
+        System.out.println(fechaActual.get(Calendar.HOUR));
+        System.out.println(fechaActual.get(Calendar.MINUTE));
 
-        fechaActual.setYear(anio);
-        fechaActual.setMonth(mes);
-        fechaActual.setDate(dia);
-        horaInicial = fechaActual;
-        horaInicial.setHours(12);
-        fechaFinal = fechaActual;
-        fechaFinal.setMonth(fechaFinal.getMonth() + 1);
-        rellenarFuncion(sala, pelicula);
+        //fechaActual.setYear(anio);
+        //fechaActual.setMonth(mes);
+        //fechaActual.setDate(dia);
+        // horaInicial = fechaActual.getTime();
+        // horaInicial.setHours(12);
+        // fechaFinal = fechaActual.getTime();
+        // fechaFinal.setMonth(fechaFinal.getMonth() + 1);
+        //rellenarFuncion(sala, pelicula);
+    }
+
+    public Calendar generarCalendar(int Anio, int Mes, int Dia, int Hora, int Minuto) {
+        Calendar c = Calendar.getInstance();
+        
+        c.set(Calendar.YEAR, Anio);
+        c.set(Calendar.MONTH, Mes);
+        c.set(Calendar.DATE, Dia);
+        c.set(Calendar.HOUR, Hora);
+        c.set(Calendar.MINUTE, Minuto);
+
+        return c;
     }
 
     public void rellenarFuncion(int sala, int pelicula) {
-
+        /*
         try {
 
             ResultSet DBf = funcionDB.getFuncionBySala(sala);
             obtenerFuncionPorDia transf = new obtenerFuncionPorDia(DBf);
-            conf = transf.getArrayListFunciones();
+            // conf = transf.getArrayListFunciones();  SE COMENTA ESTA LINEA POR PRUEBA
 
             ResultSet DBp = pel.getPeliculaById(pelicula);
             TransformPelicula pelTrans = new TransformPelicula(DBp);
@@ -65,6 +86,7 @@ public class rellenoSalas {
                 }
                 if (funcionDiaActual.isEmpty()) {
                     //Rellenar con una funcion
+                    System.out.println("AQUI LINEA 69 SE AGREGA UNA FUNCION");
                 } else {
                     for (int j = 0; j < funcionDiaActual.size() && !coincidePelicula; j++) {
                         if (funcionDiaActual.get(j).getPelicula_idPelicula() == pelicula) {
@@ -124,5 +146,16 @@ public class rellenoSalas {
             System.out.println(e.getMessage());
 
         }
+    }
+         */
+
+    }
+
+    public void pruebaFunciones() {
+        Funcion prueba1 = new Funcion();
+        prueba1.setPelicula_idPelicula(1);
+        prueba1.setSala_idSala(1);
+        prueba1.setHorarioC(generarCalendar(2022, 4, 1, 10, 30));
+        conf.add(prueba1);
     }
 }

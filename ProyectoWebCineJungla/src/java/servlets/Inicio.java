@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.rellenoSalas;
 import logica.Empleado;
 
 /**
@@ -31,6 +32,7 @@ public class Inicio extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         DBPelicula pelis = new DBPelicula();
@@ -61,6 +63,7 @@ public class Inicio extends HttpServlet {
         em.setSalario(1000.0);
         
         try{
+            rellenoSalas prueba = new rellenoSalas(1,1,2022,4,1,10,30);
             ResultSet res1 = pelis.getPeliculaByEstado("Cartelera");
             ResultSet res2 = DBm.getMultiplexs();
             request.getSession().setAttribute("peliculas", res1);
