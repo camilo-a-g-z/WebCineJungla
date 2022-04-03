@@ -43,6 +43,7 @@ public class LoginUser extends HttpServlet {
                 out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
             } else {
                 if (res.getString("HashPsw") == null ? request.getParameter("contraseña") == null : res.getString("HashPsw").equals(request.getParameter("contraseña"))) {
+                    
                     resP = DBp.getPeliculaByEstado("Cartelera");
                     request.getSession().setAttribute("idCliente", res.getString("idCliente"));
                     request.getSession().setAttribute("peliculas", resP);
