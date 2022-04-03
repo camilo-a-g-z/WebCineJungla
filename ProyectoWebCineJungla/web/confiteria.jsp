@@ -1,3 +1,6 @@
+<%@page import="java.sql.ResultSet"%>
+<%String user = (String) session.getAttribute("idCliente"); 
+  ResultSet res = (ResultSet) session.getAttribute("resComida");%>
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +24,7 @@
         <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="usuario.html"><%out.println(res.Nombre);%></a></li>
+             <%--        <li class="nav-item"><a class="nav-link" href="usuario.html"><%out.println(res.Nombre);%></a></li>--%>
                     <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
                 </ul>
             </div>
@@ -33,6 +36,26 @@
                 <div class="heading" style="margin-bottom: 28px;">
                     <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">Confitería</h2>
                 </div>
+                 <%while(res.next()){%>
+                    <form method="post" action="PeliculaMultiplex">
+                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
+                            <div class="card border-0">
+                                <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>">
+                                    <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6><a class="card-link" href="funcion.html"></a>
+                                    <div id="info" style="display:none">
+                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("Nombre"));%>"><br>
+                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("Precio"));%>"><br>
+                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("Stock"));%>"><br>
+                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("Multiplex_idMultiplex"));%>"><br>
+                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("UrlImagen"));%>"><br>
+                                    </div>
+                                    <button type="submit" class="btn btn-round btn-primary">Ver funciones</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <%}%>
+                <%-- 
                 <%while(res.next()){%>
                     <form> 
                         <div class="row">
@@ -42,7 +65,7 @@
                             </div>
                         </div>
                     </form>
-                <%}%>
+                <%}%>--%>
             </div>
         </section>
     </main>
