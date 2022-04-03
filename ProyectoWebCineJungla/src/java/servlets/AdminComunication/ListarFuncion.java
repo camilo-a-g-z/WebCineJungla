@@ -4,8 +4,10 @@
  */
 package servlets.AdminComunication;
 
+import datos.DBConexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author User
+ * @author David
  */
-public class Test extends HttpServlet {
-
+public class ListarFuncion extends HttpServlet {
+    private ResultSet rs;//Crea objeto de tipo ResulSet
+    private DBConexion con;//Crea objeto de tipo conexion
+    private PreparedStatement st;//Crea objeto de tipo Statement
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,18 +33,38 @@ public class Test extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+        PrintWriter out = response.getWriter();
+        ResultSet resFuncion;
+        try {
+            resFuncion=listarFuncion();
+            request.getSession().setAttribute("resFuncion",resFuncion);
+            response.sendRedirect("funcion.jsp");
+            
+        }catch(Exception e){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Test</title>");            
+            out.println("<title>Servlet ListarFuncion</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Test at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListarFuncion at " + e.getMessage() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
+    }
+    public ResultSet listarFuncion(){
+        String consulta="select * from Funcion";
+        try {
+            con = new DBConexion();//Obtengo la conexión
+            st = con.getConexion().prepareStatement(consulta);//por medio del objeto conexión se prepara la consulta a la base de datos
+            rs = st.executeQuery(consulta);//Ejecuto la consulta y la guardo en el objeto rs
+            st.close();// cierro la conexión
+            con.desconectar(); //me desconecto de la base de datos
+        } catch (SQLException e) {//Si captura algún error lo muestra
+            System.out.println("Consulta imposible");
+            System.out.println(e);
+        }
+        return rs;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
