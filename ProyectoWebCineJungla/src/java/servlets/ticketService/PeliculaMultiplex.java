@@ -1,6 +1,6 @@
-package servlets;
+package servlets.ticketService;
 
-import datos.DBCliente;
+import datos.DBMultiplex;
 import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Camilo Garcia
  */
-public class LoginUser extends HttpServlet {
+public class PeliculaMultiplex extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,44 +29,28 @@ public class LoginUser extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        DBCliente DBc = new DBCliente();
         DBPelicula DBp = new DBPelicula();
-        ResultSet resP;
+        DBMultiplex DBm = new DBMultiplex();
+        ResultSet res1;
+        ResultSet res2;
         try {
-            //se llama y guardan los datos recividos segun el parametro recivido
-            ResultSet res = DBc.getClienteLogin(request.getParameter("correo"));
-            out.println("<html>");
-            out.println("<body>");
-            //se consulta si la respuesta esta vacia
-            if (!res.next()) {
-                out.println("<meta http-equiv='refresh' content='3;URL=Cliente.jsp'>");//redirects after 3 seconds
-                out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
-            } else {
-                if (res.getString("HashPsw") == null ? request.getParameter("contraseña") == null : res.getString("HashPsw").equals(request.getParameter("contraseña"))) {
-                    resP = DBp.getPeliculaByEstado("Cartelera");
-                    request.getSession().setAttribute("idCliente", res.getString("idCliente"));
-                    request.getSession().setAttribute("peliculas", resP);
-                    out.println("<meta http-equiv='refresh' content='3;URL=inicio.jsp'>");//redirects after 3 seconds
-                    out.println("<p style='color:red;'>Bienvenido " + res.getString("Nombre") + "</p>");
-                } else {
-                    out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds
-                    out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
-                }
-            }
-            out.println("</body>");
-            out.println("</html>");
-        }catch (Exception e){
+            res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
+            res2 = DBm.getMultiplexs();
+            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+            request.getSession().setAttribute("pelicula", res1);
+            request.getSession().setAttribute("multiplex", res2);
+            response.sendRedirect("funcion.jsp");
+        }catch(Exception e){
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginUser</title>");            
+            out.println("<title>Servlet PeliculaMultiplex</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>error at " + e.getMessage() + "</h1>");
+            out.println("<h1>Servlet PeliculaMultiplex at " + e.getMessage() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            System.out.println(e.getMessage());
         }
     }
 

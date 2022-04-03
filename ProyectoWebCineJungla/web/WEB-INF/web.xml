@@ -24,6 +24,30 @@
         <servlet-name>LoginUser</servlet-name>
         <servlet-class>servlets.LoginUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PeliculaMultiplex</servlet-name>
+        <servlet-class>servlets.ticketService.PeliculaMultiplex</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarSala</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarSala</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarEmpleado</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarEmpleado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarComida</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarComida</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarFuncion</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarFuncion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarAccionRol</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarAccionRol</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -48,12 +72,33 @@
         <servlet-name>LoginUser</servlet-name>
         <url-pattern>/LoginUser</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PeliculaMultiplex</servlet-name>
+        <url-pattern>/PeliculaMultiplex</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarSala</servlet-name>
+        <url-pattern>/ListarSala</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarEmpleado</servlet-name>
+        <url-pattern>/ListarEmpleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarComida</servlet-name>
+        <url-pattern>/ListarComida</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarFuncion</servlet-name>
+        <url-pattern>/ListarFuncion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarAccionRol</servlet-name>
+        <url-pattern>/ListarAccionRol</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-        <welcome-file-list>
-        <welcome-file>Inicio</welcome-file>
-    </welcome-file-list>
 </web-app>

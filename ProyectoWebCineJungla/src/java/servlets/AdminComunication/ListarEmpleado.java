@@ -1,10 +1,15 @@
-package servlets;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package servlets.AdminComunication;
 
-import datos.DBCliente;
-import datos.DBPelicula;
+import datos.DBConexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Camilo Garcia
+ * @author David
  */
-public class LoginUser extends HttpServlet {
-
+public class ListarEmpleado extends HttpServlet {
+    private ResultSet rs;//Crea objeto de tipo ResulSet
+    private DBConexion con;//Crea objeto de tipo conexion
+    private PreparedStatement st;//Crea objeto de tipo Statement
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,45 +36,38 @@ public class LoginUser extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        DBCliente DBc = new DBCliente();
-        DBPelicula DBp = new DBPelicula();
-        ResultSet resP;
-        try {
-            //se llama y guardan los datos recividos segun el parametro recivido
-            ResultSet res = DBc.getClienteLogin(request.getParameter("correo"));
-            out.println("<html>");
-            out.println("<body>");
-            //se consulta si la respuesta esta vacia
-            if (!res.next()) {
-                out.println("<meta http-equiv='refresh' content='3;URL=Cliente.jsp'>");//redirects after 3 seconds
-                out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
-            } else {
-                if (res.getString("HashPsw") == null ? request.getParameter("contraseña") == null : res.getString("HashPsw").equals(request.getParameter("contraseña"))) {
-                    resP = DBp.getPeliculaByEstado("Cartelera");
-                    request.getSession().setAttribute("idCliente", res.getString("idCliente"));
-                    request.getSession().setAttribute("peliculas", resP);
-                    out.println("<meta http-equiv='refresh' content='3;URL=inicio.jsp'>");//redirects after 3 seconds
-                    out.println("<p style='color:red;'>Bienvenido " + res.getString("Nombre") + "</p>");
-                } else {
-                    out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds
-                    out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
-                }
-            }
-            out.println("</body>");
-            out.println("</html>");
+        ResultSet resEmpleado;
+        try{
+            resEmpleado=listarEmpleado();
+            request.getSession().setAttribute("resEmpleado",resEmpleado);
+            response.sendRedirect("adminPersonal.jsp");
+
         }catch (Exception e){
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginUser</title>");            
+            out.println("<title>Servlet ListarEmpleado</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>error at " + e.getMessage() + "</h1>");
+            out.println("<h1>Servlet ListarEmpleado at " + e.getMessage() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            System.out.println(e.getMessage());
         }
+    }
+    
+    public ResultSet listarEmpleado(){
+        String consulta="select * from Empleado";
+        try {
+            con = new DBConexion();//Obtengo la conexión
+            st = con.getConexion().prepareStatement(consulta);//por medio del objeto conexión se prepara la consulta a la base de datos
+            rs = st.executeQuery(consulta);//Ejecuto la consulta y la guardo en el objeto rs
+            st.close();// cierro la conexión
+            con.desconectar(); //me desconecto de la base de datos
+        } catch (SQLException e) {//Si captura algún error lo muestra
+            System.out.println("Consulta imposible");
+            System.out.println(e);
+        }
+        return rs;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
