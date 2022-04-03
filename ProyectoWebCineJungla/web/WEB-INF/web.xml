@@ -48,6 +48,10 @@
         <servlet-name>ListarAccionRol</servlet-name>
         <servlet-class>servlets.AdminComunication.ListarAccionRol</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginEmpleado</servlet-name>
+        <servlet-class>servlets.AdminComunication.LoginEmpleado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>ListarAccionRol</servlet-name>
         <url-pattern>/ListarAccionRol</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginEmpleado</servlet-name>
+        <url-pattern>/LoginEmpleado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

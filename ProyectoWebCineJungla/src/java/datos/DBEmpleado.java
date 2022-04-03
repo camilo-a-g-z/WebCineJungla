@@ -24,10 +24,10 @@ public class DBEmpleado {
                 + "Año, "
                 + "Mes, "
                 + "Dia, "
-                + "HashPws, "
+                + "HashPsw, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
-                + "FROM empleadoo "
+                + "FROM empleado "
                 + "WHERE idEmpleado = "+id);
         ResultSet res = pstm.executeQuery();
         return res;
@@ -41,7 +41,7 @@ public class DBEmpleado {
                 + "Año, "
                 + "Mes, "
                 + "Dia, "
-                + "HashPws, "
+                + "HashPsw, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
                 + "FROM empleado "
@@ -70,7 +70,7 @@ public class DBEmpleado {
                 + "Año, "
                 + "Mes, "
                 + "Dia, "
-                + "HashPws, "
+                + "HashPsw, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
                 + "FROM empleado "
