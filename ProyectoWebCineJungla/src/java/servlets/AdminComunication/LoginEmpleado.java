@@ -4,6 +4,7 @@
  */
 package servlets.AdminComunication;
 
+import datos.DBComida;
 import datos.DBEmpleado;
 import datos.DBPelicula;
 import java.io.IOException;
@@ -35,10 +36,11 @@ public class LoginEmpleado extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         DBEmpleado DBc = new DBEmpleado();
-        DBPelicula DBp = new DBPelicula();
+        DBComida DBp = new DBComida();
         ResultSet resP;
         try {
             //se llama y guardan los datos recividos segun el parametro recivido
+            
             ResultSet res = DBc.getEmpleadoLogin(request.getParameter("correo"));
             out.println("<html>");
             out.println("<body>");
@@ -48,12 +50,11 @@ public class LoginEmpleado extends HttpServlet {
                 out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
             } else {
                 if (res.getString("HashPsw") == null ? request.getParameter("contraseña") == null : res.getString("HashPsw").equals(request.getParameter("contraseña"))) {
-                    
-                    resP = DBp.getPeliculaByEstado("Cartelera");
-                    request.getSession().setAttribute("idCliente", res.getString("idCliente"));
-                    request.getSession().setAttribute("peliculas", resP);
-                    out.println("<meta http-equiv='refresh' content='3;URL=ListarComida'>");//redirects after 3 seconds
-                    out.println("<p style='color:red;'>Bienvenido " + res.getString("Nombre") + "</p>");
+                    resP = DBp.getComidas();
+                    request.getSession().setAttribute("idCliente", res.getString("idEmpleado"));
+                    request.getSession().setAttribute("comidas", resP);
+                    out.println("<meta http-equiv='refresh' content='3;URL=ListarComida.jsp'>");//redirects after 3 seconds
+                    out.println("<p style='color:red;'>Bienvenido "  + "</p>");
                 } else {
                     out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds
                     out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");

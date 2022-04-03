@@ -4,6 +4,7 @@
  */
 package servlets.AdminComunication;
 
+import datos.DBComida;
 import datos.DBConexion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,8 +38,10 @@ public class ListarComida extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
         ResultSet resComida;
+        DBComida DBc = new DBComida();
         try {
-            resComida=listarComida();
+            resComida = DBc.getComidas();
+            //resComida=listarComida();
             request.getSession().setAttribute("resComida",resComida);
             response.sendRedirect("confiteria.jsp");
         }catch (Exception e){
