@@ -48,7 +48,7 @@
                                         <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
                                         <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("idPelicula"));%>">
                                     </div>
-                                    <button type="submit" class="btn btn-round btn-primary">Ver funciones</button>
+                                    <button type="submit" class="btn btn-round btn-primary" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Ver funciones</button>
                                 </div>
                             </div>
                         </div>

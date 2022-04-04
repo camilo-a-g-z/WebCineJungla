@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String user = (String) session.getAttribute("idCliente"); 
     ResultSet res1 = (ResultSet) session.getAttribute("pelicula");
-    ResultSet res2 = (ResultSet) session.getAttribute("multiplex");
+    ResultSet res2 = (ResultSet) session.getAttribute("funcion");
     ResultSet res3 = (ResultSet) session.getAttribute("sillafuncion");
     res1.next();
     int cantidad = (int)session.getAttribute("cantidad");
@@ -43,7 +43,7 @@
             <p class="text-break">Clasificacion edad: <%out.println(res1.getString("ClasificacionEdad"));%></p>
             <div></div>
             <p class="text-break">Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
-            <p class="text-break">Sinopsis: <%out.println(res1.getString("Horario"));%></p>
+            <p class="text-break">Funcion: Día: <%out.println(res2.getString("Año")+"/"+res2.getString("Mes")+"/"+res2.getString("Dia")+" Hora: "+res2.getString("Hora"));%></p>
             <p class="text-break">Escoja sus sillas (guiese por la imagen a la derecha):</p>
             <form method="post" action="">
                 <div id="info" style="display:none">
@@ -52,10 +52,10 @@
                 </div>
                 <%for(int i=0; i<cantidad; i++){%> "número de sillas escogido"
                 <p style="font-size: 20px;margin-bottom: 0px;">Selección de sillas:</p>
-                <select name="silla <%out.println("numero de silla");%>" class="border rounded-pill" style="width: 95px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
+                <select name="Silla "+i class="border rounded-pill" style="width: 95px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
                     <optgroup label="Silla"> "lista de sillas disponibles"
                         <%while(res3.next()){%>
-                            <option value="<%out.println();%>"><%out.println("Silla_idSilla");%></option>
+                            <option value="<%out.println(res3.getString("idSillaFuncion"));%>"><%out.println(res3.getString("ubicacion"));%></option>
                         <<%}%>
                     </optgroup>
                 </select>
