@@ -60,6 +60,8 @@
                                                     <td><%out.println(res.getString(""));%></td>
                                                     <td><%out.println(res.getString(""));%></td>
                                                     <td><%out.println(res.getString(""));%></td>
+                                                    <td><%out.println(res.getString(""));%></td>
+                                                    <td><%out.println(res.getString(""));%></td>
                                                     <td>
                                                         <form action="servlet">
                                                             <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
