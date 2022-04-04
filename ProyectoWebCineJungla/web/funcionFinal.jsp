@@ -46,16 +46,16 @@
                     <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
                     <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
                 </div>
-                <%while(res.next()){%> "número de sillas escogido"
+                <%for(int i=0; i<res.cantidad; i++){%> "número de sillas escogido"
                 <p style="font-size: 20px;margin-bottom: 0px;">Selección de sillas:</p>
                 <select name="silla <%out.println("numero de silla");%>" class="border rounded-pill" style="width: 95px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
                     <optgroup label="Silla"> "lista de sillas disponibles"
                         <%while(res.next()){%>
-                            <option value="<%out.println("id-silla");%>"><%out.println("SILLA");%></option>
+                            <option value="<%out.println("idSillaFuncion");%>"><%out.println("Silla_idSilla");%></option>
                         <<%}%>
                     </optgroup>
                 </select>
-            <%}%>
+                <%}%>
             </form>
         </div>
         <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 408px;"><img style="width: 360px;height: 500px;margin: 25px;" src="Sillas.png"/></div>
