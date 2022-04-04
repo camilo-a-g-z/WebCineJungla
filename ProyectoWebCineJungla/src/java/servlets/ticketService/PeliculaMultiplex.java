@@ -1,5 +1,6 @@
 package servlets.ticketService;
 
+import datos.DBCliente;
 import datos.DBMultiplex;
 import datos.DBPelicula;
 import java.io.IOException;
@@ -33,12 +34,17 @@ public class PeliculaMultiplex extends HttpServlet {
         DBMultiplex DBm = new DBMultiplex();
         ResultSet res1;
         ResultSet res2;
+        ResultSet res3;
+        DBCliente DBc = new DBCliente();
         try {
             res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
             res2 = DBm.getMultiplexs();
+            res3 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res3.next();
             request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
             request.getSession().setAttribute("pelicula", res1);
             request.getSession().setAttribute("multiplex", res2);
+            request.getSession().setAttribute("Nombre", res3.getString("Nombre"));
             response.sendRedirect("funcion.jsp");
         }catch(Exception e){
             /* TODO output your page here. You may use following sample code. */

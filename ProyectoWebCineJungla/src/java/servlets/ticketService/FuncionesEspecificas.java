@@ -4,6 +4,7 @@
  */
 package servlets.ticketService;
 
+import datos.DBCliente;
 import datos.DBFacturaCliente;
 import datos.DBFuncion;
 import java.io.IOException;
@@ -42,8 +43,13 @@ public class FuncionesEspecificas extends HttpServlet {
         fc.setDia(Integer.parseInt(request.getParameter("Dia")));
         fc.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
         fc.setTotal(0.0);
+        ResultSet res3;
+        DBCliente DBc = new DBCliente();
         int idFactura = 0;
         try {
+            res3 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res3.next();
+            request.getSession().setAttribute("Nombre", res3.getString("Nombre"));
             DBfc.insertarFacturaCliente(fc);
             idFactura = Integer.parseInt(DBfc.getLastId());
             ResultSet res = DBf.getFuncionByPelicula(Integer.parseInt(request.getParameter("idPelicula")));
