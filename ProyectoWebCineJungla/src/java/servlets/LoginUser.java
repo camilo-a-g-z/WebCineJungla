@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.GenerateAllMultiplex;
 
 /**
  *
@@ -33,6 +34,7 @@ public class LoginUser extends HttpServlet {
         DBPelicula DBp = new DBPelicula();
         ResultSet resP;
         try {
+            GenerateAllMultiplex generate = new GenerateAllMultiplex("Portal","Por ahi", 7);
             //se llama y guardan los datos recividos segun el parametro recivido
             ResultSet res = DBc.getClienteLogin(request.getParameter("correo"));
             out.println("<html>");

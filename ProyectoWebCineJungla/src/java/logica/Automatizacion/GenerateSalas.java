@@ -25,6 +25,7 @@ public class GenerateSalas {
             Sala sala = new Sala();
             sala.setMultiplex_idMultiplex(idMultiplex);
             sala.setNumero(String.valueOf(i));
+            salas.add(sala);
         }
     }
     private void cargarSalas(){
