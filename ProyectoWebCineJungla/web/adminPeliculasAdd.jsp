@@ -21,7 +21,7 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" href="adminPeliculasAdd.html"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a><a class="nav-link" href="adminConfiteria.html"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a><a class="nav-link" href="adminPersonal.html"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" action="servlet"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a><a class="nav-link" action="servlet"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a><a class="nav-link" action="servlet"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>

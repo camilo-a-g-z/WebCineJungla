@@ -58,8 +58,8 @@
                         <option value="<%out.println(res2.getString("idMultiplex"));%>"><%out.println(res2.getString("Nombre"));%></option>
                     <%}%>
                   </select>
-                  <p margin-top: 20px>Número de sillas deseadas:</p>
-                  <select name="cantidad" class="border rounded-pill" style="width: 220px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(0,0,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
+                  <p>Número de sillas deseadas:</p>
+                  <select name="cantidad" class="border rounded-pill" style="width: 220px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 5px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(0,0,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

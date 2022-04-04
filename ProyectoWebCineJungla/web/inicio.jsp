@@ -40,15 +40,15 @@
                 <div class="row" style="margin-top: -45px;">
                     <%while(res.next()){%>
                     <form method="post" action="PeliculaMultiplex">
-                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
+                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
                             <div class="card border-0">
                                 <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>">
-                                    <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6><a class="card-link" href="funcion.html"></a>
+                                    <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6><a class="card-link"></a>
                                     <div id="info" style="display:none">
                                         <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
                                         <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("idPelicula"));%>">
                                     </div>
-                                    <button type="submit" class="btn btn-round btn-primary">Ver funciones</button>
+                                    <button type="submit" class="btn btn-round btn-primary" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Ver funciones</button>
                                 </div>
                             </div>
                         </div>
