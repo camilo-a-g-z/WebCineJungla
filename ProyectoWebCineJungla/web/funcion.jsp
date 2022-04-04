@@ -60,7 +60,7 @@
                         dia.value = date.getDate();
                     </script>
                 </div>
-                <select name="idMultiplex" class="border rounded-pill" style="width: 220px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
+                <select name="idMultiplex" class="border rounded-pill" style="width: 220px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 5px;margin-bottom: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
                     <%while(res2.next()){%>
                         <option value="<%out.println(res2.getString("idMultiplex"));%>"><%out.println(res2.getString("Nombre"));%></option>
                     <%}%>
