@@ -34,7 +34,7 @@
                 <div class="row mb-3">
                     <div class="col-lg-4">
                         <div class="card shadow mb-4">
-                            <div class="card-body" style="background: url('nature/usuario.png') center / contain no-repeat;height: 408px;"></div>
+                            <div class="card-body" style="background: url('usuario.png') center / contain no-repeat;height: 408px;"></div>
                         </div>
                         <div class="card shadow mb-4">
                             <div class="card-body">
