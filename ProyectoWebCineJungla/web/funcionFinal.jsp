@@ -41,7 +41,8 @@
             <div></div>
             <p class="text-break">Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
             <p class="text-break">Sinopsis: <%out.println(res1.getString("Horarios"));%></p>
-            <form method="post" action="FuncionesEspecificas">
+            <p class="text-break">Escoja sus sillas (guiese por la imagen a la derecha):</p>
+            <form method="post" action="">
                 <div id="info" style="display:none">
                     <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
                     <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
