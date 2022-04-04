@@ -56,20 +56,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <%while(res.next()){%>
-                                                    <tr>
-                                                        <td><%out.println(res.getString(""));%></td>
-                                                        <td><%out.println(res.getString(""));%></td>
-                                                        <td><%out.println(res.getString(""));%></td>
-                                                        <td><%out.println(res.getString(""));%></td>
-                                                        <td>
-                                                            <form action="servlet">
-                                                                <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
-                                                                <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Eliminar</button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                <%}%>
+                                                
                                                 <tr></tr>
                                             </tbody>
                                             <tfoot>

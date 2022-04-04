@@ -46,14 +46,14 @@ public class LoginEmpleado extends HttpServlet {
             out.println("<body>");
             //se consulta si la respuesta esta vacia
             if (!res.next()) {
-                out.println("<meta http-equiv='refresh' content='3;URL=Cliente.jsp'>");//redirects after 3 seconds
+                out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds
                 out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
             } else {
                 if (res.getString("HashPsw") == null ? request.getParameter("contraseña") == null : res.getString("HashPsw").equals(request.getParameter("contraseña"))) {
                     resP = DBp.getComidas();
                     request.getSession().setAttribute("idCliente", res.getString("idEmpleado"));
                     request.getSession().setAttribute("comidas", resP);
-                    out.println("<meta http-equiv='refresh' content='3;URL=ListarComida.jsp'>");//redirects after 3 seconds
+                    out.println("<meta http-equiv='refresh' content='3;URL=adminConfiteria.jsp'>");//redirects after 3 seconds
                     out.println("<p style='color:red;'>Bienvenido "  + "</p>");
                 } else {
                     out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds

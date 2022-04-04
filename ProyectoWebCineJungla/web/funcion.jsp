@@ -42,7 +42,11 @@
             <p>Duracion: <%out.println(res1.getString("Duracion"));%></p>
             <p>Director: <%out.println(res1.getString("Director"));%></p>
             <p>Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
-            <form method="post" action="aqui va un servlet :v">
+            <form method="post" action="FuncionesEspecificas">
+                <div id="info" style="display:none">
+                    <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                    <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
+                </div>
                 <select name="idMultiplex">
                     <%while(res2.next()){%>
                         <option value="<%out.println(res2.getString("idMultiplex"));%>"><%out.println(res2.getString("Nombre"));%></option>
@@ -54,6 +58,7 @@
                     <option value="3">3</option>
                     <option value="4">4</option>
                   </select>
+                  <input id="btm_submit" type="submit">
             </form>
         </div>
     </main>

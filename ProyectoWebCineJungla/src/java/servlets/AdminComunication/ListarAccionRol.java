@@ -1,5 +1,6 @@
 package servlets.AdminComunication;
 
+import datos.DBAccionRol;
 import datos.DBConexion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,9 +17,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author David
  */
 public class ListarAccionRol extends HttpServlet {
-    private ResultSet rs;//Crea objeto de tipo ResulSet
-    private DBConexion con;//Crea objeto de tipo conexion
-    private PreparedStatement st;//Crea objeto de tipo Statement
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,8 +31,9 @@ public class ListarAccionRol extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         ResultSet resAccionRol;
+        DBAccionRol DBar = new DBAccionRol();
         try {
-            resAccionRol=listarAccionRol();
+            resAccionRol=DBar.getAccionRoles();
             request.getSession().setAttribute("resFuncion",resAccionRol);
             response.sendRedirect("#"); //Cambiar direccionamiento
             
@@ -51,20 +50,6 @@ public class ListarAccionRol extends HttpServlet {
         }
     }
     
-    public ResultSet listarAccionRol(){
-        String consulta="select * from AccionRol";
-        try {
-            con = new DBConexion();//Obtengo la conexión
-            st = con.getConexion().prepareStatement(consulta);//por medio del objeto conexión se prepara la consulta a la base de datos
-            rs = st.executeQuery(consulta);//Ejecuto la consulta y la guardo en el objeto rs
-            st.close();// cierro la conexión
-            con.desconectar(); //me desconecto de la base de datos
-        } catch (SQLException e) {//Si captura algún error lo muestra
-            System.out.println("Consulta imposible");
-            System.out.println(e);
-        }
-        return rs;
-    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

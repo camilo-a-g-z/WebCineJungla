@@ -2,24 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package servlets.AdminComunication;
+package servlets.ticketService;
 
-import datos.DBConexion;
-import datos.DBMultiplex;
-import datos.DBSala;
+import datos.DBFacturaCliente;
+import datos.DBFuncion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.FacturaCliente;
 
 /**
  *
- * @author David
+ * @author User
  */
-public class ListarSala extends HttpServlet {
+public class FuncionesEspecificas extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,31 +33,36 @@ public class ListarSala extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        DBFuncion DBf = new DBFuncion();
         PrintWriter out = response.getWriter();
-        ResultSet resSala, resMulti;
-        DBSala DBs = new DBSala();
-        DBMultiplex DBm = new DBMultiplex();
-        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
-        try{
-            resSala=DBs.getSalas();
-            resMulti=DBm.getMultiplexs();
-            request.getSession().setAttribute("resSala",resSala);
-            request.getSession().setAttribute("resMulti",resMulti);
-            request.getSession().setAttribute("idEmpleado",idEmpleado);
-            response.sendRedirect("#"); // CAMBIAR DIRECCIONAMIENTO
-
-        }catch (Exception e){
+        DBFacturaCliente DBfc = new DBFacturaCliente();
+        FacturaCliente fc = new FacturaCliente();
+        fc.setAño(Integer.parseInt(request.getParameter("Hora")));
+        fc.setMes(Integer.parseInt(request.getParameter("Mes")));
+        fc.setDia(Integer.parseInt(request.getParameter("Dia")));
+        fc.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
+        fc.setTotal(0.0);
+        int idFactura = 0;
+        try {
+            DBfc.insertarFacturaCliente(fc);
+            idFactura = Integer.parseInt(DBfc.getLastId());
+            ResultSet res = DBf.getFuncionByPelicula(Integer.parseInt(request.getParameter("idPelicula")));
+            res.next();
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarSala</title>");            
+            out.println("<title>Servlet FuncionesEspecificas</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarSala at " + e.getMessage() + "</h1>");
+            out.println("<h1>Hora: " + res.getInt("Hora") + "</h1>");
             out.println("</body>");
             out.println("</html>");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
