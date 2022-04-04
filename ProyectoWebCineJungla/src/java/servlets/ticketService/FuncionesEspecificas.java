@@ -38,9 +38,10 @@ public class FuncionesEspecificas extends HttpServlet {
         PrintWriter out = response.getWriter();
         DBFacturaCliente DBfc = new DBFacturaCliente();
         FacturaCliente fc = new FacturaCliente();
-        fc.setAño(Integer.parseInt(request.getParameter("Hora")));
-        fc.setMes(Integer.parseInt(request.getParameter("Mes")));
-        fc.setDia(Integer.parseInt(request.getParameter("Dia")));
+        System.out.println(request.getParameter("anio"));
+        fc.setAño(Integer.parseInt(request.getParameter("anio")));
+        fc.setMes(Integer.parseInt(request.getParameter("mes")));
+        fc.setDia(Integer.parseInt(request.getParameter("dia")));
         fc.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
         fc.setTotal(0.0);
         ResultSet res3;

@@ -1,3 +1,5 @@
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.sql.Date"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String user = (String) session.getAttribute("idCliente"); 
@@ -21,15 +23,6 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
-    <script>
-        var date = new Date();
-        var año = document.getElementById("año");
-        año.value = date.getFullYear();
-        var mes = document.getElementById("mes");
-        mes.value = date.getMonth() +1;
-        var dia = document.getElementById("mes");
-        dia.value = date.getDate();
-    </script>
 </head>
 
 <body>
@@ -56,9 +49,9 @@
                 <div id="info" style="display:none">
                     <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
                     <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
-                    <input id="año" name="año" type="text" value="Año">
-                    <input id="mes" name="mes" type="text" value="Mes">
-                    <input id="dia" name="dia" type="text" value="Dia">
+                    <input id="anio" name="anio" type="text" value="<%out.println(LocalDateTime.now().getYear());%>">
+                    <input id="mes" name="mes" type="text" value="<%out.println(LocalDateTime.now().getMonthValue());%>">
+                    <input id="dia" name="dia" type="text" value="<%out.println(LocalDateTime.now().getDayOfMonth());%>">
                 </div>
                 <select name="idMultiplex" class="border rounded-pill" style="width: 220px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 5px;margin-bottom: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
                     <%while(res2.next()){%>
