@@ -18,7 +18,7 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="--bs-primary: #000000;--bs-primary-rgb: 0,0,0;--bs-info: #ffffff;--bs-info-rgb: 255,255,255;--bs-danger: #000000;--bs-danger-rgb: 0,0,0;--bs-warning: #ffffff;--bs-warning-rgb: 255,255,255;--bs-success: #000000;--bs-success-rgb: 0,0,0;background: linear-gradient(94deg, black 27%, rgb(223,223,223) 206%, rgb(176,176,176) 251%, white 251%);">
-        <div class="container"><a class="navbar-brand logo" href="index.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         </div>
     </nav>
     <main class="page hire-me-page">
@@ -30,20 +30,20 @@
                 <form style="padding-top: 30px;padding-bottom: 30px;">
                     <div class="mb-3">
                         <div class="row">
-                            <div class="col"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre</label><input class="form-control" type="email" id="email-2" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
+                            <div class="col"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre</label><input class="form-control" type="email" id="nombre" name="nombre" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Apellido</label><input class="form-control" type="email" id="email-3" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
+                                <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Apellido</label><input class="form-control" type="email" id="apellido" name="apellido" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
                             </div>
                         </div>
                     </div>
                     <div class="mb-3"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre de usuario</label><input class="form-control" type="email" id="email" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Correo electrónico</label><input class="form-control" type="email" id="email" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Contraseña</label><input class="form-control" type="password" style="height: 45px;"></div><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Método de pago</label>
+                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre de usuario</label><input class="form-control" type="email" id="username" name="username" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
+                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Correo electrónico</label><input class="form-control" type="email" id="correo" name="correo" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
+                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Contraseña</label><input class="form-control" type="password" id="contraseña" name="contraseña" style="height: 45px;"></div><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Método de pago</label>
                     <div class="mb-3">
                         <div class="row">
-                            <div class="col"><a href="index1.html"></a><button class="btn btn-primary border rounded-0" type="button" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 77px;padding: 0px 0px;margin-top: 20px;">Efectivo</button><button class="btn btn-primary border rounded-0" type="button" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 65px;padding: 0px 0px;margin-top: 20px;">Tarjeta</button></div>
-                            <div class="col"><a href="index1.html"><button class="btn btn-primary border rounded-pill" type="button" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 15px;">Registrarse</button></a></div>
+                            <div class="col"><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 77px;padding: 0px 0px;margin-top: 20px;">Efectivo</button><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 65px;padding: 0px 0px;margin-top: 20px;">Tarjeta</button></div>
+                            <div class="col"><button class="btn btn-primary border rounded-pill" type="submit" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 15px;">Registrarse</button></div>
                         </div>
                     </div>
                 </form>
