@@ -58,7 +58,7 @@
                 <%}%>
             </form>
         </div>
-        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 408px;"><img style="width: 360px;height: 500px;margin: 25px;" src="Sillas.png"/></div>
+        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 408px;"><img style="width: 360px;height: 500px;margin: 25px;" src="sillas.png"/></div>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
