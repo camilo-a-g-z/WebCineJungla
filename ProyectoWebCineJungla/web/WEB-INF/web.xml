@@ -52,6 +52,10 @@
         <servlet-name>LoginEmpleado</servlet-name>
         <servlet-class>servlets.AdminComunication.LoginEmpleado</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddMultiplex</servlet-name>
+        <servlet-class>servlets.AdminComunication.AddMultiplex</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>LoginEmpleado</servlet-name>
         <url-pattern>/LoginEmpleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMultiplex</servlet-name>
+        <url-pattern>/AddMultiplex</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
