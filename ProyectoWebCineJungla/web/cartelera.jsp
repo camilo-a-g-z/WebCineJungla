@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%String user = (String) session.getAttribute("idCliente");
+  String nombre = (String) session.getAttribute("Nombre");
+%>
 <!DOCTYPE html>
 <html>
 
