@@ -1,6 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
-<%String user = (String) session.getAttribute("idCliente"); 
-  ResultSet res = (ResultSet) session.getAttribute("resComida");%>
+<%String user = (String) session.getAttribute("idCliente");
+  String nombre = (String) session.getAttribute("Nombre");
+  ResultSet res1 = (ResultSet) session.getAttribute("resComida");%>
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +25,7 @@
         <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(res.Nombre);%></a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
                     <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
                 </ul>
             </div>
@@ -36,36 +37,16 @@
                 <div class="heading" style="margin-bottom: 28px;">
                     <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">Confitería</h2>
                 </div>
-                 <%while(res.next()){%>
-                    <form method="post" action="PeliculaMultiplex">
-                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
-                            <div class="card border-0">
-                                <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>">
-                                    <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6><a class="card-link" href="funcion.html"></a>
-                                    <div id="info" style="display:none">
-                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("Nombre"));%>"><br>
-                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("Precio"));%>"><br>
-                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("Stock"));%>"><br>
-                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("Multiplex_idMultiplex"));%>"><br>
-                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("UrlImagen"));%>"><br>
-                                    </div>
-                                    <button type="submit" class="btn btn-round btn-primary">Ver funciones</button>
-                                </div>
+                <%while(res1.next()){%>
+                    <form method="post"> 
+                        <div class="row">
+                            <div class="col" style="border: 2px solid rgb(180,182,186);padding: 8px;margin-left: 4px;margin-bottom: 4px;margin-right: 4px;margin-top: 4px;"><img src="<%out.println(res1.getString("UrlImagen"));%>" style="width: 200px;height: 240px;">
+                                <h1><%out.println(res1.getString("Nombre"));%></h1>
+                                <p><%out.println(res1.getString("Precio"));%></p><button class="btn btn-primary border rounded-pill" type="submit" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Comprar</button>
                             </div>
                         </div>
                     </form>
                 <%}%>
-                <%-- 
-                <%while(res.next()){%>
-                    <form> 
-                        <div class="row">
-                            <div class="col" style="border: 2px solid rgb(180,182,186);padding: 8px;margin-left: 4px;margin-bottom: 4px;margin-right: 4px;margin-top: 4px;"><img src="<%out.println(res.UrlImagen);%>" style="width: 200px;height: 240px;">
-                                <h1><%out.println(res.Nombre);%></h1>
-                                <p><%out.println(res.Precio);%></p><button class="btn btn-primary border rounded-pill" type="submit" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Comprar</button>
-                            </div>
-                        </div>
-                    </form>
-                <%}%>--%>
             </div>
         </section>
     </main>

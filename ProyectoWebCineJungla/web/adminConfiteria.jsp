@@ -69,7 +69,6 @@
                                                 <%}%>
                                             </thead>
                                             <tbody>
-                                                
                                                 <tr></tr>
                                             </tbody>
                                             <tfoot>
