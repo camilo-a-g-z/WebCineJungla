@@ -34,7 +34,7 @@ public class LoginUser extends HttpServlet {
         DBPelicula DBp = new DBPelicula();
         ResultSet resP;
         try {
-            GenerateAllMultiplex generate = new GenerateAllMultiplex("Portal","Por ahi", 7);
+            GenerateAllMultiplex generate = new GenerateAllMultiplex("Portal","Por ahi", 1);
             //se llama y guardan los datos recividos segun el parametro recivido
             ResultSet res = DBc.getClienteLogin(request.getParameter("correo"));
             out.println("<html>");

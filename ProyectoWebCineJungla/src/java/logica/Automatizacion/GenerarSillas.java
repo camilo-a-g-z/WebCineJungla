@@ -24,6 +24,7 @@ public class GenerarSillas {
     }
     
     private void generarSilla(){
+        
         for(int i =0;i<ids.size();i++){
             for (int j=1;j<=40;j++){
                 Silla s = new Silla();

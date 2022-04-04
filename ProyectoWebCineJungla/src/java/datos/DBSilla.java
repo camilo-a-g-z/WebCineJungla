@@ -70,7 +70,7 @@ public class DBSilla {
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into silla(Tipo, "
                 + "Ubicacion, "
                 + "Sala_idSala) "
-                + "values(?,?,?,?)");
+                + "values(?,?,?)");
             pstm.setString(1, s.getTipo());
             pstm.setString(2, s.getUbicacion());
             pstm.setInt(3, s.getSala_idSala());

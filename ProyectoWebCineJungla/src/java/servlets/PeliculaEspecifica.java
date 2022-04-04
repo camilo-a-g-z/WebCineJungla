@@ -1,9 +1,6 @@
 package servlets;
 
-import datos.DBFuncion;
-import datos.DBMultiplex;
 import datos.DBPelicula;
-import datos.DBSala;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
