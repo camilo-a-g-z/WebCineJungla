@@ -77,6 +77,28 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card shadow">
+                            <div class="card-header py-3">
+                                <form action="servlet">
+                                    <select class="border rounded-pill" style="font-size: 24px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);margin-bottom: 6px;margin-left: -2px;">
+                                        <optgroup label="Múltiplex">
+                                            <option value="1" selected>Titán Plaza</option>
+                                            <option value="2">Unicentro</option>
+                                            <option value="3">Plaza Central</option>
+                                            <option value="4">Gran Estación</option>
+                                            <option value="5">Embajador</option>
+                                            <option value="6">Plaza de las Ámericas</option>
+                                        </optgroup>
+                                    </select>
+                                </form>
+                                <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;margin-top: 0px;">Salas disponibles</p>
+                            </div>
+                            <div class="card-body d-flex">
+                                <%while(res.next()){%>
+                                    <h1 class="border rounded-pill" style="width: 50px;height: 34px;font-size: 20px;color: rgb(0,0,0);margin: 5px;margin-bottom: 0px;background: #ebebeb;padding: 5px;"><%out.println(res.getString("numero"));%></h1>
+                                <%}%> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

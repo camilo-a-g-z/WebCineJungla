@@ -18,12 +18,11 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="--bs-primary: #000000;--bs-primary-rgb: 0,0,0;--bs-info: #ffffff;--bs-info-rgb: 255,255,255;--bs-danger: #000000;--bs-danger-rgb: 0,0,0;--bs-warning: #ffffff;--bs-warning-rgb: 255,255,255;--bs-success: #000000;--bs-success-rgb: 0,0,0;background: linear-gradient(94deg, black 27%, rgb(223,223,223) 206%, rgb(176,176,176) 251%, white 251%);">
-        <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="confiteria.html">Confiter√≠a</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="usuario.html">*usuario*</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesi√≥n</a></li>
+                    <li class="nav-item"><a class="nav-link active" action="servlet"><%out.println(res.Nombre);%></a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiÛn</a></li>
                 </ul>
             </div>
         </div>
@@ -35,7 +34,7 @@
                 <div class="row mb-3">
                     <div class="col-lg-4">
                         <div class="card shadow mb-4">
-                            <div class="card-body" style="background: url(&quot;assets/img/nature/usuario.png&quot;) center / contain no-repeat;height: 408px;"></div>
+                            <div class="card-body" style="background: url('nature/usuario.png') center / contain no-repeat;height: 408px;"></div>
                         </div>
                         <div class="card shadow mb-4">
                             <div class="card-body">
@@ -45,36 +44,6 @@
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        <div class="row mb-3 d-none">
-                            <div class="col">
-                                <div class="card textwhite bg-primary text-white shadow">
-                                    <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col">
-                                                <p class="m-0">Peformance</p>
-                                                <p class="m-0"><strong>65.2%</strong></p>
-                                            </div>
-                                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                        </div>
-                                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card textwhite bg-success text-white shadow">
-                                    <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col">
-                                                <p class="m-0">Peformance</p>
-                                                <p class="m-0"><strong>65.2%</strong></p>
-                                            </div>
-                                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                        </div>
-                                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col">
                                 <div class="card shadow mb-3">
@@ -85,41 +54,41 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col" style="height: 100px;">
-                                                    <div class="mb-3"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre de usuario</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
+                                                    <div class="mb-3"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre de usuario</strong></label><input id="username" class="form-control" type="text" placeholder="user.name" name="username" /></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Correo el√©ctronico</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
+                                                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Correo elÈctronico</strong></label><input id="correo" class="form-control" type="email" placeholder="user@example.com" name="correo" /></div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col" style="height: 100px;">
-                                                    <div class="mb-3"><label class="form-label" for="first_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="name" name="first_name"></div>
+                                                    <div class="mb-3"><label class="form-label" for="first_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre</strong><br /></label><input id="nombre" class="form-control" type="text" placeholder="name" name="nombre" /></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="mb-3"><label class="form-label" for="last_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Apellido</strong></label><input class="form-control" type="text" id="last_name" placeholder="lastname" name="last_name"></div>
+                                                    <div class="mb-3"><label class="form-label" for="last_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Apellido</strong></label><input id="apellido" class="form-control" type="text" placeholder="lastname" name="apellido" /></div>
                                                 </div>
                                             </div>
                                             <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;font-size: 20px;width: 225px;height: 42px;">Guardar cambios</button></div>
                                         </form>
                                     </div>
-                                    <div class="card-body"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Historial de facturas</strong><br></label>
-                                        <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
-                                            <table class="table my-0" id="dataTable">
+                                    <div class="card-body"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Historial de facturas</strong><br /></label>
+                                        <div id="dataTable-2" class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                            <table id="dataTable" class="table my-0">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Precio</th>
-                                                        <th>Stock</th>
-                                                        <th>Multiplex</th>
+                                                        <th>Factura</th>
+                                                        <th>Detalles</th>
+                                                        <th>Valor</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
+                                                    <%while(res.next()){%>
+                                                        <tr>
+                                                            <td><%out.println(res.getString("idFacturaCliente"));%></td>
+                                                            <td><%out.println(res.getString("productos"));%></td>
+                                                            <td><%out.println(res.getString("total"));%></td>
+                                                        </tr>
+                                                    <%}%>
                                                     <tr></tr>
                                                 </tbody>
                                                 <tfoot>
@@ -129,7 +98,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card shadow"></div>
                             </div>
                         </div>
                     </div>
@@ -137,6 +105,7 @@
                 <div class="card shadow mb-5"></div>
             </div>
         </div>
+    </main>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
