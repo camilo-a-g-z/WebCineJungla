@@ -48,6 +48,7 @@ public class LoginUser extends HttpServlet {
                     
                     resP = DBp.getPeliculaByEstado("Cartelera");
                     request.getSession().setAttribute("idCliente", res.getString("idCliente"));
+                    request.getSession().setAttribute("Nombre", res.getString("Nombre"));
                     request.getSession().setAttribute("peliculas", resP);
                     out.println("<meta http-equiv='refresh' content='3;URL=inicio.jsp'>");//redirects after 3 seconds
                     out.println("<p style='color:red;'>Bienvenido " + res.getString("Nombre") + "</p>");
