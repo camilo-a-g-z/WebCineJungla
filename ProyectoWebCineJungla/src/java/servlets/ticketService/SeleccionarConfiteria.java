@@ -46,7 +46,8 @@ public class SeleccionarConfiteria extends HttpServlet {
             }
             //se traen datos de la confiteria
             ObtenerDatosSillaFuncion data = new ObtenerDatosSillaFuncion(Integer.parseInt(request.getParameter("idSala0")));
-            res2 = comida.getComidaByMultiplex(data.getSf().getFuncion_idFuncion());
+            System.out.println(data.obtenerIdMultiplex());
+            res2 = comida.getComidaByMultiplex(data.obtenerIdMultiplex());
             //Datos de cliente
             res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
             res1.next();
