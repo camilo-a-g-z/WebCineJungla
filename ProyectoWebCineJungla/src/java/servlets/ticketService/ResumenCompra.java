@@ -34,6 +34,7 @@ public class ResumenCompra extends HttpServlet {
                     Integer.parseInt(request.getParameter("idComida")),
                     Integer.parseInt(request.getParameter("idFactura")),
                     Integer.parseInt(request.getParameter("cantidad")));
+            
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
