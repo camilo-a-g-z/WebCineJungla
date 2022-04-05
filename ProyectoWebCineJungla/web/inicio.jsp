@@ -36,7 +36,7 @@
             <div class="heading">
                 <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Últimos estrenos</h2>
             </div>
-            <div class="container d-inline-flex flex-wrap">
+            <div class="container d-inline-flex flex-wrap" style="max-width: fit-content">
                 <%while(res.next()){%>
                     <form method="post" action="PeliculaMultiplex" class="shadow" style="width: 368px;margin-right: 0px;margin-left: 0px;padding: 20px;">
                         <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>"/>
