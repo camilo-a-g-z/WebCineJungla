@@ -1,11 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package servlets.AdminComunication;
+package servlets.ticketService;
 
+import datos.DBCliente;
+import datos.DBFacturaCliente;
 import datos.DBPelicula;
+import datos.DBRegistroBoleta;
+import datos.DBRegistroComida;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -16,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Miguel
+ * @author User
  */
-public class ListarPelicula extends HttpServlet {
+public class Negar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,27 +32,30 @@ public class ListarPelicula extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        ResultSet resPeliculas;
+        //conexion base de datos
+        DBRegistroComida DBrc = new DBRegistroComida();
+        DBRegistroBoleta DBrb = new DBRegistroBoleta();
+        DBFacturaCliente DBfc = new DBFacturaCliente();
         DBPelicula DBp = new DBPelicula();
-        //int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            resPeliculas=DBp.getPeliculas();
-            request.getSession().setAttribute("resPeliculas",resPeliculas);
-            //request.getSession().setAttribute("idEmpleado", idEmpleado);
-            response.sendRedirect("adminPeliculas.jsp");
-
-        } catch (Exception e) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListarPelicula</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListarPelicula at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-
+        DBCliente DBc = new DBCliente();
+        //resultsets
+        ResultSet res1;
+        ResultSet resP;
+        try  {
+            System.out.println(request.getParameter("idFactura"));
+            DBrc.eliminarRegistroComidaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            DBrb.eliminarRegistroBoletaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            DBfc.eliminarFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            
+            res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res1.next();
+            resP = DBp.getPeliculaByEstado("Cartelera");
+            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+            request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
+            request.getSession().setAttribute("peliculas", resP);
+            response.sendRedirect("inicio.jsp");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

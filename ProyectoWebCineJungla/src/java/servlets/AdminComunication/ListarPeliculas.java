@@ -1,7 +1,6 @@
-package servlets.ticketService;
+package servlets.AdminComunication;
 
-import datos.DBCliente;
-import datos.DBComida;
+import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -9,14 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Automatizacion.GenerarRegistroTicket;
-import logica.Automatizacion.ObtenerDatosSillaFuncion;
 
 /**
  *
- * @author Camilo Garcia
+ * @author User
  */
-public class SeleccionarConfiteria extends HttpServlet {
+public class ListarPeliculas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,43 +28,27 @@ public class SeleccionarConfiteria extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        //conexion base de datos
-        DBCliente DBc = new DBCliente();
-        DBComida comida = new DBComida();
-        //resultsets
-        ResultSet res1;
-        ResultSet res2;
+        ResultSet resPeliculas;
+        DBPelicula DBp = new DBPelicula();
+        String idEmpleado = request.getParameter("idEmpleado");
         try {
-            //se generan los registros
-            for(int i=0; i<Integer.parseInt(request.getParameter("cantidad"));i++){
-                GenerarRegistroTicket gRT = new GenerarRegistroTicket(
-                    Integer.parseInt(request.getParameter("idSala"+i)), 
-                    Integer.parseInt(request.getParameter("idFactura")));
-            }
-            //se traen datos de la confiteria
-            ObtenerDatosSillaFuncion data = new ObtenerDatosSillaFuncion(Integer.parseInt(request.getParameter("idSala0")));
-            res2 = comida.getComidaByMultiplex(data.obtenerIdMultiplex());
-            //Datos de cliente
-            res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
-            res1.next();
-            //Cargar a session
-            request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
-            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
-            request.getSession().setAttribute("idFactura", request.getParameter("idFactura"));
-            request.getSession().setAttribute("idPelicula", request.getParameter("idPelicula"));
-            request.getSession().setAttribute("comida", res2);
-            response.sendRedirect("confiteria.jsp");
-        }catch(Exception e){
             /* TODO output your page here. You may use following sample code. */
+            resPeliculas=DBp.getPeliculas();
+            request.getSession().setAttribute("resPeliculas",resPeliculas);
+            request.getSession().setAttribute("idEmpleado", idEmpleado);
+            response.sendRedirect("adminPeliculas.jsp");
+
+        } catch (Exception e) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SeleccionarConfiteria</title>");            
+            out.println("<title>Servlet ListarPelicula</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Error at " + e.getMessage() + "</h1>");
+            out.println("<h1>Servlet ListarPelicula at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+
         }
     }
 

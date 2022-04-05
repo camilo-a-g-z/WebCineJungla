@@ -85,6 +85,13 @@ public class DBRegistroComida {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    public ResultSet getRegistroComidaByFacturaClienteResumen(int id) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idComida, Nombre, cantidad, a.`Precio` " +
+            "FROM mydb.registrocomida a , mydb.comida b  " +
+            "where a.FacturaCliente_idFacturaCliente = "+id+" AND b.idComida = a.Comida_idComida");
+        ResultSet res = pstm.executeQuery();
+        return res;
+    }
     //Cierre de la funcion
     
     /**
@@ -162,6 +169,16 @@ public class DBRegistroComida {
     public void eliminarRegistroComida(int i) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("delete from "
                 + "registrocomida where idRegistroComida = "+i);
+            pstm.executeUpdate();
+    }
+    public void eliminarRegistroComidaByFacturaCliente(int i) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("delete from "
+                + "registrocomida where FacturaCliente_idFacturaCliente = "+i);
+            pstm.executeUpdate();
+    }
+    public void eliminarRegistroComidaByFacturaRapida(int i) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("delete from "
+                + "registrocomida where FacturaRapida_idFacturaRapida = "+i);
             pstm.executeUpdate();
     }
     //Cierre del metodo

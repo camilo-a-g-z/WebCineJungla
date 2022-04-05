@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.AdminComunication;
 
-import datos.DBConexion;
 import datos.DBEmpleado;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +34,7 @@ public class ListarEmpleado extends HttpServlet {
         try {
             resEmpleado = DBe.getEmpleados();
             request.getSession().setAttribute("resEmpleado", resEmpleado);
-            request.getSession().setAttribute("idEmpleado", idEmpleado);
+            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado"));
             response.sendRedirect("adminPersonal.jsp");
 
         } catch (Exception e) {

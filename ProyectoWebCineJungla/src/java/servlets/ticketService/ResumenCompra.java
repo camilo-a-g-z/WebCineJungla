@@ -2,6 +2,7 @@ package servlets.ticketService;
 
 import datos.DBCliente;
 import datos.DBFacturaCliente;
+import datos.DBPelicula;
 import datos.DBRegistroBoleta;
 import datos.DBRegistroComida;
 import java.io.IOException;
@@ -38,11 +39,13 @@ public class ResumenCompra extends HttpServlet {
         DBFacturaCliente DBfc = new DBFacturaCliente();
         DBRegistroComida DBrc = new DBRegistroComida();
         DBRegistroBoleta DBrb = new DBRegistroBoleta();
+        DBPelicula DBp = new DBPelicula();
         //resultsets
         ResultSet res1;
         ResultSet factura;
         ResultSet rc;
         ResultSet rb;
+        ResultSet peli;
         try  {
             //se genera registro de la comida
             GenerarRegistroComida generate = new GenerarRegistroComida(
@@ -53,16 +56,18 @@ public class ResumenCompra extends HttpServlet {
             CalcularFactura calcular = new CalcularFactura(Integer.parseInt(request.getParameter("idFactura")));
             //Se traen los resultados correspondientes de base de datos
             factura = DBfc.getFacturaClienteById(Integer.parseInt(request.getParameter("idFactura")));
-            rc = DBrc.getRegistroComidaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
-            rb = DBrb.getRegistroBoletaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            rc = DBrc.getRegistroComidaByFacturaClienteResumen(Integer.parseInt(request.getParameter("idFactura")));
+            rb = DBrb.getRegistroBoletaByFacturaClienteResumen(Integer.parseInt(request.getParameter("idFactura")));
             //se obtiene nombre cliente
             res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
             res1.next();
-            
+            //Se carga pelicula
+            peli = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
             //Carga en session
             request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
             request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
             request.getSession().setAttribute("Factura", factura);
+            request.getSession().setAttribute("pelicula", peli);
             request.getSession().setAttribute("rc", rc);
             request.getSession().setAttribute("rb", rb);
             response.sendRedirect("pagoC.jsp");

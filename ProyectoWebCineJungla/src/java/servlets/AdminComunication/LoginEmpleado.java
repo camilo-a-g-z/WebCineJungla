@@ -35,7 +35,6 @@ public class LoginEmpleado extends HttpServlet {
         ResultSet resP;
         try {
             //se llama y guardan los datos recividos segun el parametro recivido
-            
             ResultSet res = DBc.getEmpleadoLogin(request.getParameter("correo"));
             out.println("<html>");
             out.println("<body>");

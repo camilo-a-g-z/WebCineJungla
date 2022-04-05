@@ -36,7 +36,8 @@ public class DBCliente {
                 + "Nombre, "
                 + "PuntosJungla, "
                 + "Correo, "
-                + "MedioPago_idMedioPago "
+                + "MedioPago_idMedioPago, "
+                + "HashPsw "
                 + "FROM cliente "
                 + "WHERE idCliente = " + id);
         ResultSet res = pstm.executeQuery();

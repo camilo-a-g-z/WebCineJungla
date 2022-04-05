@@ -24,9 +24,15 @@
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="--bs-primary: #000000;--bs-primary-rgb: 0,0,0;--bs-info: #ffffff;--bs-info-rgb: 255,255,255;--bs-danger: #000000;--bs-danger-rgb: 0,0,0;--bs-warning: #ffffff;--bs-warning-rgb: 255,255,255;--bs-success: #000000;--bs-success-rgb: 0,0,0;background: linear-gradient(94deg, black 27%, rgb(223,223,223) 206%, rgb(176,176,176) 251%, white 251%);">
         <div class="container"><a class="navbar-brand logo"  style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                <form action="ShowUserInfo" method="post">
+                    <div id="info" style="display:none">
+                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                    </div>
+                    <button class="btn btn-primary border rounded-0" type="submit" style="width: 280px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Ver funciones</button></a>
+                </form>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>

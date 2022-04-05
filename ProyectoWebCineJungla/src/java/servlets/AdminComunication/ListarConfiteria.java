@@ -35,12 +35,13 @@ public class ListarConfiteria extends HttpServlet {
         PrintWriter out = response.getWriter();
         ResultSet resConfiteria;
         DBComida DBc = new DBComida();
+        System.out.println(request.getParameter("idEmpleado"));
         int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
 
         try {
             resConfiteria = DBc.getComidas();
-            request.getSession().setAttribute("resConfiteria", resConfiteria);
-            request.getSession().setAttribute("idEmpleado", idEmpleado);
+            request.getSession().setAttribute("comidas", resConfiteria);
+            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado") );
             response.sendRedirect("adminConfiteria.jsp");
         } catch (Exception e) {
             /* TODO output your page here. You may use following sample code. */
