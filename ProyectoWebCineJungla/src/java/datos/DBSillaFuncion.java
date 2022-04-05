@@ -6,8 +6,13 @@ import java.sql.SQLException;
 import logica.SillaFuncion;
 
 /**
+ * Esta clase guarda todo lo referente a la informacion de las salas de las 
+ * funciones.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class DBSillaFuncion {
     DBConexion cn;

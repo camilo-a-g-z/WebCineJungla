@@ -6,15 +6,30 @@ import java.sql.SQLException;
 import logica.Sala;
 
 /**
+ * Esta clase guarda todo lo referente a la informacion de las salas de los 
+ * multiplex.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class DBSala {
+    
+    //Espacios de la clase
     DBConexion cn;
-    //constructor
+    
+    //Constructor de la clase
     public DBSala(){
         cn = new DBConexion();
     }
+    //Cierre de la clase
+    
+    /**
+     * Funcion que obtiene el ultimo numero de identificacion del registro.
+     * 
+     * @return El ultimo numero de identificacion.
+     */
     public String getLastId(){
         try{
             PreparedStatement pstm_2 = cn.getConexion().prepareStatement("SELECT LAST_INSERT_ID()");
@@ -26,6 +41,15 @@ public class DBSala {
         }
         return "";
     }
+    //Cierre de la funcion
+    
+    /**
+     * Obtiene Datos de una sala con el numero de identificacion.
+     * 
+     * @param id Define el numero de identificacion de la sala.
+     * @return Datos de la sala.
+     * @throws SQLException 
+     */
     public ResultSet getSalaById(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idSala, "
                 + "Numero, "
@@ -35,6 +59,15 @@ public class DBSala {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Obtiene datos de una sala por el numero de la sala de un multiplex.
+     * 
+     * @param numero Define el numero de la sala dentro de un multiplex.
+     * @return Datos de la sala.
+     * @throws SQLException 
+     */
     public ResultSet getSalaByNumero(int numero) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idSala, "
                 + "Numero, "
@@ -44,7 +77,15 @@ public class DBSala {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
     
+    /**
+     * Obtiene datos de una sala por el multiplex en el que se alojan.
+     * 
+     * @param id Define el numero de identificacion del multiplex.
+     * @return Datos de la sala.
+     * @throws SQLException 
+     */
     public ResultSet getSalaByidMultiplex(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idSala, "
                 + "Numero, "
@@ -54,7 +95,14 @@ public class DBSala {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
     
+    /**
+     * Funcion que obtiene los datos de las salas.
+     * 
+     * @return los datos de las salas.
+     * @throws SQLException 
+     */
     public ResultSet getSalas() throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idSala, "
                 + "Numero, "
@@ -64,7 +112,13 @@ public class DBSala {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
     
+    /**
+     * Agrega una sala a la base de datos.
+     * 
+     * @param s 
+     */
     public void insertarSala(Sala s){
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into sala(Numero ,"
@@ -78,11 +132,27 @@ public class DBSala {
             System.out.println(e);
         }
     }
+    //Cierre del metodo
+    
+    /**
+     * Elimina una sala de la base de datos.
+     * 
+     * @param i
+     * @throws SQLException 
+     */
     public void eliminarSala(int i) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("delete from "
                 + "sala where idSala = "+i);
             pstm.executeUpdate();
     }
+    //Cierre del metodo
+    
+    /**
+     * Modifica un registro de la base de datos.
+     * 
+     * @param s
+     * @throws SQLException 
+     */
     public void modifySala(Sala s) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update sala "
                 + "set  Numero = ? , Multiplex_idMultiplex = ? where idSala = ?");
@@ -91,7 +161,11 @@ public class DBSala {
         pstm.setInt(3, s.getIdSala());
         pstm.executeUpdate();
     }
+    //Cierre de del metodo
+    
+    //Metodo Get
     public String getMensaje() {
         return cn.getMensaje();
     }
+    //Cierre del metodo Get
 }
