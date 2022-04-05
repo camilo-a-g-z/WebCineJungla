@@ -66,6 +66,7 @@
                     <%while(res2.previous()){%>
                     <%}%>
                 <%}%>
+                <button class="btn btn-primary border rounded-pill" type="submit" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Seguir</button>
             </form>
         </div>
         <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 408px;"><img style="width: 360px;height: 500px;margin: 25px;" src="Sillas.png"/></div>
