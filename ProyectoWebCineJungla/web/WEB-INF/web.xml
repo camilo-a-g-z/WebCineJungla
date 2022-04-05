@@ -80,6 +80,14 @@
         <servlet-name>ListarConfiteria</servlet-name>
         <servlet-class>servlets.AdminComunication.ListarConfiteria</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Confirmar</servlet-name>
+        <servlet-class>servlets.ticketService.Confirmar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Negar</servlet-name>
+        <servlet-class>servlets.ticketService.Negar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -159,6 +167,14 @@
     <servlet-mapping>
         <servlet-name>ListarConfiteria</servlet-name>
         <url-pattern>/ListarConfiteria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Confirmar</servlet-name>
+        <url-pattern>/Confirmar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Negar</servlet-name>
+        <url-pattern>/Negar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

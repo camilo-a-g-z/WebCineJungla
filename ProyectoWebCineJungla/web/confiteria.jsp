@@ -4,6 +4,7 @@
   ResultSet res1 = (ResultSet) session.getAttribute("comida");
   String idCliente = (String) session.getAttribute("idCliente");
   String idFactura = (String) session.getAttribute("idFactura");
+  String idPelicula = (String) session.getAttribute("idPelicula");
 %>
   
 <!DOCTYPE html>
@@ -46,6 +47,7 @@
                         <div id="info" style="display:none">
                             <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
                             <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
+                            <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(idPelicula);%>">
                             <input id="idComida" name="idComida" type="text" value="<%out.println(res1.getString("idComida"));%>">
                         </div>
                         <div style="width: 233px;height: 407px;padding: 15px;margin: 10px;"><img style="width: 200px;height: 240px;" src="<%out.println(res1.getString("UrlImagen"));%>"/>
