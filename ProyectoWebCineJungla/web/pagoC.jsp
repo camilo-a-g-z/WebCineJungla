@@ -1,3 +1,8 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%String user = (String) session.getAttribute("idCliente"); 
+    String nombre = (String) session.getAttribute("Nombre");
+%>
 <!DOCTYPE html>
 <html>
 
@@ -21,8 +26,8 @@
         <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(res.Nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiÃ³n</a></li>
                 </ul>
             </div>
         </div>
@@ -50,7 +55,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

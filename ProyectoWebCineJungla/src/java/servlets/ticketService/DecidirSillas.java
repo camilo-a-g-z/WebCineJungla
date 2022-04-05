@@ -1,11 +1,7 @@
 package servlets.ticketService;
 
-import datos.DBCliente;
-import datos.DBMultiplex;
-import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Camilo Garcia
  */
-public class PeliculaMultiplex extends HttpServlet {
+public class DecidirSillas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,32 +25,15 @@ public class PeliculaMultiplex extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        DBPelicula DBp = new DBPelicula();
-        DBMultiplex DBm = new DBMultiplex();
-        ResultSet res1;
-        ResultSet res2;
-        ResultSet res3;
-        DBCliente DBc = new DBCliente();
-        try {
-            res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-            res2 = DBm.getMultiplexs();
-            res3 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
-            res3.next();
-            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
-            request.getSession().setAttribute("pelicula", res1);
-            request.getSession().setAttribute("multiplex", res2);
-            request.getSession().setAttribute("Nombre", res3.getString("Nombre"));
-            response.sendRedirect("funcion.jsp");
-        }catch(Exception e){
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PeliculaMultiplex</title>");            
+            out.println("<title>Servlet DecidirSillas</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PeliculaMultiplex at " + e.getMessage() + "</h1>");
+            out.println("<h1>Servlet DecidirSillas at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

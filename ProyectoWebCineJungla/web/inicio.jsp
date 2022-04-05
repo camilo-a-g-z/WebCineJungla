@@ -1,7 +1,9 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String user = (String) session.getAttribute("idCliente"); 
-  ResultSet res = (ResultSet) session.getAttribute("peliculas");%>
+  ResultSet res = (ResultSet) session.getAttribute("peliculas");
+  String nombre = (String) session.getAttribute("Nombre");
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -23,7 +25,7 @@
         <div class="container"><a class="navbar-brand logo"  style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" action="servlet"></a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
                     <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
                 </ul>
             </div>
@@ -38,15 +40,15 @@
                 <div class="row" style="margin-top: -45px;">
                     <%while(res.next()){%>
                     <form method="post" action="PeliculaMultiplex">
-                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;width: 320px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
+                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
                             <div class="card border-0">
                                 <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>">
-                                    <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6><a class="card-link" href="funcion.html"></a>
+                                    <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6><a class="card-link"></a>
                                     <div id="info" style="display:none">
                                         <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
                                         <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("idPelicula"));%>">
                                     </div>
-                                    <button type="submit" class="btn btn-round btn-primary">Ver funciones</button>
+                                    <button type="submit" class="btn btn-round btn-primary" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Ver funciones</button>
                                 </div>
                             </div>
                         </div>

@@ -26,20 +26,6 @@ public class FuncionesByMultiplex {
         this.mes = mes;
         this.dia = dia;
         try{
-//            for(int i=0;i<10;i++){
-//                Date dt = new Date();
-//                dt.setYear(anio);
-//                dt.setMonth(mes);
-//                dt.setDate(dia);
-//                Funcion f = new Funcion();
-//                f.setIdFuncion(i);
-//                //dt.setMonth(i+1);
-//                f.setHorario(dt);
-//                f.setSala_idSala(1);
-//                f.setEmpleado_idEmpleado(1);
-//                f.setPelicula_idPelicula(0);
-//                funciones.add(f);
-//            }
             generarFunciones(idPelicula, idMultiplex);
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -54,9 +40,8 @@ public class FuncionesByMultiplex {
         DBSala sala = new DBSala();
         DBFuncion funcion = new DBFuncion();
         ResultSet res = sala.getSalaByidMultiplex(idMultiplex);
-        ResultSet res2 = null;
         while(res.next()){
-            res2 = funcion.getFuncionBySala(res.getInt("idSala"));
+            ResultSet res2 = funcion.getFuncionBySala(res.getInt("idSala"));
             TransformFuncion tras = new TransformFuncion(res2);
             funciones.addAll(tras.getArrayListFunciones());
         }

@@ -4,8 +4,11 @@
  */
 package servlets.ticketService;
 
+import datos.DBCliente;
 import datos.DBFacturaCliente;
 import datos.DBFuncion;
+import datos.DBPelicula;
+import datos.DBSala;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -13,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.FuncionesByMultiplex;
 import logica.FacturaCliente;
 
 /**
@@ -33,31 +37,49 @@ public class FuncionesEspecificas extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DBFuncion DBf = new DBFuncion();
+        
         PrintWriter out = response.getWriter();
+        //conexiones a base de datos
+        DBFuncion DBf = new DBFuncion();
         DBFacturaCliente DBfc = new DBFacturaCliente();
+        DBCliente DBc = new DBCliente();
+        DBPelicula DBp = new DBPelicula();
+        //Generacion de factura
         FacturaCliente fc = new FacturaCliente();
-        fc.setAño(Integer.parseInt(request.getParameter("Hora")));
-        fc.setMes(Integer.parseInt(request.getParameter("Mes")));
-        fc.setDia(Integer.parseInt(request.getParameter("Dia")));
+        fc.setAño(Integer.parseInt(request.getParameter("anio")));
+        fc.setMes(Integer.parseInt(request.getParameter("mes")));
+        fc.setDia(Integer.parseInt(request.getParameter("dia")));
         fc.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
         fc.setTotal(0.0);
+        //resultsets
+        ResultSet res1;
+        ResultSet res2;
+        ResultSet res3;
+        //variables
         int idFactura = 0;
         try {
+            res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res1.next();
+            //insertar factura
             DBfc.insertarFacturaCliente(fc);
+            //guardar idfactura
             idFactura = Integer.parseInt(DBfc.getLastId());
-            ResultSet res = DBf.getFuncionByPelicula(Integer.parseInt(request.getParameter("idPelicula")));
-            res.next();
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet FuncionesEspecificas</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Hora: " + res.getInt("Hora") + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            res2 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
+            FuncionesByMultiplex test = new FuncionesByMultiplex(
+                    Integer.parseInt(request.getParameter("idPelicula")), 
+                    Integer.parseInt(request.getParameter("idMultiplex")), 
+                    Integer.parseInt(request.getParameter("anio")), 
+                    Integer.parseInt(request.getParameter("mes")),
+                    Integer.parseInt(request.getParameter("dia")));   
+            System.out.println(test.getFunciones().size());
+            //cargar a session
+            request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
+            request.getSession().setAttribute("array", test.getFunciones());
+            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+            request.getSession().setAttribute("pelicula", res2);
+            request.getSession().setAttribute("idFactura", idFactura);
+            request.getSession().setAttribute("cantidad", request.getParameter("cantidad"));
+            response.sendRedirect("funcionEspecifica.jsp");
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

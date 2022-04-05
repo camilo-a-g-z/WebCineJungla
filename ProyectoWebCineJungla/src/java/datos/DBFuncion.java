@@ -110,7 +110,7 @@ public class DBFuncion {
         return res;
     }
     
-    public ResultSet getFuncionByFechaPosterior(Date f) {
+    public ResultSet getFuncionByFechaPosterior(int Anio, int Mes, int Dia) {
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idFuncion, "
                 + "Año, "
@@ -123,9 +123,7 @@ public class DBFuncion {
                 + "Pelicula_idPelicula, "
                 + "Duracion "
                 + "FROM funcion "
-                + "WHERE Horario >= '"+f.getYear()
-                +"-"+f.getMonth()+"-"+f.getDay()
-                +" "+f.getHours()+":"+f.getMinutes()+":00'");
+                + "WHERE Mes >="+Mes+" AND  Dia >="+Dia);
             ResultSet res = pstm.executeQuery();
             return res;
         }catch(Exception e){
