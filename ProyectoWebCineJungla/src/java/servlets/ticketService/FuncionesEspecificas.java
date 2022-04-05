@@ -1,14 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.ticketService;
 
 import datos.DBCliente;
 import datos.DBFacturaCliente;
 import datos.DBFuncion;
 import datos.DBPelicula;
-import datos.DBSala;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -21,7 +16,7 @@ import logica.FacturaCliente;
 
 /**
  *
- * @author User
+ * @author Camilo Garcia
  */
 public class FuncionesEspecificas extends HttpServlet {
 

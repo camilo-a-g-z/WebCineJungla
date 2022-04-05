@@ -1,7 +1,10 @@
 package servlets.ticketService;
 
+import datos.DBCliente;
+import datos.DBSillaFuncion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,15 +28,32 @@ public class DecidirSillas extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+        PrintWriter out = response.getWriter();
+        //conexion base de datos
+        DBSillaFuncion DBsf = new DBSillaFuncion();
+        DBCliente DBc = new DBCliente();
+        //resultsets
+        ResultSet res1;
+        ResultSet res2;
+        try{
+           res1 = DBsf.getSillaFuncionByidFuncion(Integer.parseInt(request.getParameter("idFuncion")));
+           res2 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+           res2.next();
+           //Se carga en session
+           request.getSession().setAttribute("Nombre", res2.getString("Nombre"));
+           request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+           request.getSession().setAttribute("idFactura", request.getParameter("idFactura"));
+           request.getSession().setAttribute("sillas", res1);
+           request.getSession().setAttribute("cantidad", request.getParameter("cantidad"));
+        }catch(Exception e){
+             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet DecidirSillas</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DecidirSillas at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Error at " + e.getMessage() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
