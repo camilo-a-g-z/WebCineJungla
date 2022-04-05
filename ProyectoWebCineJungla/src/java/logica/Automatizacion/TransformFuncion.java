@@ -26,7 +26,8 @@ public class TransformFuncion {
         System.out.println("Aqui bien");
         while (res.next()) {
             Funcion f = new Funcion();
-            f.setEmpleado_idEmpleado(res.getInt("idFuncion"));
+            f.setIdFuncion(res.getInt("idFuncion"));
+            f.setEmpleado_idEmpleado(res.getInt("Empleado_idEmpleado"));
             f.setAño(res.getInt("Año"));
             f.setMes(res.getInt("Mes"));
             f.setDia(res.getInt("Dia"));
@@ -45,7 +46,6 @@ public class TransformFuncion {
                     res.getInt("Hora"),
                     res.getInt("Minuto")));
             f.setSala_idSala(res.getInt("Sala_idSala"));
-            f.setEmpleado_idEmpleado(res.getInt("Empleado_idEmpleado"));
             f.setPelicula_idPelicula(res.getInt("Pelicula_idPelicula"));
             f.setDuracion(res.getInt("Duracion"));
             con.add(f);

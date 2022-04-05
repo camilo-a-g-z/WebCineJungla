@@ -66,7 +66,6 @@ public class FuncionesEspecificas extends HttpServlet {
                     Integer.parseInt(request.getParameter("anio")), 
                     Integer.parseInt(request.getParameter("mes")),
                     Integer.parseInt(request.getParameter("dia")));   
-            System.out.println(test.getFunciones().size());
             //cargar a session
             request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
             request.getSession().setAttribute("array", test.getFunciones());
