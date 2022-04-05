@@ -33,33 +33,23 @@
     </nav>
     <main class="page projects-page">
         <section class="portfolio-block projects-cards" style="padding-top: 40px;padding-bottom: 60px;">
-            <div class="container">
-                <div class="heading">
-                    <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Últimos estrenos</h2>
-                </div>
-                <div class="row" style="margin-top: -45px;">
-                    <%while(res.next()){%>
-                    <form method="post" action="PeliculaMultiplex">
-                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 10px;height: 575px;margin: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
-                            <div class="card border-0">
-                                <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>">
-                                    <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6><a class="card-link"></a>
-                                    <div id="info" style="display:none">
-                                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
-                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("idPelicula"));%>">
-                                    </div>
-                                    <button type="submit" class="btn btn-round btn-primary" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Ver funciones</button>
-                                </div>
+            <div class="heading">
+                <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Últimos estrenos</h2>
+            </div>
+            <%while(res.next()){%>
+                <form method="post" action="PeliculaMultiplex" class="shadow" style="width: 368px;margin-right: 0px;margin-left: 0px;padding: 20px;">
+                    <div class="container">
+                        <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>"/>
+                            <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6>
+                            <button class="btn btn-primary border rounded-0" type="submit" style="width: 280px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Ver funciones</button></a>
+                            <div id="info" style="display:none">
+                                <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                                <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("idPelicula"));%>">
                             </div>
                         </div>
-                    </form>
-                    <%}%>
-                </div>
-            </div>
-            <form action="servlet">
-                <div id="info" style="display:none"><input id="id_usuario" name="id_usuario" type="text" value="<%out.println(user);%>"></div>
-                <button class="btn btn-primary border rounded-pill shadow" type="submit" style="background: rgb(0,0,0);width: 690px;margin-right: 0px;margin-left: 0px;margin-top: 20px;font-family: Aldrich, sans-serif;font-size: 30px;text-align: center;height: 64px;">Ver todas las películas</button>
-            </form>
+                    </div>
+                </form>
+            <%}%>
         </section>
     </main>
     <footer class="page-footer" style="background: #000000;">
