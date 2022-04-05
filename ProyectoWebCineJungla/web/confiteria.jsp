@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiï¿½n</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="container d-inline-flex flex-wrap">
                 <%while(res1.next()){%>
-                    <form method="post" action="ResumenCompra"> 
+                    <form method="post" action="ResumenCompra" style="width: 286px;height: 440px;padding: 4px;margin-right: 0px;margin-left: 0px;"> 
                         <div id="info" style="display:none">
                             <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
                             <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
@@ -64,7 +64,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Tï¿½rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>
