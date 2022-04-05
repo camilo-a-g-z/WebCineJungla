@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import logica.FacturaCliente;
 
 /**
- * Esta clase guarda todo lo referente al area de facturacion de boleteria.
+ * Esta clase guarda todo lo referente al area de facturacion de boleteria a 
+ * nivel de cliente.
  *
  * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
  * C. Tuso

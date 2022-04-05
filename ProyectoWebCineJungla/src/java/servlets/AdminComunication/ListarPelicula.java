@@ -35,12 +35,12 @@ public class ListarPelicula extends HttpServlet {
         PrintWriter out = response.getWriter();
         ResultSet resPeliculas;
         DBPelicula DBp = new DBPelicula();
-        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+        //int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
         try {
             /* TODO output your page here. You may use following sample code. */
             resPeliculas=DBp.getPeliculas();
             request.getSession().setAttribute("resPeliculas",resPeliculas);
-            request.getSession().setAttribute("idEmpleado", idEmpleado);
+            //request.getSession().setAttribute("idEmpleado", idEmpleado);
             response.sendRedirect("adminPeliculas.jsp");
 
         } catch (Exception e) {

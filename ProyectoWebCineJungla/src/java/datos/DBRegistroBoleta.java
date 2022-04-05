@@ -6,15 +6,31 @@ import java.sql.SQLException;
 import logica.RegistroBoleta;
 
 /**
+ * Esta clase guarda lo referente a los registros de boleteria.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class DBRegistroBoleta {
+    
+    //Espacios de la clase
     DBConexion cn;
-    //constructor
+    
+    //Constructor de la clase
     public DBRegistroBoleta(){
         cn = new DBConexion();
     }
+    
+    /**
+     * Funcion que obtiene los datos del registro a partir del numero de 
+     * identificacion del registro.
+     * 
+     * @param id Define el numero de identificacion que se le da al registro.
+     * @return Los datos del registro de la boleta.
+     * @throws SQLException 
+     */
     public ResultSet getRegistroBoletaById(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idRegistroBoleta, "
                 + "Precio, "
@@ -27,6 +43,16 @@ public class DBRegistroBoleta {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion.
+    
+    /**
+     * Funcion que obtiene los datos del registro a partir del numero de 
+     * identificacion de la silla elegida.
+     * 
+     * @param id define el numero de identificacion de una silla.
+     * @return Los datos del registro de la boleta.
+     * @throws SQLException 
+     */
     public ResultSet getRegistroBoletaBySillaFuncion(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idRegistroBoleta, "
                 + "Precio, "
@@ -39,6 +65,16 @@ public class DBRegistroBoleta {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Funcion que obtiene los datos del registro a partir del numero de 
+     * identificacion de la factura.
+     * 
+     * @param id Define el numero de identificacion de una facturacion.
+     * @return Los datos del registro de la boleta.
+     * @throws SQLException 
+     */
     public ResultSet getRegistroBoletaByFacturaRapida(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idRegistroBoleta, "
                 + "Precio, "
@@ -51,6 +87,16 @@ public class DBRegistroBoleta {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Funcion que obtiene los datos del registro a partir del numero de 
+     * identificacion de la factura.
+     * 
+     * @param id Define el numero de identificacion de una facturacion.
+     * @return Los datos del registro de la boleta.
+     * @throws SQLException 
+     */
     public ResultSet getRegistroBoletaByFacturaCliente(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idRegistroBoleta, "
                 + "Precio, "
@@ -63,6 +109,13 @@ public class DBRegistroBoleta {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Agrega un registro de boleta a la clase FacturaRapida.
+     * 
+     * @param r 
+     */
     public void insertarRegistroBoletaToFacturaRapida(RegistroBoleta r){
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into registroboleta(Precio, "
@@ -80,7 +133,13 @@ public class DBRegistroBoleta {
             System.out.println(e);
         }
     }
+    //Cierre del metodo
     
+    /**
+     * Agrega un registro de la boleta a la clase FacturaCliente.
+     * 
+     * @param r 
+     */ 
     public void insertarRegistroBoletaToFacturaCliente(RegistroBoleta r){
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into registroboleta(Precio, "
@@ -98,12 +157,27 @@ public class DBRegistroBoleta {
             System.out.println(e);
         }
     }
+    //Cierre del metodo
     
+    /**
+     * Elimina un registro de la boleta en la base de datos
+     * 
+     * @param i
+     * @throws SQLException 
+     */
     public void eliminarRegistroBoleta(int i) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("delete from "
                 + "registroboleta where idRegistroBoleta = "+i);
             pstm.executeUpdate();
     }
+    //Cierre del metodo
+    
+    /**
+     * Elimina un registro de la boleta en la clase FacturaRapida.
+     * 
+     * @param r
+     * @throws SQLException 
+     */
     public void modifyRegistroBoletaToFacturaRapida(RegistroBoleta r) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update registroboleta "
                 + "set  Precio = ? , Cantidad = ? ,"
@@ -116,6 +190,14 @@ public class DBRegistroBoleta {
         pstm.setInt(5, r.getIdRegistroBoleta());
         pstm.executeUpdate();
     }
+    //Cierre del metodo
+    
+    /**
+     * Elimina un registro de la boleta en la clase FacturaCliente.
+     * 
+     * @param r
+     * @throws SQLException 
+     */
     public void modifyRegistroBoletaToFacturaCliente(RegistroBoleta r) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update registroboleta "
                 + "set  Precio = ? , Cantidad = ? ,"
@@ -128,7 +210,11 @@ public class DBRegistroBoleta {
         pstm.setInt(5, r.getIdRegistroBoleta());
         pstm.executeUpdate();
     }
+    //Cierre del metodo
+    
+    //Metodo Get
     public String getMensaje() {
         return cn.getMensaje();
     }
+    //Cierre del metodo Get
 }

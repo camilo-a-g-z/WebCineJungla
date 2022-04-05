@@ -49,10 +49,10 @@ public class DBPelicula {
     //Cierre del constructor
 
     /**
-     * Funcion que obtiene 
+     * Funcion que obtiene los datos de una pelicula por el nombre registrado.
      *
-     * @param nombre
-     * @return
+     * @param nombre Define el nombre de la pelicula.
+     * @return Los datos de la pelicula.
      * @throws SQLException
      */
     public ResultSet getPeliculaByNombre(String nombre) throws SQLException {
@@ -72,9 +72,11 @@ public class DBPelicula {
     //Cierre de la funcion
 
     /**
+     * Funcion que obtiene los datos de una pelicula por su estado en cartelera.
      *
-     * @param estado
-     * @return
+     * @param estado Define el estado de la cartelera de la pelicula en los 
+     * multiplex.
+     * @return Los datos de la pelicula.
      * @throws SQLException
      */
     public ResultSet getPeliculaByEstado(String estado) throws SQLException {
@@ -94,8 +96,10 @@ public class DBPelicula {
     //Cierre de la funcion
 
     /**
+     * Funcion que obtiene las peliculas registradas en la base de datos.
      *
-     * @return @throws SQLException
+     * @return Los datos de las peliculas.
+     * @throws SQLException
      */
     public ResultSet getPeliculas() throws SQLException {
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idPelicula, "
@@ -114,6 +118,7 @@ public class DBPelicula {
     //Cierre de la funcion
 
     /**
+     * Metodo que agrega una pelicula a la base de datos.
      *
      * @param p
      */
@@ -143,6 +148,7 @@ public class DBPelicula {
     //Cierre del metodo
 
     /**
+     * Metodo que elimina una pelicula de la base de datos.
      *
      * @param i
      * @throws SQLException
@@ -155,7 +161,8 @@ public class DBPelicula {
     //Cierre del metodo
 
     /**
-     *
+     * Metodo que modifica un registro en la base de datos.
+     * 
      * @param p
      * @throws SQLException
      */

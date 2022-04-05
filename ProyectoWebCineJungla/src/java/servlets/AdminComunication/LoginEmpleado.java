@@ -41,14 +41,14 @@ public class LoginEmpleado extends HttpServlet {
             out.println("<body>");
             //se consulta si la respuesta esta vacia
             if (!res.next()) {
-                out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds
+                out.println("<meta http-equiv='refresh' content='3;URL=ingresoE.jsp'>");//redirects after 3 seconds
                 out.println("<!DOCTYPE html>\n" +
                             "<html>\n" +
                             "\n" +
                             "<head>\n" +
                             "    <meta charset=\"utf-8\">\n" +
                             "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">\n" +
-                            "    <title>CV - Brand</title>\n" +
+                            "    <title>Cine Jungla</title>\n" +
                             "    <link rel=\"stylesheet\" href=\"assets/bootstrap/css/bootstrap.min.css\">\n" +
                             "    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato:300,400,700\">\n" +
                             "    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap\">\n" +
@@ -74,8 +74,8 @@ public class LoginEmpleado extends HttpServlet {
                             "    </main>\n" +
                             "    <footer class=\"page-footer\" style=\"background: #000000;\">\n" +
                             "        <div class=\"container\">\n" +
-                            "            <div class=\"links\"><a href=\"#\" style=\"color: rgb(255,255,255);\">Quienes somos</a><a href=\"#\" style=\"color: rgb(255,255,255);\">Términos y condiciones</a></div>\n" +
-                            "            <div class=\"social-icons\"><a href=\"#\"><i class=\"icon ion-social-facebook\" style=\"color: rgb(0,0,0);\"></i></a><a href=\"#\"><i class=\"icon ion-social-instagram\" style=\"color: rgb(0,0,0);\"></i></a><a href=\"#\"><i class=\"icon ion-social-github\" style=\"color: rgb(0,0,0);\"></i></a></div>\n" +
+                            "            <div class=\"links\"><a style=\"color: rgb(255,255,255);\">Quiénes somos</a><a style=\"color: rgb(255,255,255);\">Términos y condiciones</a></div>\n" +
+                            "            <div class=\"social-icons\"><a><i class=\"icon ion-social-facebook\" style=\"color: rgb(0,0,0);\"></i></a><a><i class=\"icon ion-social-instagram\" style=\"color: rgb(0,0,0);\"></i></a><a><i class=\"icon ion-social-github\" style=\"color: rgb(0,0,0);\"></i></a></div>\n" +
                             "        </div>\n" +
                             "    </footer>\n" +
                             "    <script src=\"assets/bootstrap/js/bootstrap.min.js\"></script>\n" +
@@ -96,7 +96,7 @@ public class LoginEmpleado extends HttpServlet {
                                 "<head>\n" +
                                 "    <meta charset=\"utf-8\">\n" +
                                 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">\n" +
-                                "    <title>CV - Brand</title>\n" +
+                                "    <title>Cine Jungla</title>\n" +
                                 "    <link rel=\"stylesheet\" href=\"assets/bootstrap/css/bootstrap.min.css\">\n" +
                                 "    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato:300,400,700\">\n" +
                                 "    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap\">\n" +
@@ -122,7 +122,8 @@ public class LoginEmpleado extends HttpServlet {
                                 "    </main>\n" +
                                 "    <footer class=\"page-footer\" style=\"background: #000000;\">\n" +
                                 "        <div class=\"container\">\n" +
-                                "            <div class=\"links\"><a href=\"#\" style=\"color: rgb(255,255,255);\">Quienes somos</a><a href=\"#\" style=\"color: rgb(255,255,255);\">Términos y condiciones</a></div>\n" +
+                                "            <div class=\"links\"><a style=\"color: rgb(255,255,255);\">Quiénes somos</a><a style=\"color: rgb(255,255,255);\">Términos y condiciones</a></div>\n" +
+                                "            <div class=\"social-icons\"><a><i class=\"icon ion-social-facebook\" style=\"color: rgb(0,0,0);\"></i></a><a><i class=\"icon ion-social-instagram\" style=\"color: rgb(0,0,0);\"></i></a><a><i class=\"icon ion-social-github\" style=\"color: rgb(0,0,0);\"></i></a></div>\n" +
                                 "        </div>\n" +
                                 "    </footer>\n" +
                                 "    <script src=\"assets/bootstrap/js/bootstrap.min.js\"></script>\n" +
@@ -132,14 +133,14 @@ public class LoginEmpleado extends HttpServlet {
                                 "\n" +
                                 "</html>");
                 } else {
-                    out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds
+                    out.println("<meta http-equiv='refresh' content='3;URL=ingresoE.jsp'>");//redirects after 3 seconds
                     out.println("<!DOCTYPE html>\n" +
                             "<html>\n" +
                             "\n" +
                             "<head>\n" +
                             "    <meta charset=\"utf-8\">\n" +
                             "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">\n" +
-                            "    <title>CV - Brand</title>\n" +
+                            "    <title>Cine Jungla</title>\n" +
                             "    <link rel=\"stylesheet\" href=\"assets/bootstrap/css/bootstrap.min.css\">\n" +
                             "    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato:300,400,700\">\n" +
                             "    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap\">\n" +
@@ -165,8 +166,8 @@ public class LoginEmpleado extends HttpServlet {
                             "    </main>\n" +
                             "    <footer class=\"page-footer\" style=\"background: #000000;\">\n" +
                             "        <div class=\"container\">\n" +
-                            "            <div class=\"links\"><a href=\"#\" style=\"color: rgb(255,255,255);\">Quienes somos</a><a href=\"#\" style=\"color: rgb(255,255,255);\">Términos y condiciones</a></div>\n" +
-                            "            <div class=\"social-icons\"><a href=\"#\"><i class=\"icon ion-social-facebook\" style=\"color: rgb(0,0,0);\"></i></a><a href=\"#\"><i class=\"icon ion-social-instagram\" style=\"color: rgb(0,0,0);\"></i></a><a href=\"#\"><i class=\"icon ion-social-github\" style=\"color: rgb(0,0,0);\"></i></a></div>\n" +
+                            "            <div class=\"links\"><a style=\"color: rgb(255,255,255);\">Quiénes somos</a><a style=\"color: rgb(255,255,255);\">Términos y condiciones</a></div>\n" +
+                            "            <div class=\"social-icons\"><a><i class=\"icon ion-social-facebook\" style=\"color: rgb(0,0,0);\"></i></a><a><i class=\"icon ion-social-instagram\" style=\"color: rgb(0,0,0);\"></i></a><a><i class=\"icon ion-social-github\" style=\"color: rgb(0,0,0);\"></i></a></div>\n" +
                             "        </div>\n" +
                             "    </footer>\n" +
                             "    <script src=\"assets/bootstrap/js/bootstrap.min.js\"></script>\n" +
