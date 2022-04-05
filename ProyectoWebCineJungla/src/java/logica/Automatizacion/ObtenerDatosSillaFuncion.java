@@ -22,6 +22,7 @@ public class ObtenerDatosSillaFuncion {
     private void proceso(){
         obtenerSillaFuncion();
         obtenerSilla();
+        actualizarEstado();
     }
     private void obtenerSillaFuncion(){
         try{
@@ -50,6 +51,15 @@ public class ObtenerDatosSillaFuncion {
         }
     }
 
+    private void actualizarEstado(){
+        DBSillaFuncion DBsf = new DBSillaFuncion();
+        try{
+            sf.setEstado("Ocupada");
+            DBsf.modifySillaFuncion(sf);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
     public int getIdSilaFuncion() {
         return idSilaFuncion;
     }

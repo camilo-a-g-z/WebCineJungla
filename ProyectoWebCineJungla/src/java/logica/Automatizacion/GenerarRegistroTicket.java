@@ -19,6 +19,7 @@ public class GenerarRegistroTicket {
         GrabarRegistroBoleta registro = new GrabarRegistroBoleta(
                 precio.getCosto(),"1",idSillaFuncion,idFactura);
         
+        
     }
     
     
