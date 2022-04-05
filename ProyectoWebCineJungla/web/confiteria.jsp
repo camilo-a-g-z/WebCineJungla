@@ -42,13 +42,13 @@
             </div>
             <div class="container d-inline-flex flex-wrap">
                 <%while(res1.next()){%>
-                    <form method="post" action="ResumenCompra" style="width: 286px;height: 440px;padding: 4px;margin-right: 0px;margin-left: 0px;"> 
+                    <form method="post" action="ResumenCompra" class="shadow" style="width: 286px;margin-right: 0px;margin-left: 0px;padding: 6px;"> 
                         <div id="info" style="display:none">
                             <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
                             <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
                             <input id="idComida" name="idComida" type="text" value="<%out.println(res1.getString("idComida"));%>">
                         </div>
-                        <div style="width: 233px;height: 407px;padding: 15px;border-width: 1px;border-style: solid;margin: 10px;"><img style="width: 200px;height: 240px;" src="<%out.println(res1.getString("UrlImagen"));%>"/>
+                        <div style="width: 233px;height: 407px;padding: 15px;margin: 10px;"><img style="width: 200px;height: 240px;" src="<%out.println(res1.getString("UrlImagen"));%>"/>
                             <select name="cantidad" id="cantidad" class="border rounded-pill" style="width: 60px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 5px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(0,0,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
