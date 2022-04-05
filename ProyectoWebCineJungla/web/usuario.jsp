@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" action="servlet"> <%out.println(res1.getString("Nombre"));%> </a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
