@@ -1,16 +1,14 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package servlets.AdminComunication;
 
-import datos.DBConexion;
-import datos.DBEmpleado;
+import datos.DBComida;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author David
+ * @author Miguel
  */
-public class ListarEmpleado extends HttpServlet {
+public class ListarConfiteria extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,23 +33,24 @@ public class ListarEmpleado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        ResultSet resEmpleado;
-        DBEmpleado DBe = new DBEmpleado();
+        ResultSet resConfiteria;
+        DBComida DBc = new DBComida();
         int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
-        try {
-            resEmpleado = DBe.getEmpleados();
-            request.getSession().setAttribute("resEmpleado", resEmpleado);
-            request.getSession().setAttribute("idEmpleado", idEmpleado);
-            response.sendRedirect("adminPersonal.jsp");
 
+        try {
+            resConfiteria = DBc.getComidas();
+            request.getSession().setAttribute("resConfiteria", resConfiteria);
+            request.getSession().setAttribute("idEmpleado", idEmpleado);
+            response.sendRedirect("adminConfiteria.jsp");
         } catch (Exception e) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarEmpleado</title>");
+            out.println("<title>Servlet ListarConfiteria</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarEmpleado at " + e.getMessage() + "</h1>");
+            out.println("<h1>Servlet ListarConfiteria at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

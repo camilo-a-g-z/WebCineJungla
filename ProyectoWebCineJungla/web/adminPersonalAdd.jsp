@@ -1,3 +1,8 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%String empleado = (String) session.getAttribute("idEmpleado"); 
+
+%>
 <!DOCTYPE html>
 <html>
 
@@ -21,10 +26,27 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" action="servlet"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a>
-                    <a class="nav-link" action="servlet"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a>
-                    <a class="nav-link active" action="servlet"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
-                </ul><a href="index.html"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
+                    <li class="nav-item">
+                        <form class="nav-link" action="ListarPelicula">
+                            <div id="info" style="display:none">
+                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
+                            <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">PelÃ­culas</button>
+                        </form>
+                        <form class="nav-link active" action="ListarConfiteria">
+                            <div id="info" style="display:none">
+                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
+                            <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">ConfiterÃ­a</button>
+                        </form>
+                        <form class="nav-link" action="ListarEmpleado">
+                            <div id="info" style="display:none">
+                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
+                            <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
+                        </form>
+                    </li>
+                </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesiÃ³n</button></a>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
         </nav>
@@ -47,19 +69,19 @@
                                             <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del empleado</h4>
                                         </div>
                                         <form class="d-inline user">
-                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
+                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Nombre" name="nombre"></div>
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="apellido" placeholder="Apellido" name="apellido"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="cedula" placeholder="Cédula" name="cedula"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="telefono" placeholder="Teléfono" name="telefono"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="cedula" placeholder="CÃ©dula" name="cedula"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="telefono" placeholder="TelÃ©fono" name="telefono"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" placeholder="Correo electrónico" name="correo" id="correo"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="contraseña" placeholder="Contraseña" name="contraseña"></div>
-                                            </div><a href="adminPersonal.html"><button class="btn btn-primary border rounded-pill" type="sumbit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir empleado</button></a>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" placeholder="Correo electrÃ³nico" name="correo" id="correo"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="contraseÃ±a" placeholder="ContraseÃ±a" name="contraseÃ±a"></div>
+                                            </div><a href="adminPersonal.html"><button class="btn btn-primary border rounded-pill" type="sumbit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">AÃ±adir empleado</button></a>
                                             <hr>
                                         </form>
                                         <div class="text-center"></div>

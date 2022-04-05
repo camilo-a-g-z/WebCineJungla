@@ -1,3 +1,8 @@
+<%@page import="java.sql.ResultSet"%>
+<%
+  ResultSet res1 = (ResultSet) session.getAttribute("resPeliculas");
+  String empleado = (String) session.getAttribute("idEmpleado");;
+%>
 <!DOCTYPE html>
 <html>
 
@@ -21,10 +26,24 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" action="servlet"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">PelÃ­culas</span></a>
-                    <a class="nav-link" action="servlet"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a>
-                    <a class="nav-link" action="servlet"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
-                </ul><a href="index.html"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
+                        </a>
+                        <form class="nav-link active" action="ListarConfiteria">
+                            <div id="info" style="display:none">
+                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
+                            <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confitería</button>
+                        </form>
+                        <form class="nav-link" action="ListarEmpleado">
+                            <div id="info" style="display:none">
+                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
+                            <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
+                        </form>
+                    </li>
+                </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
         </nav>
@@ -47,23 +66,22 @@
                                                 <th>Clasificación de edad</th>
                                                 <th>Director</th>
                                                 <th>Sinopsis</th>
-                                                <th>Imagen</th>
                                                 <th>Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%while(res.next()){%>
+                                            <%while(res1.next()){%>
                                                 <tr>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
+                                                    <td><%out.println(res1.getString("Nombre"));%></td>
+                                                    <td><%out.println(res1.getString("Duracion"));%></td>
+                                                    <td><%out.println(res1.getString("ClasificacionEdad"));%></td>
+                                                    <td><%out.println(res1.getString("Director"));%></td>
+                                                    <td><%out.println(res1.getString("Sinopsis"));%></td>
+                                                    <td><%out.println(res1.getString("Estado"));%></td>
                                                     <td>
                                                         <form action="servlet">
-                                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
-                                                            <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Ver funciones</button>
+                                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
+                                                            <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Eliminar</button>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -94,8 +112,8 @@
                                 <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;margin-top: 0px;">Salas disponibles</p>
                             </div>
                             <div class="card-body d-flex">
-                                <%while(res.next()){%>
-                                    <h1 class="border rounded-pill" style="width: 50px;height: 34px;font-size: 20px;color: rgb(0,0,0);margin: 5px;margin-bottom: 0px;background: #ebebeb;padding: 5px;"><%out.println(res.getString("numero"));%></h1>
+                                <%while(res1.next()){%>
+                                    <h1 class="border rounded-pill" style="width: 50px;height: 34px;font-size: 20px;color: rgb(0,0,0);margin: 5px;margin-bottom: 0px;background: #ebebeb;padding: 5px;"><%out.println(res1.getString("numero"));%></h1>
                                 <%}%> 
                             </div>
                         </div>

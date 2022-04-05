@@ -72,6 +72,14 @@
         <servlet-name>ResumenCompra</servlet-name>
         <servlet-class>servlets.ticketService.ResumenCompra</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarPelicula</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarPelicula</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarConfiteria</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarConfiteria</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -143,6 +151,14 @@
     <servlet-mapping>
         <servlet-name>ResumenCompra</servlet-name>
         <url-pattern>/ResumenCompra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarPelicula</servlet-name>
+        <url-pattern>/ListarPelicula</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarConfiteria</servlet-name>
+        <url-pattern>/ListarConfiteria</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
