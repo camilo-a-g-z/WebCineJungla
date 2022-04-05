@@ -18,7 +18,7 @@ public class ordenarFuncionPorHorario implements Comparator<Funcion> {
 
     @Override
     public int compare(Funcion o1, Funcion o2) {
-        if (o1.getHorario().before(o2.getHorario())) {
+        if (o1.getHorarioC().before(o2.getHorarioC())) {
             aux = -1;
         } else {
             aux = 1;
