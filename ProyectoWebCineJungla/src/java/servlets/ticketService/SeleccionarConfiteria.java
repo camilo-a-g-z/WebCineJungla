@@ -2,8 +2,6 @@ package servlets.ticketService;
 
 import datos.DBCliente;
 import datos.DBComida;
-import datos.DBRegistroBoleta;
-import datos.DBRegistroComida;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -13,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Automatizacion.GenerarRegistroTicket;
 import logica.Automatizacion.ObtenerDatosSillaFuncion;
-import logica.RegistroBoleta;
-import logica.RegistroComida;
 
 /**
  *

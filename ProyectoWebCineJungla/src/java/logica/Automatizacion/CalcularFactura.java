@@ -60,8 +60,15 @@ public class CalcularFactura {
             fc.setDia(res3.getInt("Dia"));
             fc.setCliente_idCliente(res3.getInt("Cliente_idCliente"));
             fc.setIdFacturaCliente(res3.getInt("idFacturaCliente"));
+            fc.setTotal(res3.getDouble("Total"));
+            
+            fc.setTotal(costo);
+            
+            DBf.modifyCliente(fc);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+        
+        
     }
 }
