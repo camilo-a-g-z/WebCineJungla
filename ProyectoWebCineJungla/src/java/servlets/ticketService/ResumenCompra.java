@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.CalcularFactura;
 import logica.Automatizacion.GenerarRegistroComida;
 
 /**
@@ -34,7 +35,7 @@ public class ResumenCompra extends HttpServlet {
                     Integer.parseInt(request.getParameter("idComida")),
                     Integer.parseInt(request.getParameter("idFactura")),
                     Integer.parseInt(request.getParameter("cantidad")));
-            
+            CalcularFactura calcular = new CalcularFactura(Integer.parseInt(request.getParameter("idFactura")));
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
