@@ -23,7 +23,7 @@ public class CalcularFactura {
     private void proceso(){
         obtenerDatos();
         calcularCosto();
-        
+        enviarDB();
     }
     private void obtenerDatos(){
         try{

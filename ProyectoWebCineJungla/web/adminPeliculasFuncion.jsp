@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Cine Jungla</title>
+    <title>Table - Brand</title>
     <link rel="stylesheet" href="assetsAdmin/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap">
@@ -21,10 +21,10 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" action="servlet"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">PelÃ­culas</span></a>
+                    <li class="nav-item"><a class="nav-link active" action="servlet"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">Películas</span></a>
                     <a class="nav-link" action="servlet"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a>
                     <a class="nav-link" action="servlet"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
-                </ul><a href="index.html"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
+                </ul><a href="index.html"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesiÃ³n</button></a>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
         </nav>
@@ -32,23 +32,22 @@
             <div id="content">
                 <div id="content-1">
                     <div class="container-fluid">
-                        <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Películas</h3>
+                        <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">PelÃ­culas&nbsp;</h3>
                         <div class="card shadow">
                             <div class="card-header py-3">
-                                <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de las funciones</p>
+                                <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Funciones de la pelicula</p>
                             </div>
-                            <div class="card-body"><a class="card-link" href="adminPeliculasAdd.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 150px;height: 38px;">Añadir película</button></a>
+                            <div class="card-body">
                                 <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
                                     <table class="table my-0" id="dataTable">
                                         <thead>
                                             <tr>
-                                                <th>Nombre</th>
+                                                <th>Sala</th>
                                                 <th>Duración</th>
-                                                <th>Clasificación de edad</th>
-                                                <th>Director</th>
-                                                <th>Sinopsis</th>
-                                                <th>Imagen</th>
-                                                <th>Estado</th>
+                                                <th>Año</th>
+                                                <th>Mes</th>
+                                                <th>Día</th>
+                                                <th>Hora</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -60,43 +59,14 @@
                                                     <td><%out.println(res.getString(""));%></td>
                                                     <td><%out.println(res.getString(""));%></td>
                                                     <td><%out.println(res.getString(""));%></td>
-                                                    <td>
-                                                        <form action="servlet">
-                                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
-                                                            <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Ver funciones</button>
-                                                        </form>
-                                                    </td>
                                                 </tr>
                                             <%}%>
-                                            <tr></tr>
                                         </tbody>
                                         <tfoot>
                                             <tr></tr>
                                         </tfoot>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card shadow">
-                            <div class="card-header py-3">
-                                <form action="servlet">
-                                    <select class="border rounded-pill" style="font-size: 24px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);margin-bottom: 6px;margin-left: -2px;">
-                                        <optgroup label="Múltiplex">
-                                            <option value="1" selected>Titán Plaza</option>
-                                            <option value="2">Unicentro</option>
-                                            <option value="3">Plaza Central</option>
-                                            <option value="4">Gran Estación</option>
-                                            <option value="5">Embajador</option>
-                                            <option value="6">Plaza de las Ámericas</option>
-                                        </optgroup>
-                                    </select>
-                                </form>
-                                <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;margin-top: 0px;">Salas disponibles</p>
-                            </div>
-                            <div class="card-body d-flex">
-                                <%while(res.next()){%>
-                                    <h1 class="border rounded-pill" style="width: 50px;height: 34px;font-size: 20px;color: rgb(0,0,0);margin: 5px;margin-bottom: 0px;background: #ebebeb;padding: 5px;"><%out.println(res.getString("numero"));%></h1>
-                                <%}%> 
                             </div>
                         </div>
                     </div>
