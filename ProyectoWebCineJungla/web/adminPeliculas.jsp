@@ -1,3 +1,8 @@
+<%@page import="java.sql.ResultSet"%>
+<%
+  ResultSet res1 = (ResultSet) session.getAttribute("resPeliculas");
+  String empleado = (String) session.getAttribute("idEmpleado");;
+%>
 <!DOCTYPE html>
 <html>
 
@@ -49,22 +54,21 @@
                                                 <th>Clasificación de edad</th>
                                                 <th>Director</th>
                                                 <th>Sinopsis</th>
-                                                <th>Imagen</th>
                                                 <th>Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%while(res.next()){%>
+                                            <%while(res1.next()){%>
                                                 <tr>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
+                                                    <td><%out.println(res1.getString("Nombre"));%></td>
+                                                    <td><%out.println(res1.getString("Duracion"));%></td>
+                                                    <td><%out.println(res1.getString("ClasificacionEdad"));%></td>
+                                                    <td><%out.println(res1.getString("Director"));%></td>
+                                                    <td><%out.println(res1.getString("Sinopsis"));%></td>
+                                                    <td><%out.println(res1.getString("Estado"));%></td>
                                                     <td>
                                                         <form action="servlet">
-                                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
+                                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
                                                             <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Eliminar</button>
                                                         </form>
                                                     </td>
@@ -96,8 +100,8 @@
                                 <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;margin-top: 0px;">Salas disponibles</p>
                             </div>
                             <div class="card-body d-flex">
-                                <%while(res.next()){%>
-                                    <h1 class="border rounded-pill" style="width: 50px;height: 34px;font-size: 20px;color: rgb(0,0,0);margin: 5px;margin-bottom: 0px;background: #ebebeb;padding: 5px;"><%out.println(res.getString("numero"));%></h1>
+                                <%while(res1.next()){%>
+                                    <h1 class="border rounded-pill" style="width: 50px;height: 34px;font-size: 20px;color: rgb(0,0,0);margin: 5px;margin-bottom: 0px;background: #ebebeb;padding: 5px;"><%out.println(res1.getString("numero"));%></h1>
                                 <%}%> 
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String empleado = (String) session.getAttribute("idEmpleado"); 
-    ResultSet res1 = (ResultSet) session.getAttribute("comidas");
+    ResultSet res1 = (ResultSet) session.getAttribute("resConfiteria");
 %>
 <html>
 
