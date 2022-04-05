@@ -1,21 +1,18 @@
 package servlets.ticketService;
 
-import datos.DBCliente;
-import datos.DBPelicula;
-import datos.DBSillaFuncion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.GenerarRegistroComida;
 
 /**
  *
  * @author Camilo Garcia
  */
-public class DecidirSillas extends HttpServlet {
+public class ResumenCompra extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,40 +28,14 @@ public class DecidirSillas extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         //conexion base de datos
-        DBSillaFuncion DBsf = new DBSillaFuncion();
-        DBCliente DBc = new DBCliente();
-        DBPelicula DBp = new DBPelicula();
-        //resultsets
-        ResultSet res1;
-        ResultSet res2;
-        ResultSet res3;
-        try{
-           res1 = DBsf.getSillaFuncionByidFuncion(Integer.parseInt(request.getParameter("idFuncion")));
-//           System.out.println(request.getParameter("idFuncion"));
-//           while(res1.next()){
-//               System.out.println(request.getParameter("idFuncion"));
-//           }
-           res2 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
-           res2.next();
-           res3 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-           //Se carga en session
-           request.getSession().setAttribute("Nombre", res2.getString("Nombre"));
-           request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
-           request.getSession().setAttribute("idFactura", request.getParameter("idFactura"));
-           request.getSession().setAttribute("sillas", res1);
-           request.getSession().setAttribute("cantidad", request.getParameter("cantidad"));
-           request.getSession().setAttribute("pelicula", res3);
-           response.sendRedirect("funcionFinal.jsp");
+        
+        try  {
+            GenerarRegistroComida generate = new GenerarRegistroComida(
+                    Integer.parseInt(request.getParameter("idComida")),
+                    Integer.parseInt(request.getParameter("idFactura")),
+                    Integer.parseInt(request.getParameter("cantidad")));
         }catch(Exception e){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DecidirSillas</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Error at " + e.getMessage() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            System.out.println(e.getMessage());
         }
     }
 

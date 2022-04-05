@@ -1,12 +1,12 @@
 <%@page import="java.sql.ResultSet"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%String user = (String) session.getAttribute("idCliente"); 
-    ResultSet res1 = (ResultSet) session.getAttribute("pelicula");
-    ResultSet res2 = (ResultSet) session.getAttribute("funcion");
-    ResultSet res3 = (ResultSet) session.getAttribute("sillafuncion");
-    res1.next();
-    int cantidad = (int)session.getAttribute("cantidad");
+<%
     String nombre = (String) session.getAttribute("Nombre");
+    String idCliente = (String) session.getAttribute("idCliente");
+    String idFactura = (String) session.getAttribute("idFactura");
+    ResultSet res1 = (ResultSet) session.getAttribute("pelicula");
+    ResultSet res2 = (ResultSet) session.getAttribute("sillas");
+    String cantidad = (String) session.getAttribute("cantidad");
+    res1.next();
 %>
 <html>
 
@@ -30,8 +30,8 @@
         <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesi√≥n</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet"></a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiÛn</a></li>
                 </ul>
             </div>
         </div>
@@ -42,31 +42,38 @@
             <h1 class="text-break"><%out.println(res1.getString("Nombre"));%></h1>
             <p class="text-break">Clasificacion edad: <%out.println(res1.getString("ClasificacionEdad"));%></p>
             <div></div>
+            <p class="text-break">Duracion: <%out.println(res1.getString("Duracion"));%></p>
+            <p class="text-break">Director: <%out.println(res1.getString("Director"));%></p>
             <p class="text-break">Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
-            <p class="text-break">Funcion: D√≠a: <%out.println(res2.getString("A√±o")+"/"+res2.getString("Mes")+"/"+res2.getString("Dia")+" Hora: "+res2.getString("Hora"));%></p>
+            <p class="text-break">Funcion: DÌa: </p>
             <p class="text-break">Escoja sus sillas (guiese por la imagen a la derecha):</p>
-            <form method="post" action="">
+            <form method="post" action="SeleccionarConfiteria">
                 <div id="info" style="display:none">
-                    <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                    <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                    <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
+                    <input id="cantidad" name="cantidad" type="text" value="<%out.println(cantidad);%>">
                     <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
                 </div>
-                <%for(int i=0; i<cantidad; i++){%> "n√∫mero de sillas escogido"
-                <p style="font-size: 20px;margin-bottom: 0px;">Selecci√≥n de sillas:</p>
-                <select name="Silla "+i class="border rounded-pill" style="width: 95px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
-                    <optgroup label="Silla"> "lista de sillas disponibles"
-                        <%while(res3.next()){%>
-                            <option value="<%out.println(res3.getString("idSillaFuncion"));%>"><%out.println(res3.getString("ubicacion"));%></option>
-                        <<%}%>
-                    </optgroup>
-                </select>
+                
+                <p style="font-size: 20px;margin-bottom: 0px;">SelecciÛn de sillas:</p>
+                <%for( int i = 0 ; i < Integer.parseInt(cantidad) ; i++){%>
+                    <select name="idSala<%out.print(i);%>" class="border rounded-pill" style="width: 220px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 5px;margin-bottom: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
+                        <%while(res2.next()){%>
+                        <option value="<%out.print(res2.getString("idSillaFuncion"));%>">Tipo:<%out.println(res2.getString("Estado"));%> </option>
+                        <%}%>
+
+                    </select>
+                    <%while(res2.previous()){%>
+                    <%}%>
                 <%}%>
+                <button class="btn btn-primary border rounded-pill" type="submit" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Seguir</button>
             </form>
         </div>
-        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 408px;"><img style="width: 360px;height: 500px;margin: 25px;" src="sillas.png"/></div>
+        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 408px;"><img style="width: 360px;height: 500px;margin: 25px;" src="Sillas.png"/></div>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">T√©rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÈrminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>
