@@ -33,12 +33,12 @@
     </nav>
     <main class="page projects-page">
         <section class="portfolio-block projects-cards" style="padding-top: 40px;padding-bottom: 60px;">
-            <div class="container d-inline-flex flex-wrap">
+            <div class="heading">
                 <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Últimos estrenos</h2>
             </div>
-            <%while(res.next()){%>
-                <form method="post" action="PeliculaMultiplex" class="shadow" style="width: 368px;margin-right: 0px;margin-left: 0px;padding: 20px;">
-                    <div class="container">
+            <div class="container d-inline-flex flex-wrap">
+                <%while(res.next()){%>
+                    <form method="post" action="PeliculaMultiplex" class="shadow" style="width: 368px;margin-right: 0px;margin-left: 0px;padding: 20px;">
                         <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>"/>
                             <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6>
                             <button class="btn btn-primary border rounded-0" type="submit" style="width: 280px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Ver funciones</button></a>
@@ -47,9 +47,9 @@
                                 <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("idPelicula"));%>">
                             </div>
                         </div>
-                    </div>
-                </form>
-            <%}%>
+                    </form>
+                <%}%>
+            </div>
         </section>
     </main>
     <footer class="page-footer" style="background: #000000;">
