@@ -1,7 +1,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%String user = (String) session.getAttribute("idCliente"); 
+<%  String user = (String) session.getAttribute("idCliente");
     String nombre = (String) session.getAttribute("Nombre");
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -42,8 +43,8 @@
                     <div id="info" style="display:none"><input id="id_usuario" name="id_usuario" type="text" value="<%out.println(user);%>"></div>
                     <div class="mb-3"></div>
                     <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Nombre de usuario</label>
-                        <p style="font-size: 22px;font-family: Lato, sans-serif;"><%out.println(res.Nombre);%></p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de productos</label>
-                        <p style="font-size: 22px;">Lista de productos</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;"><%out.println(res.Total);%></label>
+                        <p style="font-size: 22px;font-family: Lato, sans-serif;">></p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de productos</label>
+                        <p style="font-size: 22px;">Lista de productos</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;"></label>
                         <p style="font-size: 22px;">Valor total</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total de puntos adquiridos</label>
                         <p style="font-size: 22px;">Puntos</p>
                     </div>
