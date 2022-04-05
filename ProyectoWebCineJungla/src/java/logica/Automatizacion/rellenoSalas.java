@@ -98,6 +98,8 @@ public class rellenoSalas {
                 System.out.println("Se revisa dia del mes: " + (a + 1));
                 horaInicial.set(Calendar.HOUR_OF_DAY, 12);
                 horaInicial.set(Calendar.MINUTE, 00);
+                horaFinal.set(Calendar.HOUR_OF_DAY, 22);
+                horaFinal.set(Calendar.MINUTE, 00);
 
                 for (int i = 0; i < conf.size(); i++) {
                     //System.out.println("El tamaño del arreglo de funciones es " + conf.size());
@@ -149,7 +151,7 @@ public class rellenoSalas {
 
                             //System.out.println(fechaAux.before(funcionDiaActual.get(0).getHorarioC()));
                             if (auxDate.equals(auxDate2) || (auxDate.before(auxDate2))) {
-                                //Insertar Funcion
+                                //Insertar Funcion con hora auxDate
 
                                 System.out.println("ENTRA LINEA 128, hay tiempo suficiente para introducir la pelicula despues de las (12) "
                                         + "y antes de la primera funcion");
@@ -164,20 +166,30 @@ public class rellenoSalas {
 
                             Calendar auxCal = Calendar.getInstance();
                             auxCal = funcionDiaActual.get(funcionDiaActual.size() - 1).getHorarioC();
+                            // System.out.println("La ultima funcion es a las:" + auxCal.get(Calendar.HOUR_OF_DAY) + ":" + auxCal.get(Calendar.MINUTE));
+                            // System.out.println("La ultima hora del dia es :" + horaFinal.get(Calendar.HOUR_OF_DAY) + ":" + horaFinal.get(Calendar.MINUTE));
+
                             auxCal.add(auxCal.MINUTE, funcionDiaActual.get(funcionDiaActual.size() - 1).getDuracion() % 60);
                             auxCal.add(auxCal.HOUR_OF_DAY, (int) (funcionDiaActual.get(funcionDiaActual.size() - 1).getDuracion() / 60));
-                            //System.out.println(auxCal.get(Calendar.HOUR_OF_DAY));
-                            //System.out.println(funcionDiaActual.get(funcionDiaActual.size() - 1).getDuracion());
+                            // System.out.println("La ultima funcion mas su duracion es:" + auxCal.get(Calendar.HOUR_OF_DAY) + ":" + auxCal.get(Calendar.MINUTE));
+
                             auxCal.add(auxCal.MINUTE, auxMin);
                             auxCal.add(Calendar.HOUR_OF_DAY, auxHr);
+                            System.out.println("La ultima funcion mas su duracion mas la duracion de la pelicula que queremos meter es:" + auxCal.get(Calendar.HOUR_OF_DAY) + ":" + auxCal.get(Calendar.MINUTE));
                             Date auxDate = new Date();
                             auxDate.setHours(auxCal.get(Calendar.HOUR_OF_DAY));
                             auxDate.setMinutes(auxCal.get(Calendar.MINUTE));
+                            System.out.println(auxDate.getHours() + ":" + auxDate.getMinutes());
+
                             Date auxDate2 = new Date();
                             auxDate2.setHours(horaFinal.get(Calendar.HOUR_OF_DAY));
                             auxDate2.setMinutes(horaFinal.get(Calendar.MINUTE));
+                            //  System.out.println(auxDate2.getHours() + ":" + auxDate2.getMinutes());
+                            //  System.out.println(auxDate.equals(auxDate2));
+                            //  System.out.println((auxDate.before(auxDate2)));
+
                             if (auxDate.equals(auxDate2) || (auxDate.before(auxDate2))) {
-                                //Insertar Funcion
+                                //Insertar Funcion con hora auxDate
                                 System.out.println("ENTRA LINEA 180, hay tiempo suficiente para introducir la funcion despues de la ultima funcion y antes de las 12 de la noche");
                                 InsercionAntesFuncion = true;
                             }
@@ -186,36 +198,49 @@ public class rellenoSalas {
                         //System.out.println(InsercionAntesFuncion);
                         if (!InsercionAntesFuncion && funcionDiaActual.size() >= 2) {
                             //Verificar huecos entre funciones
-                            for (int i = 0; i < funcionDiaActual.size() - 1; i++) {
+                            for (int i = 0; i < funcionDiaActual.size() - 1 && !InsercionAntesFuncion; i++) {
 
                                 System.out.println("Entro a la linea 190, no se ingresaron despues de las 12 y antes de la primera funcion"
                                         + " ni despues de la ultima funcion y antes de las 12");
-                                Calendar auxCal = Calendar.getInstance();
-                                Calendar auxCal2 = Calendar.getInstance();
-
                                 Date auxDate = new Date();
                                 Date auxDate2 = new Date();
 
+                                Calendar auxCal = Calendar.getInstance();
+
                                 auxCal = funcionDiaActual.get(i).getHorarioC();
+                                System.out.println("Horario Inicial de la funcion" + auxCal.get(Calendar.HOUR_OF_DAY) + ":" + auxCal.get(Calendar.MINUTE));
                                 auxCal.add(auxCal.MINUTE, (funcionDiaActual.get(i).getDuracion() % 60));
+                                System.out.println("Horario Inicial de la funcion mas minutos" + auxCal.get(Calendar.HOUR_OF_DAY) + ":" + auxCal.get(Calendar.MINUTE));
                                 auxCal.add(auxCal.HOUR_OF_DAY, (int) (funcionDiaActual.get(i).getDuracion() / 60));
+                                System.out.println("Horario Inicial de la funcion mas horas" + auxCal.get(Calendar.HOUR_OF_DAY) + ":" + auxCal.get(Calendar.MINUTE));
                                 auxCal.add(auxCal.MINUTE, auxMin);
+                                System.out.println("Horario Inicial de la funcion mas minutos de la funcion" + auxCal.get(Calendar.HOUR_OF_DAY) + ":" + auxCal.get(Calendar.MINUTE));
                                 auxCal.add(auxCal.HOUR_OF_DAY, auxHr);
+                                System.out.println("Horario Inicial de la funcion mas hora de la funcion" + auxCal.get(Calendar.HOUR_OF_DAY) + ":" + auxCal.get(Calendar.MINUTE));
 
                                 auxDate.setHours(auxCal.get(Calendar.HOUR_OF_DAY));
                                 auxDate.setMinutes(auxCal.get(Calendar.MINUTE));
+                                // System.out.println(auxDate.getHours() + ":" + auxDate.getMinutes());
 
-                                auxCal2 = funcionDiaActual.get(i + 1).getHorarioC();
-                                auxDate2.setHours(auxCal2.get(auxCal2.HOUR_OF_DAY));
-                                auxDate2.setMinutes(auxCal2.get(auxCal2.MINUTE));
+                                Calendar otroCalendar = null;
+                                otroCalendar = funcionDiaActual.get(i + 1).getHorarioC();
+                                otroCalendar.add(Calendar.MINUTE, -(funcionDiaActual.get(i + 1).getDuracion() & 60));
+                                otroCalendar.add(Calendar.HOUR_OF_DAY, -(int) (funcionDiaActual.get(i + 1).getDuracion() / 60));
+                                System.out.println("Horario Inicial de la funcion" + otroCalendar.get(Calendar.HOUR_OF_DAY) + ":" + otroCalendar.get(Calendar.MINUTE));
 
-                                System.out.println(auxDate.getHours() + ":" + auxDate.getMinutes());
-                                System.out.println(auxCal2.get(auxCal2.HOUR_OF_DAY) + ":" + auxCal2.get(auxCal2.MINUTE));
+                                otroCalendar.add(Calendar.MINUTE, -auxMin);
+                                otroCalendar.add(Calendar.MINUTE, -2);
+                                otroCalendar.add(Calendar.HOUR_OF_DAY, -auxHr);
+                                System.out.println("Horario Inicial de la funcion" + otroCalendar.get(Calendar.HOUR_OF_DAY) + ":" + otroCalendar.get(Calendar.MINUTE));
+
+                                auxDate2.setHours(otroCalendar.get(Calendar.HOUR_OF_DAY));
+                                auxDate2.setMinutes(otroCalendar.get(Calendar.MINUTE));
                                 System.out.println(auxDate.equals(auxDate2));
                                 System.out.println(auxDate.before(auxDate2));
                                 if (auxDate.equals(auxDate2) || (auxDate.before(auxDate2))) {
-                                    //Ingresar funcion
+                                    //Ingresar funcion con horas auxDate
                                     System.out.println("ENTRA LINEA 215, se ingresa una funcion entre funciones");
+                                    InsercionAntesFuncion = true;
                                 }
 
                             }
@@ -264,8 +289,8 @@ public class rellenoSalas {
         prueba = new Funcion();
         prueba.setPelicula_idPelicula(4);
         prueba.setSala_idSala(1);
-        prueba.setHorarioC(generarCalendar(2022, 4, 15, 15, 40));
-        prueba.setDuracion(85);
+        prueba.setHorarioC(generarCalendar(2022, 4, 15, 20, 00));
+        prueba.setDuracion(50);
         conf.add(prueba);
 
     }
