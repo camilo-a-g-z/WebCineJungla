@@ -1,9 +1,9 @@
 package servlets.ticketService;
 
 import datos.DBCliente;
-import datos.DBFacturaCliente;
-import datos.DBFuncion;
-import datos.DBPelicula;
+import datos.DBComida;
+import datos.DBRegistroBoleta;
+import datos.DBRegistroComida;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -11,14 +11,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Automatizacion.FuncionesByMultiplex;
-import logica.FacturaCliente;
+import logica.Automatizacion.GenerarRegistroTicket;
+import logica.Automatizacion.ObtenerDatosSillaFuncion;
+import logica.RegistroBoleta;
+import logica.RegistroComida;
 
 /**
  *
  * @author Camilo Garcia
  */
-public class FuncionesEspecificas extends HttpServlet {
+public class SeleccionarConfiteria extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,50 +34,43 @@ public class FuncionesEspecificas extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         PrintWriter out = response.getWriter();
-        //conexiones a base de datos
-        DBFuncion DBf = new DBFuncion();
-        DBFacturaCliente DBfc = new DBFacturaCliente();
+        //conexion base de datos
         DBCliente DBc = new DBCliente();
-        DBPelicula DBp = new DBPelicula();
-        //Generacion de factura
-        FacturaCliente fc = new FacturaCliente();
-        fc.setAño(Integer.parseInt(request.getParameter("anio")));
-        fc.setMes(Integer.parseInt(request.getParameter("mes")));
-        fc.setDia(Integer.parseInt(request.getParameter("dia")));
-        fc.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
-        fc.setTotal(0.0);
+        DBComida comida = new DBComida();
         //resultsets
         ResultSet res1;
         ResultSet res2;
-        ResultSet res3;
-        //variables
-        int idFactura = 0;
         try {
+            //se generan los registros
+            for(int i=0; i<Integer.parseInt(request.getParameter("cantidad"));i++){
+                GenerarRegistroTicket gRT = new GenerarRegistroTicket(
+                    Integer.parseInt(request.getParameter("idSala"+i)), 
+                    Integer.parseInt(request.getParameter("idFactura")));
+            }
+            //se traen datos de la confiteria
+            ObtenerDatosSillaFuncion data = new ObtenerDatosSillaFuncion(Integer.parseInt(request.getParameter("idSala0")));
+            res2 = comida.getComidaByMultiplex(data.getSf().getFuncion_idFuncion());
+            //Datos de cliente
             res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
             res1.next();
-            //insertar factura
-            DBfc.insertarFacturaCliente(fc);
-            //guardar idfactura
-            idFactura = Integer.parseInt(DBfc.getLastId());
-            res2 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-            FuncionesByMultiplex test = new FuncionesByMultiplex(
-                    Integer.parseInt(request.getParameter("idPelicula")), 
-                    Integer.parseInt(request.getParameter("idMultiplex")), 
-                    Integer.parseInt(request.getParameter("anio")), 
-                    Integer.parseInt(request.getParameter("mes")),
-                    Integer.parseInt(request.getParameter("dia")));   
-            //cargar a session
+            //Cargar a session
             request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
-            request.getSession().setAttribute("array", test.getFunciones());
             request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
-            request.getSession().setAttribute("pelicula", res2);
-            request.getSession().setAttribute("idFactura", idFactura);
-            request.getSession().setAttribute("cantidad", request.getParameter("cantidad"));
-            response.sendRedirect("funcionEspecifica.jsp");
+            request.getSession().setAttribute("idFactura", request.getParameter("idFactura"));
+            request.getSession().setAttribute("comida", res2);
+            response.sendRedirect("confiteria.jsp");
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SeleccionarConfiteria</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Error at " + e.getMessage() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

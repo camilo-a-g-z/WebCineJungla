@@ -45,7 +45,7 @@
             <p class="text-break">Duracion: <%out.println(res1.getString("Duracion"));%></p>
             <p class="text-break">Director: <%out.println(res1.getString("Director"));%></p>
             <p class="text-break">Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
-            <form method="post" action="funcionFinal">
+            <form method="post" action="DecidirSillas">
                 <div id="info" style="display:none">
                     <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
                     <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">

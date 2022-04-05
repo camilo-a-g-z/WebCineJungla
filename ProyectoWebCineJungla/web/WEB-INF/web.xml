@@ -64,6 +64,14 @@
         <servlet-name>DecidirSillas</servlet-name>
         <servlet-class>servlets.ticketService.DecidirSillas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SeleccionarConfiteria</servlet-name>
+        <servlet-class>servlets.ticketService.SeleccionarConfiteria</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResumenCompra</servlet-name>
+        <servlet-class>servlets.ticketService.ResumenCompra</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -127,6 +135,14 @@
     <servlet-mapping>
         <servlet-name>DecidirSillas</servlet-name>
         <url-pattern>/DecidirSillas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SeleccionarConfiteria</servlet-name>
+        <url-pattern>/SeleccionarConfiteria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResumenCompra</servlet-name>
+        <url-pattern>/ResumenCompra</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
