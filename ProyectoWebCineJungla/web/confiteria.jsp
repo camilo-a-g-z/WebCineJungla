@@ -30,17 +30,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiï¿½n</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <main class="page projects-page">
         <section class="portfolio-block projects-cards" style="padding-top: 40px;padding-bottom: 60px;">
-            <div class="container">
-                <div class="heading" style="margin-bottom: 28px;">
-                    <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">Confitería</h2>
-                </div>
+            <div class="heading" style="margin-bottom: 28px;">
+                <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">Confiterï¿½a</h2>
+             </div>
+            <div class="container d-inline-flex flex-wrap">
                 <%while(res1.next()){%>
                 <form method="post" action="ResumenCompra"> 
                     <div id="info" style="display:none">
@@ -66,7 +66,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Tï¿½rminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>
