@@ -1,9 +1,13 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String user = (String) session.getAttribute("idCliente"); 
+    ResultSet res1 = (ResultSet) session.getAttribute("pelicula");
+    ResultSet res2 = (ResultSet) session.getAttribute("funcion");
+    ResultSet res3 = (ResultSet) session.getAttribute("sillafuncion");
+    res1.next();
+    int cantidad = (int)session.getAttribute("cantidad");
     String nombre = (String) session.getAttribute("Nombre");
 %>
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -26,30 +30,39 @@
         <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="usuario.html"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <main class="page hire-me-page">
-        <section class="portfolio-block hire-me" style="padding-top: 40px;padding-bottom: 60px;">
-            <div class="container">
-                <div class="heading">
-                    <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">Pago</h2>
+    <main class="d-inline-flex page cv-page">
+        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 440px;"><img style="width: 360px;height: 500px;margin: 25px;" src="<%out.println(res1.getString("UrlPelicula"));%>"></div>
+        <div class="d-table-cell group" style="margin-top: 25px;">
+            <h1 class="text-break"><%out.println(res1.getString("Nombre"));%></h1>
+            <p class="text-break">Clasificacion edad: <%out.println(res1.getString("ClasificacionEdad"));%></p>
+            <div></div>
+            <p class="text-break">Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
+            <p class="text-break">Funcion: Día: <%out.println(res2.getString("Año")+"/"+res2.getString("Mes")+"/"+res2.getString("Dia")+" Hora: "+res2.getString("Hora"));%></p>
+            <p class="text-break">Escoja sus sillas (guiese por la imagen a la derecha):</p>
+            <form method="post" action="">
+                <div id="info" style="display:none">
+                    <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                    <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
                 </div>
-                <form style="padding-top: 30px;padding-bottom: 30px;">
-                    <div id="info" style="display:none"><input id="id_usuario" name="id_usuario" type="text" value="<%out.println(user);%>"></div>
-                    <div class="mb-3"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Productos</label>
-                        <p style="font-size: 22px;">Lista de productos</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total a pagar</label>
-                        <p style="font-size: 22px;"><%out.println(res.Total);%></p>
-                    </div>
-                    <div class="col"><button class="btn btn-primary border rounded-pill" type="submit" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 260px;height: 65px;margin-right: 0px;margin-left: 148px;padding: 0px 0px;margin-top: 20px;">Imprimir factura</button></div>
-                    <div class="col"><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 202px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 180px;padding: 0px 0px;margin-top: 20px;">Cancelar compra</button></div>
-                </form>
-            </div>
-        </section>
+                <%for(int i=0; i<cantidad; i++){%> "número de sillas escogido"
+                <p style="font-size: 20px;margin-bottom: 0px;">Selección de sillas:</p>
+                <select name="Silla "+i class="border rounded-pill" style="width: 95px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
+                    <optgroup label="Silla"> "lista de sillas disponibles"
+                        <%while(res3.next()){%>
+                            <option value="<%out.println(res3.getString("idSillaFuncion"));%>"><%out.println(res3.getString("ubicacion"));%></option>
+                        <<%}%>
+                    </optgroup>
+                </select>
+                <%}%>
+            </form>
+        </div>
+        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 408px;"><img style="width: 360px;height: 500px;margin: 25px;" src="sillas.png"/></div>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">

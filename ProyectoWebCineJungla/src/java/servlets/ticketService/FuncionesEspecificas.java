@@ -2,25 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package servlets.AdminComunication;
+package servlets.ticketService;
 
-import datos.DBComida;
-import datos.DBConexion;
+import datos.DBCliente;
+import datos.DBFacturaCliente;
+import datos.DBFuncion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.FacturaCliente;
 
 /**
  *
- * @author David
+ * @author User
  */
-public class ListarComida extends HttpServlet {
+public class FuncionesEspecificas extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,24 +33,40 @@ public class ListarComida extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-        ResultSet resComida;
-        DBComida DBc = new DBComida();
+        DBFuncion DBf = new DBFuncion();
+        PrintWriter out = response.getWriter();
+        DBFacturaCliente DBfc = new DBFacturaCliente();
+        FacturaCliente fc = new FacturaCliente();
+        System.out.println(request.getParameter("anio"));
+        fc.setAño(Integer.parseInt(request.getParameter("anio")));
+        fc.setMes(Integer.parseInt(request.getParameter("mes")));
+        fc.setDia(Integer.parseInt(request.getParameter("dia")));
+        fc.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
+        fc.setTotal(0.0);
+        ResultSet res3;
+        DBCliente DBc = new DBCliente();
+        int idFactura = 0;
         try {
-            resComida = DBc.getComidas();
-            request.getSession().setAttribute("resComida",resComida);
-            response.sendRedirect("confiteria.jsp");
-        }catch (Exception e){
+            res3 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res3.next();
+            request.getSession().setAttribute("Nombre", res3.getString("Nombre"));
+            DBfc.insertarFacturaCliente(fc);
+            idFactura = Integer.parseInt(DBfc.getLastId());
+            ResultSet res = DBf.getFuncionByPelicula(Integer.parseInt(request.getParameter("idPelicula")));
+            res.next();
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarComida</title>");            
+            out.println("<title>Servlet FuncionesEspecificas</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarComida at " + e.getMessage() + "</h1>");
+            out.println("<h1>Hora: " + res.getInt("Hora") + "</h1>");
             out.println("</body>");
             out.println("</html>");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

@@ -5,12 +5,10 @@
 package servlets.AdminComunication;
 
 import datos.DBComida;
-import datos.DBConexion;
+import datos.DBEmpleado;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author David
  */
-public class ListarComida extends HttpServlet {
+public class LoginEmpleado extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,24 +31,48 @@ public class ListarComida extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-        ResultSet resComida;
-        DBComida DBc = new DBComida();
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        DBEmpleado DBc = new DBEmpleado();
+        DBComida DBp = new DBComida();
+        ResultSet resP;
         try {
-            resComida = DBc.getComidas();
-            request.getSession().setAttribute("resComida",resComida);
-            response.sendRedirect("confiteria.jsp");
+            //se llama y guardan los datos recividos segun el parametro recivido
+            
+            ResultSet res = DBc.getEmpleadoLogin(request.getParameter("correo"));
+            out.println("<html>");
+            out.println("<body>");
+            //se consulta si la respuesta esta vacia
+            if (!res.next()) {
+                out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds
+                out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
+            } else {
+                if (res.getString("HashPsw") == null ? request.getParameter("contraseña") == null : res.getString("HashPsw").equals(request.getParameter("contraseña"))) {
+                    resP = DBp.getComidas();
+                    request.getSession().setAttribute("idEmpleado", res.getString("idEmpleado"));
+                    request.getSession().setAttribute("comidas", resP);
+                    out.println("<meta http-equiv='refresh' content='3;URL=adminConfiteria.jsp'>");//redirects after 3 seconds
+                    out.println("<p style='color:red;'>Bienvenido "  + "</p>");
+                } else {
+                    out.println("<meta http-equiv='refresh' content='3;URL=ingresoC.jsp'>");//redirects after 3 seconds
+                    out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
+                }
+            }
+            out.println("</body>");
+            out.println("</html>");
         }catch (Exception e){
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarComida</title>");            
+            out.println("<title>Servlet LoginUser</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarComida at " + e.getMessage() + "</h1>");
+            out.println("<h1>error at " + e.getMessage() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+            System.out.println(e.getMessage());
         }
     }
 

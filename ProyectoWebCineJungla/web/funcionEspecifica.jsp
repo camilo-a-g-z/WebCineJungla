@@ -1,8 +1,11 @@
 <%@page import="java.sql.ResultSet"%>
-<%String user = (String) session.getAttribute("idCliente");
-  String nombre = (String) session.getAttribute("Nombre");
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%String user = (String) session.getAttribute("idCliente"); 
+    ResultSet res1 = (ResultSet) session.getAttribute("pelicula");
+    ResultSet res2 = (ResultSet) session.getAttribute("funcion");
+    res1.next();
+    String nombre = (String) session.getAttribute("Nombre");
 %>
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -26,38 +29,33 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiÃ³n</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <main class="page projects-page">
-        <section class="portfolio-block projects-cards" style="padding-top: 40px;padding-bottom: 60px;">
-            <div class="container">
-                <div class="heading" style="margin-bottom: 28px;">
-                    <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">cartelera</h2>
+    <main class="d-inline-flex page cv-page">
+        <div class="container d-inline" style="padding-left: 0px;padding-right: 0px;width: 440px;"><img style="width: 360px;height: 500px;margin: 25px;" src="<%out.println(res1.getString("UrlPelicula"));%>"></div>
+        <div class="d-table-cell group" style="margin-top: 25px;">
+            <h1 class="text-break"><%out.println(res1.getString("Nombre"));%></h1>
+            <p class="text-break">Clasificacion edad: <%out.println(res1.getString("ClasificacionEdad"));%></p>
+            <div></div>
+            <p class="text-break">Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
+            <form method="post" action="funcionFinal">
+                <div id="info" style="display:none">
+                    <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                    <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
                 </div>
-                <%while(res.next()){%>
-                    <form>
-                    <div id="info" style="display:none"><input id="id_usuario" name="id_usuario" type="text" value="<%out.println(user);%>"></div>
-                    <div class="row" style="padding-top: 0px;">
-                        <div class="col-md-6 col-lg-4" style="border: 2px solid rgb(180,182,186);padding: 18px;height: 790px;width: 415px;margin: 4px;">
-                            <div class="card border-0">
-                                <div class="card-body" style="padding: 0px;"><img src="<%out.println(res.UrlPelicula);%>" style="width: 300px;height: 470px;padding: 0px;">
-                                    <h6 style="margin-top: 20px;"><%out.println(res.Nombre);%></h6>
-                                    <p class="text-muted card-text"><%out.println(res.Sinopsis);%></p><a class="card-link" action><button class="btn btn-primary border rounded-pill" type="submit" style="width: 203px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Comprar boletas</button></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </form>
-                <%}%>
-            </div>
-        </section>
+                <%while(res2.next()){%>
+                    <p class="text-break">DÃ­a: <%out.println(res2.getString("Dia"));%></p>
+                    <button class="btn btn-primary border rounded-pill" type="submit" style="width: 80px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);"><%out.println(res2.getString("Hora"));%></button>
+                <<%}%>
+            </form>
+        </div>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

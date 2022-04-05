@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.GenerateAllMultiplex;
 
 /**
  *
@@ -33,6 +34,7 @@ public class LoginUser extends HttpServlet {
         DBPelicula DBp = new DBPelicula();
         ResultSet resP;
         try {
+//            GenerateAllMultiplex generate = new GenerateAllMultiplex("Portal","Por ahi", 1);
             //se llama y guardan los datos recividos segun el parametro recivido
             ResultSet res = DBc.getClienteLogin(request.getParameter("correo"));
             out.println("<html>");
@@ -43,8 +45,10 @@ public class LoginUser extends HttpServlet {
                 out.println("<p style='color:red;'>Contraseña o usuario incorrecto</p>");
             } else {
                 if (res.getString("HashPsw") == null ? request.getParameter("contraseña") == null : res.getString("HashPsw").equals(request.getParameter("contraseña"))) {
+                    
                     resP = DBp.getPeliculaByEstado("Cartelera");
                     request.getSession().setAttribute("idCliente", res.getString("idCliente"));
+                    request.getSession().setAttribute("Nombre", res.getString("Nombre"));
                     request.getSession().setAttribute("peliculas", resP);
                     out.println("<meta http-equiv='refresh' content='3;URL=inicio.jsp'>");//redirects after 3 seconds
                     out.println("<p style='color:red;'>Bienvenido " + res.getString("Nombre") + "</p>");

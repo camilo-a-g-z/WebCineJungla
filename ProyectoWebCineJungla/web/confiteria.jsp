@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%String user = (String) session.getAttribute("idCliente");
+  String nombre = (String) session.getAttribute("Nombre");
+  ResultSet res1 = (ResultSet) session.getAttribute("resComida");%>
 <!DOCTYPE html>
 <html>
 
@@ -18,11 +22,11 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="--bs-primary: #000000;--bs-primary-rgb: 0,0,0;--bs-info: #ffffff;--bs-info-rgb: 255,255,255;--bs-danger: #000000;--bs-danger-rgb: 0,0,0;--bs-warning: #ffffff;--bs-warning-rgb: 255,255,255;--bs-success: #000000;--bs-success-rgb: 0,0,0;background: linear-gradient(94deg, black 27%, rgb(223,223,223) 206%, rgb(176,176,176) 251%, white 251%);">
-        <div class="container"><a class="navbar-brand logo" href="inicio.html" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="usuario.html"><%out.println(res.Nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Cerrar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -33,12 +37,12 @@
                 <div class="heading" style="margin-bottom: 28px;">
                     <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">Confitería</h2>
                 </div>
-                <%while(res.next()){%>
-                    <form> 
+                <%while(res1.next()){%>
+                    <form method="post"> 
                         <div class="row">
-                            <div class="col" style="border: 2px solid rgb(180,182,186);padding: 8px;margin-left: 4px;margin-bottom: 4px;margin-right: 4px;margin-top: 4px;"><img src="<%out.println(res.UrlImagen);%>" style="width: 200px;height: 240px;">
-                                <h1><%out.println(res.Nombre);%></h1>
-                                <p><%out.println(res.Precio);%></p><button class="btn btn-primary border rounded-pill" type="submit" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Comprar</button>
+                            <div class="col" style="border: 2px solid rgb(180,182,186);padding: 8px;margin-left: 4px;margin-bottom: 4px;margin-right: 4px;margin-top: 4px;"><img src="<%out.println(res1.getString("UrlImagen"));%>" style="width: 200px;height: 240px;">
+                                <h1><%out.println(res1.getString("Nombre"));%></h1>
+                                <p><%out.println(res1.getString("Precio"));%></p><button class="btn btn-primary border rounded-pill" type="submit" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Comprar</button>
                             </div>
                         </div>
                     </form>

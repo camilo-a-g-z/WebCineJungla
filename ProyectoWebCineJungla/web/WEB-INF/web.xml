@@ -48,6 +48,18 @@
         <servlet-name>ListarAccionRol</servlet-name>
         <servlet-class>servlets.AdminComunication.ListarAccionRol</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginEmpleado</servlet-name>
+        <servlet-class>servlets.AdminComunication.LoginEmpleado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddMultiplex</servlet-name>
+        <servlet-class>servlets.AdminComunication.AddMultiplex</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuncionesEspecificas</servlet-name>
+        <servlet-class>servlets.ticketService.FuncionesEspecificas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -95,6 +107,18 @@
     <servlet-mapping>
         <servlet-name>ListarAccionRol</servlet-name>
         <url-pattern>/ListarAccionRol</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginEmpleado</servlet-name>
+        <url-pattern>/LoginEmpleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMultiplex</servlet-name>
+        <url-pattern>/AddMultiplex</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionesEspecificas</servlet-name>
+        <url-pattern>/FuncionesEspecificas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

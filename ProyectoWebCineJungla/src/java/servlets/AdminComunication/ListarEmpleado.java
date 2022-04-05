@@ -5,6 +5,7 @@
 package servlets.AdminComunication;
 
 import datos.DBConexion;
+import datos.DBEmpleado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
@@ -20,9 +21,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author David
  */
 public class ListarEmpleado extends HttpServlet {
-    private ResultSet rs;//Crea objeto de tipo ResulSet
-    private DBConexion con;//Crea objeto de tipo conexion
-    private PreparedStatement st;//Crea objeto de tipo Statement
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,8 +35,9 @@ public class ListarEmpleado extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         ResultSet resEmpleado;
+        DBEmpleado DBe = new DBEmpleado();
         try{
-            resEmpleado=listarEmpleado();
+            resEmpleado=DBe.getEmpleados();
             request.getSession().setAttribute("resEmpleado",resEmpleado);
             response.sendRedirect("adminPersonal.jsp");
 
@@ -53,21 +52,6 @@ public class ListarEmpleado extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-    }
-    
-    public ResultSet listarEmpleado(){
-        String consulta="select * from Empleado";
-        try {
-            con = new DBConexion();//Obtengo la conexión
-            st = con.getConexion().prepareStatement(consulta);//por medio del objeto conexión se prepara la consulta a la base de datos
-            rs = st.executeQuery(consulta);//Ejecuto la consulta y la guardo en el objeto rs
-            st.close();// cierro la conexión
-            con.desconectar(); //me desconecto de la base de datos
-        } catch (SQLException e) {//Si captura algún error lo muestra
-            System.out.println("Consulta imposible");
-            System.out.println(e);
-        }
-        return rs;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

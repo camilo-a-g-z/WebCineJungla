@@ -1,16 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.AdminComunication;
-
-import datos.DBComida;
-import datos.DBConexion;
+import logica.Automatizacion.GenerateAllMultiplex;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author David
  */
-public class ListarComida extends HttpServlet {
+public class AddMultiplex extends HttpServlet {
+    private GenerateAllMultiplex gam;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,22 +24,27 @@ public class ListarComida extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-        ResultSet resComida;
-        DBComida DBc = new DBComida();
+        PrintWriter out = response.getWriter();
+        String nombre, direccion;
+        int cantidad;
+        nombre = request.getParameter("nombreMulti");
+        direccion = request.getParameter("direccionMulti");
+        cantidad = Integer.parseInt(request.getParameter("nombreMulti"));
+        int idEmpleado = Integer.parseInt("id");
         try {
-            resComida = DBc.getComidas();
-            request.getSession().setAttribute("resComida",resComida);
-            response.sendRedirect("confiteria.jsp");
+            
+            gam=new GenerateAllMultiplex(nombre, direccion, cantidad);
+            response.sendRedirect("ListarSala?idEmpleado="+idEmpleado);
+            
         }catch (Exception e){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarComida</title>");            
+            out.println("<title>Servlet AddMultiplex</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarComida at " + e.getMessage() + "</h1>");
+            out.println("<h1>Servlet AddMultiplex at " + e.getMessage() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

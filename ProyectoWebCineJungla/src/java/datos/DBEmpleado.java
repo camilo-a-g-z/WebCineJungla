@@ -24,10 +24,10 @@ public class DBEmpleado {
                 + "Año, "
                 + "Mes, "
                 + "Dia, "
-                + "HashPws, "
+                + "HashPsw, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
-                + "FROM empleadoo "
+                + "FROM empleado "
                 + "WHERE idEmpleado = "+id);
         ResultSet res = pstm.executeQuery();
         return res;
@@ -41,7 +41,7 @@ public class DBEmpleado {
                 + "Año, "
                 + "Mes, "
                 + "Dia, "
-                + "HashPws, "
+                + "HashPsw, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
                 + "FROM empleado "
@@ -53,11 +53,13 @@ public class DBEmpleado {
     
     public ResultSet getEmpleadoLogin(String cedula) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idEmpleado, "
-                + "HashPws "
+                + "HashPsw, "
+                + "Cedula "
                 + "FROM empleado "
-                + "WHERE Cedula = ?");
+                + "WHERE Cedula = ? ");
         pstm.setString(1, cedula);
         ResultSet res = pstm.executeQuery();
+        
         return res;
     }
     
@@ -70,7 +72,7 @@ public class DBEmpleado {
                 + "Año, "
                 + "Mes, "
                 + "Dia, "
-                + "HashPws, "
+                + "HashPsw, "
                 + "Multiplex_idMultiplex, "
                 + "Rol_idRol "
                 + "FROM empleado "

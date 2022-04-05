@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.AdminComunication;
 
 import datos.DBConexion;
+import datos.DBMultiplex;
+import datos.DBSala;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -18,10 +16,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author David
  */
 public class ListarSala extends HttpServlet {
-    private ResultSet rs;//Crea objeto de tipo ResulSet
-    private ResultSet rs1;//Crea objeto de tipo ResulSet
-    private DBConexion con;//Crea objeto de tipo conexion
-    private PreparedStatement st;//Crea objeto de tipo Statement
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,11 +30,15 @@ public class ListarSala extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         ResultSet resSala, resMulti;
+        DBSala DBs = new DBSala();
+        DBMultiplex DBm = new DBMultiplex();
+        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
         try{
-            resSala=listarSala();
-            resMulti=listarMultiplex();
+            resSala=DBs.getSalas();
+            resMulti=DBm.getMultiplexs();
             request.getSession().setAttribute("resSala",resSala);
             request.getSession().setAttribute("resMulti",resMulti);
+            request.getSession().setAttribute("idEmpleado",idEmpleado);
             response.sendRedirect("#"); // CAMBIAR DIRECCIONAMIENTO
 
         }catch (Exception e){
@@ -54,36 +52,6 @@ public class ListarSala extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-    }
-    
-    public ResultSet listarSala(){
-        String consulta="select * from Sala";
-        try {
-            con = new DBConexion();//Obtengo la conexión
-            st = con.getConexion().prepareStatement(consulta);//por medio del objeto conexión se prepara la consulta a la base de datos
-            rs = st.executeQuery(consulta);//Ejecuto la consulta y la guardo en el objeto rs
-            st.close();// cierro la conexión
-            con.desconectar(); //me desconecto de la base de datos
-        } catch (SQLException e) {//Si captura algún error lo muestra
-            System.out.println("Consulta imposible");
-            System.out.println(e);
-        }
-        return rs;
-    }
-    
-    public ResultSet listarMultiplex(){
-        String consulta="select * from Multiplex";
-        try {
-            con = new DBConexion();//Obtengo la conexión
-            st = con.getConexion().prepareStatement(consulta);//por medio del objeto conexión se prepara la consulta a la base de datos
-            rs1 = st.executeQuery(consulta);//Ejecuto la consulta y la guardo en el objeto rs
-            st.close();// cierro la conexión
-            con.desconectar(); //me desconecto de la base de datos
-        } catch (SQLException e) {//Si captura algún error lo muestra
-            System.out.println("Consulta imposible");
-            System.out.println(e);
-        }
-        return rs1;
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
