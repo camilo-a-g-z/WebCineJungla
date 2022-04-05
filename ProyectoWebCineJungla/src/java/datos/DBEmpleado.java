@@ -6,15 +6,32 @@ import java.sql.SQLException;
 import logica.Empleado;
 
 /**
+ * Esta clase guarda todo lo referente a los datos de los empleados.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class DBEmpleado {
+    
+    //Espacios de la clase
     DBConexion cn;
-    //constructor
+    
+    //Constructor de la clase
     public DBEmpleado(){
         cn = new DBConexion();
     }
+    //Cierre del constructor
+    
+    /**
+     * Funcion que obtiene los los datos de un empleado con su numero de 
+     * identificacion asociado.
+     * 
+     * @param id Define el numero de identificacion.
+     * @return Los datos del empleado.
+     * @throws SQLException 
+     */
     public ResultSet getEmpleadoById(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idEmpleado, "
                 + "Nombre, "
@@ -32,6 +49,15 @@ public class DBEmpleado {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Funcion que obtiene datos del empleado con su numero de cedula asociado.
+     * 
+     * @param cedula Define el numero de cedula del empleado. 
+     * @return Datos del empleado.
+     * @throws SQLException 
+     */
     public ResultSet getEmpleadoByCedula(String cedula) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idEmpleado, "
                 + "Nombre, "
@@ -50,7 +76,16 @@ public class DBEmpleado {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
     
+    /**
+     * Funcion que obtiene el acceso del empleado con su numero de cedula 
+     * asociado.
+     * 
+     * @param cedula defiene el numero de cedula del empleado.
+     * @return Datos del empleado.
+     * @throws SQLException 
+     */
     public ResultSet getEmpleadoLogin(String cedula) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idEmpleado, "
                 + "HashPsw, "
@@ -62,7 +97,14 @@ public class DBEmpleado {
         
         return res;
     }
+    //Cierre de la funcion
     
+    /**
+     * Funcion que obtiene datos del empleado.
+     * 
+     * @return Datos del empleado.
+     * @throws SQLException 
+     */
     public ResultSet getEmpleados() throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idEmpleado, "
                 + "Nombre, "
@@ -80,7 +122,13 @@ public class DBEmpleado {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
     
+    /**
+     * Metodo que agrega un empleado a la base de datos de la empresa.
+     * 
+     * @param e 
+     */
     public void insertarEmpleado(Empleado e){
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into empleado(Nombre, "
@@ -110,10 +158,26 @@ public class DBEmpleado {
             System.out.println(error);
         }
     }
+    //Cierre del metodo
+    
+    /**
+     * Metodo que elimina un empleado de la base de datos de la empresa.
+     * 
+     * @param i
+     * @throws SQLException 
+     */
     public void eliminarEmpleado(int i) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("delete from cliente where idEmpleado = "+i);
             pstm.executeUpdate();
     }
+    //Cierre del metodo
+    
+    /**
+     * Metodo que modifica un registro de la base de datos.
+     * 
+     * @param e
+     * @throws SQLException 
+     */
     public void modifyEmpleado(Empleado e) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update empleado "
                 + "set  Nombre = ? , "
@@ -140,7 +204,11 @@ public class DBEmpleado {
         pstm.setInt(11, e.getIdEmpleado());
         pstm.executeUpdate();
     }
+    //Cierre del metodo
+    
+    //Metodo get
     public String getMensaje() {
         return cn.getMensaje();
     }
+    //Cierre del metodo Get
 }
