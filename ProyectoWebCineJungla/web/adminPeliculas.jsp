@@ -26,13 +26,13 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
                         <a class="nav-link">
-                            <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Pelï¿½culas</button>
+                            <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
                         </a>
                         <form class="nav-link active" action="ListarConfiteria">
                             <div id="info" style="display:none">
                                 <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
-                            <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confiterï¿½a</button>
+                            <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confitería</button>
                         </form>
                         <form class="nav-link" action="ListarEmpleado">
                             <div id="info" style="display:none">
@@ -41,7 +41,7 @@
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
                         </form>
                     </li>
-                </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesiï¿½n</button></a>
+                </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
         </nav>
@@ -60,8 +60,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Duraciï¿½n</th>
-                                                <th>Clasificaciï¿½n de edad</th>
+                                                <th>Duración</th>
+                                                <th>Clasificación de edad</th>
                                                 <th>Director</th>
                                                 <th>Sinopsis</th>
                                                 <th>Estado</th>
@@ -97,13 +97,13 @@
                                 <div class="card-header py-3">
                                     <form action="servlet">
                                         <select class="border rounded-pill" style="font-size: 24px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);margin-bottom: 6px;margin-left: -2px;">
-                                            <optgroup label="MÃºltiplex">
-                                                <option value="1" selected>TitÃ¡n Plaza</option>
+                                            <optgroup label="Multiplex">
+                                                <option value="1" selected>Titán Plaza</option>
                                                 <option value="2">Unicentro</option>
                                                 <option value="3">Plaza Central</option>
-                                                <option value="4">Gran EstaciÃ³n</option>
+                                                <option value="4">Gran Estación</option>
                                                 <option value="5">Embajador</option>
-                                                <option value="6">Plaza de las Ãmericas</option>
+                                                <option value="6">Plaza de las Ámericas</option>
                                             </optgroup>
                                         </select>
                                     </form>
