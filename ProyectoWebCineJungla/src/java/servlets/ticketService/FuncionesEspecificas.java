@@ -7,6 +7,7 @@ package servlets.ticketService;
 import datos.DBCliente;
 import datos.DBFacturaCliente;
 import datos.DBFuncion;
+import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.FuncionesByMultiplex;
 import logica.FacturaCliente;
 
 /**
@@ -34,18 +36,23 @@ public class FuncionesEspecificas extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DBFuncion DBf = new DBFuncion();
+        
         PrintWriter out = response.getWriter();
+        //conexiones a base de datos
+        DBFuncion DBf = new DBFuncion();
         DBFacturaCliente DBfc = new DBFacturaCliente();
+        DBCliente DBc = new DBCliente();
+        DBPelicula DBp = new DBPelicula();
+        //Generacion de factura
         FacturaCliente fc = new FacturaCliente();
-        System.out.println(request.getParameter("anio"));
         fc.setAño(Integer.parseInt(request.getParameter("anio")));
         fc.setMes(Integer.parseInt(request.getParameter("mes")));
         fc.setDia(Integer.parseInt(request.getParameter("dia")));
         fc.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
         fc.setTotal(0.0);
+        //resultsets
         ResultSet res3;
-        DBCliente DBc = new DBCliente();
+        //variables
         int idFactura = 0;
         try {
             res3 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
@@ -55,16 +62,15 @@ public class FuncionesEspecificas extends HttpServlet {
             idFactura = Integer.parseInt(DBfc.getLastId());
             ResultSet res = DBf.getFuncionByPelicula(Integer.parseInt(request.getParameter("idPelicula")));
             res.next();
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet FuncionesEspecificas</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Hora: " + res.getInt("Hora") + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            ResultSet res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
+            FuncionesByMultiplex test = new FuncionesByMultiplex(
+                    Integer.parseInt(request.getParameter("idPelicula")), 
+                    Integer.parseInt(request.getParameter("idMultiplex")), 
+                    Integer.parseInt(request.getParameter("anio")), 
+                    Integer.parseInt(request.getParameter("mes")),
+                    Integer.parseInt(request.getParameter("dia")));
+            request.getSession().setAttribute("array", test.getFunciones());
+            request.getSession().setAttribute("pelicula", res1);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
