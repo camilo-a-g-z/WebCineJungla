@@ -69,7 +69,6 @@ public class LoginEmpleado extends HttpServlet {
                             "        <section class=\"portfolio-block block-intro border-bottom\" style=\"padding-top: 40px;padding-bottom: 60px;\">\n" +
                             "            <div class=\"container\">\n" +
                             "                <h1 style=\"font-family: Aclonica, sans-serif;font-size: 45px;\">Contraseña o usuario incorrectos</h1><img style=\"width: 190px;height: 190px;margin-bottom: 70px;margin-top: 5px;\" src=\"usuario.png\">\n" +
-                            "                <div class=\"about-me\"><a href=\"ingresoE.html\" style=\"width: 0px;height: 0px;\"></a><a href=\"ingresoC.html\" style=\"width: 0px;height: 0px;\"></a></div>\n" +
                             "            </div>\n" +
                             "        </section>\n" +
                             "    </main>\n" +
@@ -118,14 +117,12 @@ public class LoginEmpleado extends HttpServlet {
                                 "        <section class=\"portfolio-block block-intro border-bottom\" style=\"padding-top: 40px;padding-bottom: 60px;\">\n" +
                                 "            <div class=\"container\">\n" +
                                 "                <h1 style=\"font-family: Aclonica, sans-serif;font-size: 45px;\">Bienvenido</h1><img style=\"width: 190px;height: 190px;margin-bottom: 70px;margin-top: 5px;\" src=\"usuario.png\">\n" +
-                                "                <div class=\"about-me\"><a href=\"ingresoE.html\" style=\"width: 0px;height: 0px;\"></a><a href=\"ingresoC.html\" style=\"width: 0px;height: 0px;\"></a></div>\n" +
                                 "            </div>\n" +
                                 "        </section>\n" +
                                 "    </main>\n" +
                                 "    <footer class=\"page-footer\" style=\"background: #000000;\">\n" +
                                 "        <div class=\"container\">\n" +
                                 "            <div class=\"links\"><a href=\"#\" style=\"color: rgb(255,255,255);\">Quienes somos</a><a href=\"#\" style=\"color: rgb(255,255,255);\">Términos y condiciones</a></div>\n" +
-                                "            <div class=\"social-icons\"><a href=\"#\"><i class=\"icon ion-social-facebook\" style=\"color: rgb(0,0,0);\"></i></a><a href=\"#\"><i class=\"icon ion-social-instagram\" style=\"color: rgb(0,0,0);\"></i></a><a href=\"#\"><i class=\"icon ion-social-github\" style=\"color: rgb(0,0,0);\"></i></a></div>\n" +
                                 "        </div>\n" +
                                 "    </footer>\n" +
                                 "    <script src=\"assets/bootstrap/js/bootstrap.min.js\"></script>\n" +
@@ -163,7 +160,6 @@ public class LoginEmpleado extends HttpServlet {
                             "        <section class=\"portfolio-block block-intro border-bottom\" style=\"padding-top: 40px;padding-bottom: 60px;\">\n" +
                             "            <div class=\"container\">\n" +
                             "                <h1 style=\"font-family: Aclonica, sans-serif;font-size: 45px;\">Contraseña o usuario incorrectos</h1><img style=\"width: 190px;height: 190px;margin-bottom: 70px;margin-top: 5px;\" src=\"usuario.png\">\n" +
-                            "                <div class=\"about-me\"><a href=\"ingresoE.html\" style=\"width: 0px;height: 0px;\"></a><a href=\"ingresoC.html\" style=\"width: 0px;height: 0px;\"></a></div>\n" +
                             "            </div>\n" +
                             "        </section>\n" +
                             "    </main>\n" +
