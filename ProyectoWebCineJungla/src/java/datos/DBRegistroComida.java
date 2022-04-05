@@ -6,15 +6,31 @@ import java.sql.SQLException;
 import logica.RegistroComida;
 
 /**
+ * Esta clase guarda todo lo referente al area de registro de la confiteria.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class DBRegistroComida {
+    
+    //Espacios de la clase
     DBConexion cn;
-    //constructor
+    
+    //Constructor de la clase
     public DBRegistroComida(){
         cn = new DBConexion();
     }
+    //Cierre del constructor
+    
+    /**
+     * Funcion que obtiene el registro de la comida mediante el numero de 
+     * identificacion del registro.
+     * @param id Define el numero de identificacion del registro.
+     * @return Los datos del registro.
+     * @throws SQLException 
+     */
     public ResultSet getRegistroComidaById(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idRegistroComida, "
                 + "Precio, "
@@ -27,6 +43,15 @@ public class DBRegistroComida {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Funcion que obtiene el registro de la comida mediante el numero de 
+     * identificacion del producto.
+     * @param id Define el numero de identificacion del producto consumible.
+     * @return Los datos del registro.
+     * @throws SQLException 
+     */
     public ResultSet getRegistroComidaByComida(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idRegistroComida, "
                 + "Precio, "
@@ -39,6 +64,15 @@ public class DBRegistroComida {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Funcion que obtiene el registro de la comida mediante el numero de 
+     * identificacion de la facturacion.
+     * @param id Define el numero de identificacion de la factura.
+     * @return Los datos del registro.
+     * @throws SQLException 
+     */
     public ResultSet getRegistroComidaByFacturaRapida(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idRegistroComida, "
                 + "Precio, "
@@ -58,6 +92,15 @@ public class DBRegistroComida {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Funcion que obtiene el registro de la comida mediante el numero de 
+     * identificacion de la facturacion del cliente.
+     * @param id Define el numero de identificacion de la factura del cliente.
+     * @return Los datos del registro.
+     * @throws SQLException 
+     */
     public ResultSet getRegistroComidaByFacturaCliente(int id) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idRegistroComida, "
                 + "Precio, "
@@ -70,6 +113,12 @@ public class DBRegistroComida {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    //Cierre de la funcion
+    
+    /**
+     * Metodo que agrega un registro de la comida a la clase FacturaRapida.
+     * @param r 
+     */
     public void insertarRegistroComidaToFacturaRapida(RegistroComida r){
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into registrocomida(Precio, "
@@ -87,7 +136,12 @@ public class DBRegistroComida {
             System.out.println(e);
         }
     }
+    //Cierre del metodo.
     
+    /**
+     * Metodo que agrega un registro de la comida a la clase FacturaCliente.
+     * @param r 
+     */
     public void insertarRegistroComidaToFacturaCliente(RegistroComida r){
         try{
             PreparedStatement pstm = cn.getConexion().prepareStatement("insert into registrocomida(Precio, "
@@ -105,7 +159,13 @@ public class DBRegistroComida {
             System.out.println(e);
         }
     }
+    //Cierre del metodo
     
+    /**
+     * Meotodo que elimina un registro de la base de datos.
+     * @param i
+     * @throws SQLException 
+     */
     public void eliminarRegistroComida(int i) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("delete from "
                 + "registrocomida where idRegistroComida = "+i);
@@ -121,6 +181,13 @@ public class DBRegistroComida {
                 + "registrocomida where FacturaRapida_idFacturaRapida = "+i);
             pstm.executeUpdate();
     }
+    //Cierre del metodo
+    
+    /**
+     * Metodo que modifica un registro de la comida de la clase FacturaRapida.
+     * @param r
+     * @throws SQLException 
+     */
     public void modifyRegistroComidaToFacturaRapida(RegistroComida r) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update registrocomida "
                 + "set  Precio = ? , Cantidad = ? ,"
@@ -133,6 +200,13 @@ public class DBRegistroComida {
         pstm.setInt(5, r.getIdRegistroComida());
         pstm.executeUpdate();
     }
+    //Cierre de la funcion
+    
+    /**
+     * Metodo que modifica un registro de la comida de la clase FacturaCliente.
+     * @param r
+     * @throws SQLException 
+     */
     public void modifyRegistroComidaToFacturaCliente(RegistroComida r) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update registrocomida "
                 + "set  Precio = ? , Cantidad = ? ,"
@@ -145,7 +219,11 @@ public class DBRegistroComida {
         pstm.setInt(5, r.getIdRegistroComida());
         pstm.executeUpdate();
     }
+    //Cierre del metodo
+    
+    //Metodo Get
     public String getMensaje() {
         return cn.getMensaje();
     }
+    //Cierre del metodo Get
 }
