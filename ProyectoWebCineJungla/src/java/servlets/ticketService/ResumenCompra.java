@@ -1,11 +1,17 @@
 package servlets.ticketService;
 
+import datos.DBCliente;
+import datos.DBFacturaCliente;
+import datos.DBRegistroBoleta;
+import datos.DBRegistroComida;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.CalcularFactura;
 import logica.Automatizacion.GenerarRegistroComida;
 
 /**
@@ -28,12 +34,38 @@ public class ResumenCompra extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         //conexion base de datos
-        
+        DBCliente DBc = new DBCliente();
+        DBFacturaCliente DBfc = new DBFacturaCliente();
+        DBRegistroComida DBrc = new DBRegistroComida();
+        DBRegistroBoleta DBrb = new DBRegistroBoleta();
+        //resultsets
+        ResultSet res1;
+        ResultSet factura;
+        ResultSet rc;
+        ResultSet rb;
         try  {
+            //se genera registro de la comida
             GenerarRegistroComida generate = new GenerarRegistroComida(
                     Integer.parseInt(request.getParameter("idComida")),
                     Integer.parseInt(request.getParameter("idFactura")),
                     Integer.parseInt(request.getParameter("cantidad")));
+            //se calcula la factura
+            CalcularFactura calcular = new CalcularFactura(Integer.parseInt(request.getParameter("idFactura")));
+            //Se traen los resultados correspondientes de base de datos
+            factura = DBfc.getFacturaClienteById(Integer.parseInt(request.getParameter("idFactura")));
+            rc = DBrc.getRegistroComidaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            rb = DBrb.getRegistroBoletaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            //se obtiene nombre cliente
+            res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res1.next();
+            
+            //Carga en session
+            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+            request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
+            request.getSession().setAttribute("Factura", factura);
+            request.getSession().setAttribute("rc", rc);
+            request.getSession().setAttribute("rb", rb);
+            response.sendRedirect("pagoC.jsp");
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

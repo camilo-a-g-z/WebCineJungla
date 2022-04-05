@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiï¿½n</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -38,27 +38,25 @@
     <main class="page projects-page">
         <section class="portfolio-block projects-cards" style="padding-top: 40px;padding-bottom: 60px;">
             <div class="heading" style="margin-bottom: 28px;">
-                <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">Confiterï¿½a</h2>
-             </div>
+                <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;padding-bottom: 0px;">Confitería</h2>
+            </div>
             <div class="container d-inline-flex flex-wrap">
                 <%while(res1.next()){%>
-                <form method="post" action="ResumenCompra"> 
-                    <div id="info" style="display:none">
-                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
-                        <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
-                        <input id="idComida" name="idComida" type="text" value="<%out.println(res1.getString("idComida"));%>">
-                    </div>
-                    <div class="row">
-                        <select name="cantidad" id="cantidad">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                        <div class="col" style="border: 2px solid rgb(180,182,186);padding: 8px;margin-left: 4px;margin-bottom: 4px;margin-right: 4px;margin-top: 4px;"><img src="<%out.println(res1.getString("UrlImagen"));%>" style="width: 200px;height: 240px;">
-                            <h1><%out.println(res1.getString("Nombre"));%></h1>
-                            <p><%out.println(res1.getString("Precio"));%></p><button class="btn btn-primary border rounded-pill" type="submit" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Comprar</button>
+                    <form method="post" action="ResumenCompra" class="shadow" style="width: 286px;margin-right: 0px;margin-left: 0px;padding: 6px;"> 
+                        <div id="info" style="display:none">
+                            <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                            <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
+                            <input id="idComida" name="idComida" type="text" value="<%out.println(res1.getString("idComida"));%>">
                         </div>
-                    </div>
+                        <div style="width: 233px;height: 407px;padding: 15px;margin: 10px;"><img style="width: 200px;height: 240px;" src="<%out.println(res1.getString("UrlImagen"));%>"/>
+                            <select name="cantidad" id="cantidad" class="border rounded-pill" style="width: 60px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 5px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(0,0,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <h1><%out.println(res1.getString("Nombre"));%></h1>
+                            <p><%out.println(res1.getString("Precio"));%></p><button class="btn btn-primary border rounded-pill" type="submit" style="font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Comprar</button>
+                        </div>   
                     </form>
                 <%}%>
             </div>
@@ -66,7 +64,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Tï¿½rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

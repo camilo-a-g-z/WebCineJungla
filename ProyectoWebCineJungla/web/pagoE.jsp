@@ -41,9 +41,17 @@
                 <form style="padding-top: 30px;padding-bottom: 30px;">
                     <div id="info" style="display:none"><input id="id_usuario" name="id_usuario" type="text" value="<%out.println(user);%>"></div>
                     <div class="mb-3"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Productos</label>
-                        <p style="font-size: 22px;">Lista de productos</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total a pagar</label>
-                        <p style="font-size: 22px;"><%out.println(res.Total);%></p>
+                    <div class="mb-3">
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">FACTURA</label>
+                        <p style="font-size: 22px;font-family: Lato, sans-serif;">AQUI VA LA FACTURA</p>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de productos</label>
+                        <p style="font-size: 22px;">AQUI VA LA LISTA DE PRODUCTOS</p>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de comestibles</label>
+                        <p style="font-size: 22px;">AQUI VA LA LISTA DE COMIDA</p>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Valor total</label>
+                        <p style="font-size: 22px;">AQUI VA EL VALOR TOTAL</p>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total de puntos adquiridos</label>
+                        <p style="font-size: 22px;">AQUI VAN LOS PUNTOS</p>
                     </div>
                     <div class="col"><button class="btn btn-primary border rounded-pill" type="submit" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 260px;height: 65px;margin-right: 0px;margin-left: 148px;padding: 0px 0px;margin-top: 20px;">Imprimir factura</button></div>
                     <div class="col"><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 202px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 180px;padding: 0px 0px;margin-top: 20px;">Cancelar compra</button></div>

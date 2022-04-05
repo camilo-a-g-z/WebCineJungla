@@ -92,6 +92,12 @@
                                                             <td><%out.println(res.getString("idFacturaCliente"));%></td>
                                                             <td><%out.println(res.getString("productos"));%></td>
                                                             <td><%out.println(res.getString("total"));%></td>
+                                                            <td>
+                                                                <form action="servlet">
+                                                                    <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
+                                                                    <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Calificar</button>
+                                                                </form>
+                                                            </td>
                                                         </tr>
                                                     <%}%>
                                                     <tr></tr>
@@ -114,7 +120,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

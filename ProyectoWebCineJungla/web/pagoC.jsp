@@ -1,7 +1,11 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%String user = (String) session.getAttribute("idCliente"); 
+<%  String user = (String) session.getAttribute("idCliente");
     String nombre = (String) session.getAttribute("Nombre");
+    ResultSet factura = (ResultSet) session.getAttribute("Factura");
+    factura.next();
+    ResultSet rc = (ResultSet) session.getAttribute("rc");
+    ResultSet rb = (ResultSet) session.getAttribute("rb");
 %>
 <!DOCTYPE html>
 <html>
@@ -41,11 +45,22 @@
                 <form style="padding: 50px;padding-top: 30px;padding-bottom: 30px;">
                     <div id="info" style="display:none"><input id="id_usuario" name="id_usuario" type="text" value="<%out.println(user);%>"></div>
                     <div class="mb-3"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Nombre de usuario</label>
-                        <p style="font-size: 22px;font-family: Lato, sans-serif;"><%out.println(res.Nombre);%></p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de productos</label>
-                        <p style="font-size: 22px;">Lista de productos</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;"><%out.println(res.Total);%></label>
-                        <p style="font-size: 22px;">Valor total</p><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total de puntos adquiridos</label>
-                        <p style="font-size: 22px;">Puntos</p>
+                    <div class="mb-3">
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">FACTURA</label>
+                        <p style="font-size: 22px;font-family: Lato, sans-serif;">Fecha:<%out.println(factura.getString("Año"));%>/<%out.println(factura.getString("Mes"));%>/<%out.println(factura.getString("Dia"));%></p>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de boletas</label>
+                        <%while(rb.next()){%>
+                            <p style="font-size: 22px;"><%out.println(rb.getString("Precio"));%></p>
+                        <%}%>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de comestibles</label>
+                        <%while(rc.next()){%>
+                            <p style="font-size: 22px;">Precio: <%out.println(rc.getString("Precio"));%></p>
+                            <p style="font-size: 22px;">Cantidad: <%out.println(rc.getString("Cantidad"));%></p>
+                        <%}%>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Valor total</label>
+                        <p style="font-size: 22px;"><%out.println(factura.getString("Total"));%></p>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total de puntos adquiridos</label>
+                        <p style="font-size: 22px;">AQUI VAN LOS PUNTOS</p>
                     </div>
                     <div class="col"><button class="btn btn-primary border rounded-pill" type="submit" action="servlet" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 230px;height: 65px;margin-right: 0px;margin-left: 169px;padding: 0px 0px;margin-top: 20px;">Realizar pago</button></a></div>
                     <div class="col"><button class="btn btn-primary border rounded-0" type="submit" action="servlet" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 190px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 190px;padding: 0px 0px;margin-top: 20px;">Rechazar pago</button></div>
