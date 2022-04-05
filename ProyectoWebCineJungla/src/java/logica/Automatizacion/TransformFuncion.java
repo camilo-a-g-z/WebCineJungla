@@ -60,7 +60,7 @@ public class TransformFuncion {
         return d;
     }
     private Calendar generarCalendar(int Año, int Mes, int Dia, int Hora, int Minuto){
-        Calendar c = null;
+        Calendar c = Calendar.getInstance();
         c.set(Dia, Minuto, Dia, Hora, Minuto);
         return c;
     }

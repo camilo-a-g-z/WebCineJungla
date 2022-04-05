@@ -19,7 +19,7 @@ public class Funcion {
     private int Pelicula_idPelicula = 0;
     private int Duracion = 0;
     private Date Horario;
-    private Calendar HorarioC;
+    private Calendar HorarioC=Calendar.getInstance();
     //metodos setters y getters
 
     public Calendar getHorarioC() {
