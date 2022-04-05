@@ -92,6 +92,10 @@
         <servlet-name>ListarPeliculas</servlet-name>
         <servlet-class>servlets.AdminComunication.ListarPeliculas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowUserInfo</servlet-name>
+        <servlet-class>servlets.ShowUserInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>ListarPeliculas</servlet-name>
         <url-pattern>/ListarPeliculas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowUserInfo</servlet-name>
+        <url-pattern>/ShowUserInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
