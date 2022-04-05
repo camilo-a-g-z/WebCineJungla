@@ -88,6 +88,10 @@
         <servlet-name>Negar</servlet-name>
         <servlet-class>servlets.ticketService.Negar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarPeliculas</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarPeliculas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>Negar</servlet-name>
         <url-pattern>/Negar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarPeliculas</servlet-name>
+        <url-pattern>/ListarPeliculas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
