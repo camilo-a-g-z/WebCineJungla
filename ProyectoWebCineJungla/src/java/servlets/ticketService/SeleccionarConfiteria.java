@@ -2,8 +2,6 @@ package servlets.ticketService;
 
 import datos.DBCliente;
 import datos.DBComida;
-import datos.DBRegistroBoleta;
-import datos.DBRegistroComida;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -13,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Automatizacion.GenerarRegistroTicket;
 import logica.Automatizacion.ObtenerDatosSillaFuncion;
-import logica.RegistroBoleta;
-import logica.RegistroComida;
 
 /**
  *
@@ -50,7 +46,7 @@ public class SeleccionarConfiteria extends HttpServlet {
             }
             //se traen datos de la confiteria
             ObtenerDatosSillaFuncion data = new ObtenerDatosSillaFuncion(Integer.parseInt(request.getParameter("idSala0")));
-            res2 = comida.getComidaByMultiplex(data.getSf().getFuncion_idFuncion());
+            res2 = comida.getComidaByMultiplex(data.obtenerIdMultiplex());
             //Datos de cliente
             res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
             res1.next();

@@ -1,5 +1,7 @@
 package logica.Automatizacion;
 
+import datos.DBFuncion;
+import datos.DBSala;
 import datos.DBSilla;
 import datos.DBSillaFuncion;
 import java.sql.ResultSet;
@@ -60,6 +62,25 @@ public class ObtenerDatosSillaFuncion {
             System.out.println(e.getMessage());
         }
     }
+    
+    public int obtenerIdMultiplex(){
+        int idMultiplex = 0;
+        int idSala = 0;
+        try{
+            DBFuncion DBf = new DBFuncion();
+            ResultSet res = DBf.getFuncionById(sf.getFuncion_idFuncion());
+            res.next();
+            idSala = res.getInt("Sala_idSala");
+            DBSala DBs = new DBSala();
+            ResultSet resS = DBs.getSalaById(idSala);
+            resS.next();
+            idMultiplex = resS.getInt("Multiplex_idMultiplex");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return idMultiplex;
+    }
+    
     public int getIdSilaFuncion() {
         return idSilaFuncion;
     }
