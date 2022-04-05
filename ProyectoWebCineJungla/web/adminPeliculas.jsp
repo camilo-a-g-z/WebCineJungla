@@ -26,9 +26,23 @@
                     </div>
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" action="servlet"><i class="fa fa-video-camera"></i><span style="margin-left: 8px;">PelÃ­culas</span></a>
-                    <a class="nav-link" action="servlet"><i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span></a>
-                    <a class="nav-link" action="servlet"><i class="fa fa-user-plus"></i><span style="margin-left: 8px;">Personal</span></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
+                        </a>
+                        <form class="nav-link active" action="ListarConfiteria">
+                            <div id="info" style="display:none">
+                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
+                            <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confitería</button>
+                        </form>
+                        <form class="nav-link" action="ListarEmpleado">
+                            <div id="info" style="display:none">
+                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
+                            <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
+                        </form>
+                    </li>
                 </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
