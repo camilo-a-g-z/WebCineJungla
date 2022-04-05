@@ -2,7 +2,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%  String user = (String) session.getAttribute("idCliente");
     String nombre = (String) session.getAttribute("Nombre");
-    
+    ResultSet factura = (ResultSet) session.getAttribute("Factura");
+    factura.next();
+    ResultSet rc = (ResultSet) session.getAttribute("rc");
+    ResultSet rb = (ResultSet) session.getAttribute("rb");
 %>
 <!DOCTYPE html>
 <html>
@@ -44,13 +47,18 @@
                     <div class="mb-3"></div>
                     <div class="mb-3">
                         <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">FACTURA</label>
-                        <p style="font-size: 22px;font-family: Lato, sans-serif;">AQUI VA LA FACTURA</p>
-                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de productos</label>
-                        <p style="font-size: 22px;">AQUI VA LA LISTA DE PRODUCTOS</p>
+                        <p style="font-size: 22px;font-family: Lato, sans-serif;">Fecha:<%out.println(factura.getString("Año"));%>/<%out.println(factura.getString("Mes"));%>/<%out.println(factura.getString("Dia"));%></p>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de boletas</label>
+                        <%while(rb.next()){%>
+                            <p style="font-size: 22px;"><%out.println(rb.getString("Precio"));%></p>
+                        <%}%>
                         <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de comestibles</label>
-                        <p style="font-size: 22px;">AQUI VA LA LISTA DE COMIDA</p>
+                        <%while(rc.next()){%>
+                            <p style="font-size: 22px;">Precio: <%out.println(rc.getString("Precio"));%></p>
+                            <p style="font-size: 22px;">Cantidad: <%out.println(rc.getString("Cantidad"));%></p>
+                        <%}%>
                         <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Valor total</label>
-                        <p style="font-size: 22px;">AQUI VA EL VALOR TOTAL</p>
+                        <p style="font-size: 22px;"><%out.println(factura.getString("Total"));%></p>
                         <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total de puntos adquiridos</label>
                         <p style="font-size: 22px;">AQUI VAN LOS PUNTOS</p>
                     </div>
