@@ -33,7 +33,7 @@
     </nav>
     <main class="page projects-page">
         <section class="portfolio-block projects-cards" style="padding-top: 40px;padding-bottom: 60px;">
-            <div class="heading">
+            <div class="container d-inline-flex flex-wrap">
                 <h2 style="font-size: 45px;font-family: Aclonica, sans-serif;margin-bottom: 0px;">Últimos estrenos</h2>
             </div>
             <%while(res.next()){%>
