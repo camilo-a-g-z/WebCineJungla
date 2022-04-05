@@ -1,13 +1,15 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="logica.Funcion"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%String user = (String) session.getAttribute("idCliente"); 
+<%  String nombre = (String) session.getAttribute("Nombre");
     ResultSet res1 = (ResultSet) session.getAttribute("pelicula");
-    ResultSet res2 = (ResultSet) session.getAttribute("funcion");
-    res1.next();
-    String nombre = (String) session.getAttribute("Nombre");
-%>
-<html>
+    ArrayList<Funcion> funciones = (ArrayList<Funcion>)session.getAttribute("array");
+    String idCliente = (String) session.getAttribute("idCliente");
+    Integer idFactura = (Integer) session.getAttribute("idFactura");
+    String cantidad = (String) session.getAttribute("cantidad");
+    res1.next();%>
 
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -29,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiÃ³n</a></li>
+                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -40,22 +42,28 @@
             <h1 class="text-break"><%out.println(res1.getString("Nombre"));%></h1>
             <p class="text-break">Clasificacion edad: <%out.println(res1.getString("ClasificacionEdad"));%></p>
             <div></div>
+            <p class="text-break">Duracion: <%out.println(res1.getString("Duracion"));%></p>
+            <p class="text-break">Director: <%out.println(res1.getString("Director"));%></p>
             <p class="text-break">Sinopsis: <%out.println(res1.getString("Sinopsis"));%></p>
             <form method="post" action="funcionFinal">
                 <div id="info" style="display:none">
-                    <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                    <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
                     <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
+                    <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
+                    <input id="cantidad" name="cantidad" type="text" value="<%out.println(cantidad);%>">
                 </div>
-                <%while(res2.next()){%>
-                    <p class="text-break">DÃ­a: <%out.println(res2.getString("Dia"));%></p>
-                    <button class="btn btn-primary border rounded-pill" type="submit" style="width: 80px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);"><%out.println(res2.getString("Hora"));%></button>
-                <<%}%>
+                <select name="idFuncion" class="border rounded-pill" style="width: 220px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 5px;margin-bottom: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
+                    <%for(int i=0 ;i < funciones.size() ;i++){%>
+                        <option value="<%out.print(funciones.get(i).getIdFuncion());%>">Dia:<%out.println(funciones.get(i).getDia());%> Hora:<%out.println(funciones.get(i).getHora());%>:<%out.println(funciones.get(i).getMinuto());%></option>
+                    <%}%>
+                </select>
+                <button class="btn btn-primary border rounded-pill" type="submit" style="width: 155px;height: 38px;margin-top: 0px;margin-bottom: 5px;margin-left: 37px;padding: 0px 0px;font-size: 16px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);">Seguir</button>
             </form>
         </div>
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quienes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

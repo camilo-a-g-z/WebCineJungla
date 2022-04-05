@@ -8,6 +8,7 @@ import datos.DBCliente;
 import datos.DBFacturaCliente;
 import datos.DBFuncion;
 import datos.DBPelicula;
+import datos.DBSala;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -51,26 +52,34 @@ public class FuncionesEspecificas extends HttpServlet {
         fc.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
         fc.setTotal(0.0);
         //resultsets
+        ResultSet res1;
+        ResultSet res2;
         ResultSet res3;
         //variables
         int idFactura = 0;
         try {
-            res3 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
-            res3.next();
-            request.getSession().setAttribute("Nombre", res3.getString("Nombre"));
+            res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res1.next();
+            //insertar factura
             DBfc.insertarFacturaCliente(fc);
+            //guardar idfactura
             idFactura = Integer.parseInt(DBfc.getLastId());
-            ResultSet res = DBf.getFuncionByPelicula(Integer.parseInt(request.getParameter("idPelicula")));
-            res.next();
-            ResultSet res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
+            res2 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
             FuncionesByMultiplex test = new FuncionesByMultiplex(
                     Integer.parseInt(request.getParameter("idPelicula")), 
                     Integer.parseInt(request.getParameter("idMultiplex")), 
                     Integer.parseInt(request.getParameter("anio")), 
                     Integer.parseInt(request.getParameter("mes")),
-                    Integer.parseInt(request.getParameter("dia")));
+                    Integer.parseInt(request.getParameter("dia")));   
+            System.out.println(test.getFunciones().size());
+            //cargar a session
+            request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
             request.getSession().setAttribute("array", test.getFunciones());
-            request.getSession().setAttribute("pelicula", res1);
+            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+            request.getSession().setAttribute("pelicula", res2);
+            request.getSession().setAttribute("idFactura", idFactura);
+            request.getSession().setAttribute("cantidad", request.getParameter("cantidad"));
+            response.sendRedirect("funcionEspecifica.jsp");
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
