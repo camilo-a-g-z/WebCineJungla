@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.GenerarRegistroTicket;
 import logica.RegistroBoleta;
 import logica.RegistroComida;
 
@@ -31,14 +32,18 @@ public class SeleccionarConfiteria extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         //conexion base de datos
-        DBRegistroBoleta DBrc = new DBRegistroBoleta();
+        
         //Creacion de objeto
         RegistroBoleta registro = new RegistroBoleta();
         registro.setCantidad(request.getParameter("cantidad"));
         registro.setFacturaCliente_idFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
         registro.setPrecio(Double.NaN);
         try {
-            
+            for(int i=0; i<Integer.parseInt(request.getParameter("cantidad"));i++){
+                GenerarRegistroTicket gRT = new GenerarRegistroTicket(
+                    Integer.parseInt(request.getParameter("idSala"+i)), 
+                    Integer.parseInt(request.getParameter("idFactura")));
+            }
         }catch(Exception e){
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
