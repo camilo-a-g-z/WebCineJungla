@@ -19,10 +19,11 @@ public class TransformFuncion {
 
     public TransformFuncion(ResultSet res) throws SQLException {
         this.res = res;
-        transformar(res);
+        transformar();
     }
 
-    private void transformar(ResultSet res) throws SQLException {
+    private void transformar() throws SQLException {
+        System.out.println("Aqui bien");
         while (res.next()) {
             Funcion f = new Funcion();
             f.setEmpleado_idEmpleado(res.getInt("idFuncion"));
@@ -51,7 +52,7 @@ public class TransformFuncion {
         }
     }
     private Date generarDate(int Año, int Mes, int Dia, int Hora, int Minuto){
-        Date d = null;
+        Date d = new Date();
         d.setYear(Año);
         d.setMonth(Mes);
         d.setDate(Dia);
