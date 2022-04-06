@@ -14,14 +14,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Cliente;
-import logica.Empleado;
 
 /**
  *
  * @author User
  */
-public class ConfirmarE extends HttpServlet {
+public class NegarE extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,30 +34,30 @@ public class ConfirmarE extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        //conexion base datos
-        DBEmpleado DBC = new DBEmpleado();
-        DBFacturaRapida DBfc = new DBFacturaRapida();
+        //conexion base de datos
         DBRegistroComida DBrc = new DBRegistroComida();
         DBRegistroBoleta DBrb = new DBRegistroBoleta();
+        DBFacturaRapida DBfc = new DBFacturaRapida();
         DBPelicula DBp = new DBPelicula();
-        //objetos
-        Empleado cli = new Empleado();
-        Double puntos = 0.0;
+        DBEmpleado DBc = new DBEmpleado();
         //resultsets
         ResultSet res1;
-        ResultSet res2;
-        ResultSet res3;
         ResultSet resP;
-        try {
-            res1 = DBC.getEmpleadoById(Integer.parseInt(request.getParameter("idEmpleado")));
+        try  {
+            System.out.println(request.getParameter("idFactura"));
+            DBrc.eliminarRegistroComidaByFacturaRapida(Integer.parseInt(request.getParameter("idFactura")));
+            DBrb.eliminarRegistroBoletaByFacturaRapida(Integer.parseInt(request.getParameter("idFactura")));
+            DBfc.eliminarFacturaRapida(Integer.parseInt(request.getParameter("idFactura")));
+            
+            res1 = DBc.getEmpleadoById(Integer.parseInt(request.getParameter("idEmpleado")));
             res1.next();
             resP = DBp.getPeliculaByEstado("Cartelera");
-            request.getSession().setAttribute("idCliente", res1.getString("idEmpleado"));
-            request.getSession().setAttribute("Nombre", cli.getNombre());
+            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado"));
+            request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
             request.getSession().setAttribute("peliculas", resP);
             response.sendRedirect("inicioE.jsp");
-        } catch(Exception e){
-            System.out.print(e.getMessage());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
