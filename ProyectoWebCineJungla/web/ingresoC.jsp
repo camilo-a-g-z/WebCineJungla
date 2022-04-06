@@ -35,8 +35,10 @@
                         <div class="row">
                             <div class="col"><a><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 23px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 50px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 20px;">Ingresar</button></a></div>
                         </div>
-                    </div>
-                    <p style="margin-left: 183px;">¿No tienes una cuenta?</p><a href="registro.jsp"><button class="btn btn-primary border rounded-0" type="button" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 190px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 0px;">Registrate</button></a>                
+                    </div>        
+                </form>
+                <form action="" method="post" style="padding-top: 30px;padding-bottom: 30px;">
+                    <p style="margin-left: 183px;">¿No tienes una cuenta?</p><a href="registro.jsp"><button class="btn btn-primary border rounded-0" type="button" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 190px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 0px;">Registrate</button></a>
                 </form>
             </div>
         </section>

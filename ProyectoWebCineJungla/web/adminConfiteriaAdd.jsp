@@ -79,9 +79,8 @@
                                                 <div class="col-xl-6"><input class="form-control form-control-user" type="text" id="imagen" placeholder="Imagen" name="imagen"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-xl-12 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="multiplex" placeholder="Multiplex" name="multiplex"></div><a href="adminConfiteria.html"></a>
-                                            </div><a href="adminConfiteria.html"><button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;margin-top: 14px;">Añadir producto</button></a>
-                                            <hr>
+                                                <div class="col-sm-6 col-xl-12 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="multiplex" placeholder="Multiplex" name="multiplex"></div>
+                                            </div><button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;margin-top: 14px;">Añadir producto</button>
                                         </form>
                                         <div class="text-center"></div>
                                         <div class="text-center"></div>
