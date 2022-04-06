@@ -39,11 +39,7 @@ public class DecidirSillas extends HttpServlet {
         ResultSet res2;
         ResultSet res3;
         try{
-           res1 = DBsf.getSillaFuncionByidFuncion(Integer.parseInt(request.getParameter("idFuncion")));
-//           System.out.println(request.getParameter("idFuncion"));
-//           while(res1.next()){
-//               System.out.println(request.getParameter("idFuncion"));
-//           }
+           res1 = DBsf.getSillaFuncionByidFuncionAndEstado(Integer.parseInt(request.getParameter("idFuncion")));
            res2 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
            res2.next();
            res3 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
