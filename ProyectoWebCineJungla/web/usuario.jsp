@@ -58,21 +58,23 @@
                                         <p class="m-0 fw-bold" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del usuario</p>
                                     </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form action="ModifyCliente">
+                                            <div id="info" style="display:none">
+                                                <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                                                <input id="MedioPago" name="MedioPago" type="text" value="<%out.println(res1.getString("MedioPago_idMedioPago"));%>">
+                                                <input id="PuntosJungla" name="PuntosJungla" type="text" value="<%out.println(res1.getString("PuntosJungla"));%>">
+                                            </div>
                                             <div class="row">
                                                 <div class="col" style="height: 100px;">
-                                                    <div class="mb-3"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre de usuario</strong></label><input id="username" class="form-control" type="text" placeholder="user.name" name="username" value="<%out.println(res1.getString("Nombre"));%>"/></div>
+                                                    <div class="mb-3"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre de usuario</strong></label><input id="Nombre" name="Nombre" class="form-control" type="text" placeholder="user.name" name="username" value="<%out.println(res1.getString("Nombre"));%>"/></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Correo eléctronico</strong></label><input id="correo" class="form-control" type="email" placeholder="user@example.com" name="correo" value="<%out.println(res1.getString("Correo"));%>"//></div>
+                                                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Correo eléctronico</strong></label><input id="Correo" name="Correo" class="form-control" type="email" placeholder="user@example.com" name="correo" value="<%out.println(res1.getString("Correo"));%>"/></div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col" style="height: 100px;">
-                                                    <div class="mb-3"><label class="form-label" for="first_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Contraseña</strong><br /></label><input id="nombre" class="form-control" type="text" placeholder="name" name="nombre" value="<%out.println(res1.getString("HashPsw"));%>"/></div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="mb-3"><label class="form-label" for="last_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Apellido</strong></label><input id="apellido" class="form-control" type="text" placeholder="lastname" name="apellido" /></div>
+                                                    <div class="mb-3"><label class="form-label" for="first_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Contraseña</strong><br /></label><input id="HashPsw" name="HashPsw" class="form-control" type="text" placeholder="name" name="nombre" value="<%out.println(res1.getString("HashPsw"));%>"/></div>
                                                 </div>
                                             </div>
                                             <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;font-size: 20px;width: 225px;height: 42px;">Guardar cambios</button></div>
@@ -86,6 +88,7 @@
                                                         <th>Factura</th>
                                                         <th>Fecha</th>
                                                         <th>Valor</th>
+                                                        <th>Calificar Servicio y Pelicula</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
