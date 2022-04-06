@@ -35,7 +35,7 @@
                 <ul class="navbar-nav ms-auto">
                     <form action="ShowUserInfo" method="post">
                         <div id="info" style="display:none">
-                            <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                            <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
                         </div>
                         <li class="nav-item"><button class="nav-link" type="submit" style="background: none;font-size: 16px;border-style: none;"><%out.println(nombre);%></button></li>
                     </form>
