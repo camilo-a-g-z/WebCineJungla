@@ -61,40 +61,34 @@
                 <div id="content-2">
                     <div id="content-1"></div>
                 </div>
-            </nav>
-            <div class="d-flex flex-column" id="content-wrapper">
-                <div id="content">
-                    <div id="content-2">
-                        <div id="content-1"></div>
-                    </div>
-                    <div id="content-3">
-                        <div id="content-4">
-                            <div class="container-fluid">
-                                <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Registro de empleados</h3>
-                                <div class="card shadow">
-                                    <div class="card-header py-3">
-                                        <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Agregar empleado nuevo</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <form class="card-link" action="RedirectPersonalAdd">
-                                            <div id="info" style="display:none">
-                                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
-                                            </div>
-                                            <button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 172px;height: 38px;">Añadir empleado</button>
-                                        </form>
-                                        <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                                            <table class="table my-0" id="dataTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Cédula</th>
-                                                        <th>Teléfono</th>
-                                                        <th>Multiplex</th>
-                                                        <th>Salario</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <%while (res1.next()) {%>
+                <div id="content-3">
+                    <div id="content-4">
+                        <div class="container-fluid">
+                            <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Registro de empleados</h3>
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Agregar empleado nuevo</p>
+                                </div>
+                                <div class="card-body">
+                                    <form class="card-link" action="RedirectPersonalAdd">
+                                        <div id="info" style="display:none">
+                                            <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                        </div>
+                                        <button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 172px;height: 38px;">Añadir empleado</button>
+                                    </form>
+                                    <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                                        <table class="table my-0" id="dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Cédula</th>
+                                                    <th>Teléfono</th>
+                                                    <th>Multiplex</th>
+                                                    <th>Salario</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%while (res1.next()) {%>
                                                     <tr>
                                                         <td><%out.println(res1.getString("Nombre"));%></td>
                                                         <td><%out.println(res1.getString("Cedula"));%></td>

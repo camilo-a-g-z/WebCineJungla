@@ -65,15 +65,15 @@
                 <div id="content-3">
                     <div id="content-4">
                         <div class="container-fluid">
-                            <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Productos de confitería</h3>
+                            <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Multiplex existentes</h3>
                             <div class="card shadow">
                                 <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de los productos</p>
+                                    <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de multiplex</p>
                                 </div>
                                 <div class="card-body">
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del producto</h4>
+                                            <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del multiplex</h4>
                                         </div>
                                         <form class="d-inline user" action="AddMultiplex">
                                             <div id="info" style="display:none"><input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>"></div>
