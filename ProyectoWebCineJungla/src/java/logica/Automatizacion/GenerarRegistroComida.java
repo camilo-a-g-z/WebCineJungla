@@ -19,17 +19,19 @@ import logica.RegistroComida;
 public class GenerarRegistroComida {
 
 //Campos de la clase
+    //Declaracion de variables
     private int idComida = 0;
     private int idFactura = 0;
     private int cantidad = 0;
     private Double precio = 0.0;
     private Comida comida = new Comida();
-    
+
     /**
-     * Constructor de la clase
+     * Constructor de la clase, llama al metodo proceso
+     *
      * @param idComida
      * @param idFactura
-     * @param cantidad 
+     * @param cantidad
      */
     public GenerarRegistroComida(int idComida, int idFactura, int cantidad) {
         this.cantidad = cantidad;
@@ -38,7 +40,7 @@ public class GenerarRegistroComida {
         proceso();
     }
     //Cierre del metodo
-    
+
     /**
      * Metodo que se encarga de llamar a 3 metodos
      */
@@ -50,8 +52,8 @@ public class GenerarRegistroComida {
     //Cierre del metodo
 
     /**
-     * Este metodo se encarga de obtener los datos de la comida de la BD
-     * y guardarla en un objeto comida
+     * Este metodo se encarga de obtener los datos de la comida de la BD y
+     * guardarla en un objeto comida
      */
     private void cargarComida() {
         try {
@@ -68,14 +70,20 @@ public class GenerarRegistroComida {
             System.out.println(e.getMessage());
         }
     }
+
     //Cierre del metodo
     /**
-     * 
+     * Este metodo se encarga de calcular el precio de la comida
      */
     private void calcularPrecio() {
         precio = cantidad * comida.getPrecio();
     }
+    //Cierre del metodo
 
+    /**
+     * Metodo que se encarga de registrar los datos de la comida y su precio en
+     * la factura del cliente en la BD
+     */
     private void generarRegistro() {
         try {
             RegistroComida rc = new RegistroComida();
@@ -89,4 +97,5 @@ public class GenerarRegistroComida {
             System.out.println(e.getMessage());
         }
     }
+    //Cierre del metodo
 }

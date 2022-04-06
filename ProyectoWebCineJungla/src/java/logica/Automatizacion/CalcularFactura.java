@@ -18,13 +18,14 @@ import logica.FacturaCliente;
 public class CalcularFactura {
 
     //Campos de la clase
+    //Declaracion de variables
     private int idFactura = 0;
     private ResultSet res1;
     private ResultSet res2;
     private Double costo = 0.0;
 
-    //Constructor de la clase
     /**
+     * Constructor de la clase, llama al metodo proceso
      *
      * @param idFactura
      */
@@ -74,8 +75,7 @@ public class CalcularFactura {
     }
 
     /**
-     *Metodo que obtiene los datos de la factura y los envia a la 
-     * DB
+     * Metodo que obtiene los datos de la factura y los envia a la DB
      */
     private void enviarDB() {
         ResultSet res3;
@@ -99,4 +99,5 @@ public class CalcularFactura {
         }
 
     }
+    //Cierre del metodo
 }
