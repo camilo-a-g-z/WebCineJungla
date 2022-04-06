@@ -16,8 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import logica.FacturaCliente;
 
 /**
+ * Esta clase ejecuta en el servidor lo referente a la elecicion de la taquilla
+ * de peliculas.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ReservarSilla extends HttpServlet {
 
@@ -34,6 +39,8 @@ public class ReservarSilla extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
+        //Creacion de objetos necesarios
         DBSilla DBs = new DBSilla();
         DBFuncion DBf = new DBFuncion();
         DBEmpleado DBe = new DBEmpleado();
@@ -66,6 +73,15 @@ public class ReservarSilla extends HttpServlet {
             out.println("</html>");
         }
     }
+    /**
+     * Funcion que Genera una factura a partir de la fecha solicitada.
+     * 
+     * @param id Define el el numero de identificacion de la transaccion.
+     * @param dia Define el dia de transaccion.
+     * @param mes Define el mes de la transaccion.
+     * @param anio Define el año de la transaccion.
+     * @return El numero de identificacion de la factura generada.
+     */
     int generarFacturaAndReturnId(int id, int dia, int mes, int anio){
         Date fecha = new Date(anio,mes,dia);
         int idFactura = 0;
