@@ -71,7 +71,7 @@
                                             <div class="row mb-3">
                                                 <select name="idSala" class="border rounded-pill form-select" style="font-size: 18px;font-family: Aldrich, sans-serif;text-align: center;background: rgba(194,23,0,0);border: 2px solid rgb(180,182,186);color: rgb(141,144,157);">
                                                     <%while(res.next()){%>
-                                                        <option value="<%out.print(res.getString("idSala"));%>"><%out.println(res.getString("Numero"));%></option>
+                                                        <option value="<%out.print(res.getString("idSala"));%>">Multiplex: <%out.println(res.getString("Nombre"));%>, Sala: <%out.println(res.getString("Numero"));%></option>
                                                     <%}%>
                                                 </select>
                                             </div>
