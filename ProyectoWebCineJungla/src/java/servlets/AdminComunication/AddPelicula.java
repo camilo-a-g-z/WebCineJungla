@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.AdminComunication;
 
 import datos.DBPelicula;
@@ -40,7 +36,7 @@ public class AddPelicula extends HttpServlet {
         pelicula.setDuracion(Integer.parseInt(request.getParameter("duracion")));
         pelicula.setDirector(request.getParameter("director"));
         pelicula.setSinopsis(request.getParameter("sinopsis"));
-        pelicula.setSinopsis(request.getParameter("imagen"));
+        pelicula.setUrlPelicula(request.getParameter("imagen"));
         pelicula.setEstado(request.getParameter("estado"));
         try {
             DBpel.insertarPelicula(pelicula);
