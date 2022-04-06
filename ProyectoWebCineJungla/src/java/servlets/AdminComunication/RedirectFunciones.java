@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.AdminComunication;
 
 import datos.DBFuncion;
@@ -41,8 +37,9 @@ public class RedirectFunciones extends HttpServlet {
 
             resFuncion = DBFun.getFuncionByPelicula(pelicula);
             request.getSession().setAttribute("funcion", resFuncion);
-
-            response.sendRedirect("adminPeliculasFuncion.jsp?idEmpleado=" + empleado + "&?idPelicula=" + pelicula);
+            request.getSession().setAttribute("idPelicula", request.getParameter("idPelicula"));
+            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado"));
+            response.sendRedirect("adminPeliculasFuncion.jsp");
         } catch (Exception e) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

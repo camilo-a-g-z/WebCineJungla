@@ -41,7 +41,7 @@ public class AddFunciones extends HttpServlet {
                                                  Integer.parseInt(request.getParameter("hora")), Integer.parseInt(request.getParameter("minuto")));
 
         try {
-            response.sendRedirect("ListarSala?idEmpleado=" + idEmpleado + "&?idPelicula=" + pelicula);
+            response.sendRedirect("ListarPeliculas?idEmpleado=" + idEmpleado + "&?idPelicula=" + pelicula);
         }catch (Exception e){
             System.out.println(e.getMessage());
         }

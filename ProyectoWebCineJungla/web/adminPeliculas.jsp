@@ -85,7 +85,7 @@
                                                     <td><%out.println(res1.getString("Director"));%></td>
                                                     <td><%out.println(res1.getString("Sinopsis"));%></td>
                                                     <td><%out.println(res1.getString("Estado"));%></td>
-                                                    <form action="RedirectFunciones">
+                                                    <form action="RedirectFunciones" method="post">
                                                         <div id="info" style="display:none">
                                                             <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
                                                             <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">

@@ -66,12 +66,10 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Número de la sala</h4>
                                     </div>
-                                    <form class="d-inline user" action="AddFunciones">
-                                        <div id="info" style="display:none"><input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>"></div>
-                                        <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(pelicula);%>">
+                                    <form class="d-inline user" action="AddFunciones">                                        
                                         <div class="row mb-3">
                                             <div class="row mb-3">
-                                                <select name="salas" class="border rounded-pill form-select" style="font-size: 18px;font-family: Aldrich, sans-serif;text-align: center;background: rgba(194,23,0,0);border: 2px solid rgb(180,182,186);color: rgb(141,144,157);">
+                                                <select name="idSala" class="border rounded-pill form-select" style="font-size: 18px;font-family: Aldrich, sans-serif;text-align: center;background: rgba(194,23,0,0);border: 2px solid rgb(180,182,186);color: rgb(141,144,157);">
                                                     <%while(res.next()){%>
                                                         <option value="<%out.print(res.getString("idSala"));%>"><%out.println(res.getString("Numero"));%></option>
                                                     <%}%>
@@ -79,6 +77,8 @@
                                             </div>
                                         </div>
                                         <div style="display:none">
+                                            <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                            <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(pelicula);%>">
                                             <input id="anio" name="anio" type="text" value="<%out.println(LocalDateTime.now().getYear());%>">
                                             <input id="mes" name="mes" type="text" value="<%out.println(LocalDateTime.now().getMonthValue());%>">
                                             <input id="dia" name="dia" type="text" value="<%out.println(LocalDateTime.now().getDayOfMonth());%>">
