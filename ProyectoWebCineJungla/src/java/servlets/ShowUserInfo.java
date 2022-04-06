@@ -1,6 +1,7 @@
 package servlets;
 
-import datos.DBPelicula;
+import datos.DBCliente;
+import datos.DBFacturaCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -8,18 +9,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Automatizacion.FuncionesByMultiplex;
 
 /**
- * Esta clase ejecuta en el servidor lo referente a la elecicion de la taquilla
- * de peliculas.
+ * Esta clase ejecuta en el servidor lo referente a la informacion de usuarios.
  *
  * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
  * C. Tuso
  * @version 1.0
  * @since 06/04/2022
  */
-public class PeliculaEspecifica extends HttpServlet {
+public class ShowUserInfo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,31 +32,28 @@ public class PeliculaEspecifica extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DBPelicula DBp = new DBPelicula();
-        try{
-            ResultSet res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-            FuncionesByMultiplex test = new FuncionesByMultiplex(
-                    Integer.parseInt(request.getParameter("idPelicula")), 
-                    Integer.parseInt(request.getParameter("idMultiplex")), 
-                    Integer.parseInt(request.getParameter("anio")), 
-                    Integer.parseInt(request.getParameter("mes")),
-                    Integer.parseInt(request.getParameter("dia")));
-            request.getSession().setAttribute("array", test.getFunciones());
-            request.getSession().setAttribute("pelicula", res1);
-        }catch(Exception e){
-            
-        }
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PeliculaEspecifica</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PeliculaEspecifica at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+
+        //variables
+        String idCliente = request.getParameter("idCliente");
+
+        //conexion con base de datos
+        DBCliente DBc = new DBCliente();
+        DBFacturaCliente DBfc = new DBFacturaCliente();
+
+        //resultsets
+        ResultSet res1;
+        ResultSet res2;
+        try {
+
+            res1 = DBc.getClienteById(Integer.parseInt(idCliente));
+            res2 = DBfc.getFacturaClienteByCliente(Integer.parseInt(idCliente));
+            request.getSession().setAttribute("idCliente", idCliente);
+            request.getSession().setAttribute("cliente", res1);
+            request.getSession().setAttribute("facturas", res2);
+            response.sendRedirect("usuario.jsp");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

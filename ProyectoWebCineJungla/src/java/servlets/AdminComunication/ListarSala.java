@@ -12,10 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la lista de salas disponibles en los
+ * multiplex.
  *
- * @author David
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ListarSala extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,19 +39,18 @@ public class ListarSala extends HttpServlet {
         DBSala DBs = new DBSala();
         DBMultiplex DBm = new DBMultiplex();
         int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
-        try{
-            resSala=DBs.getSalas();
-            resMulti=DBm.getMultiplexs();
-            request.getSession().setAttribute("resSala",resSala);
-            request.getSession().setAttribute("resMulti",resMulti);
-            request.getSession().setAttribute("idEmpleado",idEmpleado);
+        try {
+            resSala = DBs.getSalas();
+            resMulti = DBm.getMultiplexs();
+            request.getSession().setAttribute("resSala", resSala);
+            request.getSession().setAttribute("resMulti", resMulti);
+            request.getSession().setAttribute("idEmpleado", idEmpleado);
             response.sendRedirect("#"); // CAMBIAR DIRECCIONAMIENTO
-
-        }catch (Exception e){
+        } catch (Exception e) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarSala</title>");            
+            out.println("<title>Servlet ListarSala</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListarSala at " + e.getMessage() + "</h1>");
@@ -53,6 +58,8 @@ public class ListarSala extends HttpServlet {
             out.println("</html>");
         }
     }
+
+    //Cierre del metodo
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -91,5 +98,4 @@ public class ListarSala extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

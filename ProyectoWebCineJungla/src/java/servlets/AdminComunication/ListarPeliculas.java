@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets.AdminComunication;
 
 import datos.DBPelicula;
@@ -15,10 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la lista para el manejo de peliculas a 
+ * proyectar.
  *
- * @author Miguel
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
-public class ListarPelicula extends HttpServlet {
+public class ListarPeliculas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,12 +35,12 @@ public class ListarPelicula extends HttpServlet {
         PrintWriter out = response.getWriter();
         ResultSet resPeliculas;
         DBPelicula DBp = new DBPelicula();
-        //int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+        String idEmpleado = request.getParameter("idEmpleado");
         try {
             /* TODO output your page here. You may use following sample code. */
             resPeliculas=DBp.getPeliculas();
             request.getSession().setAttribute("resPeliculas",resPeliculas);
-            //request.getSession().setAttribute("idEmpleado", idEmpleado);
+            request.getSession().setAttribute("idEmpleado", idEmpleado);
             response.sendRedirect("adminPeliculas.jsp");
 
         } catch (Exception e) {

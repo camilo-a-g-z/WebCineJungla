@@ -87,6 +87,14 @@ public class DBRegistroBoleta {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    public ResultSet getRegistroBoletaByFacturaClienteResumen(int id) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idSilla, Ubicacion, Precio, Tipo " +
+            "FROM registroboleta a , sillafuncion b, silla c  " +
+            "where a.FacturaCliente_idFacturaCliente = "+id+ " AND b.idSillaFuncion = a.SillaFuncion_idSillaFuncion " +
+            "AND b.Silla_idSilla = c.idSilla");
+        ResultSet res = pstm.executeQuery();
+        return res;
+    }
     //Cierre de la funcion
     
     /**
@@ -170,6 +178,17 @@ public class DBRegistroBoleta {
                 + "registroboleta where idRegistroBoleta = "+i);
             pstm.executeUpdate();
     }
+    public void eliminarRegistroBoletaByFacturaCliente(int i) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("delete from "
+                + "registroboleta where FacturaCliente_idFacturaCliente = "+i);
+            pstm.executeUpdate();
+    }
+    public void eliminarRegistroBoletaByFacturaRapida(int i) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("delete from "
+                + "registroboleta where FacturaRapida_idFacturaRapida = "+i);
+            pstm.executeUpdate();
+    }
+    
     //Cierre del metodo
     
     /**
@@ -190,6 +209,7 @@ public class DBRegistroBoleta {
         pstm.setInt(5, r.getIdRegistroBoleta());
         pstm.executeUpdate();
     }
+    
     //Cierre del metodo
     
     /**
@@ -197,7 +217,7 @@ public class DBRegistroBoleta {
      * 
      * @param r
      * @throws SQLException 
-     */
+     */ 
     public void modifyRegistroBoletaToFacturaCliente(RegistroBoleta r) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("update registroboleta "
                 + "set  Precio = ? , Cantidad = ? ,"

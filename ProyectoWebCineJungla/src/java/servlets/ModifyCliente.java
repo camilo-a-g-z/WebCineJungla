@@ -1,25 +1,19 @@
 package servlets;
 
-import datos.DBPelicula;
+import datos.DBCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Automatizacion.FuncionesByMultiplex;
+import logica.Cliente;
 
 /**
- * Esta clase ejecuta en el servidor lo referente a la elecicion de la taquilla
- * de peliculas.
  *
- * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
- * C. Tuso
- * @version 1.0
- * @since 06/04/2022
+ * @author Camilo Garcia
  */
-public class PeliculaEspecifica extends HttpServlet {
+public class ModifyCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,31 +27,22 @@ public class PeliculaEspecifica extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DBPelicula DBp = new DBPelicula();
-        try{
-            ResultSet res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-            FuncionesByMultiplex test = new FuncionesByMultiplex(
-                    Integer.parseInt(request.getParameter("idPelicula")), 
-                    Integer.parseInt(request.getParameter("idMultiplex")), 
-                    Integer.parseInt(request.getParameter("anio")), 
-                    Integer.parseInt(request.getParameter("mes")),
-                    Integer.parseInt(request.getParameter("dia")));
-            request.getSession().setAttribute("array", test.getFunciones());
-            request.getSession().setAttribute("pelicula", res1);
+        PrintWriter out = response.getWriter();
+        //conexion base de datos
+        DBCliente DBc = new DBCliente();
+        //Objetos
+        Cliente cli = new Cliente();
+        cli.setCorreo(request.getParameter("Correo"));
+        cli.setHashPsw(request.getParameter("HashPsw"));
+        cli.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
+        cli.setMedioPago_idMedioPago(Integer.parseInt(request.getParameter("MedioPago")));
+        cli.setNombre(request.getParameter("Nombre"));
+        cli.setPuntosJungla(Double.parseDouble(request.getParameter("PuntosJungla")));
+        try {
+            DBc.modifyCliente(cli);
+            response.sendRedirect("index.jsp");
         }catch(Exception e){
-            
-        }
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PeliculaEspecifica</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PeliculaEspecifica at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            System.out.println(e.getMessage());
         }
     }
 

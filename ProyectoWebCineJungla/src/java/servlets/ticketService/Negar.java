@@ -1,6 +1,10 @@
-package servlets;
+package servlets.ticketService;
 
+import datos.DBCliente;
+import datos.DBFacturaCliente;
 import datos.DBPelicula;
+import datos.DBRegistroBoleta;
+import datos.DBRegistroComida;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -8,18 +12,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Automatizacion.FuncionesByMultiplex;
 
 /**
- * Esta clase ejecuta en el servidor lo referente a la elecicion de la taquilla
- * de peliculas.
  *
- * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
- * C. Tuso
- * @version 1.0
- * @since 06/04/2022
+ * @author User
  */
-public class PeliculaEspecifica extends HttpServlet {
+public class Negar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,31 +31,31 @@ public class PeliculaEspecifica extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        //conexion base de datos
+        DBRegistroComida DBrc = new DBRegistroComida();
+        DBRegistroBoleta DBrb = new DBRegistroBoleta();
+        DBFacturaCliente DBfc = new DBFacturaCliente();
         DBPelicula DBp = new DBPelicula();
-        try{
-            ResultSet res1 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-            FuncionesByMultiplex test = new FuncionesByMultiplex(
-                    Integer.parseInt(request.getParameter("idPelicula")), 
-                    Integer.parseInt(request.getParameter("idMultiplex")), 
-                    Integer.parseInt(request.getParameter("anio")), 
-                    Integer.parseInt(request.getParameter("mes")),
-                    Integer.parseInt(request.getParameter("dia")));
-            request.getSession().setAttribute("array", test.getFunciones());
-            request.getSession().setAttribute("pelicula", res1);
-        }catch(Exception e){
+        DBCliente DBc = new DBCliente();
+        //resultsets
+        ResultSet res1;
+        ResultSet resP;
+        try  {
+            System.out.println(request.getParameter("idFactura"));
+            DBrc.eliminarRegistroComidaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            DBrb.eliminarRegistroBoletaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            DBfc.eliminarFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
             
-        }
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PeliculaEspecifica</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PeliculaEspecifica at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res1.next();
+            resP = DBp.getPeliculaByEstado("Cartelera");
+            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+            request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
+            request.getSession().setAttribute("peliculas", resP);
+            response.sendRedirect("inicio.jsp");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

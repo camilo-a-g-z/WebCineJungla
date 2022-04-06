@@ -1,7 +1,10 @@
 package servlets.ticketService;
 
 import datos.DBCliente;
-import datos.DBComida;
+import datos.DBFacturaCliente;
+import datos.DBPelicula;
+import datos.DBRegistroBoleta;
+import datos.DBRegistroComida;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -9,14 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Automatizacion.GenerarRegistroTicket;
-import logica.Automatizacion.ObtenerDatosSillaFuncion;
+import logica.Cliente;
 
 /**
  *
- * @author Camilo Garcia
+ * @author User
  */
-public class SeleccionarConfiteria extends HttpServlet {
+public class Confirmar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,43 +33,51 @@ public class SeleccionarConfiteria extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        //conexion base de datos
-        DBCliente DBc = new DBCliente();
-        DBComida comida = new DBComida();
+        //conexion base datos
+        DBCliente DBC = new DBCliente();
+        DBFacturaCliente DBfc = new DBFacturaCliente();
+        DBRegistroComida DBrc = new DBRegistroComida();
+        DBRegistroBoleta DBrb = new DBRegistroBoleta();
+        DBPelicula DBp = new DBPelicula();
+        //objetos
+        Cliente cli = new Cliente();
+        Double puntos = 0.0;
         //resultsets
         ResultSet res1;
         ResultSet res2;
+        ResultSet res3;
+        ResultSet resP;
         try {
-            //se generan los registros
-            for(int i=0; i<Integer.parseInt(request.getParameter("cantidad"));i++){
-                GenerarRegistroTicket gRT = new GenerarRegistroTicket(
-                    Integer.parseInt(request.getParameter("idSala"+i)), 
-                    Integer.parseInt(request.getParameter("idFactura")));
-            }
-            //se traen datos de la confiteria
-            ObtenerDatosSillaFuncion data = new ObtenerDatosSillaFuncion(Integer.parseInt(request.getParameter("idSala0")));
-            res2 = comida.getComidaByMultiplex(data.obtenerIdMultiplex());
-            //Datos de cliente
-            res1 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res1 = DBC.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
             res1.next();
-            //Cargar a session
-            request.getSession().setAttribute("Nombre", res1.getString("Nombre"));
-            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
-            request.getSession().setAttribute("idFactura", request.getParameter("idFactura"));
-            request.getSession().setAttribute("idPelicula", request.getParameter("idPelicula"));
-            request.getSession().setAttribute("comida", res2);
-            response.sendRedirect("confiteria.jsp");
-        }catch(Exception e){
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SeleccionarConfiteria</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Error at " + e.getMessage() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            cli.setCorreo(res1.getString("Correo"));
+            cli.setHashPsw(res1.getString("HashPsw"));
+            cli.setIdCliente(res1.getInt("idCliente"));
+            cli.setMedioPago_idMedioPago(res1.getInt("MedioPago_idMedioPago"));
+            cli.setNombre(res1.getString("Nombre"));
+            cli.setPuntosJungla(res1.getDouble("PuntosJungla"));
+            System.out.println(request.getParameter("idFactura"));
+            res2 = DBrc.getRegistroComidaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            while(res2.next()){
+                System.out.println("EntroComida");
+                puntos +=5.0;
+            }
+            
+            res3 = DBrb.getRegistroBoletaByFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+            while(res3.next()){
+                System.out.println("EntroBoleta");
+                puntos +=10.0;
+            }
+            puntos += cli.getPuntosJungla();
+            cli.setPuntosJungla(puntos);
+            DBC.modifyCliente(cli);
+            resP = DBp.getPeliculaByEstado("Cartelera");
+            request.getSession().setAttribute("idCliente", String.valueOf(cli.getIdCliente()));
+            request.getSession().setAttribute("Nombre", cli.getNombre());
+            request.getSession().setAttribute("peliculas", resP);
+            response.sendRedirect("inicio.jsp");
+        } catch(Exception e){
+            System.out.print(e.getMessage());
         }
     }
 

@@ -20,18 +20,27 @@ public class TransformPelicula {
 
     public TransformPelicula(ResultSet res) throws SQLException {
         this.res = res;
-        transformar(res);
+        transformar();
+        System.out.println("Anrtes");
     }
 
-    private void transformar(ResultSet res) throws SQLException {
-        pel.setClasificacionEdad(res.getString("ClasificacionEdad"));
-        pel.setDirector(res.getString("Director"));
-        pel.setDuracion(res.getInt("Duracion"));
-        pel.setEstado(res.getString("Estado"));
-        pel.setNombre(res.getString("Nombre"));
-        pel.setSinopsis(res.getString("Sinopsis"));
-        pel.setUrlPelicula(res.getString("UrlPelicula"));
-        pel.setIdPelicula(res.getInt("idPelicula"));
+    private void transformar() {
+        try{
+            while(res.next()){
+                pel.setClasificacionEdad(res.getString("ClasificacionEdad"));
+                pel.setDirector(res.getString("Director"));
+                pel.setDuracion(res.getInt("Duracion"));
+                pel.setEstado(res.getString("Estado"));
+                pel.setNombre(res.getString("Nombre"));
+                pel.setSinopsis(res.getString("Sinopsis"));
+                pel.setUrlPelicula(res.getString("UrlPelicula"));
+                pel.setIdPelicula(res.getInt("idPelicula"));
+                System.out.println("Termino");
+            }
+            
+        }catch(Exception e){
+            System.out.println("Problema en " + e.getLocalizedMessage()+" and "+e.getMessage());
+        }
     }
 
     public Pelicula getPeli() {

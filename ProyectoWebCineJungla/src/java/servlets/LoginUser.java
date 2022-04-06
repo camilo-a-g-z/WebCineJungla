@@ -10,10 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Automatizacion.GenerateAllMultiplex;
+import logica.Automatizacion.rellenoSalas;
 
 /**
+ * Esta clase ejecuta en el servidor lo referente a los Datos para el acceso de 
+ * usuarios a cuentas.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class LoginUser extends HttpServlet {
 
@@ -33,12 +39,15 @@ public class LoginUser extends HttpServlet {
         DBCliente DBc = new DBCliente();
         DBPelicula DBp = new DBPelicula();
         ResultSet resP;
+        rellenoSalas re = new rellenoSalas(54,1,2022,4,5,7,0);
+        System.out.println("PAso");
         try {
-//            GenerateAllMultiplex generate = new GenerateAllMultiplex("Portal","Por ahi", 1);
+            //GenerateAllMultiplex generate = new GenerateAllMultiplex("Portal","Por ahi", 1);
             //se llama y guardan los datos recividos segun el parametro recivido
             ResultSet res = DBc.getClienteLogin(request.getParameter("correo"));
             out.println("<html>");
             out.println("<body>");
+            
             //se consulta si la respuesta esta vacia
             if (!res.next()) {
                 out.println("<meta http-equiv='refresh' content='3;URL=Cliente.jsp'>");//redirects after 3 seconds
@@ -235,5 +244,4 @@ public class LoginUser extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

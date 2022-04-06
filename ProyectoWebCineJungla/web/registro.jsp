@@ -1,3 +1,8 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+   ResultSet res1 = (ResultSet) session.getAttribute("mediopago");
+%>
 <!DOCTYPE html>
 <html>
 
@@ -27,23 +32,26 @@
                 <div class="heading">
                     <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">Registro</h2>
                 </div>
-                <form style="padding-top: 30px;padding-bottom: 30px;">
+                <form style="padding-top: 30px;padding-bottom: 30px;" action="servlet">
                     <div class="mb-3">
                         <div class="row">
                             <div class="col"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre</label><input class="form-control" type="email" id="nombre" name="nombre" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Apellido</label><input class="form-control" type="email" id="apellido" name="apellido" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                            </div>
                         </div>
                     </div>
                     <div class="mb-3"></div>
                     <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre de usuario</label><input class="form-control" type="email" id="username" name="username" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Correo electrónico</label><input class="form-control" type="email" id="correo" name="correo" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Contraseña</label><input class="form-control" type="password" id="contraseña" name="contraseña" style="height: 45px;"></div><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Método de pago</label>
+                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Correo electrÃ³nico</label><input class="form-control" type="email" id="correo" name="correo" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
+                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">ContraseÃ±a</label><input class="form-control" type="password" id="contraseÃ±a" name="contraseÃ±a" style="height: 45px;"></div><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">MÃ©todo de pago</label>
                     <div class="mb-3">
                         <div class="row">
-                            <div class="col"><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 77px;padding: 0px 0px;margin-top: 20px;">Efectivo</button><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 65px;padding: 0px 0px;margin-top: 20px;">Tarjeta</button></div>
-                            <div class="col"><button class="btn btn-primary border rounded-pill" type="submit" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 15px;">Registrarse</button></div>
+                            <%while(res1.next()){%>
+                                <div class="col">
+                                    <input type="radio" name="medioPago" value="<%out.println(res1.getString("Nombre"));%>" style="margin-top: 8px;margin-right: 5px;margin-left: 15px;"><%out.println(res1.getString("Nombre"));%>
+                                </div>
+                            <%}%>
+                            <div class="col">
+                                <button class="btn btn-primary border rounded-pill" type="submit" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 15px;">Registrarse</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -52,7 +60,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quiénes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">QuiÃ©nes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

@@ -1,7 +1,9 @@
 <%@page import="java.sql.ResultSet"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%String user = (String) session.getAttribute("idCliente"); 
-    String nombre = (String) session.getAttribute("Nombre");
+<%
+    String idCliente = (String) session.getAttribute("idCliente");
+    ResultSet res1 = (ResultSet) session.getAttribute("cliente");
+    res1.next();
+    ResultSet res2 = (ResultSet) session.getAttribute("facturas");
 %>
 <!DOCTYPE html>
 <html>
@@ -9,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>CV - Brand</title>
+    <title>Cine Jungla</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap">
@@ -26,8 +28,8 @@
         <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesiÃ³n</a></li>
+                    <li class="nav-item"><a class="nav-link active" action="servlet"> <%out.println(res1.getString("Nombre"));%> </a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -44,7 +46,7 @@
                         <div class="card shadow mb-4">
                             <div class="card-body">
                                 <h4 class="small fw-bold">Puntos obtenidos</h4>
-                                <h1>1451541</h1>
+                                <h1><%out.println(res1.getString("PuntosJungla"));%></h1>
                             </div>
                         </div>
                     </div>
@@ -56,21 +58,23 @@
                                         <p class="m-0 fw-bold" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del usuario</p>
                                     </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form action="ModifyCliente">
+                                            <div id="info" style="display:none">
+                                                <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                                                <input id="MedioPago" name="MedioPago" type="text" value="<%out.println(res1.getString("MedioPago_idMedioPago"));%>">
+                                                <input id="PuntosJungla" name="PuntosJungla" type="text" value="<%out.println(res1.getString("PuntosJungla"));%>">
+                                            </div>
                                             <div class="row">
                                                 <div class="col" style="height: 100px;">
-                                                    <div class="mb-3"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre de usuario</strong></label><input id="username" class="form-control" type="text" placeholder="user.name" name="username" /></div>
+                                                    <div class="mb-3"><label class="form-label" for="username" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre de usuario</strong></label><input id="Nombre" name="Nombre" class="form-control" type="text" placeholder="user.name" name="username" value="<%out.println(res1.getString("Nombre"));%>"/></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Correo elÃ©ctronico</strong></label><input id="correo" class="form-control" type="email" placeholder="user@example.com" name="correo" /></div>
+                                                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Correo eléctronico</strong></label><input id="Correo" name="Correo" class="form-control" type="email" placeholder="user@example.com" name="correo" value="<%out.println(res1.getString("Correo"));%>"/></div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col" style="height: 100px;">
-                                                    <div class="mb-3"><label class="form-label" for="first_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Nombre</strong><br /></label><input id="nombre" class="form-control" type="text" placeholder="name" name="nombre" /></div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="mb-3"><label class="form-label" for="last_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Apellido</strong></label><input id="apellido" class="form-control" type="text" placeholder="lastname" name="apellido" /></div>
+                                                    <div class="mb-3"><label class="form-label" for="first_name" style="font-family: Aldrich, sans-serif;font-size: 18px;"><strong>Contraseña</strong><br /></label><input id="HashPsw" name="HashPsw" class="form-control" type="text" placeholder="name" name="nombre" value="<%out.println(res1.getString("HashPsw"));%>"/></div>
                                                 </div>
                                             </div>
                                             <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;font-size: 20px;width: 225px;height: 42px;">Guardar cambios</button></div>
@@ -82,25 +86,19 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Factura</th>
-                                                        <th>Detalles</th>
+                                                        <th>Fecha</th>
                                                         <th>Valor</th>
+                                                        <th>Calificar Servicio y Pelicula</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <%while(res.next()){%>
+                                                    <%while(res2.next()){%>
                                                         <tr>
-                                                            <td><%out.println(res.getString("idFacturaCliente"));%></td>
-                                                            <td><%out.println(res.getString("productos"));%></td>
-                                                            <td><%out.println(res.getString("total"));%></td>
-                                                            <td>
-                                                                <form action="servlet">
-                                                                    <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(user);%>"></div>
-                                                                    <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Calificar</button>
-                                                                </form>
-                                                            </td>
+                                                            <th><%out.println(res2.getString("idFacturaCliente"));%></th>
+                                                            <th><%out.println(res2.getString("Año"));%>/<%out.println(res2.getString("Mes"));%>/<%out.println(res2.getString("Dia"));%></th>
+                                                            <th><%out.println(res2.getString("Total"));%></th>
                                                         </tr>
                                                     <%}%>
-                                                    <tr></tr>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr></tr>
@@ -120,7 +118,7 @@
     </main>
     <footer class="page-footer" style="background: #000000;">
         <div class="container">
-            <div class="links"><a href="#" style="color: rgb(255,255,255);">QuiÃ©nes somos</a><a href="#" style="color: rgb(255,255,255);">TÃ©rminos y condiciones</a></div>
+            <div class="links"><a href="#" style="color: rgb(255,255,255);">Quiénes somos</a><a href="#" style="color: rgb(255,255,255);">Términos y condiciones</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-instagram" style="color: rgb(0,0,0);"></i></a><a href="#"><i class="icon ion-social-github" style="color: rgb(0,0,0);"></i></a></div>
         </div>
     </footer>

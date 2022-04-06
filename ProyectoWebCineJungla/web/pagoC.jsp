@@ -1,11 +1,14 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%  String user = (String) session.getAttribute("idCliente");
+<%  String idCliente = (String) session.getAttribute("idCliente");
     String nombre = (String) session.getAttribute("Nombre");
     ResultSet factura = (ResultSet) session.getAttribute("Factura");
     factura.next();
     ResultSet rc = (ResultSet) session.getAttribute("rc");
     ResultSet rb = (ResultSet) session.getAttribute("rb");
+    String idFactura = (String) session.getAttribute("idFactura");
+    ResultSet peli = (ResultSet) session.getAttribute("pelicula");
+    peli.next();
 %>
 <!DOCTYPE html>
 <html>
@@ -30,8 +33,13 @@
         <div class="container"><a class="navbar-brand logo" style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" action="servlet"><%out.println(nombre);%></a></li>
-                    <li class="nav-item"><a class="nav-link" action="servlet">Cerrar sesión</a></li>
+                    <form action="ShowUserInfo" method="post">
+                        <div id="info" style="display:none">
+                            <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                        </div>
+                        <li class="nav-item"><button class="nav-link" type="submit" style="background: none;font-size: 16px;border-style: none;"><%out.println(nombre);%></button></li>
+                    </form>
+                    <li class="nav-item"><a class="nav-link" href="index.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -42,27 +50,40 @@
                 <div class="heading">
                     <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">Pago</h2>
                 </div>
-                <form style="padding: 50px;padding-top: 30px;padding-bottom: 30px;">
-                    <div id="info" style="display:none"><input id="id_usuario" name="id_usuario" type="text" value="<%out.println(user);%>"></div>
+                <form style="padding: 50px;padding-top: 30px;padding-bottom: 30px;" >
                     <div class="mb-3"></div>
                     <div class="mb-3">
                         <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">FACTURA</label>
                         <p style="font-size: 22px;font-family: Lato, sans-serif;">Fecha:<%out.println(factura.getString("Año"));%>/<%out.println(factura.getString("Mes"));%>/<%out.println(factura.getString("Dia"));%></p>
                         <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de boletas</label>
                         <%while(rb.next()){%>
-                            <p style="font-size: 22px;"><%out.println(rb.getString("Precio"));%></p>
+                            <p style="font-size: 22px;">Silla:  <%out.println(rb.getString("Tipo"));%>, <%out.println(rb.getString("Ubicacion"));%></p>
+                            <p style="font-size: 22px;">Precio: <%out.println(rb.getString("Precio"));%></p>
                         <%}%>
                         <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Lista de comestibles</label>
                         <%while(rc.next()){%>
+                            <p style="font-size: 22px;">Nombre: <%out.println(rc.getString("Nombre"));%></p>
                             <p style="font-size: 22px;">Precio: <%out.println(rc.getString("Precio"));%></p>
                             <p style="font-size: 22px;">Cantidad: <%out.println(rc.getString("Cantidad"));%></p>
                         <%}%>
+                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Pelicula</label>
+                        <p style="font-size: 22px;">Nombre: <%out.println(peli.getString("Nombre"));%></p>
                         <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Valor total</label>
                         <p style="font-size: 22px;"><%out.println(factura.getString("Total"));%></p>
-                        <label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Total de puntos adquiridos</label>
-                        <p style="font-size: 22px;">AQUI VAN LOS PUNTOS</p>
+                    </div>
+                </form>
+                <form style="padding: 50px;padding-top: 30px;padding-bottom: 30px;" action="Confirmar">
+                    <div id="info" style="display:none">
+                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                        <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
                     </div>
                     <div class="col"><button class="btn btn-primary border rounded-pill" type="submit" action="servlet" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 230px;height: 65px;margin-right: 0px;margin-left: 169px;padding: 0px 0px;margin-top: 20px;">Realizar pago</button></a></div>
+                </form> 
+                <form style="padding: 50px;padding-top: 30px;padding-bottom: 30px;" action="Negar" >
+                    <div id="info" style="display:none">
+                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                        <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
+                    </div>
                     <div class="col"><button class="btn btn-primary border rounded-0" type="submit" action="servlet" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 190px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 190px;padding: 0px 0px;margin-top: 20px;">Rechazar pago</button></div>
                 </form>
             </div>
