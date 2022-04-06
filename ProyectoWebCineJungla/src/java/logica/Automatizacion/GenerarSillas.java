@@ -95,8 +95,8 @@ public class GenerarSillas {
      * Metodo que se encarga de insertar sillas a la base de datos
      */
     private void CargarBaseDatos() {
+        DBSilla DBs = new DBSilla();
         for (int i = 0; i < sillas.size(); i++) {
-            DBSilla DBs = new DBSilla();
             DBs.insertarSilla(sillas.get(i));
         }
     }
