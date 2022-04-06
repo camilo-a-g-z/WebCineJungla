@@ -17,10 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la lista de alimentos ofrecidos en los
+ * multiplex.
  *
- * @author David
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ListarComida extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,13 +44,13 @@ public class ListarComida extends HttpServlet {
         DBComida DBc = new DBComida();
         try {
             resComida = DBc.getComidas();
-            request.getSession().setAttribute("resComida",resComida);
+            request.getSession().setAttribute("resComida", resComida);
             response.sendRedirect("confiteria.jsp");
-        }catch (Exception e){
+        } catch (Exception e) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarComida</title>");            
+            out.println("<title>Servlet ListarComida</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListarComida at " + e.getMessage() + "</h1>");

@@ -13,10 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor los datos de las acciones asignadas a cada 
+ * rol dentro de la empresa.
  *
- * @author David
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ListarAccionRol extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,15 +39,15 @@ public class ListarAccionRol extends HttpServlet {
         ResultSet resAccionRol;
         DBAccionRol DBar = new DBAccionRol();
         try {
-            resAccionRol=DBar.getAccionRoles();
-            request.getSession().setAttribute("resFuncion",resAccionRol);
+            resAccionRol = DBar.getAccionRoles();
+            request.getSession().setAttribute("resFuncion", resAccionRol);
             response.sendRedirect("#"); //Cambiar direccionamiento
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarAccionRol</title>");            
+            out.println("<title>Servlet ListarAccionRol</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListarAccionRol at " + e.getMessage() + "</h1>");
@@ -49,7 +55,7 @@ public class ListarAccionRol extends HttpServlet {
             out.println("</html>");
         }
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -88,5 +94,4 @@ public class ListarAccionRol extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

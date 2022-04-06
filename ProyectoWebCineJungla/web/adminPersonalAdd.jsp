@@ -81,7 +81,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" placeholder="Correo electrónico" name="correo" id="correo"></div>
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="contraseña" placeholder="Contraseña" name="contraseña"></div>
-                                            </div><a href="adminPersonal.html"><button class="btn btn-primary border rounded-pill" type="sumbit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir empleado</button></a>
+                                            </div><button class="btn btn-primary border rounded-pill" type="sumbit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir empleado</button>
                                             <hr>
                                         </form>
                                         <div class="text-center"></div>

@@ -78,7 +78,7 @@
                                         <div class="row mb-3">
                                             <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="sinopsis" placeholder="Sinopsis" name="sinopsis"></div>
                                             <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="imagen" placeholder="Imagen" name="imagen"></div>
-                                        </div><a href="adminPeliculas.html"><button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir película</button></a>
+                                        </div><button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir película</button>
                                         <hr>
                                     </form>
                                     <div class="text-center"></div>
