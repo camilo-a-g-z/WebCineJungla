@@ -48,7 +48,7 @@ public class AddPersonal extends HttpServlet {
 
         try {
             DBemp.insertarEmpleado(empleado);
-            response.sendRedirect("ListarPeliculas?idEmpleado=" + idEmpleado);
+            response.sendRedirect("ListarEmpleado?idEmpleado=" + idEmpleado);
         }catch (Exception e){
             System.out.println(e.getMessage());
         }

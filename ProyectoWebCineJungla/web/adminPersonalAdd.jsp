@@ -1,4 +1,5 @@
 <%@page import="java.sql.ResultSet"%>
+<%@page import="java.time.LocalDateTime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String empleado = (String) session.getAttribute("idEmpleado"); 
 
@@ -27,7 +28,7 @@
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
-                        <form class="nav-link" action="ListarPelicula">
+                        <form class="nav-link" action="ListarPeliculas">
                             <div id="info" style="display:none">
                                 <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
@@ -69,19 +70,28 @@
                                             <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del empleado</h4>
                                         </div>
                                         <form class="d-inline user" action="AddPersonal">
-                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
+                                            <div id="info" style="display:none"><input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>"></div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Nombre" name="nombre"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Nombre" name="nombre"></div> 
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="telefono" placeholder="Teléfono" name="telefono"></div>
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="salario" placeholder="Salario" name="salario"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="cedula" placeholder="Cédula" name="cedula"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="telefono" placeholder="Teléfono" name="telefono"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="multiplex" placeholder="id Multiplex" name="multiplex"></div>
+                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="rol" placeholder="id Rol" name="rol"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" placeholder="Correo electrónico" name="correo" id="correo"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="cedula" placeholder="Cédula" name="cedula"></div>
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="pass" placeholder="Contraseña" name="pass"></div>
-                                            </div><button class="btn btn-primary border rounded-pill" type="sumbit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir empleado</button>
+                                            </div>
+                                            <div style="display:none">
+                                                <input id="anio" name="anio" type="text" value="<%out.println(LocalDateTime.now().getYear());%>">
+                                                <input id="mes" name="mes" type="text" value="<%out.println(LocalDateTime.now().getMonthValue());%>">
+                                                <input id="dia" name="dia" type="text" value="<%out.println(LocalDateTime.now().getDayOfMonth());%>">
+                                            </div>
+                                            <button class="btn btn-primary border rounded-pill" type="sumbit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir empleado</button>
                                             <hr>
                                         </form>
                                         <div class="text-center"></div>

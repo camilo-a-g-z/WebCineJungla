@@ -77,7 +77,6 @@
                                                     <th>Precio</th>
                                                     <th>Stock</th>
                                                     <th>Multiplex</th>
-                                                    <th>Editar</th>
                                                 </tr>
                                                 <%while(res1.next()){%>
                                                     <tr>
@@ -85,7 +84,6 @@
                                                         <th><%out.println(res1.getString("Precio"));%></th>
                                                         <th><%out.println(res1.getString("Stock"));%></th>
                                                         <th><%out.println(res1.getString("Multiplex_idMultiplex"));%></th>
-                                                        <th>Editar</th>
                                                     </tr>
                                                 <%}%>
                                             </thead>

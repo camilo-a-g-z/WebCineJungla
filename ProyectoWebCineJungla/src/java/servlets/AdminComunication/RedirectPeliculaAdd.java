@@ -32,7 +32,7 @@ public class RedirectPeliculaAdd extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String empleado = request.getParameter("idEmpleado");
-            response.sendRedirect("adminPeliculaAdd.jsp?idEmpleado=" + empleado);
+            response.sendRedirect("adminPeliculasAdd.jsp?idEmpleado=" + empleado);
         }
     }
 

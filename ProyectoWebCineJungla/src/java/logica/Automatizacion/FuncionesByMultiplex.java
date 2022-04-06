@@ -21,6 +21,7 @@ import logica.Funcion;
 public class FuncionesByMultiplex {
 
     //Campos de la clase
+    //Declaracion de variables
     private ArrayList<Funcion> funciones = new ArrayList<Funcion>();
     private int anio;
     private int mes;
@@ -28,7 +29,8 @@ public class FuncionesByMultiplex {
     //private ArrayList<Funcion> con = new ArrayList<Funcion>();  
 
     /**
-     * Metodo constructor de la clase
+     * Metodo constructor de la clase, intenta llamar al metodo
+     * generarFunciones teniendo en cuenta posibles errores
      *
      * @param idPelicula
      * @param idMultiplex

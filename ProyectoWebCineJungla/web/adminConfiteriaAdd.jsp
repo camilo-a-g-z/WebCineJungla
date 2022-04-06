@@ -27,7 +27,7 @@
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
-                        <form class="nav-link" action="ListarPelicula">
+                        <form class="nav-link" action="ListarPeliculas">
                             <div id="info" style="display:none">
                                 <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>

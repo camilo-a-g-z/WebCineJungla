@@ -27,7 +27,7 @@
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
-                        <form class="nav-link active" action="ListarPelicula">
+                        <form class="nav-link active" action="ListarPeliculas">
                             <div id="info" style="display:none">
                                 <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
@@ -71,7 +71,7 @@
                                             <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="director" placeholder="Director" name="director"></div>
                                         </div>
                                         <div class="row mb-3">
-                                            <div class="col-sm-6 col-xl-4 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="duracion" placeholder="Duración (horas)" name="duracion"></div>
+                                            <div class="col-sm-6 col-xl-4 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="duracion" placeholder="Duración (minutos)" name="duracion"></div>
                                             <div class="col-sm-6 col-xl-4"><input class="form-control form-control-user" type="text" id="clasificacionEdad" placeholder="Clasificación de edad" name="clasificacionEdad"></div>
                                             <div class="col-xl-4"><input class="form-control form-control-user" type="text" id="estado" placeholder="Estado" name="estado"></div>
                                         </div>
