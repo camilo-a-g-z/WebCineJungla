@@ -37,7 +37,17 @@ public class GrabarRegistroBoleta {
         enviarRegistroCliente();
     }
     //Cierre del metodo
-
+    public GrabarRegistroBoleta(Double precio,
+            String Cantidad,
+            int SillaFuncion_idSillaFuncion,
+            int FacturaRapida_idFacturaRapida, 
+            int i) {
+        this.rb.setCantidad(Cantidad);
+        this.rb.setPrecio(precio);
+        this.rb.setSillaFuncion_idSillaFuncion(SillaFuncion_idSillaFuncion);
+        this.rb.setFacturaRapida_idFacturaRapida(FacturaRapida_idFacturaRapida);
+        enviarRegistroEmpleado();
+    }
     /**
      * Metodo que intenta enviar el registro del cliente a la DB
      */
@@ -50,5 +60,12 @@ public class GrabarRegistroBoleta {
         }
     }
     //Cierre del metodo
-
+    private void enviarRegistroEmpleado() {
+        try {
+            DBRegistroBoleta DBrb = new DBRegistroBoleta();
+            DBrb.insertarRegistroBoletaToFacturaRapida(rb);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

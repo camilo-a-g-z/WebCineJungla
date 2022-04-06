@@ -89,7 +89,8 @@ public class DBEmpleado {
     public ResultSet getEmpleadoLogin(String cedula) throws SQLException{
         PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idEmpleado, "
                 + "HashPsw, "
-                + "Cedula "
+                + "Cedula, "
+                + "Nombre "
                 + "FROM empleado "
                 + "WHERE Cedula = ? ");
         pstm.setString(1, cedula);

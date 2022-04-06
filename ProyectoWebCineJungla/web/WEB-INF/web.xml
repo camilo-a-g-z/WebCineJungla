@@ -144,6 +144,30 @@
         <servlet-name>RedirectFunciones</servlet-name>
         <servlet-class>servlets.AdminComunication.RedirectFunciones</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginEmpleadoCompra</servlet-name>
+        <servlet-class>servlets.ticketEmpleado.LoginEmpleadoCompra</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PeliculaMultiplexE</servlet-name>
+        <servlet-class>servlets.ticketEmpleado.PeliculaMultiplexE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuncionesEspecificasE</servlet-name>
+        <servlet-class>servlets.ticketEmpleado.FuncionesEspecificasE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DecidirSillasE</servlet-name>
+        <servlet-class>servlets.ticketEmpleado.DecidirSillasE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SeleccionarConfiteriaE</servlet-name>
+        <servlet-class>servlets.ticketEmpleado.SeleccionarConfiteriaE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResumenCompraE</servlet-name>
+        <servlet-class>servlets.ticketEmpleado.ResumenCompraE</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -287,6 +311,30 @@
     <servlet-mapping>
         <servlet-name>RedirectFunciones</servlet-name>
         <url-pattern>/RedirectFunciones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginEmpleadoCompra</servlet-name>
+        <url-pattern>/LoginEmpleadoCompra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PeliculaMultiplexE</servlet-name>
+        <url-pattern>/PeliculaMultiplexE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionesEspecificasE</servlet-name>
+        <url-pattern>/FuncionesEspecificasE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DecidirSillasE</servlet-name>
+        <url-pattern>/DecidirSillasE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SeleccionarConfiteriaE</servlet-name>
+        <url-pattern>/SeleccionarConfiteriaE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResumenCompraE</servlet-name>
+        <url-pattern>/ResumenCompraE</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

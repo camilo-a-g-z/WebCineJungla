@@ -28,6 +28,12 @@ public class GenerarRegistroTicket {
         proceso();
     }
     //Cierre del metodo
+    
+    public GenerarRegistroTicket(int idSillaFuncion, int idFactura, int i) {
+        this.idSillaFuncion = idSillaFuncion;
+        this.idFactura = idFactura;
+        proceso2();
+    }
 
     /**
      * Metodo que se encarga de obtener y grabar el registro de la boleta
@@ -40,5 +46,11 @@ public class GenerarRegistroTicket {
 
     }
     //Cierre del metodo
+    private void proceso2() {
+        ObtenerDatosSillaFuncion dataS = new ObtenerDatosSillaFuncion(idSillaFuncion);
+        GenerarPrecioBoleta precio = new GenerarPrecioBoleta(dataS.getSilla());
+        GrabarRegistroBoleta registro = new GrabarRegistroBoleta(
+                precio.getCosto(), "1", idSillaFuncion, idFactura,1);
 
+    }
 }

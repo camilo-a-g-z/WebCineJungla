@@ -40,7 +40,12 @@ public class GenerarRegistroComida {
         proceso();
     }
     //Cierre del metodo
-
+    public GenerarRegistroComida(int idComida, int idFactura, int cantidad, int i) {
+        this.cantidad = cantidad;
+        this.idFactura = idFactura;
+        this.idComida = idComida;
+        proceso2();
+    }
     /**
      * Metodo que se encarga de llamar a 3 metodos
      */
@@ -50,7 +55,11 @@ public class GenerarRegistroComida {
         generarRegistro();
     }
     //Cierre del metodo
-
+    private void proceso2() {
+        cargarComida();
+        calcularPrecio();
+        generarRegistro2();
+    }
     /**
      * Este metodo se encarga de obtener los datos de la comida de la BD y
      * guardarla en un objeto comida
@@ -93,6 +102,24 @@ public class GenerarRegistroComida {
             rc.setPrecio(precio);
             DBRegistroComida DBrc = new DBRegistroComida();
             DBrc.insertarRegistroComidaToFacturaCliente(rc);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    //Cierre del metodo
+    /**
+     * Metodo que se encarga de registrar los datos de la comida y su precio en
+     * la factura del cliente en la BD
+     */
+    private void generarRegistro2() {
+        try {
+            RegistroComida rc = new RegistroComida();
+            rc.setCantidad(String.valueOf(cantidad));
+            rc.setComida_idComida(idComida);
+            rc.setFacturaRapida_idFacturaRapida(idFactura);
+            rc.setPrecio(precio);
+            DBRegistroComida DBrc = new DBRegistroComida();
+            DBrc.insertarRegistroComidaToFacturaRapida(rc);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

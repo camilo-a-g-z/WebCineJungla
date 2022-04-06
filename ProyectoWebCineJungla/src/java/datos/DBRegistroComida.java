@@ -92,6 +92,13 @@ public class DBRegistroComida {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    public ResultSet getRegistroComidaByFacturaRapidaResumen(int id) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idComida, Nombre, cantidad, a.`Precio` " +
+            "FROM mydb.registrocomida a , mydb.comida b  " +
+            "where a.FacturaRapida_idFacturaRapida = "+id+" AND b.idComida = a.Comida_idComida");
+        ResultSet res = pstm.executeQuery();
+        return res;
+    }
     //Cierre de la funcion
     
     /**

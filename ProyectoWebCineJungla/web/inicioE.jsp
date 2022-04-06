@@ -1,6 +1,6 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%String user = (String) session.getAttribute("idCliente"); 
+<%String user = (String) session.getAttribute("idEmpleado"); 
   ResultSet res = (ResultSet) session.getAttribute("peliculas");
   String nombre = (String) session.getAttribute("Nombre");
 %>
@@ -25,7 +25,7 @@
         <div class="container"><a class="navbar-brand logo"  style="font-family: Aclonica, sans-serif;font-size: 30px;color: var(--bs-body-bg);"><strong>Cine Jungla</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <form action="ShowUserInfo" method="post">
+                    <form method="post">
                         <div id="info" style="display:none">
                             <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
                         </div>
@@ -43,12 +43,12 @@
             </div>
             <div class="container d-inline-flex flex-wrap" style="max-width: fit-content">
                 <%while(res.next()){%>
-                    <form method="post" action="PeliculaMultiplex" class="shadow" style="width: 368px;margin-right: 0px;margin-left: 0px;padding: 20px;">
+                    <form method="post" action="PeliculaMultiplexE" class="shadow" style="width: 368px;margin-right: 0px;margin-left: 0px;padding: 20px;">
                         <div class="card-body" style="padding: 0px;"><img style="width: 280px;height: 450px;padding: 0px;" src="<%out.println(res.getString("UrlPelicula"));%>"/>
                             <h6 style="margin-top: 20px;"><%out.println(res.getString("Nombre"));%></h6>
                             <button class="btn btn-primary border rounded-0" type="submit" style="width: 280px;height: 43px;margin-left: 0px;padding: 0px 0px;font-size: 17px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);margin-bottom: 0px;margin-top: 5px;">Ver funciones</button></a>
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(user);%>">
                                 <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res.getString("idPelicula"));%>">
                             </div>
                         </div>

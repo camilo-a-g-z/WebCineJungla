@@ -27,7 +27,7 @@
                 <div class="heading">
                     <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">INICIAR SESIÓN</h2>
                 </div>
-                <form action="LoginEmpleado" method="post" style="padding-top: 30px;padding-bottom: 30px;">
+                <form action="LoginEmpleadoCompra" method="post" style="padding-top: 30px;padding-bottom: 30px;">
                     <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 24px;">Cedula</label><input class="form-control" type="text" id="correo" name="correo" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
                     <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 24px;">Contraseña</label><input class="form-control" type="password" id="contraseña" name="contraseña" style="height: 45px;"></div>
                     <div class="mb-3">

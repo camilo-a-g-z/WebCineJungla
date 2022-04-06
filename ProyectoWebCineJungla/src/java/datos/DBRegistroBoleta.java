@@ -95,6 +95,14 @@ public class DBRegistroBoleta {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    public ResultSet getRegistroBoletaByFacturaRapidaResumen(int id) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idSilla, Ubicacion, Precio, Tipo " +
+            "FROM registroboleta a , sillafuncion b, silla c  " +
+            "where a.FacturaRapida_idFacturaRapida = "+id+ " AND b.idSillaFuncion = a.SillaFuncion_idSillaFuncion " +
+            "AND b.Silla_idSilla = c.idSilla");
+        ResultSet res = pstm.executeQuery();
+        return res;
+    }
     //Cierre de la funcion
     
     /**
