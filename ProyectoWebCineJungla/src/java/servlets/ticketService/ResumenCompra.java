@@ -16,8 +16,13 @@ import logica.Automatizacion.CalcularFactura;
 import logica.Automatizacion.GenerarRegistroComida;
 
 /**
- *
- * @author Camilo Garcia
+ * Esta clase ejecuta en el servidor datos para la generacion de resumen de la 
+ * transaccion.
+ * 
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ResumenCompra extends HttpServlet {
 

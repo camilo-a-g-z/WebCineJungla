@@ -15,8 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import logica.Cliente;
 
 /**
+ * Esta clase ejecuta en el servidor la asignacion de valores a variables del
+ * servicio.
  *
- * @author User
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class Confirmar extends HttpServlet {
 

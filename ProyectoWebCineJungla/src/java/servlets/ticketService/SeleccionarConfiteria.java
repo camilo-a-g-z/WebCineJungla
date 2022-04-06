@@ -13,8 +13,13 @@ import logica.Automatizacion.GenerarRegistroTicket;
 import logica.Automatizacion.ObtenerDatosSillaFuncion;
 
 /**
+ * Esta clase ejecuta en el servidor el manejo de datos para la confiteria por
+ * multiplex.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class SeleccionarConfiteria extends HttpServlet {
 
@@ -39,10 +44,10 @@ public class SeleccionarConfiteria extends HttpServlet {
         ResultSet res2;
         try {
             //se generan los registros
-            for(int i=0; i<Integer.parseInt(request.getParameter("cantidad"));i++){
+            for (int i = 0; i < Integer.parseInt(request.getParameter("cantidad")); i++) {
                 GenerarRegistroTicket gRT = new GenerarRegistroTicket(
-                    Integer.parseInt(request.getParameter("idSala"+i)), 
-                    Integer.parseInt(request.getParameter("idFactura")));
+                        Integer.parseInt(request.getParameter("idSala" + i)),
+                        Integer.parseInt(request.getParameter("idFactura")));
             }
             //se traen datos de la confiteria
             ObtenerDatosSillaFuncion data = new ObtenerDatosSillaFuncion(Integer.parseInt(request.getParameter("idSala0")));
@@ -57,12 +62,12 @@ public class SeleccionarConfiteria extends HttpServlet {
             request.getSession().setAttribute("idPelicula", request.getParameter("idPelicula"));
             request.getSession().setAttribute("comida", res2);
             response.sendRedirect("confiteria.jsp");
-        }catch(Exception e){
+        } catch (Exception e) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SeleccionarConfiteria</title>");            
+            out.println("<title>Servlet SeleccionarConfiteria</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Error at " + e.getMessage() + "</h1>");
