@@ -11,8 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import logica.Automatizacion.FuncionesByMultiplex;
 
 /**
+ * Esta clase ejecuta en el servidor lo referente a la elecicion de la taquilla
+ * de peliculas.
  *
- * @author User
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class PeliculaEspecifica extends HttpServlet {
 

@@ -11,8 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor lo referente a la informacion de usuarios.
  *
- * @author User
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ShowUserInfo extends HttpServlet {
 
@@ -29,22 +33,26 @@ public class ShowUserInfo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
         //variables
         String idCliente = request.getParameter("idCliente");
+
         //conexion con base de datos
         DBCliente DBc = new DBCliente();
         DBFacturaCliente DBfc = new DBFacturaCliente();
+
         //resultsets
         ResultSet res1;
         ResultSet res2;
         try {
+
             res1 = DBc.getClienteById(Integer.parseInt(idCliente));
             res2 = DBfc.getFacturaClienteByCliente(Integer.parseInt(idCliente));
             request.getSession().setAttribute("idCliente", idCliente);
             request.getSession().setAttribute("cliente", res1);
             request.getSession().setAttribute("facturas", res2);
             response.sendRedirect("usuario.jsp");
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
