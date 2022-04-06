@@ -15,7 +15,7 @@ import logica.Pelicula;
  *
  * @author Miguel
  */
-public class rellenoSalas {
+public final class rellenoSalas {
 
     DBFuncion funcionDB = new DBFuncion();
     DBPelicula pel = new DBPelicula();
@@ -35,28 +35,20 @@ public class rellenoSalas {
     int auxDurPel;
 
     public rellenoSalas(int sala, int pelicula, int anio, int mes, int dia, int hora, int min) {
-        System.out.println("ENTRO A RELLENO SALAS");
 
         fechaActual = generarCalendar(anio, mes, dia, hora, min);
         fechaFinal = generarCalendar(anio, mes, dia, hora, min);
 
-        // System.out.println(fechaActual.get(Calendar.YEAR));
-        // System.out.println(fechaActual.get(Calendar.MONTH));
-        // System.out.println(fechaActual.get(Calendar.DATE));
-        // System.out.println(fechaActual.get(Calendar.HOUR_OF_DAY));
-        // System.out.println(fechaActual.get(Calendar.MINUTE));
         horaInicial = fechaActual;
         horaInicial.set(Calendar.HOUR_OF_DAY, 12);
         horaInicial.set(Calendar.MINUTE, 00);
         horaFinal = fechaActual;
         horaFinal.set(Calendar.HOUR_OF_DAY, 23);
         horaFinal.set(Calendar.MINUTE, 00);
-        // System.out.println(horaInicial.get(Calendar.HOUR_OF_DAY) + " : " + horaInicial.get(Calendar.MINUTE));
 
         fechaFinal.add(Calendar.MONTH, 1);
 
-        //System.out.println("Mes Inicial " + fechaActual.get(Calendar.MONTH) + "   Mes Final " + fechaFinal.get(Calendar.MONTH));
-        pruebaFunciones();
+//        pruebaFunciones();
         rellenarFuncion(sala, pelicula);
     }
 
@@ -75,14 +67,13 @@ public class rellenoSalas {
     public void rellenarFuncion(int sala, int pelicula) {
 
         try {
-
-            // ResultSet DBf = funcionDB.getFuncionBySala(sala);
-            // obtenerFuncionPorDia transf = new obtenerFuncionPorDia(DBf);
-            // conf = transf.getArrayListFunciones();  SE COMENTA ESTA LINEA POR PRUEBA
-            // ResultSet DBp = pel.getPeliculaById(pelicula);
-            //TransformPelicula pelTrans = new TransformPelicula(DBp);
-            //objPel = pelTrans.getPeli();
-            //auxDurPel = objPel.getDuracion();
+            ResultSet DBf = funcionDB.getFuncionBySala(sala);
+            obtenerFuncionPorDia transf = new obtenerFuncionPorDia(DBf);
+            conf = transf.getArrayListFunciones();
+            ResultSet DBp = pel.getPeliculaById(pelicula);
+            TransformPelicula pelTrans = new TransformPelicula(DBp);
+            objPel = pelTrans.getPeli();
+            auxDurPel = objPel.getDuracion();
             pruebaPeliculas();
             auxDurPel = arregloTesteoPel.get(0).getDuracion();
             auxMin = auxDurPel % 60;

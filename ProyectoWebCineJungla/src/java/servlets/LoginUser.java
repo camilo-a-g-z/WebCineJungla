@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Automatizacion.GenerateAllMultiplex;
+import logica.Automatizacion.rellenoSalas;
 
 /**
  * Esta clase ejecuta en el servidor lo referente a los Datos para el acceso de 
@@ -38,6 +39,8 @@ public class LoginUser extends HttpServlet {
         DBCliente DBc = new DBCliente();
         DBPelicula DBp = new DBPelicula();
         ResultSet resP;
+        rellenoSalas re = new rellenoSalas(54,1,2022,4,5,7,0);
+        System.out.println("PAso");
         try {
             //GenerateAllMultiplex generate = new GenerateAllMultiplex("Portal","Por ahi", 1);
             //se llama y guardan los datos recividos segun el parametro recivido
