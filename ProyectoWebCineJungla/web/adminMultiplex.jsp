@@ -32,7 +32,7 @@
                             </div>
                             <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
                         </form>
-                        <form class="nav-link active" action="ListarConfiteria">
+                        <form class="nav-link" action="ListarConfiteria">
                             <div id="info" style="display:none">
                                 <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
@@ -44,7 +44,7 @@
                             </div>
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
                         </form>
-                        <form class="nav-link" action="ListarMultiplex">
+                        <form class="nav-link active" action="ListarMultiplex">
                             <div id="info" style="display:none">
                                 <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
                             </div>
