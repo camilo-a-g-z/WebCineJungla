@@ -113,7 +113,20 @@ public class DBSala {
         return res;
     }
     //Cierre de la funcion
-
+    /**
+     * Funcion que obtiene los datos de las salas.
+     *
+     * @return los datos de las salas.
+     * @throws SQLException
+     */
+    public ResultSet getSalasMultiplex() throws SQLException {
+        PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT *  " +
+            "FROM mydb.sala a, mydb.multiplex b " +
+            "where a.Multiplex_idMultiplex = b.idMultiplex");
+        ResultSet res = pstm.executeQuery();
+        return res;
+    }
+    //Cierre de la funcion
     /**
      * Agrega una sala a la base de datos.
      *

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.AdminComunication;
 
 import datos.DBSala;
@@ -38,7 +34,7 @@ public class RedirectFuncionesAdd extends HttpServlet {
             String empleado = request.getParameter("idEmpleado");
             int pelicula = Integer.parseInt(request.getParameter("idPelicula"));
 
-            resSala = DBSala.getSalas();
+            resSala = DBSala.getSalasMultiplex();
             request.getSession().setAttribute("sala", resSala);
 
             response.sendRedirect("adminPeliculasFuncionAdd.jsp?idEmpleado=" + empleado + "&?idPelicula=" + pelicula);
