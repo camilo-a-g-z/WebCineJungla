@@ -4,18 +4,21 @@
  */
 package servlets.AdminComunication;
 
+import datos.DBFuncion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Automatizacion.rellenoSalas;
+import logica.Funcion;
 
 /**
  *
  * @author USER
  */
-public class RedirectPeliculaAdd extends HttpServlet {
+public class AddFunciones extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,9 +32,18 @@ public class RedirectPeliculaAdd extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String empleado = request.getParameter("idEmpleado");
-            response.sendRedirect("adminPeliculasAdd.jsp?idEmpleado=" + empleado);
+        PrintWriter out = response.getWriter();
+        String idEmpleado = request.getParameter("idEmpleado");
+        int pelicula = Integer.parseInt(request.getParameter("idPelicula"));
+
+        rellenoSalas relleno = new rellenoSalas(Integer.parseInt(request.getParameter("idSala")), Integer.parseInt(request.getParameter("idPelicula")), 
+                                                 Integer.parseInt(request.getParameter("anio")), Integer.parseInt(request.getParameter("mes")),Integer.parseInt(request.getParameter("dia")),
+                                                 Integer.parseInt(request.getParameter("hora")), Integer.parseInt(request.getParameter("minuto")));
+
+        try {
+            response.sendRedirect("ListarSala?idEmpleado=" + idEmpleado + "&?idPelicula=" + pelicula);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
