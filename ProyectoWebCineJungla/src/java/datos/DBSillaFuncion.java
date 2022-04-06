@@ -103,6 +103,13 @@ public class DBSillaFuncion {
         ResultSet res = pstm.executeQuery();
         return res;
     }
+    public ResultSet getSillaFuncionByidFuncionAndEstado(int id) throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT *  " +
+            "FROM silla a, sillafuncion b " +
+            " where b.Funcion_idFuncion = "+id+" AND b.Silla_idSilla = a.idSilla AND Estado = \"Libre\" ;");
+        ResultSet res = pstm.executeQuery();
+        return res;
+    }
     //Cierre de la funcion
     
     /**

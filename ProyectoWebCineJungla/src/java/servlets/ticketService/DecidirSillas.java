@@ -43,24 +43,20 @@ public class DecidirSillas extends HttpServlet {
         ResultSet res1;
         ResultSet res2;
         ResultSet res3;
-        try {
-            res1 = DBsf.getSillaFuncionByidFuncion(Integer.parseInt(request.getParameter("idFuncion")));
-//           System.out.println(request.getParameter("idFuncion"));
-//           while(res1.next()){
-//               System.out.println(request.getParameter("idFuncion"));
-//           }
-            res2 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
-            res2.next();
-            res3 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
-            //Se carga en session
-            request.getSession().setAttribute("Nombre", res2.getString("Nombre"));
-            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
-            request.getSession().setAttribute("idFactura", request.getParameter("idFactura"));
-            request.getSession().setAttribute("sillas", res1);
-            request.getSession().setAttribute("cantidad", request.getParameter("cantidad"));
-            request.getSession().setAttribute("pelicula", res3);
-            response.sendRedirect("funcionFinal.jsp");
-        } catch (Exception e) {
+        try{
+           res1 = DBsf.getSillaFuncionByidFuncionAndEstado(Integer.parseInt(request.getParameter("idFuncion")));
+           res2 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+           res2.next();
+           res3 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
+           //Se carga en session
+           request.getSession().setAttribute("Nombre", res2.getString("Nombre"));
+           request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+           request.getSession().setAttribute("idFactura", request.getParameter("idFactura"));
+           request.getSession().setAttribute("sillas", res1);
+           request.getSession().setAttribute("cantidad", request.getParameter("cantidad"));
+           request.getSession().setAttribute("pelicula", res3);
+           response.sendRedirect("funcionFinal.jsp");
+        }catch(Exception e){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

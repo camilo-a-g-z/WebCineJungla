@@ -39,8 +39,7 @@ public class LoginUser extends HttpServlet {
         DBCliente DBc = new DBCliente();
         DBPelicula DBp = new DBPelicula();
         ResultSet resP;
-        rellenoSalas re = new rellenoSalas(54,1,2022,4,5,7,0);
-        System.out.println("PAso");
+        //rellenoSalas re = new rellenoSalas(54,1,2022,4,1,7,0);
         try {
             //GenerateAllMultiplex generate = new GenerateAllMultiplex("Portal","Por ahi", 1);
             //se llama y guardan los datos recividos segun el parametro recivido

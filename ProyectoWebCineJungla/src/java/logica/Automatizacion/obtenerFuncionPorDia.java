@@ -36,7 +36,10 @@ public class obtenerFuncionPorDia {
             fechaActual = calendar.getTime();
             String formattedDate = dtf.format(fechaActual);
             fechaActual = dtf.parse(formattedDate);
-
+            int ma = fechaActual.getMonth()+1;
+            fechaActual.setMonth(ma);
+            
+            System.out.println("FechaActual/"+fechaActual.getMonth()+"/"+fechaActual.getDate());
             while (res.next()) {
                 Date dat = new Date();
                 dat.setYear(res.getInt("Año"));
@@ -44,8 +47,7 @@ public class obtenerFuncionPorDia {
                 dat.setDate(res.getInt("Dia"));
                 dat.setHours(res.getInt("Hora"));
                 dat.setMinutes(res.getInt("Minuto"));
-                if (dat.before(fechaActual)) {
-                    
+                if (dat.getMonth()<fechaActual.getMonth()) {
                 } else {
                     Funcion f = new Funcion();
                     f.setEmpleado_idEmpleado(res.getInt("idFuncion"));
@@ -55,6 +57,11 @@ public class obtenerFuncionPorDia {
                     da.setDate(res.getInt("Dia"));
                     da.setHours(res.getInt("Hora"));
                     da.setMinutes(res.getInt("Minuto"));
+                    f.setAño(res.getInt("Año"));
+                    f.setMes(res.getInt("Mes"));
+                    f.setDia(res.getInt("Dia"));
+                    f.setMinuto(res.getInt("Minuto"));
+                    f.setHora(res.getInt("Hora"));
                     f.setHorario(da);
                     f.setSala_idSala(res.getInt("Sala_idSala"));
                     f.setEmpleado_idEmpleado(res.getInt("Empleado_idEmpleado"));

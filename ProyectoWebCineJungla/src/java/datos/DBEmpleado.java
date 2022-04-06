@@ -123,6 +123,30 @@ public class DBEmpleado {
         return res;
     }
     //Cierre de la funcion
+    /**
+     * Funcion que obtiene datos del empleado.
+     * 
+     * @return Datos del empleado.
+     * @throws SQLException 
+     */
+    public ResultSet getEmpleadosRandom() throws SQLException{
+        PreparedStatement pstm = cn.getConexion().prepareStatement("SELECT idEmpleado, "
+                + "Nombre, "
+                + "Cedula, "
+                + "NumTelefono, "
+                + "Salario, "
+                + "Año, "
+                + "Mes, "
+                + "Dia, "
+                + "HashPsw, "
+                + "Multiplex_idMultiplex, "
+                + "Rol_idRol "
+                + "FROM empleado "
+                + "ORDER BY rand() ");
+        ResultSet res = pstm.executeQuery();
+        return res;
+    }
+    //Cierre de la funcion
     
     /**
      * Metodo que agrega un empleado a la base de datos de la empresa.
