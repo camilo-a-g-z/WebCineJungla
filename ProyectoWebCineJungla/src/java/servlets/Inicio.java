@@ -16,11 +16,17 @@ import logica.Automatizacion.rellenoSalas;
 import logica.Empleado;
 
 /**
+ * Esta clase ejecuta en el servidor lo referente a los Datos disponibles en el
+ * inicio de la pagina.
  *
- * @author User
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class Inicio extends HttpServlet {
 
+    //Espacios de la clase
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,17 +38,18 @@ public class Inicio extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
+        //Creacion de objetos necesarios para la ejecucion
         DBPelicula pelis = new DBPelicula();
         DBMultiplex DBm = new DBMultiplex();
         DBEmpleado DBe = new DBEmpleado();
         Empleado em = new Empleado();
-        
-        Date da = new Date(System.currentTimeMillis());  
-        
+        Date da = new Date(System.currentTimeMillis());
+
+        //Definicion de datos para el servlet
         da.setYear(2022);
         da.setMonth(4);
         da.setDate(1);
@@ -62,25 +69,25 @@ public class Inicio extends HttpServlet {
         em.setNumTelefono("12345");
         em.setRol_idRol(1);
         em.setSalario(1000.0);
-        
-        try{
-            rellenoSalas prueba = new rellenoSalas(1,1,2022,4,1,12,30);
+
+        try {
+            rellenoSalas prueba = new rellenoSalas(1, 1, 2022, 4, 1, 12, 30);
             ResultSet res1 = pelis.getPeliculaByEstado("Cartelera");
             ResultSet res2 = DBm.getMultiplexs();
             request.getSession().setAttribute("peliculas", res1);
             request.getSession().setAttribute("multiplex", res2);
-            
+
             //DBe.insertarEmpleado(em);
             System.out.println(date1);
             response.sendRedirect("ingresoE.jsp");
-        }catch(Exception e){
+        } catch (Exception e) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Inicio</title>");            
+            out.println("<title>Servlet Inicio</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1> Error: "+e.getMessage()+"</h1>");
+            out.println("<h1> Error: " + e.getMessage() + "</h1>");
             out.println("</body>");
             out.println("</html>");
             System.out.println();
@@ -125,5 +132,4 @@ public class Inicio extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
