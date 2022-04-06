@@ -1,24 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package servlets.AdminComunication;
+package servlets;
 
-import datos.DBComida;
+
+import datos.DBCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Cliente;
 
 /**
  *
- * @author Miguel
+ * @author USER
  */
-public class ListarConfiteria extends HttpServlet {
+public class AddCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,27 +33,22 @@ public class ListarConfiteria extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        ResultSet resConfiteria;
-        DBComida DBc = new DBComida();
-        System.out.println(request.getParameter("idEmpleado"));
-        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
-
+        Cliente cliente = new Cliente();
+        DBCliente DBcli = new DBCliente();
+        cliente.setNombre(request.getParameter("nombre"));
+        cliente.setPuntosJungla(0.0);
+        cliente.setCorreo(request.getParameter("correo"));
+        cliente.setHashPsw(request.getParameter("pass"));
+        
+        String temp = "";
+        temp = request.getParameter("medioPago").trim();
+        cliente.setMedioPago_idMedioPago(Integer.parseInt(temp));        
+   
         try {
-            resConfiteria = DBc.getComidas();
-            request.getSession().setAttribute("comidas", resConfiteria);
-            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado"));
-            response.sendRedirect("adminConfiteria.jsp");
-        } catch (Exception e) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListarConfiteria</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListarConfiteria at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            DBcli.insertarCliente(cliente);
+            response.sendRedirect("index.jsp");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

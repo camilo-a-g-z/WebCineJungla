@@ -1,24 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package servlets.AdminComunication;
 
-import datos.DBComida;
+import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Pelicula;
 
 /**
  *
- * @author Miguel
+ * @author USER
  */
-public class ListarConfiteria extends HttpServlet {
+public class AddPelicula extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,27 +32,21 @@ public class ListarConfiteria extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        ResultSet resConfiteria;
-        DBComida DBc = new DBComida();
-        System.out.println(request.getParameter("idEmpleado"));
-        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
-
+        Pelicula pelicula = new Pelicula();
+        DBPelicula DBpel = new DBPelicula();
+        String empleado = request.getParameter("idEmpleado");
+        pelicula.setNombre(request.getParameter("nombre"));
+        pelicula.setClasificacionEdad(request.getParameter("clasificacionEdad"));
+        pelicula.setDuracion(Integer.parseInt(request.getParameter("duracion")));
+        pelicula.setDirector(request.getParameter("director"));
+        pelicula.setSinopsis(request.getParameter("sinopsis"));
+        pelicula.setSinopsis(request.getParameter("imagen"));
+        pelicula.setEstado(request.getParameter("estado"));
         try {
-            resConfiteria = DBc.getComidas();
-            request.getSession().setAttribute("comidas", resConfiteria);
-            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado"));
-            response.sendRedirect("adminConfiteria.jsp");
-        } catch (Exception e) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListarConfiteria</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListarConfiteria at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            DBpel.insertarPelicula(pelicula);
+            response.sendRedirect("ListarPeliculas?idEmpleado=" + empleado);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

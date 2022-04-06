@@ -25,18 +25,21 @@
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
-                        <a class="nav-link">
-                            <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
-                        </a>
-                        <form class="nav-link active" action="ListarConfiteria">
+                        <form class="nav-link active" action="ListarPeliculas">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
+                            </div>
+                            <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
+                        </form>
+                        <form class="nav-link" action="ListarConfiteria">
+                            <div id="info" style="display:none">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confitería</button>
                         </form>
                         <form class="nav-link" action="ListarEmpleado">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
                         </form>
@@ -49,12 +52,18 @@
             <div id="content">
                 <div id="content-1">
                     <div class="container-fluid">
-                        <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Pelï¿½culas</h3>
+                        <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Películas</h3>
                         <div class="card shadow">
                             <div class="card-header py-3">
-                                <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificaciï¿½n de las funciones</p>
+                                <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de las funciones</p>
                             </div>
-                            <div class="card-body"><a class="card-link" href="adminPeliculasAdd.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 150px;height: 38px;">Aï¿½adir pelï¿½cula</button></a>
+                            <div class="card-body">
+                                <form class="card-link" action="RedirectPeliculaAdd">
+                                    <div id="info" style="display:none">
+                                        <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                    </div>
+                                    <button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 150px;height: 38px;">Añadir película</button>
+                                </form>
                                 <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
                                     <table class="table my-0" id="dataTable">
                                         <thead>
@@ -78,7 +87,7 @@
                                                     <td><%out.println(res1.getString("Estado"));%></td>
                                                     <td>
                                                         <form action="servlet">
-                                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
+                                                            <div id="info" style="display:none"><input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>"></div>
                                                             <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Eliminar</button>
                                                         </form>
                                                     </td>

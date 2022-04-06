@@ -1,11 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package servlets.AdminComunication;
 
-import datos.DBComida;
+import datos.DBMedioPago;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -16,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Miguel
+ * @author USER
  */
-public class ListarConfiteria extends HttpServlet {
+public class ListarMediopago extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +32,13 @@ public class ListarConfiteria extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        ResultSet resConfiteria;
-        DBComida DBc = new DBComida();
-        System.out.println(request.getParameter("idEmpleado"));
-        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+        ResultSet resMedioPago;
+        DBMedioPago DBPago = new DBMedioPago();
 
         try {
-            resConfiteria = DBc.getComidas();
-            request.getSession().setAttribute("comidas", resConfiteria);
-            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado"));
-            response.sendRedirect("adminConfiteria.jsp");
+            resMedioPago = DBPago.getMedioPagos();
+            request.getSession().setAttribute("medioPago", resMedioPago);
+            response.sendRedirect("registro.jsp");
         } catch (Exception e) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
