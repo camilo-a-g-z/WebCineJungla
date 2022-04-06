@@ -1,29 +1,21 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package servlets.AdminComunication;
 
-import datos.DBComida;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Esta clase ejecuta en el servidor la lista de alimentos ofrecidos en los
- * multiplex.
  *
- * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
- * C. Tuso
- * @version 1.0
- * @since 06/04/2022
+ * @author USER
  */
-public class ListarConfiteria extends HttpServlet {
+public class RedirectPeliculaAdd extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,28 +29,10 @@ public class ListarConfiteria extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        ResultSet resConfiteria;
-        DBComida DBc = new DBComida();
-        System.out.println(request.getParameter("idEmpleado"));
-        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
-
-        try {
-            resConfiteria = DBc.getComidas();
-            request.getSession().setAttribute("comidas", resConfiteria);
-            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado"));
-            response.sendRedirect("adminConfiteria.jsp");
-        } catch (Exception e) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListarConfiteria</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListarConfiteria at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String empleado = request.getParameter("idEmpleado");
+            response.sendRedirect("adminPeliculaAdd.jsp?idEmpleado=" + empleado);
         }
     }
 
@@ -100,4 +74,5 @@ public class ListarConfiteria extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

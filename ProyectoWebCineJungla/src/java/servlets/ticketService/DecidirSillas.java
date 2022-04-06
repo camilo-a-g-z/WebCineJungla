@@ -12,8 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la asignacion de sillas de eleccion del
+ * cliente.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class DecidirSillas extends HttpServlet {
 
@@ -55,7 +60,7 @@ public class DecidirSillas extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DecidirSillas</title>");            
+            out.println("<title>Servlet DecidirSillas</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Error at " + e.getMessage() + "</h1>");

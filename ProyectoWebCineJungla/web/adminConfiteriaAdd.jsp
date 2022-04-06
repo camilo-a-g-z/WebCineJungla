@@ -29,19 +29,19 @@
                     <li class="nav-item">
                         <form class="nav-link" action="ListarPelicula">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
                         </form>
                         <form class="nav-link active" action="ListarConfiteria">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confitería</button>
                         </form>
                         <form class="nav-link" action="ListarEmpleado">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
                         </form>
@@ -68,8 +68,8 @@
                                         <div class="text-center">
                                             <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos del producto</h4>
                                         </div>
-                                        <form class="d-inline user">
-                                            <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
+                                        <form class="d-inline user" action="AddComida">
+                                            <div id="info" style="display:none"><input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>"></div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Nombre" name="nombre"></div>
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="precio" placeholder="Precio" name="precio"></div>
