@@ -1,19 +1,23 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package servlets.AdminComunication;
 
-import datos.DBPelicula;
+import datos.DBFuncion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Pelicula;
 
 /**
  *
  * @author USER
  */
-public class AddPelicula extends HttpServlet {
+public class RedirectFunciones extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,23 +30,28 @@ public class AddPelicula extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        Pelicula pelicula = new Pelicula();
-        DBPelicula DBpel = new DBPelicula();
-        String empleado = request.getParameter("idEmpleado");
-        pelicula.setNombre(request.getParameter("nombre"));
-        pelicula.setClasificacionEdad(request.getParameter("clasificacionEdad"));
-        pelicula.setDuracion(Integer.parseInt(request.getParameter("duracion")));
-        pelicula.setDirector(request.getParameter("director"));
-        pelicula.setSinopsis(request.getParameter("sinopsis"));
-        pelicula.setUrlPelicula(request.getParameter("imagen"));
-        pelicula.setEstado(request.getParameter("estado"));
+        response.setContentType("text/html;charset=UTF-8");PrintWriter out = response.getWriter();
+        ResultSet resFuncion;
+        DBFuncion DBFun = new DBFuncion();
+
         try {
-            DBpel.insertarPelicula(pelicula);
-            response.sendRedirect("ListarPeliculas?idEmpleado=" + empleado);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+            String empleado = request.getParameter("idEmpleado");
+            int pelicula = Integer.parseInt(request.getParameter("idPelicula"));
+            resFuncion = DBFun.getFuncionByPelicula(pelicula);
+            request.getSession().setAttribute("funcion", resFuncion);
+
+            response.sendRedirect("adminPeliculasFuncion.jsp?idEmpleado=" + empleado);
+        } catch (Exception e) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ListarConfiteria</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ListarConfiteria at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

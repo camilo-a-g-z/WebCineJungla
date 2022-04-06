@@ -1,7 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String empleado = (String) session.getAttribute("idEmpleado"); 
-
+        ResultSet res = (ResultSet) session.getAttribute("funcion");
 %>
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,7 @@
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
                         </form>
                     </li>
-                </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesiÃ³n</button></a>
+                </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
         </nav>
@@ -54,7 +54,7 @@
             <div id="content">
                 <div id="content-1">
                     <div class="container-fluid">
-                        <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">PelÃ­culas&nbsp;</h3>
+                        <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Películas</h3>
                         <div class="card shadow">
                             <div class="card-header py-3">
                                 <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Funciones de la pelicula</p>
@@ -70,17 +70,19 @@
                                                 <th>Mes</th>
                                                 <th>Día</th>
                                                 <th>Hora</th>
+                                                <th>Minuto</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <%while(res.next()){%>
                                                 <tr>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
-                                                    <td><%out.println(res.getString(""));%></td>
+                                                    <td><%out.println(res.getString("Sala_idSala"));%></td>
+                                                    <td><%out.println(res.getString("Duracion"));%></td>
+                                                    <td><%out.println(res.getString("Año"));%></td>
+                                                    <td><%out.println(res.getString("Mes"));%></td>
+                                                    <td><%out.println(res.getString("Dia"));%></td>
+                                                    <td><%out.println(res.getString("Hora"));%></td>
+                                                    <td><%out.println(res.getString("Minuto"));%></td>
                                                 </tr>
                                             <%}%>
                                         </tbody>

@@ -2,7 +2,8 @@
 <%@page import="java.time.LocalDateTime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String empleado = (String) session.getAttribute("idEmpleado"); 
-
+    ResultSet res1 = (ResultSet) session.getAttribute("multiplex");
+    ResultSet res2 = (ResultSet) session.getAttribute("rol");
 %>
 <!DOCTYPE html>
 <html>
@@ -79,12 +80,24 @@
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="salario" placeholder="Salario" name="salario"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="multiplex" placeholder="id Multiplex" name="multiplex"></div>
-                                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="rol" placeholder="id Rol" name="rol"></div>
-                                            </div>
-                                            <div class="row mb-3">
                                                 <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="cedula" placeholder="Cédula" name="cedula"></div>
                                                 <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="pass" placeholder="Contraseña" name="pass"></div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <select name="multiplex" class="border rounded-pill form-select" style="font-size: 12.8px;font-family: Nunito, sans-serif;text-align: left;background: rgba(194,23,0,0);border: 2px solid rgb(180,182,186);color: rgb(141,144,157);">
+                                                        <%while(res1.next()){%>
+                                                            <option value="<%out.print(res1.getString("idMultiplex"));%>"><%out.println(res1.getString("Nombre"));%></option>
+                                                        <%}%>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <select name="rol" class="border rounded-pill form-select" style="font-size: 12.8px;font-family: Nunito, sans-serif;text-align: left;background: rgba(194,23,0,0);border: 2px solid rgb(180,182,186);color: rgb(141,144,157);">
+                                                        <%while(res2.next()){%>
+                                                            <option value="<%out.print(res2.getString("idRol"));%>"><%out.println(res2.getString("Nombre"));%></option>
+                                                        <%}%>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div style="display:none">
                                                 <input id="anio" name="anio" type="text" value="<%out.println(LocalDateTime.now().getYear());%>">

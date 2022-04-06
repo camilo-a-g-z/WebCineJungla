@@ -4,6 +4,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String user = (String) session.getAttribute("idCliente"); 
     String nombre = (String) session.getAttribute("Nombre");
+    String idFactura = (String) session.getAttribute("idFactura");
+    String idCliente = (String) session.getAttribute("idCliente");
 %>
 <!DOCTYPE html>
 <html>
@@ -41,10 +43,10 @@
     <main class="page cv-page">
         <section class="portfolio-block block-intro border-bottom" style="padding-top: 40px;padding-bottom: 60px;">
             <div class="container">
-                <form action="servlet" method="post">
+                <form action="GuardarCalificacion" method="post">
                     <div id="info" style="display:none">
-                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(user);%>">
-                        <input id="idFuactura" name="idFactura" type="text" value="<%out.println(res1.getString("idFactura"));%>">
+                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                        <input id="idFactura" name="idFactura" type="text" value="<%out.println(idFactura);%>">
                     </div>
                     <h1 style="font-family: Aclonica, sans-serif;font-size: 41px;margin-bottom: 25px;">Califica la película</h1>
                     <div class="about-me">

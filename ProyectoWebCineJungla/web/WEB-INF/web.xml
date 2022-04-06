@@ -132,6 +132,18 @@
         <servlet-name>AddPersonal</servlet-name>
         <servlet-class>servlets.AdminComunication.AddPersonal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Calificar</servlet-name>
+        <servlet-class>servlets.Calificar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GuardarCalificacion</servlet-name>
+        <servlet-class>servlets.GuardarCalificacion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RedirectFunciones</servlet-name>
+        <servlet-class>servlets.AdminComunication.RedirectFunciones</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -263,6 +275,18 @@
     <servlet-mapping>
         <servlet-name>AddPersonal</servlet-name>
         <url-pattern>/AddPersonal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Calificar</servlet-name>
+        <url-pattern>/Calificar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuardarCalificacion</servlet-name>
+        <url-pattern>/GuardarCalificacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RedirectFunciones</servlet-name>
+        <url-pattern>/RedirectFunciones</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

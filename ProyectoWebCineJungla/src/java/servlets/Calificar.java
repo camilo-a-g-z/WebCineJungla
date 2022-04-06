@@ -1,19 +1,21 @@
-package servlets.AdminComunication;
+package servlets;
 
-import datos.DBPelicula;
+import datos.DBCalificacionPelicula;
+import datos.DBCalificacionServicio;
+import datos.DBCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Pelicula;
 
 /**
  *
- * @author USER
+ * @author User
  */
-public class AddPelicula extends HttpServlet {
+public class Calificar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,20 +30,17 @@ public class AddPelicula extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        Pelicula pelicula = new Pelicula();
-        DBPelicula DBpel = new DBPelicula();
-        String empleado = request.getParameter("idEmpleado");
-        pelicula.setNombre(request.getParameter("nombre"));
-        pelicula.setClasificacionEdad(request.getParameter("clasificacionEdad"));
-        pelicula.setDuracion(Integer.parseInt(request.getParameter("duracion")));
-        pelicula.setDirector(request.getParameter("director"));
-        pelicula.setSinopsis(request.getParameter("sinopsis"));
-        pelicula.setUrlPelicula(request.getParameter("imagen"));
-        pelicula.setEstado(request.getParameter("estado"));
+        DBCliente DBc = new DBCliente();
+        ResultSet res;
         try {
-            DBpel.insertarPelicula(pelicula);
-            response.sendRedirect("ListarPeliculas?idEmpleado=" + empleado);
-        }catch (Exception e){
+            res = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
+            res.next();
+            System.out.println(request.getParameter("idFactura"));
+            request.getSession().setAttribute("idCliente", request.getParameter("idCliente"));
+            request.getSession().setAttribute("idFactura", request.getParameter("idFactura"));
+            request.getSession().setAttribute("Nombre", res.getString("Nombre"));;
+            response.sendRedirect("calificacion.jsp");
+        }catch(Exception e){
             System.out.println(e.getMessage());
         }
     }

@@ -1,7 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String empleado = (String) session.getAttribute("idEmpleado"); 
-
+       ResultSet res1 = (ResultSet) session.getAttribute("multiplex");
 %>
 <!DOCTYPE html>
 <html>
@@ -79,7 +79,13 @@
                                                 <div class="col-xl-6"><input class="form-control form-control-user" type="text" id="imagen" placeholder="Imagen" name="imagen"></div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-xl-12 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="multiplex" placeholder="Multiplex" name="multiplex"></div>
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <select name="multiplex" class="border rounded-pill form-select" style="font-size: 12.8px;font-family: Nunito, sans-serif;text-align: left;background: rgba(194,23,0,0);border: 2px solid rgb(180,182,186);color: rgb(141,144,157);">
+                                                        <%while(res1.next()){%>
+                                                            <option value="<%out.print(res1.getString("idMultiplex"));%>"><%out.println(res1.getString("Nombre"));%></option>
+                                                        <%}%>
+                                                    </select>
+                                                </div>
                                             </div><button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;margin-top: 14px;">Añadir producto</button>
                                         </form>
                                         <div class="text-center"></div>

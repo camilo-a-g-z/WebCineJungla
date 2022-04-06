@@ -1,19 +1,24 @@
-package servlets.AdminComunication;
+package servlets;
 
-import datos.DBPelicula;
+import datos.DBCalificacionPelicula;
+import datos.DBCalificacionServicio;
+import datos.DBCliente;
+import datos.DBFacturaCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Pelicula;
+import logica.CalificacionPelicula;
+import logica.CalificacionServicio;
 
 /**
  *
- * @author USER
+ * @author User
  */
-public class AddPelicula extends HttpServlet {
+public class GuardarCalificacion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,21 +32,39 @@ public class AddPelicula extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        Pelicula pelicula = new Pelicula();
-        DBPelicula DBpel = new DBPelicula();
-        String empleado = request.getParameter("idEmpleado");
-        pelicula.setNombre(request.getParameter("nombre"));
-        pelicula.setClasificacionEdad(request.getParameter("clasificacionEdad"));
-        pelicula.setDuracion(Integer.parseInt(request.getParameter("duracion")));
-        pelicula.setDirector(request.getParameter("director"));
-        pelicula.setSinopsis(request.getParameter("sinopsis"));
-        pelicula.setUrlPelicula(request.getParameter("imagen"));
-        pelicula.setEstado(request.getParameter("estado"));
+        //variables
+        String idCliente = request.getParameter("idCliente");        
+        //conexion con base de datos
+        DBCliente DBc = new DBCliente();
+        DBFacturaCliente DBfc = new DBFacturaCliente();
+        DBCalificacionPelicula DBcp = new DBCalificacionPelicula();
+        DBCalificacionServicio DBcs = new DBCalificacionServicio();
+        //resultsets
+        ResultSet res1;
+        ResultSet res2;
+        ResultSet res;
+        //generacion de objetos
+        CalificacionPelicula cp = new CalificacionPelicula();
+        cp.setCalificacion(Double.parseDouble(request.getParameter("calPelicula")));
+        cp.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
+        System.out.println(request.getParameter("idFactura"));
+        cp.setFacturaCliente_idFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
+        System.out.println("AQui");
+        CalificacionServicio cs = new CalificacionServicio();
+        cs.setCalificacion(Double.parseDouble(request.getParameter("calServicio")));
+        cs.setCliente_idCliente(Integer.parseInt(request.getParameter("idCliente")));
+        cs.setFacturaCliente_idFacturaCliente(Integer.parseInt(request.getParameter("idFactura")));
         try {
-            DBpel.insertarPelicula(pelicula);
-            response.sendRedirect("ListarPeliculas?idEmpleado=" + empleado);
-        }catch (Exception e){
+            DBcp.insertarCalificacionPelicula(cp);
+            DBcs.insertarCalificacionPelicula(cs);
+            
+            res1 = DBc.getClienteById(Integer.parseInt(idCliente));
+            res2 = DBfc.getFacturaClienteByCliente(Integer.parseInt(idCliente));
+            request.getSession().setAttribute("idCliente", idCliente);
+            request.getSession().setAttribute("cliente", res1);
+            request.getSession().setAttribute("facturas", res2);
+            response.sendRedirect("usuario.jsp");
+        }catch(Exception e){
             System.out.println(e.getMessage());
         }
     }
