@@ -5,6 +5,7 @@
 package servlets.AdminComunication;
 
 import datos.DBFuncion;
+import datos.DBPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -37,10 +38,11 @@ public class RedirectFunciones extends HttpServlet {
         try {
             String empleado = request.getParameter("idEmpleado");
             int pelicula = Integer.parseInt(request.getParameter("idPelicula"));
+
             resFuncion = DBFun.getFuncionByPelicula(pelicula);
             request.getSession().setAttribute("funcion", resFuncion);
 
-            response.sendRedirect("adminPeliculasFuncion.jsp?idEmpleado=" + empleado);
+            response.sendRedirect("adminPeliculasFuncion.jsp?idEmpleado=" + empleado + "&?idPelicula=" + pelicula);
         } catch (Exception e) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
