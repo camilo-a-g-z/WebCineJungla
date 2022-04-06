@@ -94,13 +94,7 @@
                                                         <td><%out.println(res1.getString("Cedula"));%></td>
                                                         <td><%out.println(res1.getString("NumTelefono"));%></td>
                                                         <td><%out.println(res1.getString("Multiplex_idMultiplex"));%></td>
-                                                          <td><%out.println(res1.getString("Salario"));%></td>
-                                                        <td>
-                                                            <form action="servlet">
-                                                                <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
-                                                                <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 100px;height: 38px;">Eliminar</button>
-                                                            </form>
-                                                        </td>
+                                                        <td><%out.println(res1.getString("Salario"));%></td>
                                                     </tr>
                                                     <%}%>
                                                     <tr></tr>

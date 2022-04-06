@@ -85,12 +85,6 @@
                                                     <td><%out.println(res1.getString("Director"));%></td>
                                                     <td><%out.println(res1.getString("Sinopsis"));%></td>
                                                     <td><%out.println(res1.getString("Estado"));%></td>
-                                                    <td>
-                                                        <form action="servlet">
-                                                            <div id="info" style="display:none"><input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>"></div>
-                                                            <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Eliminar</button>
-                                                        </form>
-                                                    </td>
                                                 </tr>
                                                 <%}%>
                                                 <tr></tr>
