@@ -184,6 +184,14 @@
         <servlet-name>NegarE</servlet-name>
         <servlet-class>servlets.ticketEmpleado.NegarE</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RedirectMultiplexAdd</servlet-name>
+        <servlet-class>servlets.AdminComunication.RedirectMultiplexAdd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarMultiplex</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarMultiplex</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -367,6 +375,14 @@
     <servlet-mapping>
         <servlet-name>NegarE</servlet-name>
         <url-pattern>/NegarE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RedirectMultiplexAdd</servlet-name>
+        <url-pattern>/RedirectMultiplexAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarMultiplex</servlet-name>
+        <url-pattern>/ListarMultiplex</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

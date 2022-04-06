@@ -1,9 +1,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%String empleado = (String) session.getAttribute("idEmpleado"); 
-
+    ResultSet res1 = (ResultSet) session.getAttribute("multiplex");
 %>
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -27,13 +26,13 @@
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
-                        <form class="nav-link active" action="ListarPeliculas">
+                        <form class="nav-link" action="ListarPeliculas">
                             <div id="info" style="display:none">
-                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
                             </div>
                             <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
                         </form>
-                        <form class="nav-link" action="ListarConfiteria">
+                        <form class="nav-link active" action="ListarConfiteria">
                             <div id="info" style="display:none">
                                 <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
@@ -58,37 +57,46 @@
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                <div id="content-1">
-                    <div class="container-fluid">
-                        <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Películas&nbsp;</h3>
-                        <div class="card shadow">
-                            <div class="card-header py-3">
-                                <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de las funciones</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h4 class="text-dark mb-4" style="font-family: Aldrich, sans-serif;font-size: 25px;">Datos de la película</h4>
-                                    </div>
-                                    <form class="d-inline user" action="AddPelicula">
-                                        <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Nombre" name="nombre"></div>
-                                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="director" placeholder="Director" name="director"></div>
+                <div id="content-2">
+                    <div id="content-1"></div>
+                </div>
+                <div id="content-3">
+                    <div id="content-4">
+                        <div class="container-fluid">
+                            <h3 class="text-dark mb-4" style="margin-top: 22px;font-family: Aclonica, sans-serif;font-size: 28px;">Productos de confitería</h3>
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de los productos</p>
+                                </div>
+                                <div class="card-body">
+                                    <form class="card-link" action="RedirectMultiplexAdd">
+                                        <div id="info" style="display:none">
+                                            <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                                         </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-6 col-xl-4 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="duracion" placeholder="Duración (minutos)" name="duracion"></div>
-                                            <div class="col-sm-6 col-xl-4"><input class="form-control form-control-user" type="text" id="clasificacionEdad" placeholder="Clasificación de edad" name="clasificacionEdad"></div>
-                                            <div class="col-xl-4"><input class="form-control form-control-user" type="text" id="estado" placeholder="Estado" name="estado"></div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="sinopsis" placeholder="Sinopsis" name="sinopsis"></div>
-                                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="imagen" placeholder="Imagen" name="imagen"></div>
-                                        </div><button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir película</button>
-                                        <hr>
+                                        <button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir multiplex</button>
                                     </form>
-                                    <div class="text-center"></div>
-                                    <div class="text-center"></div>
+                                    <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
+                                        <table class="table my-0" id="dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Dirección</th>
+                                                </tr>
+                                                <%while(res1.next()){%>
+                                                    <tr>
+                                                        <th><%out.println(res1.getString("Nombre"));%></th>
+                                                        <th><%out.println(res1.getString("Direccion"));%></th>
+                                                    </tr>
+                                                <%}%>
+                                            </thead>
+                                            <tbody>
+                                                <tr></tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr></tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

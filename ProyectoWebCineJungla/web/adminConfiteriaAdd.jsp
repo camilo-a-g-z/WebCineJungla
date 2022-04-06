@@ -45,6 +45,12 @@
                             </div>
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
                         </form>
+                        <form class="nav-link" action="ListarMultiplex">
+                            <div id="info" style="display:none">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
+                            </div>
+                            <i class="fa fa-shopping-bag"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Multiplex</button>
+                        </form>
                     </li>
                 </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
                 <div class="text-center d-none d-md-inline"></div>
