@@ -31,9 +31,6 @@
                     <div class="mb-3">
                         <div class="row">
                             <div class="col"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre</label><input class="form-control" type="email" id="nombre" name="nombre" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Apellido</label><input class="form-control" type="email" id="apellido" name="apellido" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                            </div>
                         </div>
                     </div>
                     <div class="mb-3"></div>
@@ -42,8 +39,15 @@
                     <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Contraseña</label><input class="form-control" type="password" id="contraseña" name="contraseña" style="height: 45px;"></div><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Método de pago</label>
                     <div class="mb-3">
                         <div class="row">
-                            <div class="col"><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 77px;padding: 0px 0px;margin-top: 20px;">Efectivo</button><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 162px;height: 42px;margin-right: 0px;margin-left: 65px;padding: 0px 0px;margin-top: 20px;">Tarjeta</button></div>
-                            <div class="col"><button class="btn btn-primary border rounded-pill" type="submit" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 15px;">Registrarse</button></div>
+                            <div class="col">
+                                
+                                <input type="radio" name="medioPago" value="Efectivo" style="margin-top: 8px;margin-right: 80px;margin-left: 15px;">
+                                <input type="radio" name="medioPago" value="Tarjeta" style="margin-top: 8px;margin-right: 75px;margin-left: 0px;">
+                               
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-primary border rounded-pill" type="submit" style="font-size: 25px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);width: 190px;height: 65px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 15px;">Registrarse</button>
+                            </div>
                         </div>
                     </div>
                 </form>
