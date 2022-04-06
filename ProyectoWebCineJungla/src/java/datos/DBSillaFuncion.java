@@ -108,7 +108,7 @@ public class DBSillaFuncion {
             "FROM silla a, sillafuncion b " +
             " where b.Funcion_idFuncion = "+id+" AND b.Silla_idSilla = a.idSilla AND Estado = \"Libre\" ;");
         ResultSet res = pstm.executeQuery();
-        return res;
+        return res; 
     }
     //Cierre de la funcion
     

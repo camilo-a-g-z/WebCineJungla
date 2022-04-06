@@ -1,27 +1,44 @@
 package logica.Automatizacion;
+
 /**
- *Silla
- * @author Camilo Garcia
+ *
+ * Esta clase genera un ticket segun la silla y la funcion
+ *
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class GenerarRegistroTicket {
+
+    //Campos de la clase
+    //Declaracion de variables
     private int idSillaFuncion = 0;
     private int idFactura = 0;
-    
-    public GenerarRegistroTicket(int idSillaFuncion, int idFactura ) {
+
+    /**
+     * Metodo constructor de la clase, llama al metodo proceso
+     *
+     * @param idSillaFuncion
+     * @param idFactura
+     */
+    public GenerarRegistroTicket(int idSillaFuncion, int idFactura) {
         this.idSillaFuncion = idSillaFuncion;
         this.idFactura = idFactura;
         proceso();
     }
-    
-    private void proceso(){
+    //Cierre del metodo
+
+    /**
+     * Metodo que se encarga de obtener y grabar el registro de la boleta
+     */
+    private void proceso() {
         ObtenerDatosSillaFuncion dataS = new ObtenerDatosSillaFuncion(idSillaFuncion);
         GenerarPrecioBoleta precio = new GenerarPrecioBoleta(dataS.getSilla());
         GrabarRegistroBoleta registro = new GrabarRegistroBoleta(
-                precio.getCosto(),"1",idSillaFuncion,idFactura);
-        
-        
+                precio.getCosto(), "1", idSillaFuncion, idFactura);
+
     }
-    
-    
-    
+    //Cierre del metodo
+
 }
