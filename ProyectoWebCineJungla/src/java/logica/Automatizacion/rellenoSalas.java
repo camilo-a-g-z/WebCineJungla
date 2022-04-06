@@ -1,13 +1,11 @@
 package logica.Automatizacion;
 
-import datos.DBCliente;
 import datos.DBEmpleado;
 import datos.DBFuncion;
 import datos.DBPelicula;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
-import static java.util.Calendar.MONTH;
 import java.util.Collections;
 import java.util.Date;
 import logica.Funcion;
@@ -15,10 +13,17 @@ import logica.Pelicula;
 
 /**
  *
- * @author Miguel
+ *
+ *
+ * *@author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public final class rellenoSalas {
 
+    //Campos de la clase
+    //Declaracion de variables
     DBFuncion funcionDB = new DBFuncion();
     DBPelicula pel = new DBPelicula();
     ArrayList<Funcion> conf = new ArrayList<Funcion>();
@@ -36,14 +41,27 @@ public final class rellenoSalas {
     int auxMin;
     int auxDurPel;
     int sala, pelicula, anio, mes, dia, hora, min;
+
+    /**
+     * Metodo constructor de la clase, se instancia generarCalendar y se llama
+     * al metodo rellenarFuncion
+     *
+     * @param sala
+     * @param pelicula
+     * @param anio
+     * @param mes
+     * @param dia
+     * @param hora
+     * @param min
+     */
     public rellenoSalas(int sala, int pelicula, int anio, int mes, int dia, int hora, int min) {
-        this.sala=sala;
-        this.pelicula=pelicula;
-        this.anio=anio;
-        this.mes=mes;
-        this.dia=dia;
-        this.hora=hora;
-        this.min=min;
+        this.sala = sala;
+        this.pelicula = pelicula;
+        this.anio = anio;
+        this.mes = mes;
+        this.dia = dia;
+        this.hora = hora;
+        this.min = min;
         fechaActual = generarCalendar(anio, mes, dia, hora, min);
         fechaFinal = generarCalendar(anio, mes, dia, hora, min);
 
@@ -53,13 +71,23 @@ public final class rellenoSalas {
         horaFinal = fechaActual;
         horaFinal.set(Calendar.HOUR_OF_DAY, 23);
         horaFinal.set(Calendar.MINUTE, 00);
-
         fechaFinal.add(Calendar.MONTH, 1);
 
-//        pruebaFunciones();
         rellenarFuncion(sala, pelicula);
     }
+    //Cierre del metodo
 
+    /**
+     * Metodo que genera un calendario segun unos datos pasados por paraemtros
+     * retorna un objeto tipo Calendar
+     *
+     * @param Anio
+     * @param Mes
+     * @param Dia
+     * @param Hora
+     * @param Minuto
+     * @return
+     */
     public Calendar generarCalendar(int Anio, int Mes, int Dia, int Hora, int Minuto) {
         Calendar c = Calendar.getInstance();
 
@@ -71,7 +99,15 @@ public final class rellenoSalas {
 
         return c;
     }
+    //Cierre del metodo
 
+    /**
+     * Metodo que revisa las funciones existentes en un mes, y a partir de ahi
+     * intenta crear una funcion cada dia del mes
+     *
+     * @param sala
+     * @param pelicula
+     */
     public void rellenarFuncion(int sala, int pelicula) {
         try {
             ResultSet DBf = funcionDB.getFuncionBySala(sala);
@@ -80,7 +116,9 @@ public final class rellenoSalas {
             DBPelicula test = new DBPelicula();
             ResultSet DBp = test.getPeliculaById(1);
             Pelicula peli = new Pelicula();
-            while(DBp.next()){
+            //Se obtienen los datos de la pelicula que se quiere introducir 
+            //la funcion
+            while (DBp.next()) {
                 peli.setClasificacionEdad(DBp.getString("ClasificacionEdad"));
                 peli.setDirector(DBp.getString("Director"));
                 peli.setDuracion(DBp.getInt("Duracion"));
@@ -92,24 +130,22 @@ public final class rellenoSalas {
             }
             objPel = peli;
             auxDurPel = objPel.getDuracion();
-            //pruebaPeliculas();
-            //auxDurPel = arregloTesteoPel.get(0).getDuracion();
             auxMin = auxDurPel % 60;
             auxHr = (int) auxDurPel / 60;
-            //System.out.println(auxDurPel + "=" + auxHr + ":" + auxMin);
 
             boolean coincidePelicula = false;
             int a = 0;
-            //Mientras el mes actual sea menor al siguiente mes
+            //Se recorren los dias de un mes, mientras el mes actual sea menor al siguiente mes
             while (fechaActual.get(Calendar.MONTH) < fechaFinal.get(Calendar.MONTH)) {
-                //  System.out.println("Horario C "+ conf.get(0).getHorarioC());
-                //  System.out.println("fechaActual "+ fechaActual);
                 //System.out.println("Se revisa dia del mes: " + (a + 1));
+                //Se setean en cada bucle
                 horaInicial.set(Calendar.HOUR_OF_DAY, 12);
                 horaInicial.set(Calendar.MINUTE, 00);
                 horaFinal.set(Calendar.HOUR_OF_DAY, 22);
                 horaFinal.set(Calendar.MINUTE, 00);
 
+                //En este bucle se separan todas las funciones hasta el momento, y solo se dejan las 
+                //funciones del dia actual
                 for (int i = 0; i < conf.size(); i++) {
                     //System.out.println("El tamaño del arreglo de funciones es " + conf.size());
                     //System.out.println(conf.get(i).getHorarioC().get(Calendar.YEAR) + " y " + (fechaActual.get(Calendar.YEAR)));
@@ -127,23 +163,28 @@ public final class rellenoSalas {
                     }
                 }
 
+                //Si no hay funciones en el dia actual entonces se rellena la funcion a las 12
                 if (funcionDiaActual.isEmpty()) {
-                    //Rellenar con una funcion
                     // System.out.println("Entra linea 102, el dia actual no tiene funciones");
-                    generarFuncion(fechaActual.get(Calendar.YEAR),fechaActual.get(Calendar.MONTH),a+1,12,0);
+                    generarFuncion(fechaActual.get(Calendar.YEAR), fechaActual.get(Calendar.MONTH), a + 1, 12, 0);
                 } else {
+                    //Si hay alguna funcion el dia actual
                     //System.out.println("Entra LINEA 110, el dia actual SI tiene funciones");
+                    //Se revisa si la pelicula que queremos introducir ya esta se esta proyectando en el dia
                     for (int j = 0; j < funcionDiaActual.size() && !coincidePelicula; j++) {
                         if (funcionDiaActual.get(j).getPelicula_idPelicula() == pelicula) {
                             //System.out.println("AQUI ENTRA linea 106, por lo tanto la pelicula ya se esta proyectando este dia");
                             coincidePelicula = true;
                         }
                     }
+                    //Si la pelicula no se esta proyectando se buscara introducirla
                     if (coincidePelicula == false) {
 //                        System.out.println("ENTRA LINEA 112, la pelicula que se quiere introducir no coincide con ninguna de las funciones");
+                        //Se organiza el arreglo de las funciones del dia actual
                         Collections.sort(funcionDiaActual, new ordenarFuncionPorHorario());
 
-                        //Si hay hueco antes de la primera funcion
+                        //Si hay hueco antes de la primera funcion se buscara introducir una funcion despues de las 12
+                        //y antes de la primera funcion
                         if (funcionDiaActual.get(0).getHora() > (horaInicial.get(Calendar.HOUR_OF_DAY))) {
 
                             Calendar fechaAux = Calendar.getInstance();
@@ -164,7 +205,7 @@ public final class rellenoSalas {
                                 //Insertar Funcion con hora auxDate
                                 generarFuncion(auxDate.getYear(), auxDate.getMonth(), auxDate.getDate(),
                                         auxDate.getHours(), auxDate.getMinutes());
-                                
+
                                 //System.out.println("ENTRA LINEA 128, hay tiempo suficiente para introducir la pelicula despues de las (12) "
                                 //        + "y antes de la primera funcion");
                                 InsercionAntesFuncion = true;
@@ -172,9 +213,9 @@ public final class rellenoSalas {
 
                         }
 
-                        //Insercion despues de la ultima funcion y antes de que sean las 12
+                        //Si no se pudo introducir una pelicula antes de la primera funcion, se buscara introducirla
+                        //despues de la ultima funcion y antes de las 12 de la noche
                         if (!InsercionAntesFuncion) {
-                            //System.out.println("AQUI ENTRA");
 
                             Calendar auxCal = Calendar.getInstance();
                             auxCal = funcionDiaActual.get(funcionDiaActual.size() - 1).getHorarioC();
@@ -210,6 +251,8 @@ public final class rellenoSalas {
 
                         }
                         //System.out.println(InsercionAntesFuncion);
+                        //Si no se pudo introducir una pelicula despues de la ultima funcion
+                        //se buscara introducir una funcion entre dos funciones
                         if (!InsercionAntesFuncion && funcionDiaActual.size() >= 2) {
                             //Verificar huecos entre funciones
                             for (int i = 0; i < funcionDiaActual.size() - 1 && !InsercionAntesFuncion; i++) {
@@ -254,7 +297,7 @@ public final class rellenoSalas {
                                 if (auxDate.equals(auxDate2) || (auxDate.before(auxDate2))) {
                                     //Ingresar funcion con horas auxDate
                                     generarFuncion(auxDate.getYear(), auxDate.getMonth(), auxDate.getDate(),
-                                        auxDate.getHours(), auxDate.getMinutes());
+                                            auxDate.getHours(), auxDate.getMinutes());
                                     //System.out.println("ENTRA LINEA 215, se ingresa una funcion entre funciones");
                                     InsercionAntesFuncion = true;
                                 }
@@ -264,8 +307,11 @@ public final class rellenoSalas {
                     }
 
                 }
+                //Se limpia el arreglo del dia actual
                 funcionDiaActual.clear();
+                //Se setea la coincidencia de la pelicula a falso 
                 coincidePelicula = false;
+                //Se seatea la insercion de la funcion a falso
                 InsercionAntesFuncion = false;
                 //Se aumentara en un dia por cada bucle del while
                 a = a + 1;
@@ -277,7 +323,20 @@ public final class rellenoSalas {
 
         }
     }
-    private void generarFuncion(int Año, int Mes, int Dia, int Hora, int Minuto){
+    //Cierre del metodo
+
+    /**
+     * Metodo que genera una funcion segun los datos de la fecha que le lleguen
+     * por parametro, tambien se le asigna a la funcion un empleado Random y se
+     * generan las sillas de la funcion
+     *
+     * @param Año
+     * @param Mes
+     * @param Dia
+     * @param Hora
+     * @param Minuto
+     */
+    private void generarFuncion(int Año, int Mes, int Dia, int Hora, int Minuto) {
         Funcion f = new Funcion();
         f.setAño(Año);
         f.setMes(Mes);
@@ -295,18 +354,19 @@ public final class rellenoSalas {
         DBEmpleado DBc = new DBEmpleado();
         //resulset
         ResultSet res1;
-        
-        try{
-            res1 =DBc.getEmpleadosRandom();
+
+        try {
+            res1 = DBc.getEmpleadosRandom();
             res1.next();
             f.setEmpleado_idEmpleado(res1.getInt("idEmpleado"));
             DBf.insertarFuncion(f);
             int idFuncion = Integer.parseInt(DBf.getLastId());
-            
-            System.out.println("Dia: "+Dia+ "   id: "+idFuncion + "  Sala : "+f.getSala_idSala());
-            GenerarSillaFuncion gsf = new GenerarSillaFuncion(idFuncion,f.getSala_idSala());
-        }catch(Exception e){
+
+            System.out.println("Dia: " + Dia + "   id: " + idFuncion + "  Sala : " + f.getSala_idSala());
+            GenerarSillaFuncion gsf = new GenerarSillaFuncion(idFuncion, f.getSala_idSala());
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+    //Cierre del metodo
 }
