@@ -88,6 +88,7 @@
                                                     <form action="RedirectFunciones">
                                                         <div id="info" style="display:none">
                                                             <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
+                                                            <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
                                                         </div>
                                                         <td>
                                                             <button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Funciones</button>

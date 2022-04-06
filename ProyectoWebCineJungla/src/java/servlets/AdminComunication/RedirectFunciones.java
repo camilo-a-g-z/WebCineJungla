@@ -36,7 +36,8 @@ public class RedirectFunciones extends HttpServlet {
 
         try {
             String empleado = request.getParameter("idEmpleado");
-            resFuncion = DBFun.getFunciones();
+            int pelicula = Integer.parseInt(request.getParameter("idPelicula"));
+            resFuncion = DBFun.getFuncionByPelicula(pelicula);
             request.getSession().setAttribute("funcion", resFuncion);
 
             response.sendRedirect("adminPeliculasFuncion.jsp?idEmpleado=" + empleado);
