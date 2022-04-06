@@ -70,12 +70,25 @@ public final class rellenoSalas {
             ResultSet DBf = funcionDB.getFuncionBySala(sala);
             obtenerFuncionPorDia transf = new obtenerFuncionPorDia(DBf);
             conf = transf.getArrayListFunciones();
-            ResultSet DBp = pel.getPeliculaById(pelicula);
-            TransformPelicula pelTrans = new TransformPelicula(DBp);
-            objPel = pelTrans.getPeli();
+            DBPelicula test = new DBPelicula();
+            System.out.println("Pelicula");
+            ResultSet DBp = test.getPeliculaById(1);
+            Pelicula peli = new Pelicula();
+            while(DBp.next()){
+                peli.setClasificacionEdad(DBp.getString("ClasificacionEdad"));
+                peli.setDirector(DBp.getString("Director"));
+                peli.setDuracion(DBp.getInt("Duracion"));
+                peli.setEstado(DBp.getString("Estado"));
+                peli.setNombre(DBp.getString("Nombre"));
+                peli.setSinopsis(DBp.getString("Sinopsis"));
+                peli.setUrlPelicula(DBp.getString("UrlPelicula"));
+                peli.setIdPelicula(DBp.getInt("idPelicula"));
+                System.out.println("Termino");
+            }
+            objPel = peli;
             auxDurPel = objPel.getDuracion();
-            pruebaPeliculas();
-            auxDurPel = arregloTesteoPel.get(0).getDuracion();
+            //pruebaPeliculas();
+            //auxDurPel = arregloTesteoPel.get(0).getDuracion();
             auxMin = auxDurPel % 60;
             auxHr = (int) auxDurPel / 60;
             //System.out.println(auxDurPel + "=" + auxHr + ":" + auxMin);
