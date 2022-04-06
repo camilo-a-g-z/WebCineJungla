@@ -1,24 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.AdminComunication;
 
-import datos.DBConexion;
 import datos.DBEmpleado;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la lista de empleados de la empresa.
  *
- * @author David
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ListarEmpleado extends HttpServlet {
 
@@ -41,7 +38,7 @@ public class ListarEmpleado extends HttpServlet {
         try {
             resEmpleado = DBe.getEmpleados();
             request.getSession().setAttribute("resEmpleado", resEmpleado);
-            request.getSession().setAttribute("idEmpleado", idEmpleado);
+            request.getSession().setAttribute("idEmpleado", request.getParameter("idEmpleado"));
             response.sendRedirect("adminPersonal.jsp");
 
         } catch (Exception e) {
@@ -57,6 +54,7 @@ public class ListarEmpleado extends HttpServlet {
         }
     }
 
+    //Cierre del metodo
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -95,5 +93,4 @@ public class ListarEmpleado extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
