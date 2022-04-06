@@ -3,16 +3,29 @@ package logica.Automatizacion;
 import logica.Silla;
 
 /**
- *
- * @author Camilo Garcia
+ * Esta clase genera el precio de una boleta segun el tipo de silla
+ * * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class GenerarPrecioBoleta {
+    //Campos de la clase
     private Silla silla = new Silla();
     private Double costo = 0.0;
+    /**
+     * Metodo constructor de la clase
+     * @param silla 
+     */
     public GenerarPrecioBoleta(Silla silla) {
         this.silla = silla;
         calcularCosto();
     }
+    //Cierre del metodo
+    
+    /**
+     * Metodo que setea un valor segun el tipo de silla
+     */
     private void calcularCosto(){
         if("General".equals(silla.getTipo())){
             costo = 7000.0;
@@ -20,15 +33,18 @@ public class GenerarPrecioBoleta {
             costo = 10000.0;
         }
     }
+    //Cierre del metodo
 
+    //Metodos getter y setter de silla
     public Silla getSilla() {
         return silla;
     }
-
+    //Cierre de metodos
+    
     public void setSilla(Silla silla) {
         this.silla = silla;
     }
-
+    //Metodos getter y setter del costo
     public Double getCosto() {
         return costo;
     }
@@ -36,5 +52,6 @@ public class GenerarPrecioBoleta {
     public void setCosto(Double costo) {
         this.costo = costo;
     }
+    //Cierre de metodos;
     
 }

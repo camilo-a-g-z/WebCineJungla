@@ -7,51 +7,80 @@ import java.sql.ResultSet;
 import logica.FacturaCliente;
 
 /**
+ * Esta clase se encarga de procesar los datos de la factura del cliente. para
+ * asi obtener el total final
  *
- * @author User
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class CalcularFactura {
+
+    //Campos de la clase
     private int idFactura = 0;
     private ResultSet res1;
     private ResultSet res2;
     private Double costo = 0.0;
+
+    //Constructor de la clase
+    /**
+     *
+     * @param idFactura
+     */
     public CalcularFactura(int idFactura) {
         this.idFactura = idFactura;
         proceso();
     }
-    
-    private void proceso(){
+    //Cierre del constructor
+
+    //Metodo que llama a otros metodos
+    private void proceso() {
         obtenerDatos();
         calcularCosto();
         enviarDB();
     }
-    private void obtenerDatos(){
-        try{
+    //Cierre del metodo
+
+    //Metodo que obtiene los datos de la factura de la boleta
+    //Y de la confiteria
+    private void obtenerDatos() {
+        try {
             DBRegistroBoleta DBrb = new DBRegistroBoleta();
             DBRegistroComida DBrc = new DBRegistroComida();
             res1 = DBrb.getRegistroBoletaByFacturaCliente(idFactura);
             res2 = DBrc.getRegistroComidaByFacturaCliente(idFactura);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    private void calcularCosto(){
-        try{
-            while(res1.next()){
+    //Cierre del metodo
+
+    /**
+     * Metodo que calcula el valor de los costos de la factura del cliente
+     */
+    private void calcularCosto() {
+        try {
+            while (res1.next()) {
                 costo += res1.getDouble("Precio");
             }
-            while(res2.next()){
+            while (res2.next()) {
                 costo += res2.getDouble("Precio");
             }
             System.out.println(costo);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    private void enviarDB(){
+
+    /**
+     *Metodo que obtiene los datos de la factura y los envia a la 
+     * DB
+     */
+    private void enviarDB() {
         ResultSet res3;
         FacturaCliente fc = new FacturaCliente();
-        try{
+        try {
             DBFacturaCliente DBf = new DBFacturaCliente();
             res3 = DBf.getFacturaClienteById(idFactura);
             res3.next();
@@ -61,14 +90,13 @@ public class CalcularFactura {
             fc.setCliente_idCliente(res3.getInt("Cliente_idCliente"));
             fc.setIdFacturaCliente(res3.getInt("idFacturaCliente"));
             fc.setTotal(res3.getDouble("Total"));
-            
+
             fc.setTotal(costo);
-            
+
             DBf.modifyCliente(fc);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
-        
+
     }
 }

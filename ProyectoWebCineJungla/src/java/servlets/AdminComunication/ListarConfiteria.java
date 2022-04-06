@@ -15,8 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la lista de alimentos ofrecidos en los
+ * multiplex.
  *
- * @author Miguel
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ListarConfiteria extends HttpServlet {
 
@@ -95,5 +100,4 @@ public class ListarConfiteria extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

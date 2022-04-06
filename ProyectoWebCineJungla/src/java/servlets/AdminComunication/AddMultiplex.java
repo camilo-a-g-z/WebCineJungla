@@ -1,4 +1,5 @@
 package servlets.AdminComunication;
+
 import logica.Automatizacion.GenerateAllMultiplex;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,11 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor las agregaciones de espacios multiplex en
+ * la empresa.
  *
- * @author David
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class AddMultiplex extends HttpServlet {
+
+    //Espacios de la clase
     private GenerateAllMultiplex gam;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -26,22 +35,26 @@ public class AddMultiplex extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
         String nombre, direccion;
         int cantidad;
+
         nombre = request.getParameter("nombreMulti");
         direccion = request.getParameter("direccionMulti");
         cantidad = Integer.parseInt(request.getParameter("nombreMulti"));
+
         int idEmpleado = Integer.parseInt("id");
+
         try {
-            
-            gam=new GenerateAllMultiplex(nombre, direccion, cantidad);
-            response.sendRedirect("ListarSala?idEmpleado="+idEmpleado);
-            
-        }catch (Exception e){
+
+            gam = new GenerateAllMultiplex(nombre, direccion, cantidad);
+            response.sendRedirect("ListarSala?idEmpleado=" + idEmpleado);
+
+        } catch (Exception e) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddMultiplex</title>");            
+            out.println("<title>Servlet AddMultiplex</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AddMultiplex at " + e.getMessage() + "</h1>");
@@ -88,5 +101,4 @@ public class AddMultiplex extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la lista de empleados de la empresa.
  *
- * @author David
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ListarEmpleado extends HttpServlet {
 
@@ -50,6 +54,7 @@ public class ListarEmpleado extends HttpServlet {
         }
     }
 
+    //Cierre del metodo
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -88,5 +93,4 @@ public class ListarEmpleado extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

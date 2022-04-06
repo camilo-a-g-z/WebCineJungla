@@ -38,8 +38,14 @@ public class obtenerFuncionPorDia {
             fechaActual = dtf.parse(formattedDate);
 
             while (res.next()) {
-                if (res.getDate("Horario").before(fechaActual)) {
-
+                Date dat = new Date();
+                dat.setYear(res.getInt("Año"));
+                dat.setMonth(res.getInt("Mes"));
+                dat.setDate(res.getInt("Dia"));
+                dat.setHours(res.getInt("Hora"));
+                dat.setMinutes(res.getInt("Minuto"));
+                if (dat.before(fechaActual)) {
+                    
                 } else {
                     Funcion f = new Funcion();
                     f.setEmpleado_idEmpleado(res.getInt("idFuncion"));

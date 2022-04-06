@@ -10,8 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la lista para el manejo de peliculas a 
+ * proyectar.
  *
- * @author User
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ListarPeliculas extends HttpServlet {
 

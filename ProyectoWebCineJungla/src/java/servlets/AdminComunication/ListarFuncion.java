@@ -15,10 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la lista para el manejo de funciones de los
+ * multiplex.
  *
- * @author David
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class ListarFuncion extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,15 +41,15 @@ public class ListarFuncion extends HttpServlet {
         ResultSet resFuncion;
         DBFuncion DBf = new DBFuncion();
         try {
-            resFuncion=DBf.getFunciones();
-            request.getSession().setAttribute("resFuncion",resFuncion);
+            resFuncion = DBf.getFunciones();
+            request.getSession().setAttribute("resFuncion", resFuncion);
             response.sendRedirect("funcion.jsp");
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarFuncion</title>");            
+            out.println("<title>Servlet ListarFuncion</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListarFuncion at " + e.getMessage() + "</h1>");
@@ -51,7 +57,7 @@ public class ListarFuncion extends HttpServlet {
             out.println("</html>");
         }
     }
-
+    //Cierre del metodo
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
