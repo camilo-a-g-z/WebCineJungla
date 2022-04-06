@@ -97,6 +97,15 @@
                                                             <th><%out.println(res2.getString("idFacturaCliente"));%></th>
                                                             <th><%out.println(res2.getString("Año"));%>/<%out.println(res2.getString("Mes"));%>/<%out.println(res2.getString("Dia"));%></th>
                                                             <th><%out.println(res2.getString("Total"));%></th>
+                                                            <th>
+                                                                <form action="Calificar">
+                                                                    <div id="info" style="display:none">
+                                                                        <input id="idCliente" name="idCliente" type="text" value="<%out.println(idCliente);%>">
+                                                                        <input id="idFactura" name="idFactura" type="text" value="<%out.println(res2.getString("idFacturaCliente"));%>">
+                                                                    </div>
+                                                                    <button class="btn btn-primary btn-sm" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;font-size: 20px;width: 225px;height: 42px;">Calificar</button>
+                                                                </form>
+                                                            </th>
                                                         </tr>
                                                     <%}%>
                                                 </tbody>

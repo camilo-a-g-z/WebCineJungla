@@ -15,7 +15,7 @@ public class CalificacionPelicula {
     private int idCalificacionPelicula = 0;
     private Double Calificacion = 0.0;
     private int Cliente_idCliente = 0;
-    private int Pelicula_idPelicula = 0;
+    private int FacturaCliente_idFacturaCliente = 0;
 
     //Metodos getters y setters
     //Metodo Get
@@ -55,14 +55,14 @@ public class CalificacionPelicula {
     //Cierre del metodo Set
 
     //Metodo Get
-    public int getPelicula_idPelicula() {
-        return Pelicula_idPelicula;
+    public int getFacturaCliente_idFacturaCliente() {
+        return FacturaCliente_idFacturaCliente;
     }
     //Cierre del metodo Get
 
     //Metodo Set
-    public void setPelicula_idPelicula(int Pelicula_idPelicula) {
-        this.Pelicula_idPelicula = Pelicula_idPelicula;
+    public void setFacturaCliente_idFacturaCliente(int FacturaCliente_idFacturaCliente) {
+        this.FacturaCliente_idFacturaCliente = FacturaCliente_idFacturaCliente;
     }
     //Cierre del metodo Set
 }
