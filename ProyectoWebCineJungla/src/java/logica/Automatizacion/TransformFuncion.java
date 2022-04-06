@@ -10,18 +10,36 @@ import logica.Funcion;
 /**
  * Clase para convertir las funciones traidas de la consulta SQL en ArrayList
  *
- * @author Camilo Garcia
+ ** @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class TransformFuncion {
 
+    //Campos de la clase
+    //Declaracion de variables
     private ArrayList<Funcion> con = new ArrayList<Funcion>();
     private ResultSet res;
 
+    /**
+     * Metodo constructor de la clase, llama al metodo transformar
+     *
+     * @param res
+     * @throws SQLException
+     */
     public TransformFuncion(ResultSet res) throws SQLException {
         this.res = res;
         transformar();
     }
+    //Cierre del metodo
 
+    /**
+     * Metodo que se encarga de obtener las funciones de la BD y pasarlas a un
+     * arraylist
+     *
+     * @throws SQLException
+     */
     private void transformar() throws SQLException {
         System.out.println("Aqui bien");
         while (res.next()) {
@@ -33,13 +51,13 @@ public class TransformFuncion {
             f.setDia(res.getInt("Dia"));
             f.setHora(res.getInt("Hora"));
             f.setMinuto(res.getInt("Minuto"));
-            f.setHorario(   generarDate(
+            f.setHorario(generarDate(
                     res.getInt("Año"),
                     res.getInt("Mes"),
                     res.getInt("Dia"),
                     res.getInt("Hora"),
-                    res.getInt("Minuto"))   );
-            f.setHorarioC(  generarCalendar(
+                    res.getInt("Minuto")));
+            f.setHorarioC(generarCalendar(
                     res.getInt("Año"),
                     res.getInt("Mes"),
                     res.getInt("Dia"),
@@ -51,7 +69,20 @@ public class TransformFuncion {
             con.add(f);
         }
     }
-    private Date generarDate(int Año, int Mes, int Dia, int Hora, int Minuto){
+    //Cierre del metodo
+
+    /**
+     * Metodo que se encarga de generar una fecha segun los parametros que le
+     * llegan, retorna un Date
+     *
+     * @param Año
+     * @param Mes
+     * @param Dia
+     * @param Hora
+     * @param Minuto
+     * @return Date
+     */
+    private Date generarDate(int Año, int Mes, int Dia, int Hora, int Minuto) {
         Date d = new Date();
         d.setYear(Año);
         d.setMonth(Mes);
@@ -60,13 +91,30 @@ public class TransformFuncion {
         d.setMinutes(Minuto);
         return d;
     }
-    private Calendar generarCalendar(int Año, int Mes, int Dia, int Hora, int Minuto){
+    //Cierre del metodo
+
+    /**
+     * Metodo que se encarga de generar una fecha segun los parametros que le
+     * llegan, retorna un Caledar
+     *
+     * @param Año
+     * @param Mes
+     * @param Dia
+     * @param Hora
+     * @param Minuto
+     * @return Calendar
+     */
+    private Calendar generarCalendar(int Año, int Mes, int Dia, int Hora, int Minuto) {
         Calendar c = Calendar.getInstance();
         c.set(Dia, Minuto, Dia, Hora, Minuto);
         return c;
     }
+//Cierre del metodo
+
+    //Metodo getter del arrayList de funciones
     public ArrayList getArrayListFunciones() {
         return con;
     }
+    //Cierre del metodo
 
 }
