@@ -176,6 +176,10 @@
         <servlet-name>AddFunciones</servlet-name>
         <servlet-class>servlets.AdminComunication.AddFunciones</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfirmarE</servlet-name>
+        <servlet-class>servlets.ticketEmpleado.ConfirmarE</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -351,6 +355,10 @@
     <servlet-mapping>
         <servlet-name>AddFunciones</servlet-name>
         <url-pattern>/AddFunciones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmarE</servlet-name>
+        <url-pattern>/ConfirmarE</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
