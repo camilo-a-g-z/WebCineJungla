@@ -167,6 +167,8 @@
     <servlet>
         <servlet-name>ResumenCompraE</servlet-name>
         <servlet-class>servlets.ticketEmpleado.ResumenCompraE</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RedirectFuncionesAdd</servlet-name>
         <servlet-class>servlets.AdminComunication.RedirectFuncionesAdd</servlet-class>
     </servlet>
@@ -341,6 +343,8 @@
     <servlet-mapping>
         <servlet-name>ResumenCompraE</servlet-name>
         <url-pattern>/ResumenCompraE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>RedirectFuncionesAdd</servlet-name>
         <url-pattern>/RedirectFuncionesAdd</url-pattern>
     </servlet-mapping>
