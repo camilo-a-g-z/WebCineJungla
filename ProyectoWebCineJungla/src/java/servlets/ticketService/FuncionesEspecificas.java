@@ -15,8 +15,12 @@ import logica.Automatizacion.FuncionesByMultiplex;
 import logica.FacturaCliente;
 
 /**
+ * Esta clase ejecuta en el servidor el manejo de una proyeccion en especifico.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class FuncionesEspecificas extends HttpServlet {
 

@@ -59,12 +59,11 @@
                     <input id="cantidad" name="cantidad" type="text" value="<%out.println(cantidad);%>">
                     <input id="idPelicula" name="idPelicula" type="text" value="<%out.println(res1.getString("idPelicula"));%>">
                 </div>
-                
                 <p style="font-size: 20px;margin-bottom: 0px;">Selección de sillas:</p>
                 <%for( int i = 0 ; i < Integer.parseInt(cantidad) ; i++){%>
                     <select name="idSala<%out.print(i);%>" class="border rounded-pill" style="width: 220px;height: 40px;margin: 19px 0px 0px 168px;margin-top: 5px;margin-bottom: 20px;margin-right: 0px;margin-left: 0px;padding: 0px 0px;font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(194,23,0);border: 2px solid rgb(180,182,186);color: rgb(255,255,255);">
                         <%while(res2.next()){%>
-                        <option value="<%out.print(res2.getString("idSillaFuncion"));%>">Tipo:<%out.println(res2.getString("Estado"));%> </option>
+                        <option value="<%out.print(res2.getString("idSillaFuncion"));%>">Tipo:<%out.println(res2.getString("Tipo"));%> Numero: <%out.println(res2.getString("Ubicacion"));%> </option>
                         <%}%>
 
                     </select>

@@ -37,8 +37,8 @@
                         </div>
                     </div>        
                 </form>
-                <form action="" method="post" style="padding-top: 30px;padding-bottom: 30px;">
-                    <p style="margin-left: 183px;">¿No tienes una cuenta?</p><a href="registro.jsp"><button class="btn btn-primary border rounded-0" type="button" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 190px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 0px;">Registrate</button></a>
+                <form action="ListarMediopago" method="post" style="padding-top: 30px;padding-bottom: 30px;">
+                    <p style="margin-left: 183px;">¿No tienes una cuenta?</p><button class="btn btn-primary border rounded-0" type="submit" style="font-size: 20px;font-family: Aldrich, sans-serif;text-align: center;background: rgb(109,102,101);width: 190px;height: 43px;margin: 19px 0px 0px 168px;margin-right: 0px;margin-left: 170px;padding: 0px 0px;margin-top: 0px;">Registrate</button>
                 </form>
             </div>
         </section>

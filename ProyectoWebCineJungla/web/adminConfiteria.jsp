@@ -28,16 +28,19 @@
                     <li class="nav-item">
                         <form class="nav-link" action="ListarPeliculas">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
                             </div>
                             <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
                         </form>
-                        <a class="nav-link active">
-                            <i class="fa fa-cutlery"></i><span style="margin-left: 8px;">Confitería</span>
-                        </a>
+                        <form class="nav-link active" action="ListarConfiteria">
+                            <div id="info" style="display:none">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
+                            <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confitería</button>
+                        </form>
                         <form class="nav-link" action="ListarEmpleado">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
                         </form>
@@ -59,7 +62,13 @@
                                 <div class="card-header py-3">
                                     <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Modificación de los productos</p>
                                 </div>
-                                <div class="card-body"><a class="card-link" href="adminConfiteriaAdd.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir producto</button></a>
+                                <div class="card-body">
+                                    <form class="card-link" action="RedirectComidaAdd">
+                                        <div id="info" style="display:none">
+                                            <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                        </div>
+                                        <button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 180px;height: 38px;">Añadir producto</button>
+                                    </form>
                                     <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
                                         <table class="table my-0" id="dataTable">
                                             <thead>
@@ -68,7 +77,6 @@
                                                     <th>Precio</th>
                                                     <th>Stock</th>
                                                     <th>Multiplex</th>
-                                                    <th>Editar</th>
                                                 </tr>
                                                 <%while(res1.next()){%>
                                                     <tr>
@@ -76,7 +84,6 @@
                                                         <th><%out.println(res1.getString("Precio"));%></th>
                                                         <th><%out.println(res1.getString("Stock"));%></th>
                                                         <th><%out.println(res1.getString("Multiplex_idMultiplex"));%></th>
-                                                        <th>Editar</th>
                                                     </tr>
                                                 <%}%>
                                             </thead>

@@ -1,7 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-   ResultSet res1 = (ResultSet) session.getAttribute("mediopago");
+   ResultSet res1 = (ResultSet) session.getAttribute("medioPago");
 %>
 <!DOCTYPE html>
 <html>
@@ -32,21 +32,19 @@
                 <div class="heading">
                     <h2 style="font-family: Aclonica, sans-serif;font-size: 40px;margin-bottom: -40px;">Registro</h2>
                 </div>
-                <form style="padding-top: 30px;padding-bottom: 30px;" action="servlet">
+                <form style="padding-top: 30px;padding-bottom: 30px;" action="AddCliente">
                     <div class="mb-3">
                         <div class="row">
-                            <div class="col"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre</label><input class="form-control" type="email" id="nombre" name="nombre" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
+                            <div class="col"><label class="form-label" for="text" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre</label><input class="form-control" type="text" id="nombre" name="nombre" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
                         </div>
                     </div>
-                    <div class="mb-3"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Nombre de usuario</label><input class="form-control" type="email" id="username" name="username" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
                     <div class="mb-3"><label class="form-label" for="email" style="font-family: Aldrich, sans-serif;font-size: 20px;">Correo electrónico</label><input class="form-control" type="email" id="correo" name="correo" style="font-family: Aldrich, sans-serif;height: 45px;"></div>
-                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Contraseña</label><input class="form-control" type="password" id="contraseña" name="contraseña" style="height: 45px;"></div><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Método de pago</label>
+                    <div class="mb-3"><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Contraseña</label><input class="form-control" type="password" id="pass" name="pass" style="height: 45px;"></div><label class="form-label" for="message" style="font-family: Aldrich, sans-serif;font-size: 20px;">Método de pago</label>
                     <div class="mb-3">
                         <div class="row">
                             <%while(res1.next()){%>
                                 <div class="col">
-                                    <input type="radio" name="medioPago" value="<%out.println(res1.getString("Nombre"));%>" style="margin-top: 8px;margin-right: 5px;margin-left: 15px;"><%out.println(res1.getString("Nombre"));%>
+                                    <input type="radio" name="medioPago" value="<%out.println(res1.getString("idMedioPago"));%>" style="margin-top: 8px;margin-right: 5px;margin-left: 15px;"><%out.println(res1.getString("Nombre"));%>
                                 </div>
                             <%}%>
                             <div class="col">

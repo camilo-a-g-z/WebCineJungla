@@ -12,8 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Esta clase ejecuta en el servidor la asignacion de sillas de eleccion del
+ * cliente.
  *
- * @author Camilo Garcia
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class DecidirSillas extends HttpServlet {
 
@@ -39,11 +44,7 @@ public class DecidirSillas extends HttpServlet {
         ResultSet res2;
         ResultSet res3;
         try{
-           res1 = DBsf.getSillaFuncionByidFuncion(Integer.parseInt(request.getParameter("idFuncion")));
-//           System.out.println(request.getParameter("idFuncion"));
-//           while(res1.next()){
-//               System.out.println(request.getParameter("idFuncion"));
-//           }
+           res1 = DBsf.getSillaFuncionByidFuncionAndEstado(Integer.parseInt(request.getParameter("idFuncion")));
            res2 = DBc.getClienteById(Integer.parseInt(request.getParameter("idCliente")));
            res2.next();
            res3 = DBp.getPeliculaById(Integer.parseInt(request.getParameter("idPelicula")));
@@ -59,7 +60,7 @@ public class DecidirSillas extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DecidirSillas</title>");            
+            out.println("<title>Servlet DecidirSillas</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Error at " + e.getMessage() + "</h1>");

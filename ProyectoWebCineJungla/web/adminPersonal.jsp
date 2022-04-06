@@ -29,19 +29,22 @@
                     <li class="nav-item">
                         <form class="nav-link" action="ListarPeliculas">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
                             </div>
                             <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
                         </form>
-                        <form class="nav-link active" action="ListarConfiteria">
+                        <form class="nav-link" action="ListarConfiteria">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.print(empleado);%>">
                             </div>
                             <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confitería</button>
                         </form>
-                        <a class="nav-link">
+                        <form class="nav-link active" action="ListarEmpleado">
+                            <div id="info" style="display:none">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                            </div>
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
-                        </a>
+                        </form>
                     </li>
                 </ul><a href="index.jsp"><button class="btn btn-primary" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 149px;height: 38px;padding-left: 0px;padding-top: 4px;">Cerrar sesión</button></a>
                 <div class="text-center d-none d-md-inline"></div>
@@ -66,7 +69,13 @@
                                     <div class="card-header py-3">
                                         <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0);--bs-primary: #000000;--bs-primary-rgb: 0,0,0;font-family: Aldrich, sans-serif;">Agregar empleado nuevo</p>
                                     </div>
-                                    <div class="card-body"><a class="card-link" href="adminPersonalAdd.html"><button class="btn btn-primary border rounded-pill" type="button" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 172px;height: 38px;">Añadir empleado</button></a>
+                                    <div class="card-body">
+                                        <form class="card-link" action="RedirectPersonalAdd">
+                                            <div id="info" style="display:none">
+                                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                            </div>
+                                            <button class="btn btn-primary border rounded-pill" type="submit" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 172px;height: 38px;">Añadir empleado</button>
+                                        </form>
                                         <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
                                             <table class="table my-0" id="dataTable">
                                                 <thead>
@@ -85,13 +94,7 @@
                                                         <td><%out.println(res1.getString("Cedula"));%></td>
                                                         <td><%out.println(res1.getString("NumTelefono"));%></td>
                                                         <td><%out.println(res1.getString("Multiplex_idMultiplex"));%></td>
-                                                          <td><%out.println(res1.getString("Salario"));%></td>
-                                                        <td>
-                                                            <form action="servlet">
-                                                                <div id="info" style="display:none"><input id="id_empleado" name="id_empleado" type="text" value="<%out.println(empleado);%>"></div>
-                                                                <button type="submit" class="btn btn-primary border rounded-pill" style="background: rgb(194,23,0);font-family: Aldrich, sans-serif;width: 85px;height: 38px;">Eliminar</button>
-                                                            </form>
-                                                        </td>
+                                                        <td><%out.println(res1.getString("Salario"));%></td>
                                                     </tr>
                                                     <%}%>
                                                     <tr></tr>

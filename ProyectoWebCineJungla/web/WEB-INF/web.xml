@@ -100,6 +100,38 @@
         <servlet-name>ModifyCliente</servlet-name>
         <servlet-class>servlets.ModifyCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddComida</servlet-name>
+        <servlet-class>servlets.AdminComunication.AddComida</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarMediopago</servlet-name>
+        <servlet-class>servlets.AdminComunication.ListarMediopago</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCliente</servlet-name>
+        <servlet-class>servlets.AddCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RedirectComidaAdd</servlet-name>
+        <servlet-class>servlets.AdminComunication.RedirectComidaAdd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RedirectPeliculaAdd</servlet-name>
+        <servlet-class>servlets.AdminComunication.RedirectPeliculaAdd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddPelicula</servlet-name>
+        <servlet-class>servlets.AdminComunication.AddPelicula</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RedirectPersonalAdd</servlet-name>
+        <servlet-class>servlets.AdminComunication.RedirectPersonalAdd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddPersonal</servlet-name>
+        <servlet-class>servlets.AdminComunication.AddPersonal</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -199,6 +231,38 @@
     <servlet-mapping>
         <servlet-name>ModifyCliente</servlet-name>
         <url-pattern>/ModifyCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddComida</servlet-name>
+        <url-pattern>/AddComida</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarMediopago</servlet-name>
+        <url-pattern>/ListarMediopago</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCliente</servlet-name>
+        <url-pattern>/AddCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RedirectComidaAdd</servlet-name>
+        <url-pattern>/RedirectComidaAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RedirectPeliculaAdd</servlet-name>
+        <url-pattern>/RedirectPeliculaAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPelicula</servlet-name>
+        <url-pattern>/AddPelicula</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RedirectPersonalAdd</servlet-name>
+        <url-pattern>/RedirectPersonalAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPersonal</servlet-name>
+        <url-pattern>/AddPersonal</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

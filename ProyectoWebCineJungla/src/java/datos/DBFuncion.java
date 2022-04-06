@@ -27,6 +27,22 @@ public class DBFuncion {
     //Cierre del constructor
 
     /**
+     * 
+     * @return El ultimo numero de identificacion 
+     */
+    public String getLastId(){
+        try{
+            PreparedStatement pstm_2 = cn.getConexion().prepareStatement("SELECT LAST_INSERT_ID()");
+            ResultSet res = pstm_2.executeQuery();
+            res.next();
+            return res.getString("LAST_INSERT_ID()");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return "";
+    }
+    //Cierre de la Funcion
+    /**
      * Funcion que obtiene los datos de una proyeccion con nel numero de
      * identificacion proporcionado.
      *

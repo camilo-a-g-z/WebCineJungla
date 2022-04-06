@@ -12,8 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author Camilo Garcia
+ * Esta clase ejecuta en el servidor datos para el manejo de peliculas por
+ * multiplex.
+ * 
+ * @author Camilo A. Garcia - Miguel A. Naranjo - Laura A. Riobueno - Cristian
+ * C. Tuso
+ * @version 1.0
+ * @since 06/04/2022
  */
 public class PeliculaMultiplex extends HttpServlet {
 
@@ -46,12 +51,12 @@ public class PeliculaMultiplex extends HttpServlet {
             request.getSession().setAttribute("multiplex", res2);
             request.getSession().setAttribute("Nombre", res3.getString("Nombre"));
             response.sendRedirect("funcion.jsp");
-        }catch(Exception e){
+        } catch (Exception e) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PeliculaMultiplex</title>");            
+            out.println("<title>Servlet PeliculaMultiplex</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet PeliculaMultiplex at " + e.getMessage() + "</h1>");
@@ -59,7 +64,7 @@ public class PeliculaMultiplex extends HttpServlet {
             out.println("</html>");
         }
     }
-
+    //Cierre del metodo
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

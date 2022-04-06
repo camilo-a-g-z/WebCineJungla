@@ -27,21 +27,21 @@
                 </a>
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
-                        <form class="nav-link" action="ListarPelicula">
+                        <form class="nav-link active" action="ListarPeliculas">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-video-camera"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Películas</button>
                         </form>
-                        <form class="nav-link active" action="ListarConfiteria">
+                        <form class="nav-link" action="ListarConfiteria">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-cutlery"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Confitería</button>
                         </form>
                         <form class="nav-link" action="ListarEmpleado">
                             <div id="info" style="display:none">
-                                <input id="idCliente" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
+                                <input id="idEmpleado" name="idEmpleado" type="text" value="<%out.println(empleado);%>">
                             </div>
                             <i class="fa fa-user-plus"></i><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);font-size: 14px;border-style: none;">Personal</button>
                         </form>
